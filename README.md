@@ -37,8 +37,17 @@ Production output is generated in `dist/`. Dependencies and generated build outp
 - `docs/decisions.md` — implementation and design decisions.
 - `docs/assets.md` — original assets, procedural geometry, and media processing.
 - `docs/status.md` — completed checks and remaining verification.
+- `docs/codex-handoff.md` — current migration context, review findings and environment setup.
+- `docs/codex-first-task.md` — the first implementation task, including independent agent review.
+- `docs/visual-review/` — seven actual WebGL baseline captures, check records, gallery and historical capture tools.
 
-The production build and simulation checks passed during implementation. The actual WebGL render and full animated desktop/mobile inspection still need review on a WebGL-capable browser; the first production milestone is not yet marked finished.
+The production build passes. Seven baseline WebGL screenshots and keyboard/touch checks are now available in `docs/visual-review/`; they reveal lighting, mobile framing and layout problems to fix. They were captured from the published source using software rendering, rather than from the live URL. Full animation, picking/orbit and real-device performance checks remain; the first production milestone is not yet finished.
+
+## Continue in Codex
+
+Create a private Codex Cloud environment for this repository after authorizing its GitHub App for this repository. Use `bash scripts/codex-setup.sh` as the setup command, then review the setup results before publishing the environment. This frontend needs no API keys or environment secrets.
+
+Start the implementation with `docs/codex-first-task.md`. The root `AGENTS.md` preserves the design brief, one-lead workflow and bounded independent reviewers. Native computer/browser use is currently unsupported in Codex Cloud; arrange and verify a supported terminal-driven browser when testing actual 3D renders.
 
 ## Hosting
 

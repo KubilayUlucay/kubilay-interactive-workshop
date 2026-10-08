@@ -4,7 +4,7 @@
 
 Build a memorable, professionally executed interactive portfolio for Seyit Kubilay Uluçay. The audience includes engineering recruiters and master's admissions teams. Visitors should enjoy exploring while also being able to reach real projects, background, CV, and contact information directly.
 
-This brief preserves the current direction. It is not evidence that a production website or 3D assets have been created.
+This brief preserves the design direction and factual constraints. See the current status below and docs/codex-handoff.md for the working implementation and review evidence.
 
 ## Established preferences
 
@@ -16,7 +16,7 @@ This brief preserves the current direction. It is not evidence that a production
 - Use relaxed, sincere writing and concrete engineering evidence.
 - The user prefers reviewing visual results over managing implementation.
 - The user wants the work handled within ChatGPT and does not want to install Blender or other development tools locally. Do not make local software installation a prerequisite.
-- The user has created a ChatGPT Project named "Kubilay — Interactive Portfolio" and added an earlier version of this brief. They have not yet started a build chat inside it.
+- The user created a ChatGPT Project named "Kubilay — Interactive Portfolio" and supplied this brief. A separate interactive workshop has since been built, published and imported into the development repository.
 - The previous schematic animation demonstrated movement but did not meet the intended visual standard. Do not treat it as the approved design.
 
 ## References
@@ -107,4 +107,8 @@ The user does not need to write code or learn Blender. Asset budget, final colou
 
 ## Current status
 
-Concept and references discussed; no production 3D scene has been built. An illustrative crank-to-controller movement study exists, but it is below the desired finish. Existing GitHub materials have been inventoried and the build must require no local installation by the user. Next: start a ChatGPT Work build chat inside the named Project, read this brief, inspect the motor assets, establish the canonical website source, and create a working 3D crank-and-motor scene. The first milestone is this production scene, not the entire workshop. Show a working visual preview and refine its materials, lighting, and motion against Atlas Motion before adding the other scenes.
+Updated 2026-10-08: a working procedural crank-and-motor scene is published at https://kubilay-interactive-workshop.kubiulucay.chatgpt.site/ and imported into https://github.com/KubilayUlucay/kubilay-interactive-workshop. Real project media have been inspected and reused; docs/assets.md records their provenance. The earlier movement study remains a discarded concept rather than an approved design.
+
+Seven actual WebGL captures from the published source are saved in docs/visual-review/. They show that readability at zero power, mobile framing, text placement, the desktop canvas boundary and selected-part feedback need refinement. The baseline used software rendering and repeatable simulation endpoints, so full motion, picking/orbit and real-device performance remain unverified. The motor scene is promising but does not yet meet the first milestone's finish criteria.
+
+Next: continue the existing scene in Codex using docs/codex-handoff.md and docs/codex-first-task.md. One lead implements and integrates, with bounded independent visual, interaction/mobile and technical reviewers. Improve and inspect the working scene before expanding the workshop. The user is on mobile; no local software installation or manual file transfer is required.
