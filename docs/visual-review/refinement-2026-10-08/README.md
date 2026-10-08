@@ -128,8 +128,9 @@ mutate simulation, pause the normal loop or manually render. A local reproducibl
 
 ## Review delivery
 
-The draft PR contains the source changes and check reports. All 24 PNGs were
-captured and visually inspected locally. Public screenshot publication requires
-explicit approval; the draft omits PNGs and the gallery while that is pending.
-Browser review tools also remain local pending publication approval; the check
-reports record their observed results. No merge or deployment was performed.
+The draft PR contains the source changes, check reports and 24 genuine PNGs.
+[Before/after gallery](gallery.md) compares the fresh desktop and mobile captures
+and links the additional viewport checks. Public screenshot publication was
+explicitly approved. The browser capture/input tools and their instructions
+were separately approved for publication and are included under scripts/.
+No merge or deployment was performed.
