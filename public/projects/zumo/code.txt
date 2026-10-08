@@ -1,0 +1,177 @@
+
+#include <ZumoMotors.h>
+#include <ZumoReflectanceSensorArray.h>
+#include <ZumoBuzzer.h>
+
+#define PIN_IR 6
+#define PIN_LED 13
+#define SENSORS_COUNT 6
+#define THRESHOLD_WHITE 550  // Adjust based on sensor readings for white
+#define NUM_TRIALS 10
+
+ZumoMotors motors;
+ZumoReflectanceSensorArray sensors;
+ZumoBuzzer buzzer;
+
+unsigned int sensorReadings[SENSORS_COUNT];
+int dataValues[NUM_TRIALS];
+int trialsCompleted = 0;
+int objectCount = 0;
+bool detectionPeriod = false;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(PIN_LED, OUTPUT);
+  pinMode(PIN_IR, INPUT);
+  //Start with open led to show you are calibrating
+  digitalWrite(PIN_LED, HIGH);
+  delay(3000);
+  digitalWrite(PIN_LED, LOW);
+  delay(3000);
+
+  //Calibration start
+  sensors.init();
+  for (int i = 0; i < 400; i++) {
+    sensors.calibrate();
+    if (i % 50 == 0) {
+      Serial.print("Calibrating");
+    }
+  }
+  Serial.println("\nCalibration complete.");
+  buzzer.play("!L16 V10 cdegreg4"); // Signal end of calibration
+
+  delay(2000); // Put me to the black surface...
+
+  //Blink one time fastly to declare you are starting
+  digitalWrite(PIN_LED, HIGH);
+  delay(500);
+  digitalWrite(PIN_LED, LOW);
+}
+
+void loop() {
+  if (trialsCompleted < NUM_TRIALS) {
+    moveUntilWhiteDetected();
+    evaluateWhiteDetection();
+  } else {
+    int result = getMaxCount();
+    delay(2000);
+    blinkAndBuzz(result);
+    motors.setSpeeds(0, 0);  // Stop the robot
+    while(true);  // Halt further actions
+  }
+}
+
+void moveUntilWhiteDetected() {
+    while (true) {
+        sensors.readLine(sensorReadings);
+        if (digitalRead(PIN_IR) == LOW) {        // Check if the IR sensor detects an object
+            while (digitalRead(PIN_IR) == LOW) {    // Turn left until the IR sensor no longer detects anything
+                motors.setSpeeds(-150, 150);        // Turn left
+            }
+            motors.setSpeeds(0, 0);              // Stop turning once the object is no longer detected
+        }
+        else if (isOnBlackSurface()) {          // Continue moving forward if on black surface and no object detected
+            motors.setSpeeds(100, 100);          // Move forward
+        } else {
+            motors.setSpeeds(0, 0);              // Stop motors if white is detected
+            break;
+        }
+    }
+}
+
+bool isOnBlackSurface() {
+  for (int i = 0; i < SENSORS_COUNT; i++) {
+    if (sensorReadings[i] < THRESHOLD_WHITE) {
+      return false;  // White detected
+    }
+  }
+  return true;  // No white detected
+}
+
+void evaluateWhiteDetection() {
+  if (sensorReadings[0] < THRESHOLD_WHITE || sensorReadings[1] < THRESHOLD_WHITE || sensorReadings[2] < THRESHOLD_WHITE) {
+    // Left sensors detected white, turn right
+    detectionPeriod = true;
+    turnRight();
+  } else if (sensorReadings[3] < THRESHOLD_WHITE || sensorReadings[4] < THRESHOLD_WHITE || sensorReadings[5] < THRESHOLD_WHITE) {
+    // Right sensors detected white, turn left
+    detectionPeriod = true;
+    turnLeft();
+  }
+}
+
+void turnLeft() {
+    while (!isLeftGroupWhite()) {
+        motors.setSpeeds(-150, 155);  // Continue turning left
+        checkForObject();  // Check for objects and count if detected
+    }
+    motors.setSpeeds(0, 0);  // Stop turning
+    delay(200);  // Small delay to ensure complete stop
+    dataValues[trialsCompleted++] = objectCount;  // Store the count
+    objectCount = 0;  // Reset count
+    detectionPeriod = false;  // End detection period
+    while (!isRightGroupWhite()){
+      motors.setSpeeds(155, -150);
+    }
+    // Turn right for a brief period
+    motors.setSpeeds(-130, 130);
+    delay(200);  // Turn right for 200ms
+    motors.setSpeeds(0, 0);  // Stop turning
+}
+
+void turnRight() {
+    detectionPeriod = true; // This was missing in the original turnRight, added for consistency
+    while (!isRightGroupWhite()) {
+        motors.setSpeeds(155, -150);  // Continue turning right
+        checkForObject();  // Check for objects and count if detected
+    }
+    motors.setSpeeds(0, 0);  // Stop turning
+    delay(1000); // Small delay to ensure complete stop (was 1000, can be adjusted)
+    dataValues[trialsCompleted++] = objectCount;  // Store the count
+    objectCount = 0;  // Reset count
+    detectionPeriod = false;  // End detection period
+    while (!isLeftGroupWhite()){
+      motors.setSpeeds(-150, 155);
+    }
+    // Turn left for a brief period
+    motors.setSpeeds(130, -130);
+    delay(200);  // Turn left for 200ms
+    motors.setSpeeds(0, 0);  // Stop turning
+}
+
+bool isLeftGroupWhite() {
+  sensors.readLine(sensorReadings);
+  return sensorReadings[0] < THRESHOLD_WHITE || sensorReadings[1] < THRESHOLD_WHITE || sensorReadings[2] < THRESHOLD_WHITE;
+}
+
+bool isRightGroupWhite() {
+  sensors.readLine(sensorReadings);
+  return sensorReadings[3] < THRESHOLD_WHITE || sensorReadings[4] < THRESHOLD_WHITE || sensorReadings[5] < THRESHOLD_WHITE;
+}
+
+void checkForObject() {
+  if (detectionPeriod && digitalRead(PIN_IR) == LOW) {
+    objectCount++;
+    delay(200);  // Debounce delay
+  }
+}
+
+int getMaxCount() {
+  int maxCount = 0;
+  for (int i = 0; i < trialsCompleted; i++) {
+    if (dataValues[i] > maxCount) {
+      maxCount = dataValues[i];
+    }
+  }
+  return maxCount;
+}
+
+void blinkAndBuzz(int count) {
+  for (int i = 0; i < count; i++) {
+    digitalWrite(PIN_LED, HIGH);
+    buzzer.playFrequency(2000, 500, 5); // Frequency, duration, volume
+    delay(500);
+    digitalWrite(PIN_LED, LOW);
+    delay(500);
+  }
+}
