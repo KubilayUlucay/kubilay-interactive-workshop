@@ -1,0 +1,140 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "browser": "153.0.8010.0",
+  "method": "Source imported by review-only entry; genuine UI actions followed by production-simulation endpoint seeking and a settled source camera. No timing/FPS claim.",
+  "screenshots": [
+    {
+      "file": "mobile-390-idle.png",
+      "simulation": {
+        "held": false,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0,
+        "speed": 0,
+        "crankAngle": -0.72,
+        "motorAngle": 0,
+        "explode": 0,
+        "inspect": false
+      },
+      "camera": [
+        4.600000000005692,
+        3.500000000002846,
+        8.999999999999998
+      ],
+      "scene": {
+        "x": -46.796875,
+        "y": 207,
+        "width": 483.59375,
+        "height": 454
+      },
+      "detail": null,
+      "overflow": false
+    },
+    {
+      "file": "mobile-390-powered.png",
+      "simulation": {
+        "held": true,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0.9999999999999997,
+        "speed": 5.999999999999999,
+        "crankAngle": 119.35212111994096,
+        "motorAngle": 177.44397653481772,
+        "explode": 0,
+        "inspect": false
+      },
+      "camera": [
+        4.600000000000002,
+        3.5000000000000013,
+        8.999999999999998
+      ],
+      "scene": {
+        "x": -46.796875,
+        "y": 207,
+        "width": 483.59375,
+        "height": 454
+      },
+      "detail": null,
+      "overflow": false
+    },
+    {
+      "file": "mobile-390-exploded.png",
+      "simulation": {
+        "held": false,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0,
+        "speed": 0,
+        "crankAngle": 122.2043599157913,
+        "motorAngle": 177.44397653481772,
+        "explode": 1,
+        "inspect": true
+      },
+      "camera": [
+        4.9219999999909945,
+        3.7449999999931483,
+        9.629999999982381
+      ],
+      "scene": {
+        "x": -46.796875,
+        "y": 207,
+        "width": 483.59375,
+        "height": 454
+      },
+      "detail": {
+        "x": 198,
+        "y": 262,
+        "width": 170,
+        "height": 63.75
+      },
+      "overflow": false
+    },
+    {
+      "file": "mobile-390-shaft-selected.png",
+      "simulation": {
+        "held": false,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0,
+        "speed": 0,
+        "crankAngle": 122.2043599157913,
+        "motorAngle": 177.44397653481772,
+        "explode": 1,
+        "inspect": true
+      },
+      "camera": [
+        4.921999999999997,
+        3.7449999999999988,
+        9.629999999999995
+      ],
+      "scene": {
+        "x": -46.796875,
+        "y": 207,
+        "width": 483.59375,
+        "height": 454
+      },
+      "detail": {
+        "x": 198,
+        "y": 262,
+        "width": 170,
+        "height": 63.75
+      },
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "fonts": [
+    "DM Sans",
+    "DM Sans",
+    "DM Sans",
+    "IBM Plex Mono"
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+}

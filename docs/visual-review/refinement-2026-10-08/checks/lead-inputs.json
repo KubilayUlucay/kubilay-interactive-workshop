@@ -1,0 +1,69 @@
+{
+  "browser": "153.0.8010.0",
+  "method": "Genuine desktop mouse/keyboard, normal demand rendering, reduced-motion context. R3F bridge reads source state/camera only; no seeking, manual render or simulation mutation.",
+  "checks": [
+    {
+      "name": "dynamic motion button switches preference both ways",
+      "passed": true,
+      "result": true
+    },
+    {
+      "name": "actual desktop handle mouse picking/drag/release",
+      "passed": true,
+      "result": {
+        "p": {
+          "x": 509.67997370157616,
+          "y": 522.8683551938587
+        },
+        "before": {
+          "held": false,
+          "dragging": false,
+          "dragImpulse": 0,
+          "lastDrag": -1000,
+          "power": 0,
+          "speed": 0,
+          "crankAngle": -0.72,
+          "motorAngle": 0,
+          "explode": 0,
+          "inspect": false
+        },
+        "during": {
+          "held": false,
+          "dragging": true,
+          "dragImpulse": 9,
+          "lastDrag": 3654.699999999255,
+          "power": 0.34876945345658417,
+          "speed": 7.068639692207747,
+          "crankAngle": -1.022673224704097,
+          "motorAngle": 0,
+          "explode": 0,
+          "inspect": false
+        }
+      }
+    },
+    {
+      "name": "reduced inspection rendered endpoint and actual shaft mouse selection",
+      "passed": true,
+      "result": {
+        "x": 553.9432786747279,
+        "y": 557.5940269424707
+      }
+    },
+    {
+      "name": "rapid native UI transitions finish reassembled",
+      "passed": true,
+      "result": true
+    },
+    {
+      "name": "About/Projects/CV panels and keyboard Escape",
+      "passed": true,
+      "result": true
+    },
+    {
+      "name": "original CV and browser preview video available",
+      "passed": true,
+      "result": true
+    }
+  ],
+  "errors": []
+}

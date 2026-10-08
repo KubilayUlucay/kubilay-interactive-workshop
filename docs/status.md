@@ -1,4 +1,15 @@
 # Milestone 01 status
+## Current refinement — 2026-10-08
+- The first Codex implementation pass refines the existing crank-and-motor scene only: zero-power lighting/materials, mobile full-rig camera, separate descriptions, continuous desktop dock, warm selected-part feedback and moving spotlight shadows.
+- Mobile uses 44px orbit/reset controls and document flow. Inspection deliberately scrolls; the full mechanism remains visible above the description. Less motion preserves power feedback without continuous mechanical spinning.
+- ESLint configuration is restored; lint, deterministic simulation checks and production build pass. The existing large-bundle warning remains.
+- One lead reconciled independent visual, interaction/mobile and technical reviews against actual source and local WebGL images. No reviewer changed application source.
+- Current render/input evidence and exact limitations are in `visual-review/refinement-2026-10-08/README.md`. The original seven baseline captures remain unchanged. All new renders are software Chromium/SwiftShader, not the live URL or physical-device evidence.
+- No new workshop scene, factual engineering claim, original asset or hosting file was added/changed; no deployment occurred.
+- The requested refinement is implemented. Normal animation timing and real-device performance still need verification; the exploded cover occludes part of the crank, selected stator tint is pale and some shadow shapes remain angular. Reference-level finish is not established, so do not expand the workshop yet.
+
+## Historical implementation and migration record
+The following describes the earlier implementation/baseline, not the latest verification.
 ## Implemented
 - Separate development Site; original website2 repository and current public portfolio are untouched.
 - Procedural axial-flux exhibit and separate hand-crank generator, nine wound coils, bearings, rotor plates, enclosure and shaft.
@@ -15,12 +26,11 @@
 - Actual browser UI at 1365px and nested viewports 390px/600px: panels, keyboard Escape, CV PDF, no mobile horizontal overflow.
 - Original MP4 has damaged AAC packets; a silent VP9 WebM preview was made from the same frames. Actual mobile browser playback verified (readyState 4, paused false, currentTime increasing). Original retained.
 ## Baseline review and migration — 2026-10-08
-- The user subsequently authorized installing Chromium/Playwright in the hosted agent environment. Nothing was installed on the user's computer. The earlier browser-installation blocker is resolved.
+- Chromium/Playwright became available for the baseline browser review.
 - Seven WebGL2 screenshots from the published source are available in visual-review/: desktop 1440×1000 idle/powered/exploded/shaft-selected and mobile 390×844 idle/powered/exploded.
 - Software rendering, loaded fonts, no horizontal document overflow, keyboard Space and emulated touch held-state input were verified. The production simulation reached 100% power and fully exploded/reassembled endpoints.
 - The actual captures reveal dark idle materials, clipped mobile geometry, overlapping mobile descriptions, an abrupt desktop scene/control boundary and weak selection feedback. The first milestone remains unfinished.
 - The public GitHub checkout at decae4ac304d7a9107d91bcfe981fb98b561cf19 installs with npm ci and builds successfully on Node.js 24.19.0. The existing large-chunk warning remains.
-- Codex sign-in succeeded with the user's Plus account. The user approved the official GitHub App for only this repository, completed email verification, and installation and native write access were verified. The handoff, baseline evidence and setup script are integrated into the repository. Codex Cloud environment setup is the remaining migration step.
 ## Still not verified
 - The baseline captures used matching published source locally; the live URL was unavailable to that test browser.
 - Endpoint-seeking still captures and refreshed shadows do not verify normal animation timing, moving-shadow updates, crank picking, orbit gestures or real-device FPS.

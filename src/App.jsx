@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { RotateCcw, Move, X, Plus, Minus, Layers3, Play, ExternalLink, Download, MousePointer2 } from 'lucide-react';
+import { RotateCcw, Move, X, Plus, Layers3, ExternalLink, Download, MousePointer2 } from 'lucide-react';
 import MotorScene from './MotorScene';
 import { createSimulation } from './simulation';
 
@@ -15,7 +15,7 @@ class SceneBoundary extends React.Component {
 }
 function Dialog({kind,onClose}) {
  const ref=useRef();
- useEffect(()=>{ref.current.showModal();return()=>ref.current?.close();},[]);
+ useEffect(()=>{const node=ref.current;node.showModal();return()=>node.close();},[]);
  return <dialog ref={ref} className={'dialog '+(kind==='cv'?'cv-dialog':'')} onCancel={onClose} onClick={e=>{if(e.target===ref.current)onClose();}}>
   <div className="dialog-head"><span className="eyebrow">{kind==='motor'?'PROJECT 01 · AXIAL FLUX':kind==='projects'?'SELECTED WORK':kind==='cv'?'CV · REPOSITORY DOCUMENT':'ABOUT KUBILAY'}</span><button className="icon-btn" aria-label="Close panel" onClick={onClose} autoFocus><X size={22}/></button></div>
   {kind==='motor'?<>
@@ -39,18 +39,18 @@ export default function App(){
  const sim=useRef(createSimulation());
  const updateTelemetry=useCallback(value=>setTelemetry(old=>old.power===value.power&&old.running===value.running?old:value),[]);
  useEffect(()=>{const media=window.matchMedia('(prefers-reduced-motion: reduce)');const change=e=>setReduced(e.matches);media.addEventListener('change',change);return()=>media.removeEventListener('change',change);},[]);
- const toggleInspection=useCallback((value)=>{if(!webgl)return;setInspection(value);sim.current.inspect=value;sim.current.held=false;setHeld(false);setOrbit(false);},[webgl]);
+ const toggleInspection=useCallback((value)=>{if(!webgl)return;setInspection(value);sim.current.inspect=value;sim.current.held=false;sim.current.dragging=false;sim.current.lastDrag=-1000;setHeld(false);setDrag(false);setOrbit(false);},[webgl]);
  const reset=useCallback(()=>{Object.assign(sim.current,createSimulation());setTelemetry({power:0,running:false});setHeld(false);setDrag(false);setInspection(false);setOrbit(false);setPart('stator');setResetKey(k=>k+1);},[]);
  const release=useCallback(()=>{sim.current.held=false;setHeld(false);},[]);
  const start=useCallback(()=>{if(webgl&&!sim.current.inspect){setOrbit(false);sim.current.held=true;setHeld(true);}},[webgl]);
  useEffect(()=>{
   const up=e=>{if(e.type!=='keyup'||e.code==='Space')release();};
-  const key=e=>{const el=e.target; if(dialog||/INPUT|TEXTAREA|BUTTON|A|SELECT/.test(el.tagName))return;if(e.code==='Space'){e.preventDefault();start();}else if(e.code==='KeyI')toggleInspection(!sim.current.inspect);else if(e.code==='KeyR')reset();};
+  const key=e=>{const el=e.target; if(dialog||el.isContentEditable||/INPUT|TEXTAREA|BUTTON|A|SELECT/.test(el.tagName))return;if(e.code==='Space'){e.preventDefault();start();}else if(!e.repeat&&e.code==='KeyI')toggleInspection(!sim.current.inspect);else if(!e.repeat&&e.code==='KeyR')reset();};
   window.addEventListener('keydown',key);window.addEventListener('keyup',up);window.addEventListener('pointerup',up);window.addEventListener('pointercancel',up);window.addEventListener('blur',release);
   const hidden=()=>{if(document.hidden){release();sim.current.dragging=false;}};document.addEventListener('visibilitychange',hidden);
   return()=>{window.removeEventListener('keydown',key);window.removeEventListener('keyup',up);window.removeEventListener('pointerup',up);window.removeEventListener('pointercancel',up);window.removeEventListener('blur',release);document.removeEventListener('visibilitychange',hidden);};
  },[dialog,release,start,reset,toggleInspection]);
- useEffect(()=>{if(dialog){release();sim.current.dragging=false;}},[dialog,release]);
+ useEffect(()=>{if(dialog){release();sim.current.dragging=false;sim.current.lastDrag=-1000;setDrag(false);}},[dialog,release]);
  useEffect(()=>{
   const context=document.modelContext;if(!webgl||!context?.registerTool)return;const lifecycle=new AbortController();
   Promise.resolve(context.registerTool({name:'set_motor_inspection',title:'Inspect motor',description:'Open or close the exploded motor inspection in the visible scene.',inputSchema:{type:'object',properties:{open:{type:'boolean'}},required:['open'],additionalProperties:false},annotations:{readOnlyHint:false},execute:async input=>{if(typeof input?.open!=='boolean'||Object.keys(input).some(k=>k!=='open'))throw new Error('open must be a boolean');toggleInspection(input.open);return {inspection:input.open};}},{signal:lifecycle.signal})).catch(()=>{});return()=>lifecycle.abort();
@@ -59,10 +59,10 @@ export default function App(){
  return <main className={"workshop "+(reduced?"reduced":"")}>
   <a className="skip-link" href="#scene-controls">Skip to controls</a>
   <header className="nav"><button className="brand" onClick={reset}><img src="/favicon.svg" alt=""/>Kubilay Uluçay<span className="brand-note">ENGINEER / MAKER</span></button><nav aria-label="Portfolio"><button onClick={()=>setDialog('projects')}>Projects</button><button onClick={()=>setDialog('about')}>About</button><button onClick={()=>setDialog('cv')}>CV</button><a href="mailto:kubilay.ulucay@ozu.edu.tr">Contact</a></nav></header>
-  <div className="scene" aria-label="Interactive crank generator and axial-flux motor"><SceneBoundary>{webgl?<MotorScene sim={sim} inspection={inspection} part={part} onPart={setPart} orbit={orbit} reduced={reduced} held={held} onTelemetry={updateTelemetry} onDrag={setDrag} resetKey={resetKey}/>:<div className="scene-fallback"><img src="/projects/motor/motor_3d.jpg" alt="Original CAD rendering of the axial-flux motor"/><button className="text-link" onClick={()=>setDialog('motor')}>Explore the real build <Plus size={16}/></button></div>}</SceneBoundary></div>
+  <div className="scene" aria-label="Interactive crank generator and axial-flux motor"><SceneBoundary>{webgl?<MotorScene sim={sim} inspection={inspection} part={part} onPart={setPart} orbit={orbit} reduced={reduced} held={held} suspended={Boolean(dialog)} onTelemetry={updateTelemetry} onDrag={setDrag} resetKey={resetKey}/>:<div className="scene-fallback"><img src="/projects/motor/motor_3d.jpg" alt="Original CAD rendering of the axial-flux motor"/><button className="text-link" onClick={()=>setDialog('motor')}>Explore the real build <Plus size={16}/></button></div>}</SceneBoundary></div>
   <div className="intro"><span className="eyebrow">THE WORKSHOP / 01</span><h1>{!webgl?<>Inside<br/><span>the real build.</span></>:inspection?<>Motion,<br/><span>from inside.</span></>:<>It starts<br/><span>with a turn.</span></>}</h1><p>{!webgl?'3D is unavailable in this browser.\nThe project photographs and video are here.':inspection?'A closer look at what makes a motor move.':'A small input. A visible response.\nTurn the crank and wake the motor.'}</p></div>
   <div className="scene-caption"><span>AXIAL-FLUX MOTOR</span><button className="text-link" onClick={()=>setDialog('motor')}>See the real build <Plus size={16}/></button></div>
-  {inspection&&<aside className="inspection-panel" aria-label="Motor components"><span className="eyebrow">EXPLODED INSPECTION</span><div className="parts-tabs">{PARTS.map(p=><button key={p.id} className={part===p.id?'selected':''} aria-pressed={part===p.id} onClick={()=>setPart(p.id)}><span>{p.n}</span>{p.name}<Plus size={14}/></button>)}</div><p className="part-detail" aria-live="polite">{selected.detail}</p></aside>}
+  {inspection&&<aside className="inspection-panel" aria-label="Motor components"><span className="eyebrow">EXPLODED INSPECTION</span><div className="parts-tabs">{PARTS.map(p=><button key={p.id} className={part===p.id?'selected':''} aria-pressed={part===p.id} aria-describedby={part===p.id?'part-detail':undefined} onClick={()=>setPart(p.id)}><span>{p.n}</span>{p.name}<Plus size={14}/></button>)}</div><p id="part-detail" className="part-detail" aria-live="polite"><strong>{selected.name}</strong>{selected.detail}</p></aside>}
   {webgl&&<div className="scene-tools"><button className={'icon-btn '+(orbit?'active':'')} aria-label={orbit?'Lock camera':'Orbit camera'} title="Orbit camera" aria-pressed={orbit} onClick={()=>setOrbit(v=>!v)}><Move size={19}/></button><button className="icon-btn" aria-label="Reset scene" title="Reset scene (R)" onClick={reset}><RotateCcw size={19}/></button><button className="motion-toggle" aria-pressed={reduced} onClick={()=>setReduced(v=>!v)}>{reduced?'Less motion':'Motion on'}</button></div>}
   <section id="scene-controls" className="control-dock" aria-label="Scene controls">
    {webgl?<div className="power"><div className="power-heading"><span className="eyebrow">POWER</span><strong>{String(telemetry.power).padStart(2,'0')}<small>%</small></strong></div><div className="power-track"><div style={{transform:`scaleX(${telemetry.power/100})`}}/></div><span className="power-status">{!webgl?'3D unavailable':inspection?'Paused for inspection':telemetry.running?'Motor energized':'Waiting for a turn'}</span></div>:<div className="fallback-description"><span className="eyebrow">PROJECT 01</span><span>Axial-flux motor</span></div>}

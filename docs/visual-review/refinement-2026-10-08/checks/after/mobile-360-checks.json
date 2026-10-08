@@ -1,0 +1,216 @@
+{
+  "viewport": {
+    "width": 360,
+    "height": 844
+  },
+  "browser": "153.0.8010.0",
+  "method": "Source imported by review-only entry; genuine UI actions followed by production-simulation endpoint seeking and a settled source camera. No timing/FPS claim.",
+  "screenshots": [
+    {
+      "file": "mobile-360-idle.png",
+      "simulation": {
+        "held": false,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0,
+        "speed": 0,
+        "crankAngle": -0.72,
+        "motorAngle": 0,
+        "explode": 0,
+        "inspect": false
+      },
+      "camera": [
+        6.189218750001651,
+        4.107390625002382,
+        11.253124999996169
+      ],
+      "scene": {
+        "x": 0,
+        "y": 277.3125,
+        "width": 360,
+        "height": 337.59375
+      },
+      "detail": null,
+      "dock": {
+        "x": 17,
+        "y": 677.90625,
+        "width": 326,
+        "height": 126
+      },
+      "projectedGeometry": {
+        "left": 33.83163506383461,
+        "right": 339.2745657882124,
+        "top": 364.707485212915,
+        "bottom": 548.4234393052091
+      },
+      "documentHeight": 858,
+      "overflow": false,
+      "centerPixel": [
+        41,
+        43,
+        39,
+        255
+      ]
+    },
+    {
+      "file": "mobile-360-powered.png",
+      "simulation": {
+        "held": true,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0.9999999999999997,
+        "speed": 5.999999999999999,
+        "crankAngle": 119.35212111994096,
+        "motorAngle": 177.44397653481772,
+        "explode": 0,
+        "inspect": false
+      },
+      "camera": [
+        6.189218750000004,
+        4.107390625000003,
+        11.253124999999995
+      ],
+      "scene": {
+        "x": 0,
+        "y": 277.3125,
+        "width": 360,
+        "height": 337.59375
+      },
+      "detail": null,
+      "dock": {
+        "x": 17,
+        "y": 677.90625,
+        "width": 326,
+        "height": 126
+      },
+      "projectedGeometry": {
+        "left": 33.83163506383749,
+        "right": 339.27456578818436,
+        "top": 364.7074852129246,
+        "bottom": 548.4234393051537
+      },
+      "documentHeight": 858,
+      "overflow": false,
+      "centerPixel": [
+        42,
+        44,
+        40,
+        255
+      ]
+    },
+    {
+      "file": "mobile-360-exploded.png",
+      "simulation": {
+        "held": false,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0,
+        "speed": 0,
+        "crankAngle": 122.5043599157913,
+        "motorAngle": 177.8939765348177,
+        "explode": 1,
+        "inspect": true
+      },
+      "camera": [
+        6.993817187477499,
+        4.641351406235066,
+        12.716031249959089
+      ],
+      "scene": {
+        "x": 0,
+        "y": 195.703125,
+        "width": 360,
+        "height": 337.59375
+      },
+      "detail": {
+        "x": 32,
+        "y": 754.296875,
+        "width": 296,
+        "height": 101
+      },
+      "dock": {
+        "x": 17,
+        "y": 886.296875,
+        "width": 326,
+        "height": 126
+      },
+      "projectedGeometry": {
+        "left": 50.073126630879045,
+        "right": 320.3463529002724,
+        "top": 289.84851622604793,
+        "bottom": 453.4256648648474
+      },
+      "documentHeight": 1066,
+      "overflow": false,
+      "centerPixel": [
+        50,
+        54,
+        50,
+        255
+      ]
+    },
+    {
+      "file": "mobile-360-shaft-selected.png",
+      "simulation": {
+        "held": false,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0,
+        "speed": 0,
+        "crankAngle": 122.5043599157913,
+        "motorAngle": 177.8939765348177,
+        "explode": 1,
+        "inspect": true
+      },
+      "camera": [
+        6.993817187499999,
+        4.641351406249997,
+        12.716031249999997
+      ],
+      "scene": {
+        "x": 0,
+        "y": 195.703125,
+        "width": 360,
+        "height": 337.59375
+      },
+      "detail": {
+        "x": 32,
+        "y": 754.296875,
+        "width": 296,
+        "height": 101
+      },
+      "dock": {
+        "x": 17,
+        "y": 886.296875,
+        "width": 326,
+        "height": 126
+      },
+      "projectedGeometry": {
+        "left": 50.0731266312829,
+        "right": 320.3463528998065,
+        "top": 289.84851622627355,
+        "bottom": 453.4256648645228
+      },
+      "documentHeight": 1066,
+      "overflow": false,
+      "centerPixel": [
+        50,
+        54,
+        50,
+        255
+      ]
+    }
+  ],
+  "errors": [],
+  "fonts": [
+    "DM Sans",
+    "DM Sans",
+    "DM Sans",
+    "IBM Plex Mono"
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+}

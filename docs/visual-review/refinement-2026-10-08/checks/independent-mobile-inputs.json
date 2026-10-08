@@ -1,0 +1,52 @@
+{
+  "browser": "153.0.8010.0",
+  "method": "Real Playwright keyboard/mouse and Chromium CDP emulated touch. Production simulation is read through React Fiber only; no state seeking or mutation.",
+  "checks": [
+    {
+      "name": "mobile layout before input",
+      "passed": true,
+      "result": {
+        "width": 390,
+        "height": 844,
+        "docHeight": 858,
+        "scrollWidth": 390,
+        "scene": {
+          "x": 0,
+          "y": 277.3125,
+          "width": 390,
+          "height": 337.59375,
+          "top": 277.3125,
+          "right": 390,
+          "bottom": 614.90625,
+          "left": 0
+        }
+      }
+    },
+    {
+      "name": "390 native touch Hold and cancel",
+      "passed": true,
+      "result": true
+    },
+    {
+      "name": "390 native touch inspect, selected tab and rapid transitions",
+      "passed": true,
+      "result": true
+    },
+    {
+      "name": "reduced motion, inspection snaps on rendered frame",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    },
+    {
+      "name": "390 text separated, touch targets, no overflow",
+      "passed": false,
+      "error": "page.evaluate: TypeError: Cannot read properties of null (reading 'getBoundingClientRect')\n    at eval (eval at evaluate (:290:30), <anonymous>:1:263)\n    at Array.map (<anonymous>)\n    at eval (eval at evaluate (:290:30), <anonymous>:1:228)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "name": "360 text separated, touch targets, no overflow",
+      "passed": false,
+      "error": "page.evaluate: TypeError: Cannot read properties of null (reading 'getBoundingClientRect')\n    at eval (eval at evaluate (:290:30), <anonymous>:1:263)\n    at Array.map (<anonymous>)\n    at eval (eval at evaluate (:290:30), <anonymous>:1:228)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    }
+  ],
+  "errors": []
+}

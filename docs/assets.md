@@ -20,3 +20,11 @@ https://lusion.co/projects/atlas_motion/ — visual pacing and selective WebGL.
 https://bruno-simon.com/ — exploration with consequences and reset.
 No reference media, branding, CAD or models copied into the Site.
 - motor-preview.webm: browser preview transcoded from the original MP4 to VP9 with the damaged audio track omitted. Original MP4 retained. No visual content altered.
+
+## Codex refinement — 2026-10-08
+Only the procedural exhibit's materials, roughness texture, lighting, camera and
+separation/selection behavior were refined. No original photographs, video,
+documents, asset paths or hosting files were changed. Additional review PNGs are
+actual local Chromium/SwiftShader WebGL renders; they are neither generated art
+nor captures of the published URL. No new external model, texture or HDR asset
+was introduced.
