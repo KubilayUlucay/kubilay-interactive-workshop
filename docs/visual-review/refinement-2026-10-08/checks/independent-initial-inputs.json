@@ -1,0 +1,11 @@
+{
+  "method": "Normal app at localhost:5173. Genuine Playwright keyboard and mouse. Production simulation read through React Fiber only, no mutation or seeking.",
+  "checks": [
+    {"name":"keyboard Space starts, power rises, keyup releases","passed":true,"powerObserved":0.5678388681681845},
+    {"name":"focused Hold Enter and Space start/release","passed":true},
+    {"name":"mouse Hold captured release outside button","passed":true},
+    {"name":"KeyI autorepeat leaves inspection open","passed":true},
+    {"name":"natural explosion reaches exactly 1 within 60 seconds","passed":false,"error":"page.waitForFunction timeout at 60000ms"}
+  ],
+  "limitation":"Software-rendered Chromium became unresponsive during concurrent lead capture. Review process was stopped to free resources; later checks in original inputs.mjs were not completed. This is not a real-device performance or motion-timing pass."
+}

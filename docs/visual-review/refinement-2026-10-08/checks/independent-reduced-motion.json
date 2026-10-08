@@ -1,0 +1,71 @@
+{
+  "browser": "153.0.8010.0",
+  "method": "Real Playwright keyboard/mouse and Chromium CDP emulated touch. Production simulation is read through React Fiber only; no state seeking or mutation.",
+  "checks": [
+    {
+      "name": "390 reduced-motion rendered endpoint and diagnostics",
+      "passed": true,
+      "result": {
+        "state": {
+          "held": false,
+          "dragging": false,
+          "dragImpulse": 0,
+          "lastDrag": -1000,
+          "power": 0,
+          "speed": 0,
+          "crankAngle": -0.72,
+          "motorAngle": 0,
+          "explode": 1,
+          "inspect": true
+        },
+        "diagnostics": {
+          "frameloop": "demand",
+          "frames": 0,
+          "props": [
+            {
+              "inspection": true,
+              "reduced": true,
+              "suspended": false
+            }
+          ],
+          "scrollY": 0,
+          "scene": {
+            "x": 0,
+            "y": 195.703125,
+            "width": 390,
+            "height": 337.59375,
+            "top": 195.703125,
+            "right": 390,
+            "bottom": 533.296875,
+            "left": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "390 reduced-motion actual shaft mesh touch picking",
+      "passed": true,
+      "result": {
+        "x": 131.04817948722493,
+        "y": 372.20307717163826
+      }
+    },
+    {
+      "name": "390 reduced reassembly/reset",
+      "passed": true,
+      "result": {
+        "held": false,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0,
+        "speed": 0,
+        "crankAngle": -0.72,
+        "motorAngle": 0,
+        "explode": 0,
+        "inspect": false
+      }
+    }
+  ],
+  "errors": []
+}

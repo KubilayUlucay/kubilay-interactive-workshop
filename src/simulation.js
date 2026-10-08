@@ -8,8 +8,9 @@ export function advanceSimulation(s,delta,{inspection,reduced,now}){
  s.speed=damp(s.speed,target,target?9:2,dt);
  s.power=damp(s.power,Math.min(1,s.speed/5.8),3,dt);
  if(s.speed<.0005)s.speed=0;if(s.power<.0005)s.power=0;
- if(s.held||!s.dragging)s.crankAngle+=s.speed*dt;
- if(!inspection)s.motorAngle+=s.power*dt*9;
+ // Less motion preserves power feedback without continuous mechanical spinning.
+ if(!reduced&&(s.held||!s.dragging))s.crankAngle+=s.speed*dt;
+ if(!inspection&&!reduced)s.motorAngle+=s.power*dt*9;
  s.explode=reduced?Number(inspection):damp(s.explode,Number(inspection),3.6,dt);
  if(Math.abs(s.explode-Number(inspection))<.0005)s.explode=Number(inspection);
  return s.held||dragging||s.speed>0||s.power>0||s.explode!==Number(inspection);

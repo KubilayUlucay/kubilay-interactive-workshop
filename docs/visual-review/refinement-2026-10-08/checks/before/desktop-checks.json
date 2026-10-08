@@ -1,0 +1,140 @@
+{
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "browser": "153.0.8010.0",
+  "method": "Source imported by review-only entry; genuine UI actions followed by production-simulation endpoint seeking and a settled source camera. No timing/FPS claim.",
+  "screenshots": [
+    {
+      "file": "desktop-idle.png",
+      "simulation": {
+        "held": false,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0,
+        "speed": 0,
+        "crankAngle": -0.72,
+        "motorAngle": 0,
+        "explode": 0,
+        "inspect": false
+      },
+      "camera": [
+        5.799999999999998,
+        4.1000000000000005,
+        8.999999999999998
+      ],
+      "scene": {
+        "x": 0,
+        "y": 105,
+        "width": 1440,
+        "height": 775
+      },
+      "detail": null,
+      "overflow": false
+    },
+    {
+      "file": "desktop-powered.png",
+      "simulation": {
+        "held": true,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0.9999999999999997,
+        "speed": 5.999999999999999,
+        "crankAngle": 119.35212111994096,
+        "motorAngle": 177.44397653481772,
+        "explode": 0,
+        "inspect": false
+      },
+      "camera": [
+        5.799999999999998,
+        4.1000000000000005,
+        8.999999999999998
+      ],
+      "scene": {
+        "x": 0,
+        "y": 105,
+        "width": 1440,
+        "height": 775
+      },
+      "detail": null,
+      "overflow": false
+    },
+    {
+      "file": "desktop-exploded.png",
+      "simulation": {
+        "held": false,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0,
+        "speed": 0,
+        "crankAngle": 122.2043599157913,
+        "motorAngle": 177.44397653481772,
+        "explode": 1,
+        "inspect": true
+      },
+      "camera": [
+        6.843999999970801,
+        4.837999999979359,
+        10.619999999954693
+      ],
+      "scene": {
+        "x": 0,
+        "y": 105,
+        "width": 1440,
+        "height": 775
+      },
+      "detail": {
+        "x": 1165,
+        "y": 457,
+        "width": 235,
+        "height": 85.75
+      },
+      "overflow": false
+    },
+    {
+      "file": "desktop-shaft-selected.png",
+      "simulation": {
+        "held": false,
+        "dragging": false,
+        "dragImpulse": 0,
+        "lastDrag": -1000,
+        "power": 0,
+        "speed": 0,
+        "crankAngle": 122.2043599157913,
+        "motorAngle": 177.44397653481772,
+        "explode": 1,
+        "inspect": true
+      },
+      "camera": [
+        6.843999999999997,
+        4.8379999999999965,
+        10.619999999999994
+      ],
+      "scene": {
+        "x": 0,
+        "y": 105,
+        "width": 1440,
+        "height": 775
+      },
+      "detail": {
+        "x": 1165,
+        "y": 457,
+        "width": 235,
+        "height": 64.3125
+      },
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "fonts": [
+    "DM Sans",
+    "DM Sans",
+    "DM Sans",
+    "IBM Plex Mono"
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+}

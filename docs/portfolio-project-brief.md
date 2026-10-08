@@ -112,3 +112,11 @@ Updated 2026-10-08: a working procedural crank-and-motor scene is published at h
 Seven actual WebGL captures from the published source are saved in docs/visual-review/. They show that readability at zero power, mobile framing, text placement, the desktop canvas boundary and selected-part feedback need refinement. The baseline used software rendering and repeatable simulation endpoints, so full motion, picking/orbit and real-device performance remain unverified. The motor scene is promising but does not yet meet the first milestone's finish criteria.
 
 Next: continue the existing scene in Codex using docs/codex-handoff.md and docs/codex-first-task.md. One lead implements and integrates, with bounded independent visual, interaction/mobile and technical reviewers. Improve and inspect the working scene before expanding the workshop. The user is on mobile; no local software installation or manual file transfer is required.
+
+Codex refinement update, 2026-10-08: the requested lighting/materials, mobile
+framing/text, desktop dock, component selection and moving-shadow changes are
+implemented and reviewed locally. See docs/visual-review/refinement-2026-10-08/
+for the new actual WebGL evidence. The current hosted sites and original assets
+remain unchanged. Normal animation timing, physical-device performance and parity
+with the visual references remain unproven; further artistic refinement is still
+appropriate before expanding the workshop.
