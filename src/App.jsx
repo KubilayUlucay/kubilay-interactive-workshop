@@ -6,7 +6,7 @@ import { createSimulation } from './simulation';
 const PARTS = [
  {id:'stator',n:'01',name:'Copper windings',detail:'Nine coils stay fixed in the stator. Current through the windings creates the magnetic field that drives the rotor.'},
  {id:'rotor',n:'02',name:'Magnet rotors',detail:'The rotor plates turn around the same shaft. Permanent magnets face the stator across a small air gap.'},
- {id:'housing',n:'03',name:'Housing & bearings',detail:'The enclosure supports the bearings and keeps the rotating parts aligned. This exhibit uses a windowed housing to expose the mechanism.'},
+ {id:'housing',n:'03',name:'Bearing supports',detail:'Separate bearing carriers sit outside the rotor plates and keep the shaft aligned. This model follows the visible layout of the project CAD.'},
  {id:'shaft',n:'04',name:'Output shaft',detail:'The shaft transfers rotation to a load. The crank on the left is a separate, illustrative generator input.'},
 ];
 class SceneBoundary extends React.Component {
@@ -21,7 +21,7 @@ function Dialog({kind,onClose}) {
   {kind==='motor'?<>
    <h2>From CAD to copper.</h2><p className="lead">A motor I designed, wound, and assembled during my electrical engineering degree.</p>
    <div className="evidence-grid"><figure><img src="/projects/motor/motor-inside-wiring.jpeg" alt="Nine hand-wound copper coils on turquoise stator supports"/><figcaption>Hand-wound stator</figcaption></figure><figure><img src="/projects/motor/overall-motor.jpeg" alt="Assembled axial-flux motor on a university lab bench"/><figcaption>The assembled hardware</figcaption></figure></div>
-   <div className="video-row"><video controls playsInline preload="metadata" poster="/projects/motor/overall-motor.jpeg"><source src="/projects/motor/motor-preview.webm" type="video/webm"/><source src="/projects/motor/motor-video.mp4" type="video/mp4"/></video><div><h3>The lab test.</h3><p>The original footage from the repository. The interactive scene is an illustrative model inspired by this hardware; the hand crank and machined enclosure are part of the exhibit.</p><a className="text-link" href="https://github.com/KubilayUlucay/website2/tree/main/public/projects/motor" target="_blank" rel="noreferrer">View project material <ExternalLink size={15}/></a></div></div>
+   <div className="video-row"><video controls playsInline preload="metadata" poster="/projects/motor/overall-motor.jpeg"><source src="/projects/motor/motor-preview.webm" type="video/webm"/><source src="/projects/motor/motor-video.mp4" type="video/mp4"/></video><div><h3>The lab test.</h3><p>The original footage from the repository. The interactive scene is an illustrative model inspired by this hardware; the hand crank and electrical glow are illustrative additions.</p><a className="text-link" href="https://github.com/KubilayUlucay/website2/tree/main/public/projects/motor" target="_blank" rel="noreferrer">View project material <ExternalLink size={15}/></a></div></div>
   </>:kind==='projects'?<>
    <h2>Things I’ve made.</h2><p className="lead">Hardware, controls, and the software between them.</p>
    <div className="project-list">

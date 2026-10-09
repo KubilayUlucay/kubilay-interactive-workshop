@@ -1,12 +1,16 @@
 # Crank-and-motor implementation handoff
 
-Updated 2026-10-08 for `KubilayUlucay/kubilay-interactive-workshop`.
+Updated 2026-10-09 for `KubilayUlucay/kubilay-interactive-workshop`.
 
 The first implementation pass refines the existing scene on
 `codex/motor-scene-refinement`, based on checkout `bc22553`. Read
 `visual-review/refinement-2026-10-08/README.md` for genuine before/after renders,
 independent-review reconciliation, checks and remaining limits. No deployment,
 merge or hosting change is included.
+
+## Latest CAD and electrical pass
+
+Read `visual-review/cad-energy-2026-10-09/README.md` first for the new source and renders. The user approved publication to the existing development workshop, subsequently published as version2 at https://kubilay-interactive-workshop.kubiulucay.chatgpt.site. The older no-deployment statements below describe the first pass. The current motor uses solid CAD-inspired rotor plates and bearing carriers, open coil forms, rotating shaft, stronger warm illumination and cable/perimeter electrical feedback. Geometry and energy effects remain illustrative.
 
 ## Authoritative project guidance
 

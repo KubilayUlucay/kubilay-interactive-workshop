@@ -1,5 +1,5 @@
 // Exhibit feedback only. No measured voltage, torque, or RPM is represented.
-export const createSimulation = () => ({held:false,dragging:false,dragImpulse:0,lastDrag:-1000,power:0,speed:0,crankAngle:-.72,motorAngle:0,explode:0,inspect:false});
+export const createSimulation = () => ({held:false,dragging:false,dragImpulse:0,lastDrag:-1000,power:0,speed:0,crankAngle:-.72,motorAngle:0,effectPhase:0,explode:0,inspect:false});
 const damp=(a,b,lambda,dt)=>b+(a-b)*Math.exp(-lambda*dt);
 export function advanceSimulation(s,delta,{inspection,reduced,now}){
  const dt=Math.max(0,Math.min(delta,.05));
@@ -11,6 +11,7 @@ export function advanceSimulation(s,delta,{inspection,reduced,now}){
  // Less motion preserves power feedback without continuous mechanical spinning.
  if(!reduced&&(s.held||!s.dragging))s.crankAngle+=s.speed*dt;
  if(!inspection&&!reduced)s.motorAngle+=s.power*dt*9;
+ if(!inspection&&!reduced&&s.power>.0005)s.effectPhase=(s.effectPhase+dt*(.30+s.power*.80))%1;
  s.explode=reduced?Number(inspection):damp(s.explode,Number(inspection),3.6,dt);
  if(Math.abs(s.explode-Number(inspection))<.0005)s.explode=Number(inspection);
  return s.held||dragging||s.speed>0||s.power>0||s.explode!==Number(inspection);

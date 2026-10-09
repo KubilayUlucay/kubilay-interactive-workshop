@@ -1,4 +1,11 @@
 # Milestone 01 status
+## CAD and energy refinement — 2026-10-09
+- Solid rotor plates, separate bearing carriers, open coil forms and projecting shaft follow the user CAD reference, with dimensionless illustrative details.
+- Strong warm powered lighting, cable travel and cyan perimeter arcs; inspection hides effects and reduced motion preserves steady illumination.
+- Eight new actual desktop1440×1000/mobile390×844 renders reviewed independently; source review found no blocking issue. See `visual-review/cad-energy-2026-10-09/README.md`.
+- Development workshop version2 was published after explicit user approval; this refinement is prepared for that same workshop. Older portfolio, GitHub main, assets and hosting configuration stay unchanged.
+- Lint, production build and simulation checks pass; genuine keyboard, mouse, emulated touch, rapid transitions, inspection/reassembly and reduced-motion checks pass. Narrow360px framing also passes. Software-rendering and real-device limits remain.
+
 ## Current refinement — 2026-10-08
 - The first Codex implementation pass refines the existing crank-and-motor scene only: zero-power lighting/materials, mobile full-rig camera, separate descriptions, continuous desktop dock, warm selected-part feedback and moving spotlight shadows.
 - Mobile uses 44px orbit/reset controls and document flow. Inspection deliberately scrolls; the full mechanism remains visible above the description. Less motion preserves power feedback without continuous mechanical spinning.

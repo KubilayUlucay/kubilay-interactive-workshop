@@ -17,3 +17,9 @@
 - Less motion snaps camera/explosion and suppresses continuous crank/rotor spin while preserving input power feedback. Direct manual crank manipulation remains user-controlled.
 - Capture instrumentation lives in a separate Vite HTML entry under scripts; the production build has no review bridge. Still endpoint seeking and genuine normal-input checks are reported separately.
 - No deployment, hosting change, new scene, factual engineering specification or new purchased/external asset is included in this pass.
+
+## CAD/electrical refinement — 2026-10-09
+- User CAD reference supersedes the earlier windowed-wheel interpretation: solid scalloped plates, separate small bearing carriers, rectangular inward magnet blocks and open coil loops. Preserve nine windings from the stator photo; artistic magnet details do not establish pole count or polarity.
+- Warm light and unlit cable/perimeter effects make powered feedback visible at phone scale. Effect phase follows production power, freezes with reduced motion/inspection and resets with the scene. Overlays use a separate camera layer and no raycast, so selection and contact shadows remain physical geometry only.
+- Stable environment JSX avoids cubemap recapture on telemetry rerenders. The shaft now rotates with the rotors.
+- Publish only to the existing development workshop under the user’s explicit publication approval; preserve GitHub main and older portfolio. Keep a reviewable testing-branch diff and actual screenshot evidence.

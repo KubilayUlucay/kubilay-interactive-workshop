@@ -1,0 +1,155 @@
+{
+  "browser": "153.0.8010.0",
+  "method": "Genuine Space keyboard input and native CDP emulated touch, normal demand rendering. R3F bridge reads production state, effects, and camera only. No simulation seeking/mutation or manual rendering. Software rendering does not establish real-device timing/FPS.",
+  "checks": [
+    {
+      "name": "native mobile touch picks the actual crank, energizes feedback, and cancels capture",
+      "passed": true,
+      "result": {
+        "target": {
+          "x": 111.99952738076334,
+          "y": 446.32046953709744
+        },
+        "before": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0,
+            "speed": 0,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": false,
+            "traceOpacity": 0,
+            "beadOpacity": 0,
+            "arcOpacity": 0,
+            "beadPosition": [
+              -2.22,
+              0.68,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 0,
+            "active": true,
+            "elapsed": 0.8007999999998138,
+            "xr": false,
+            "visibility": "visible"
+          }
+        },
+        "after": {
+          "simulation": {
+            "held": false,
+            "dragging": true,
+            "dragImpulse": 2.278931807031298,
+            "lastDrag": 2774.5,
+            "power": 0.43037168156121763,
+            "speed": 3.3689617406853998,
+            "crankAngle": -1.1603813665677452,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "traceOpacity": 0.27974159301479146,
+            "beadOpacity": 0.27974159301479146,
+            "arcOpacity": 0.23670442485866972,
+            "beadPosition": [
+              -2.22,
+              0.68,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 2.4712999999998138,
+            "xr": false,
+            "visibility": "visible"
+          }
+        }
+      }
+    },
+    {
+      "name": "native mobile touch inspection, all four part buttons, and reassembly remain available",
+      "passed": true,
+      "result": {
+        "selected": [
+          "Copper windings",
+          "Magnet rotors",
+          "Bearing supports",
+          "Output shaft"
+        ],
+        "after": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 2.278931807031298,
+            "lastDrag": -1000,
+            "power": 0.05301865577618282,
+            "speed": 0.1254566006309412,
+            "crankAngle": -1.1603813665677452,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "traceOpacity": 0.03446212625451883,
+            "beadOpacity": 0.03446212625451883,
+            "arcOpacity": 0.029160260676900553,
+            "beadPosition": [
+              -2.22,
+              0.68,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 35.656100000000094,
+            "xr": false,
+            "visibility": "visible"
+          }
+        }
+      }
+    }
+  ],
+  "errors": []
+}

@@ -11,7 +11,7 @@ GitHub connected plugin inspected the tree, package manifest, source, and a base
 User-provided repository material is reused for this user's portfolio; no broader third-party relicensing asserted.
 Large source PDFs/PPTX remain in the authoritative GitHub repository; they are linked rather than copied into this milestone source or deployed public assets.
 ## Created assets
-MotorScene.jsx: original procedural, dimensionless exhibit geometry. Nine copper coils, printed supports, two windowed rotor structures, bearings, housing, shaft, crank-generator, cables, plinth. Designed here; no purchased/downloaded model. Materials and environment light emitters are procedural. The enclosure and generator are interpretive additions. Geometry is not a measured replica and the power meter is an exhibit feedback signal, not physical simulation.
+MotorScene.jsx: original procedural, dimensionless exhibit geometry. Nine copper coils, printed supports, two solid scalloped rotor plates with separate bearing carriers, bearings, housing, shaft, crank-generator, cables, plinth. Designed here; no purchased/downloaded model. Materials and environment light emitters are procedural. The enclosure and generator are interpretive additions. Geometry is not a measured replica and the power meter is an exhibit feedback signal, not physical simulation.
 public/favicon.svg: original simple motor mark.
 ## References, not reused assets
 https://atlasmotion.com/ — graphite/copper contrast and quiet product composition.
@@ -28,3 +28,6 @@ documents, asset paths or hosting files were changed. Additional review PNGs are
 actual local Chromium/SwiftShader WebGL renders; they are neither generated art
 nor captures of the published URL. No new external model, texture or HDR asset
 was introduced.
+
+## CAD/electrical refinement — 2026-10-09
+The user-supplied image matches the existing motor_3d.jpg. Procedural silhouettes were reconstructed from that reference, without importing a model or inferring dimensions/polarity. Windings use shared open-loop geometry. Cable beads and motor arcs are original illustrative feedback, not current/flux visualization. Original assets remain unchanged.
