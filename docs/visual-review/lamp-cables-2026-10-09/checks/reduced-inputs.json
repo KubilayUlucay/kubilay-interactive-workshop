@@ -1,0 +1,484 @@
+{
+  "browser": "153.0.8010.0",
+  "method": "Genuine Space keyboard input and native CDP emulated touch, normal demand rendering. R3F bridge reads production state, effects, and camera only. No simulation seeking/mutation or manual rendering. Software rendering does not establish real-device timing/FPS.",
+  "checks": [
+    {
+      "name": "reduced motion retains static powered feedback without automatic motor/phase movement",
+      "passed": true,
+      "result": {
+        "before": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0,
+            "speed": 0,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": false,
+            "traceOpacity": 0,
+            "beadOpacity": 0,
+            "arcOpacity": 0,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 0,
+            "glowOpacity": 0,
+            "glowVisible": false,
+            "lightIntensity": 0
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 0,
+            "active": true,
+            "elapsed": 1.1505999999996275,
+            "xr": false,
+            "visibility": "visible"
+          }
+        },
+        "first": {
+          "simulation": {
+            "held": true,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.13045322620947591,
+            "speed": 3.5605820415564047,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "traceOpacity": 0.08479459703615935,
+            "beadOpacity": 0.08479459703615935,
+            "arcOpacity": 0.07174927441521176,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 0.9131725834663313,
+            "glowOpacity": 0.01695891940723187,
+            "glowVisible": true,
+            "lightIntensity": 1.1740790358852833
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 2.2895999999996275,
+            "xr": false,
+            "visibility": "visible"
+          }
+        },
+        "after": {
+          "simulation": {
+            "held": true,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.3087904488077282,
+            "speed": 5.00820667067048,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "traceOpacity": 0.20071379172502335,
+            "beadOpacity": 0.20071379172502335,
+            "arcOpacity": 0.16983474684425054,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 2.1615331416540977,
+            "glowOpacity": 0.04014275834500467,
+            "glowVisible": true,
+            "lightIntensity": 2.7791140392695537
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 2.9342999999988826,
+            "xr": false,
+            "visibility": "visible"
+          }
+        }
+      }
+    },
+    {
+      "name": "actual release coast dims the lamp; native reset restores lamp and cable idle baselines",
+      "passed": true,
+      "result": {
+        "charged": {
+          "simulation": {
+            "held": true,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.6234304924824758,
+            "speed": 4.5951573980183,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "traceOpacity": 0.4052298201136093,
+            "beadOpacity": 0.4052298201136093,
+            "arcOpacity": 0.34288677086536173,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 4.364013447377331,
+            "glowOpacity": 0.08104596402272186,
+            "glowVisible": true,
+            "lightIntensity": 5.610874432342283
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 3.3601999999992556,
+            "xr": false,
+            "visibility": "visible"
+          }
+        },
+        "coast": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.3571001861233382,
+            "speed": 1.1019376805707446,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "traceOpacity": 0.23211512098016984,
+            "beadOpacity": 0.23211512098016984,
+            "arcOpacity": 0.19640510236783604,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 2.4997013028633677,
+            "glowOpacity": 0.04642302419603397,
+            "glowVisible": true,
+            "lightIntensity": 3.2139016751100438
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 49.077699999999254,
+            "xr": false,
+            "visibility": "visible"
+          }
+        },
+        "reset": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0,
+            "speed": 0,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": false,
+            "traceOpacity": 0,
+            "beadOpacity": 0,
+            "arcOpacity": 0,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 0,
+            "glowOpacity": 0,
+            "glowVisible": false,
+            "lightIntensity": 0
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 0,
+            "active": true,
+            "elapsed": 51.5115,
+            "xr": false,
+            "visibility": "visible"
+          }
+        }
+      }
+    },
+    {
+      "name": "dialog suspension cancels held input, hides effects, freezes simulation; Escape restores the scene",
+      "passed": true,
+      "result": {
+        "paused": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.0829479644777526,
+            "speed": 2.9450614763547045,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": true
+          },
+          "effects": {
+            "present": true,
+            "visible": false,
+            "traceOpacity": 0,
+            "beadOpacity": 0,
+            "arcOpacity": 0,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 0,
+            "glowOpacity": 0,
+            "glowVisible": false,
+            "lightIntensity": 0
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 0,
+            "active": true,
+            "elapsed": 61.73379999999888,
+            "xr": false,
+            "visibility": "visible"
+          }
+        },
+        "later": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.0829479644777526,
+            "speed": 2.9450614763547045,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": true
+          },
+          "effects": {
+            "present": true,
+            "visible": false,
+            "traceOpacity": 0,
+            "beadOpacity": 0,
+            "arcOpacity": 0,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 0,
+            "glowOpacity": 0,
+            "glowVisible": false,
+            "lightIntensity": 0
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 0,
+            "active": true,
+            "elapsed": 61.73379999999888,
+            "xr": false,
+            "visibility": "visible"
+          }
+        },
+        "restored": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.1353914984893086,
+            "speed": 2.664801822221962,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "traceOpacity": 0.08800447401805059,
+            "beadOpacity": 0.08800447401805059,
+            "arcOpacity": 0.07446532416911973,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 0.9477404894251602,
+            "glowOpacity": 0.01760089480361012,
+            "glowVisible": true,
+            "lightIntensity": 1.2185234864037773
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 64.16219999999925,
+            "xr": false,
+            "visibility": "visible"
+          }
+        }
+      }
+    }
+  ],
+  "errors": []
+}

@@ -23,3 +23,7 @@
 - Warm light and unlit cable/perimeter effects make powered feedback visible at phone scale. Effect phase follows production power, freezes with reduced motion/inspection and resets with the scene. Overlays use a separate camera layer and no raycast, so selection and contact shadows remain physical geometry only.
 - Stable environment JSX avoids cubemap recapture on telemetry rerenders. The shaft now rotates with the rotors.
 - Publish only to the existing development workshop under the user’s explicit publication approval; preserve GitHub main and older portfolio. Keep a reviewable testing-branch diff and actual screenshot evidence.
+
+## Bulb and cable refinement — 2026-10-09
+- User preferred a visible external bulb to directly gilding the motor. Remove the motor-centered power light/copper emission and drive a separate lamp’s filament, envelope and short-range light from existing power. Reduced motion keeps static illumination; inspection/dialog turn it off. No new shadow map/transmission pass.
+- Repair the top slab’s bevel radius to fit its thickness, then route generator/motor and lamp-feed pairs above the actual surface with margin for the wider visual effects.

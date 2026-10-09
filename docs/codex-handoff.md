@@ -8,6 +8,10 @@ The first implementation pass refines the existing scene on
 independent-review reconciliation, checks and remaining limits. No deployment,
 merge or hosting change is included.
 
+## Latest bulb and wiring pass
+
+Read `visual-review/lamp-cables-2026-10-09/README.md` for the current lamp/cable refinement. The prior CAD pass was published as workshop version3. Powered glow now comes from a separately wired indicator bulb rather than a motor spotlight; the slab bevel and cable routes are corrected. This remains the same user-approved development Site.
+
 ## Latest CAD and electrical pass
 
 Read `visual-review/cad-energy-2026-10-09/README.md` first for the new source and renders. The user approved publication to the existing development workshop, subsequently published as version2 at https://kubilay-interactive-workshop.kubiulucay.chatgpt.site. The older no-deployment statements below describe the first pass. The current motor uses solid CAD-inspired rotor plates and bearing carriers, open coil forms, rotating shaft, stronger warm illumination and cable/perimeter electrical feedback. Geometry and energy effects remain illustrative.

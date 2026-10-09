@@ -4,6 +4,7 @@ import { Environment, Lightformer, RoundedBox, OrbitControls, ContactShadows } f
 import * as THREE from 'three';
 import { advanceSimulation } from './simulation';
 import EnergyEffects from './EnergyEffects';
+import EnergyLamp from './EnergyLamp';
 import { plateGeometry, windingGeometry, statorGeometry } from './motorGeometry';
 
 const TAU = Math.PI * 2;
@@ -121,9 +122,12 @@ function Motor({sim,inspection,part,onPart,materials:m}){
 function Cable({points,material,radius=.025}){
  const geometry=useMemo(()=>new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(...p))),60,radius,8,false),[points,radius]);
  useEffect(()=>()=>geometry.dispose(),[geometry]);
- return <mesh geometry={geometry} material={material} castShadow/>;
+ return <mesh name="surface-cable" geometry={geometry} material={material} castShadow/>;
 }
-const cableA=[[-2.22,.68,.70],[-1.78,.38,1.02],[-1.17,.34,1.10],[-.48,.37,.92],[.12,.48,.55],[.58,.70,.20]];
+// All interpolated tubes and their widest glow remain above the beveled slab.
+const cableA=[[-2.22,.72,.70],[-1.78,.42,1.02],[-1.17,.38,1.10],[-.48,.41,.92],[.12,.52,.55],[.58,.74,.20]];
+const lampCableA=[[.58,.74,.20],[1.12,.39,.82],[1.70,.36,1.14],[2.14,.36,1.20],[2.40,.38,1.02]];
+const lampCableB=lampCableA.map(([x,y,z])=>[x,y+.018,z+.055]);
 const cableB=cableA.map(([x,y,z])=>[x,y+.018,z+.075]);
 function Crank({sim,materials:m,onDrag,inspection,resetKey}){
  const handle=useRef(),root=useRef();const {camera,gl,invalidate}=useThree();const last=useRef(null),capture=useRef(null);
@@ -166,7 +170,7 @@ const studioEnvironment=<Environment resolution={256}>
    <Lightformer form="rect" intensity={1.2} position={[0,-3,4]} scale={[6,2,1]}/>
   </Environment>;
 function Scene({sim,inspection,part,onPart,orbit,reduced,onTelemetry,onDrag,resetKey,held,suspended}){
- const m=useMaterials(),rig=useRef(),light=useRef(),led=useRef(),controls=useRef();const {camera,size,invalidate,gl}=useThree();
+ const m=useMaterials(),rig=useRef(),led=useRef(),controls=useRef();const {camera,size,invalidate,gl}=useThree();
  const counter=useRef(0),shadowPose=useRef([]);const mobile=size.width<=700;
  const desired=useMemo(()=>new THREE.Vector3(),[]);
  useEffect(()=>{if(controls.current){controls.current.target.set(-.35,1.45,.1);controls.current.update();}invalidate();},[resetKey,invalidate]);
@@ -180,9 +184,6 @@ function Scene({sim,inspection,part,onPart,orbit,reduced,onTelemetry,onDrag,rese
   if(pose.some((value,i)=>value!==shadowPose.current[i]))gl.shadowMap.needsUpdate=true;
   shadowPose.current=pose;
   if(moving)invalidate();
-  const p=inspection||suspended?0:s.power;
-  light.current.intensity=.05+p*55;
-  m.copper.emissive.set('#e98147');m.copper.emissiveIntensity=p*.42;
   led.current.material.emissiveIntensity=.1+s.power*3;
   if(!orbit){
    const e=s.explode;
@@ -205,14 +206,15 @@ function Scene({sim,inspection,part,onPart,orbit,reduced,onTelemetry,onDrag,rese
   <hemisphereLight args={['#e4e9e6','#4c514e',.8]}/>
   <spotLight position={[-4,7,5]} intensity={100} angle={.72} penumbra={1} color="#fff2df" castShadow shadow-mapSize={[1024,1024]} shadow-radius={4} shadow-bias={-.0002}/>
   <spotLight position={[4,4,-4]} intensity={70} angle={.7} penumbra={1} color="#ccdfed"/>
-  <pointLight ref={light} position={[.40,1.80,1.70]} color="#ffbf83" intensity={.1} distance={6}/>
   {studioEnvironment}
   <group name="exhibit" ref={rig}>
    <RoundedBox args={[7.1,.22,3.30]} radius={.11} smoothness={4} position={[-.35,.12,0]} material={m.dark} castShadow receiveShadow/>
-   <RoundedBox args={[7.02,.055,3.23]} radius={.08} smoothness={3} position={[-.35,.25,0]} material={m.platform} receiveShadow/>
+   <RoundedBox args={[7.02,.055,3.23]} radius={.02} smoothness={3} position={[-.35,.25,0]} material={m.platform} receiveShadow/>
    <Motor sim={sim} inspection={inspection} part={part} onPart={onPart} materials={m}/>
     <Crank sim={sim} materials={m} onDrag={onDrag} inspection={inspection||orbit||suspended} resetKey={resetKey}/>
    <Cable points={cableA} material={m.rubber}/><Cable points={cableB} material={m.copper} radius={.015}/>
+   <Cable points={lampCableA} material={m.rubber} radius={.020}/><Cable points={lampCableB} material={m.copper} radius={.015}/>
+   <EnergyLamp sim={sim} inspection={inspection} suspended={suspended} materials={m}/>
    <EnergyEffects sim={sim} points={cableA} inspection={inspection} reduced={reduced} suspended={suspended}/>
    <mesh ref={led} position={[-1.11,.293,1.27]} rotation={[-Math.PI/2,0,0]}><circleGeometry args={[.04,24]}/><meshStandardMaterial color="#afdbb0" emissive="#adcc96" emissiveIntensity={.1}/></mesh>
    <RoundedBox args={[1.08,.018,.16]} radius={.012} smoothness={2} position={[-.34,.296,1.30]} material={m.dark}/>

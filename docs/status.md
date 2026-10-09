@@ -1,4 +1,11 @@
 # Milestone 01 status
+## Bulb and cable refinement — 2026-10-09
+- Replaces the direct motor power light with a separately wired bulb, glowing filament and short-range warm pool beside the motor.
+- Repairs the thin slab’s oversized bevel and reroutes both cable pairs above its surface, including glow/bead clearance.
+- Lint, build, simulation and8 genuine-input checks pass; bulb ramp/coast/reset, inspection/reassembly, reduced motion, dialogs and native touch are verified in software. Normal reassembly took about114seconds in that environment; physical-device timing remains unverified.
+- Eight final frozen-source desktop/mobile renders passed framing/overflow checks. Independent review and evidence are in `visual-review/lamp-cables-2026-10-09/README.md`.
+- Workshop version3 was published for the preceding CAD pass; this pass updates that same approved development workshop. Older portfolio, assets, dependencies, GitHub main and hosting configuration remain unchanged.
+
 ## CAD and energy refinement — 2026-10-09
 - Solid rotor plates, separate bearing carriers, open coil forms and projecting shaft follow the user CAD reference, with dimensionless illustrative details.
 - Strong warm powered lighting, cable travel and cyan perimeter arcs; inspection hides effects and reduced motion preserves steady illumination.

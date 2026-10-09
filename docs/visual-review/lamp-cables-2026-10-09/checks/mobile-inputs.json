@@ -1,0 +1,182 @@
+{
+  "browser": "153.0.8010.0",
+  "method": "Genuine Space keyboard input and native CDP emulated touch, normal demand rendering. R3F bridge reads production state, effects, and camera only. No simulation seeking/mutation or manual rendering. Software rendering does not establish real-device timing/FPS.",
+  "checks": [
+    {
+      "name": "native mobile touch picks the actual crank, energizes feedback, and cancels capture",
+      "passed": true,
+      "result": {
+        "target": {
+          "x": 111.99952738076334,
+          "y": 449.32046953709744
+        },
+        "before": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0,
+            "speed": 0,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": false,
+            "traceOpacity": 0,
+            "beadOpacity": 0,
+            "arcOpacity": 0,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 0,
+            "glowOpacity": 0,
+            "glowVisible": false,
+            "lightIntensity": 0
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 0,
+            "active": true,
+            "elapsed": 1.1134000000003725,
+            "xr": false,
+            "visibility": "visible"
+          }
+        },
+        "after": {
+          "simulation": {
+            "held": false,
+            "dragging": true,
+            "dragImpulse": 1.9557456520522376,
+            "lastDrag": 4349.5999999996275,
+            "power": 0.3696494882659105,
+            "speed": 3.880369300011226,
+            "crankAngle": -1.1965826235021684,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "traceOpacity": 0.24027216737284182,
+            "beadOpacity": 0.24027216737284182,
+            "arcOpacity": 0.20330721854625078,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 2.5875464178613736,
+            "glowOpacity": 0.048054433474568364,
+            "glowVisible": true,
+            "lightIntensity": 3.326845394393194
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 3.7921999999992546,
+            "xr": false,
+            "visibility": "visible"
+          }
+        }
+      }
+    },
+    {
+      "name": "native mobile touch inspection, all four part buttons, and reassembly remain available",
+      "passed": true,
+      "result": {
+        "selected": [
+          "Copper windings",
+          "Magnet rotors",
+          "Bearing supports",
+          "Output shaft"
+        ],
+        "after": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 1.9557456520522376,
+            "lastDrag": -1000,
+            "power": 0.042646807906547665,
+            "speed": 0.09973645496744563,
+            "crankAngle": -1.1965826235021684,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "traceOpacity": 0.02772042513925598,
+            "beadOpacity": 0.02772042513925598,
+            "arcOpacity": 0.023455744348601218,
+            "beadPosition": [
+              -2.22,
+              0.72,
+              0.7
+            ],
+            "arcRotation": 0,
+            "cameraLayerMatches": true
+          },
+          "lamp": {
+            "present": true,
+            "glassVisible": true,
+            "glassOpacity": 0.3,
+            "filamentEmission": 0.29852765534583364,
+            "glowOpacity": 0.005544085027851197,
+            "glowVisible": true,
+            "lightIntensity": 0.383821271158929
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 41.393099999999635,
+            "xr": false,
+            "visibility": "visible"
+          }
+        }
+      }
+    }
+  ],
+  "errors": []
+}

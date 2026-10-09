@@ -31,3 +31,6 @@ was introduced.
 
 ## CAD/electrical refinement — 2026-10-09
 The user-supplied image matches the existing motor_3d.jpg. Procedural silhouettes were reconstructed from that reference, without importing a model or inferring dimensions/polarity. Windings use shared open-loop geometry. Cable beads and motor arcs are original illustrative feedback, not current/flux visualization. Original assets remain unchanged.
+
+## Bulb and wiring — 2026-10-09
+EnergyLamp.jsx adds original dimensionless bulb/socket/pedestal and wound filament geometry, with a modest halo and local light. This is an illustrative power indicator, not photographed project hardware or calibrated light output. Cable paths and slab bevel are corrected; original media are untouched.
