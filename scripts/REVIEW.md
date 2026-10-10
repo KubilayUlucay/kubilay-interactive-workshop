@@ -75,3 +75,13 @@ before extending capture. The tracked review scripts extend those generated
 tools without changing them, so rerunning installation preserves the extension.
 The requested environment Start skill was unavailable; the supplied installer
 and repository setup script were used. No user-device setup is required.
+
+## Heart and both flow routes
+
+`review-energy.mjs` checks the current instanced LED heart and both shader cable
+routes through genuine input; it reads state without seeking simulation. Run
+`REVIEW_ONLY=normal`, `reduced`, and `mobile` separately with distinct `REVIEW_OUT`
+directories while the local server runs. Browser processes must be sequential.
+It verifies shared phase/distance offsets, shader compilation, coast/reset,
+inspection/reassembly, modal pause and native CDP touch. Results and new images
+are in `docs/visual-review/heart-flow-2026-10-09/`.

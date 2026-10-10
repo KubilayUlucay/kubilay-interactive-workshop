@@ -1,0 +1,638 @@
+{
+  "browser": "153.0.8010.0",
+  "method": "Genuine Space keyboard input and native CDP emulated touch, normal demand rendering. R3F bridge reads production state, heart/flow shader uniforms, and camera only. No simulation seeking/mutation or manual rendering. Software rendering does not establish real-device timing/FPS.",
+  "checks": [
+    {
+      "name": "reduced motion retains static powered feedback without automatic motor/phase movement",
+      "passed": true,
+      "result": {
+        "before": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0,
+            "speed": 0,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": false,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": false,
+              "power": 0,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": false,
+              "power": 0,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0,
+            "glowVisible": false,
+            "lightIntensity": 0
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 0,
+            "active": true,
+            "elapsed": 1.49639999999851,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        },
+        "first": {
+          "simulation": {
+            "held": true,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.446761702502144,
+            "speed": 5.532212212214956,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.446761702502144,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.446761702502144,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0.446761702502144,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0.31273319175150077,
+            "glowVisible": true,
+            "lightIntensity": 2.010427661259648
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 3.62689999999851,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        },
+        "after": {
+          "simulation": {
+            "held": true,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.481575078351518,
+            "speed": 5.619679336506543,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.481575078351518,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.481575078351518,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0.481575078351518,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0.3371025548460626,
+            "glowVisible": true,
+            "lightIntensity": 2.1670878525818313
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 3.6498999999985102,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        }
+      }
+    },
+    {
+      "name": "actual release coast dims the heart; native reset restores heart and cable idle baselines",
+      "passed": true,
+      "result": {
+        "charged": {
+          "simulation": {
+            "held": true,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.5532266874286427,
+            "speed": 3.355536173370616,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.5532266874286427,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.5532266874286427,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0.5532266874286427,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0.38725868120004986,
+            "glowVisible": true,
+            "lightIntensity": 2.489520093428892
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 4.17529999999702,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        },
+        "coast": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.3102602832766821,
+            "speed": 0.9845324415693135,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.3102602832766821,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.3102602832766821,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0.3102602832766821,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0.21718219829367746,
+            "glowVisible": true,
+            "lightIntensity": 1.3961712747450694
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 39.25119999999926,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        },
+        "reset": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0,
+            "speed": 0,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": false,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": false,
+              "power": 0,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": false,
+              "power": 0,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0,
+            "glowVisible": false,
+            "lightIntensity": 0
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 0,
+            "active": true,
+            "elapsed": 41.9855,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        }
+      }
+    },
+    {
+      "name": "dialog suspension cancels held input, hides effects, freezes simulation; Escape restores the scene",
+      "passed": true,
+      "result": {
+        "paused": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.15835898890584066,
+            "speed": 3.9365910003291473,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": true
+          },
+          "effects": {
+            "present": true,
+            "visible": false,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": false,
+              "power": 0,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": false,
+              "power": 0,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0,
+            "glowVisible": false,
+            "lightIntensity": 0
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 0,
+            "active": true,
+            "elapsed": 63.1363999999985,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        },
+        "later": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.15835898890584066,
+            "speed": 3.9365910003291473,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": true
+          },
+          "effects": {
+            "present": true,
+            "visible": false,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": false,
+              "power": 0,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": false,
+              "power": 0,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0,
+            "glowVisible": false,
+            "lightIntensity": 0
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 0,
+            "active": true,
+            "elapsed": 63.1363999999985,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        },
+        "restored": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0.22184475573697393,
+            "speed": 3.561974836601421,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.22184475573697393,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.22184475573697393,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0.22184475573697393,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0.15529132901588175,
+            "glowVisible": true,
+            "lightIntensity": 0.9983014008163826
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 69.04199999999999,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "shaderErrors": []
+}

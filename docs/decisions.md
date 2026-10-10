@@ -27,3 +27,7 @@
 ## Bulb and cable refinement — 2026-10-09
 - User preferred a visible external bulb to directly gilding the motor. Remove the motor-centered power light/copper emission and drive a separate lamp’s filament, envelope and short-range light from existing power. Reduced motion keeps static illumination; inspection/dialog turn it off. No new shadow map/transmission pass.
 - Repair the top slab’s bevel radius to fit its thickness, then route generator/motor and lamp-feed pairs above the actual surface with margin for the wider visual effects.
+
+## Heart and flow refinement — 2026-10-09
+- Replace the external bulb with a procedural 28-LED heart board at the same output position. Coral LEDs and per-LED soft halos convey power without tinting the motor itself.
+- Replace bead particles with distance-based tapered shader pulses along both physical cable runs; downstream phase includes input cable length. Reduced motion preserves steady lighting. All feedback remains illustrative, not electron trajectories or electrical measurements.

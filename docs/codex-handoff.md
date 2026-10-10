@@ -73,3 +73,6 @@ and some shadow shapes are angular. Reference-level finish remains unproven.
 Finish motion/device validation and artistic refinement before adding BMS,
 embedded-controller, gimbal/chicken or cat scenes. Keep hosting unchanged unless
 publishing is explicitly requested.
+
+## Latest continuation — heart and cable flow, 2026-10-09
+The heart display supersedes the earlier bulb; EnergyEffects now traces both physical cable runs with a shared distance phase. See visual-review/heart-flow-2026-10-09/README.md. Keep these effects illustrative and preserve original media. Remaining issues include subtle phone traces and the winding selection ring drawing through the board during inspection. Publication to the existing development workshop is explicitly approved; GitHub main and the older portfolio remain unchanged.

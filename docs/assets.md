@@ -34,3 +34,6 @@ The user-supplied image matches the existing motor_3d.jpg. Procedural silhouette
 
 ## Bulb and wiring — 2026-10-09
 EnergyLamp.jsx adds original dimensionless bulb/socket/pedestal and wound filament geometry, with a modest halo and local light. This is an illustrative power indicator, not photographed project hardware or calibrated light output. Cable paths and slab bevel are corrected; original media are untouched.
+
+## Heart display and cable traces — 2026-10-09
+EnergyHeart.jsx replaces the procedural lamp with an original dimensionless PCB, mount and 28 instanced LEDs. Its per-LED Gaussian glow texture is generated in code. EnergyEffects.jsx adds original tapered cable traces on both routes. No external asset, original media or factual hardware specification changes.

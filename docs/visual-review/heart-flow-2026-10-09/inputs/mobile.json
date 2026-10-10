@@ -1,0 +1,234 @@
+{
+  "browser": "153.0.8010.0",
+  "method": "Genuine Space keyboard input and native CDP emulated touch, normal demand rendering. R3F bridge reads production state, heart/flow shader uniforms, and camera only. No simulation seeking/mutation or manual rendering. Software rendering does not establish real-device timing/FPS.",
+  "checks": [
+    {
+      "name": "native mobile touch picks the actual crank, energizes feedback, and cancels capture",
+      "passed": true,
+      "result": {
+        "target": {
+          "x": 111.99952738076334,
+          "y": 449.32046953709744
+        },
+        "before": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 0,
+            "lastDrag": -1000,
+            "power": 0,
+            "speed": 0,
+            "crankAngle": -0.72,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": false,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": false,
+              "power": 0,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": false,
+              "power": 0,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0,
+            "glowVisible": false,
+            "lightIntensity": 0
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 0,
+            "active": true,
+            "elapsed": 1.2116999999992548,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        },
+        "after": {
+          "simulation": {
+            "held": false,
+            "dragging": true,
+            "dragImpulse": 1.9557456520522376,
+            "lastDrag": 3078.89999999851,
+            "power": 0.4559614416004989,
+            "speed": 3.5292991230626,
+            "crankAngle": -1.1965826235021684,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.4559614416004989,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.4559614416004989,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0.4559614416004989,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0.3191730091203492,
+            "glowVisible": true,
+            "lightIntensity": 2.051826487202245
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 2.518099999997765,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        }
+      }
+    },
+    {
+      "name": "native mobile touch inspection, all four part buttons, and reassembly remain available",
+      "passed": true,
+      "result": {
+        "selected": [
+          "Copper windings",
+          "Magnet rotors",
+          "Bearing supports",
+          "Output shaft"
+        ],
+        "after": {
+          "simulation": {
+            "held": false,
+            "dragging": false,
+            "dragImpulse": 1.9557456520522376,
+            "lastDrag": -1000,
+            "power": 0.04187116820194741,
+            "speed": 0.09685119503245587,
+            "crankAngle": -1.1965826235021684,
+            "motorAngle": 0,
+            "effectPhase": 0,
+            "explode": 0,
+            "inspect": false
+          },
+          "scene": {
+            "inspection": false,
+            "reduced": true,
+            "suspended": false
+          },
+          "effects": {
+            "present": true,
+            "visible": true,
+            "input": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.04187116820194741,
+              "phase": 0,
+              "reduced": 1,
+              "length": 3.3000670854428997,
+              "offset": 0
+            },
+            "output": {
+              "present": true,
+              "shader": true,
+              "visible": true,
+              "power": 0.04187116820194741,
+              "phase": 0,
+              "reduced": 1,
+              "length": 2.3334420803068276,
+              "offset": 3.3000670854428997
+            }
+          },
+          "heart": {
+            "present": true,
+            "boardVisible": true,
+            "ledsVisible": true,
+            "instanced": true,
+            "instanceCount": 28,
+            "indexCount": 28,
+            "shader": true,
+            "power": 0.04187116820194741,
+            "phase": 0,
+            "reduced": 1,
+            "glowOpacity": 0.029309817741363185,
+            "glowVisible": true,
+            "lightIntensity": 0.18842025690876335
+          },
+          "root": {
+            "frameloop": "demand",
+            "frames": 1,
+            "active": true,
+            "elapsed": 43.25839999999851,
+            "xr": false,
+            "visibility": "visible",
+            "shaderProgramFailures": []
+          }
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "shaderErrors": []
+}

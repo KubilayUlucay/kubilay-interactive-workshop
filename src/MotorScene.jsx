@@ -4,7 +4,7 @@ import { Environment, Lightformer, RoundedBox, OrbitControls, ContactShadows } f
 import * as THREE from 'three';
 import { advanceSimulation } from './simulation';
 import EnergyEffects from './EnergyEffects';
-import EnergyLamp from './EnergyLamp';
+import EnergyHeart from './EnergyHeart';
 import { plateGeometry, windingGeometry, statorGeometry } from './motorGeometry';
 
 const TAU = Math.PI * 2;
@@ -126,8 +126,8 @@ function Cable({points,material,radius=.025}){
 }
 // All interpolated tubes and their widest glow remain above the beveled slab.
 const cableA=[[-2.22,.72,.70],[-1.78,.42,1.02],[-1.17,.38,1.10],[-.48,.41,.92],[.12,.52,.55],[.58,.74,.20]];
-const lampCableA=[[.58,.74,.20],[1.12,.39,.82],[1.70,.36,1.14],[2.14,.36,1.20],[2.40,.38,1.02]];
-const lampCableB=lampCableA.map(([x,y,z])=>[x,y+.018,z+.055]);
+const displayCableA=[[.58,.74,.20],[1.12,.39,.82],[1.70,.36,1.14],[2.14,.36,1.20],[2.40,.38,1.02]];
+const displayCableB=displayCableA.map(([x,y,z])=>[x,y+.018,z+.055]);
 const cableB=cableA.map(([x,y,z])=>[x,y+.018,z+.075]);
 function Crank({sim,materials:m,onDrag,inspection,resetKey}){
  const handle=useRef(),root=useRef();const {camera,gl,invalidate}=useThree();const last=useRef(null),capture=useRef(null);
@@ -213,9 +213,9 @@ function Scene({sim,inspection,part,onPart,orbit,reduced,onTelemetry,onDrag,rese
    <Motor sim={sim} inspection={inspection} part={part} onPart={onPart} materials={m}/>
     <Crank sim={sim} materials={m} onDrag={onDrag} inspection={inspection||orbit||suspended} resetKey={resetKey}/>
    <Cable points={cableA} material={m.rubber}/><Cable points={cableB} material={m.copper} radius={.015}/>
-   <Cable points={lampCableA} material={m.rubber} radius={.020}/><Cable points={lampCableB} material={m.copper} radius={.015}/>
-   <EnergyLamp sim={sim} inspection={inspection} suspended={suspended} materials={m}/>
-   <EnergyEffects sim={sim} points={cableA} inspection={inspection} reduced={reduced} suspended={suspended}/>
+   <Cable points={displayCableA} material={m.rubber} radius={.020}/><Cable points={displayCableB} material={m.copper} radius={.015}/>
+   <EnergyHeart sim={sim} inspection={inspection} reduced={reduced} suspended={suspended} materials={m}/>
+   <EnergyEffects sim={sim} points={cableA} outputPoints={displayCableA} inspection={inspection} reduced={reduced} suspended={suspended}/>
    <mesh ref={led} position={[-1.11,.293,1.27]} rotation={[-Math.PI/2,0,0]}><circleGeometry args={[.04,24]}/><meshStandardMaterial color="#afdbb0" emissive="#adcc96" emissiveIntensity={.1}/></mesh>
    <RoundedBox args={[1.08,.018,.16]} radius={.012} smoothness={2} position={[-.34,.296,1.30]} material={m.dark}/>
    {Array.from({length:12},(_,i)=><EnergyBar key={i} index={i} sim={sim}/>)}

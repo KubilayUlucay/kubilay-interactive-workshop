@@ -51,3 +51,8 @@ The following describes the earlier implementation/baseline, not the latest veri
 - WebMCP inspection tool execution and the complete animated mobile flow remain unverified.
 ## Required next step
 Follow codex-handoff.md and codex-first-task.md to improve the existing scene. Capture and inspect actual desktop/mobile renders and genuine input flows after changes; report limitations accurately. Finish the motor milestone before adding further scenes. No application source or hosting configuration was changed or deployed during this handoff.
+
+## Latest: heart and flow — 2026-10-09
+The bulb is replaced by a readable coral LED heart. Both cable routes carry tapered pulses with shared distance phase; reduced motion holds lighting steady. Independent review accepted desktop/mobile framing and appearance. Phone traces remain subtle, and the winding selection ring crosses the board during inspection. See visual-review/heart-flow-2026-10-09/README.md for current evidence and limits.
+
+Final follow-up verification completed 2026-10-10: eight real keyboard/touch, reduced-motion, coast/reset, dialog and inspection/reassembly checks passed with no page/shader errors. Lint, simulation and production build pass. Software Chromium evidence does not verify physical phones, Safari or device FPS.
