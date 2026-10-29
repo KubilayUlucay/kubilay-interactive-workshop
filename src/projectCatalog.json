@@ -1,0 +1,542 @@
+[
+  {
+    "id": "motor",
+    "title": "Axial-flux motor",
+    "course": "University build",
+    "category": "Hardware",
+    "kind": "Built prototype",
+    "summary": "Hand-wound copper, printed mechanics and a real lab test.",
+    "work": [
+      "Designed, wound and assembled an axial-flux motor; the photographs show nine coils and a common-axis rotor assembly.",
+      "The workshop crank generator and LED heart explain energy transfer through an interactive illustration."
+    ],
+    "limits": "No motor rating or measured efficiency is inferred. The generator and LED heart are explanatory exhibit additions.",
+    "credit": "Kubilay Uluçay; original project media.",
+    "evidence": [
+      [
+        "Hardware & video",
+        "exhibit:motor"
+      ]
+    ],
+    "image": "/projects/motor/motor-inside-wiring.jpeg",
+    "exhibit": "motor",
+    "topics": [
+      "winding",
+      "motor",
+      "electronics"
+    ]
+  },
+  {
+    "id": "gimbal",
+    "title": "Three-axis camera gimbal",
+    "course": "ME417",
+    "category": "Control",
+    "kind": "Built prototype",
+    "summary": "Printed brackets, hobby servos and a phone-based sensing workaround.",
+    "work": [
+      "Three nested servo axes support a payload; the mechanical design was adapted from an internet design.",
+      "The project used a phone gyro workaround after an MPU sensor problem. The compared datasets were not synchronized.",
+      "The exhibit demonstrates ideal counter-rotation, rather than reproducing the original firmware or measured control performance."
+    ],
+    "limits": "No validated PID accuracy or unlimited physical servo travel. The full-turn sliders are exhibit orientations.",
+    "credit": "Student mechatronics project; adapted mechanical design, original creator not identified in available evidence.",
+    "evidence": [
+      [
+        "Photographs & CAD",
+        "exhibit:gimbal"
+      ]
+    ],
+    "image": "/projects/gimbal/stabilizer.jpeg",
+    "exhibit": "gimbal",
+    "topics": [
+      "servo",
+      "Arduino",
+      "stabilization"
+    ]
+  },
+  {
+    "id": "bms",
+    "title": "Battery management system",
+    "course": "EE401 / EE402",
+    "category": "Energy",
+    "kind": "Prototype + simulation",
+    "summary": "Physical instrumentation and PCB work alongside switched-capacitor balancing simulation.",
+    "work": [
+      "EE401 planned the system; EE402 documented the outcomes, instrumentation and prototype.",
+      "The balancing model moves charge using a switched capacitor. This simulation is distinct from the photographed physical hardware.",
+      "Visitors change individual cells, load and temperature to explore balancing and thermal load cutoff."
+    ],
+    "limits": "Long-term hardware balancing and protection validation was unfinished. Displayed values and accelerated time are illustrative.",
+    "credit": "Senior-year team project; shared hardware and simulation evidence.",
+    "evidence": [
+      [
+        "PCB & simulation evidence",
+        "exhibit:bms"
+      ]
+    ],
+    "image": "/projects/bms/front.png",
+    "exhibit": "bms",
+    "topics": [
+      "battery",
+      "capacitor",
+      "protection"
+    ]
+  },
+  {
+    "id": "zumo",
+    "title": "Boundary-scanning Zumo robot",
+    "course": "EE321 · Spring 2024",
+    "category": "Embedded",
+    "kind": "Built prototype",
+    "summary": "Reflectance sensing, IR scans and a maximum count across repeated trials.",
+    "work": [
+      "Calibrate reflectance sensors, move toward the white edge while avoiding IR detections, then scan and return.",
+      "Store counts from ten trials and signal the maximum through the LED and buzzer.",
+      "Five illustrated arrangements succeeded; one arrangement at the boundary failed."
+    ],
+    "limits": "No SLAM, object-identity map or statistical accuracy claim. Repeated IR detections can count the same object. This geometric exhibit simplifies traction, timing and sensor optics.",
+    "credit": "Yunus Emre Ozan and Seyit Kubilay Uluçay. Uses Pololu Zumo libraries.",
+    "evidence": [
+      [
+        "Sanitized report excerpt",
+        "/projects/zumo/report-excerpt.pdf"
+      ],
+      [
+        "Original team firmware",
+        "/projects/zumo/firmware.ino"
+      ]
+    ],
+    "image": "/projects/zumo/zumo-on-mission.png",
+    "exhibit": "zumo",
+    "topics": [
+      "robot",
+      "IR",
+      "reflectance",
+      "Arduino"
+    ]
+  },
+  {
+    "id": "power-tool",
+    "title": "Power flow & economic dispatch",
+    "course": "EE303",
+    "category": "Energy",
+    "kind": "Software / simulation",
+    "summary": "A MATLAB App Designer interface for an educational network and generator cost model.",
+    "work": [
+      "Two modes expose power flow and economic dispatch with three generators.",
+      "The dispatch callback solves equal marginal-cost equations with a demand constraint, then calculates quadratic costs.",
+      "The source includes fixed network coefficients and UI controls for generator settings."
+    ],
+    "limits": "Static source review only; the MATLAB runtime and solver were not validated here. Not an operational grid planning tool; feasibility limits need separate checking.",
+    "credit": "Named individual MATLAB submission by Kubilay Uluçay.",
+    "evidence": [
+      [
+        "App screenshot",
+        "/projects/coursework/power-tool.png"
+      ],
+      [
+        "Original callback excerpt",
+        "/projects/coursework/dispatch-excerpt.txt"
+      ]
+    ],
+    "image": "/projects/coursework/power-tool.png",
+    "exhibit": null,
+    "topics": [
+      "MATLAB",
+      "App Designer",
+      "dispatch"
+    ]
+  },
+  {
+    "id": "pv-design",
+    "title": "Off-grid residential PV design",
+    "course": "EE473–573 · 2025",
+    "category": "Energy",
+    "kind": "Simulation / design",
+    "summary": "A PVsyst sizing and feasibility study for a house in Kocaeli.",
+    "work": [
+      "The source report proposes eight 580 W modules (4.64 kW) and approximately 38.3 kWh stored energy.",
+      "Weather, load, storage and winter availability drive the simulation trade-offs.",
+      "The financial analysis uses May 2025 assumptions and finds poor simple payback, around 62 years."
+    ],
+    "limits": "Simulated proposal, not an installed system. Historical component prices and payback are not current recommendations.",
+    "credit": "Seyit Kubilay Uluçay and Mehmet Fatih Karaosman.",
+    "evidence": [
+      [
+        "Report figure excerpt",
+        "/projects/coursework/pv-excerpt.pdf"
+      ]
+    ],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "PVsyst",
+      "solar",
+      "battery"
+    ]
+  },
+  {
+    "id": "wind-study",
+    "title": "Wind-farm interconnection trade-offs",
+    "course": "EE101 · 2022",
+    "category": "Energy",
+    "kind": "Simulation / study",
+    "summary": "Compare conductor and substation choices across 27 educational model configurations.",
+    "work": [
+      "PowerWorld cases compare cost, loss and overload constraints for a hypothetical 200 MW wind-farm connection.",
+      "The analysis narrows feasible configurations instead of assuming the lowest-loss case is automatically best."
+    ],
+    "limits": "A classroom network study, not a built wind farm or a commercial engineering recommendation.",
+    "credit": "Kubilay Uluçay; educational problem scenario.",
+    "evidence": [
+      [
+        "Analysis excerpt",
+        "/projects/coursework/wind-excerpt.pdf"
+      ]
+    ],
+    "image": "/projects/powerworld/WindTurbineExp.png",
+    "exhibit": null,
+    "topics": [
+      "PowerWorld",
+      "network",
+      "losses"
+    ]
+  },
+  {
+    "id": "tweet-classifier",
+    "title": "Tweets & market-direction classification",
+    "course": "CS440",
+    "category": "Software",
+    "kind": "Team research / ML",
+    "summary": "BERT embeddings feed an MLP classifier for daily grouped tweets.",
+    "work": [
+      "After filtering and daily grouping, the report uses 219 examples.",
+      "The pipeline compares MLP hyperparameters using BERT-transformed text.",
+      "The report describes failed imputation attempts before changing the research question."
+    ],
+    "limits": "Random train/test splitting and test-set tuning limit the reported score. No causal influence, reliable trading return or deployable forecast is established. BERT, not BART.",
+    "credit": "Seyit Kubilay Uluçay and Emir Arda Gün.",
+    "evidence": [
+      [
+        "Pipeline figure",
+        "/projects/machinelearning/machinelearning.png"
+      ]
+    ],
+    "image": "/projects/machinelearning/machinelearning.png",
+    "exhibit": null,
+    "topics": [
+      "BERT",
+      "MLP",
+      "Python",
+      "classification"
+    ]
+  },
+  {
+    "id": "plc-traffic",
+    "title": "Traffic-light sequence controller",
+    "course": "EE392 · 2024",
+    "category": "Control",
+    "kind": "Team software / simulation",
+    "summary": "PLC sequence logic and HMI for a classroom traffic-light scenario.",
+    "work": [
+      "Control Expert logic coordinates defined inputs, light states and transitions.",
+      "The final report includes an HMI and discussion of issues encountered during testing."
+    ],
+    "limits": "Academic simulation; no industrial or roadside deployment is claimed.",
+    "credit": "Berke Çeçen, Efe Can Özhan, Genco Güven and Kubilay Uluçay.",
+    "evidence": [
+      [
+        "Sanitized final report excerpt",
+        "/projects/coursework/plc-excerpt.pdf"
+      ]
+    ],
+    "image": "/projects/plc/plc.jpg",
+    "exhibit": null,
+    "topics": [
+      "PLC",
+      "ladder",
+      "HMI",
+      "Control Expert"
+    ]
+  },
+  {
+    "id": "plc-claw",
+    "title": "Toy-claw sequence & HMI",
+    "course": "EE392 · 2024",
+    "category": "Control",
+    "kind": "Team software / simulation",
+    "summary": "A timed game sequence with directional inputs and a staged claw cycle.",
+    "work": [
+      "The report specifies a player movement window, a start input and a sequential claw action.",
+      "Ladder/SFC logic and an HMI explain the state transitions."
+    ],
+    "limits": "A course control-system design; a physical claw-machine build is not confirmed. Peer-only Lab3 and provided solution files are excluded.",
+    "credit": "Berke Çeçen, Efe Can Özhan, Genco Güven and Kubilay Uluçay.",
+    "evidence": [
+      [
+        "Sequence report excerpt",
+        "/projects/coursework/plc-excerpt.pdf"
+      ]
+    ],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "PLC",
+      "SFC",
+      "state machine"
+    ]
+  },
+  {
+    "id": "embedded-labs",
+    "title": "Registers, interrupts & displays",
+    "course": "EE321",
+    "category": "Embedded",
+    "kind": "Grouped laboratory series",
+    "summary": "Microcontroller exercises connect peripheral registers to observable timing and display behavior.",
+    "work": [
+      "Grouped register, interrupt, timer and display work from the course archive.",
+      "These are foundational lab exercises, separate from the final Zumo robot."
+    ],
+    "limits": "Lab archives contain supplied libraries and instructions; those are not claimed as original student implementations. Bench performance is not newly verified.",
+    "credit": "Kubilay Uluçay coursework; provider libraries retain their own authorship.",
+    "evidence": [],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "register",
+      "interrupt",
+      "timer",
+      "display"
+    ]
+  },
+  {
+    "id": "hdl-labs",
+    "title": "HDL digital-system laboratories",
+    "course": "EE462",
+    "category": "Embedded",
+    "kind": "Grouped laboratory series",
+    "summary": "Verilog state, arithmetic and display exercises with testbenches.",
+    "work": [
+      "Seven-segment display, FSM/debounce, calculator, vector–matrix, LED and VGA topics form one lab series.",
+      "Separate student logic from supplied modules, test scaffolding and constraints."
+    ],
+    "limits": "HDL Based Digital Systems Design, not hardware-in-the-loop. Archive contents and supplied scaffolding do not by themselves establish authorship or a completed hardware test. No FPGA timing or hardware pass is newly claimed.",
+    "credit": "Coursework by Kubilay Uluçay with supplied course scaffolding.",
+    "evidence": [
+      [
+        "Calculator / testbench excerpt",
+        "/projects/coursework/calculator-excerpt.txt"
+      ]
+    ],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "Verilog",
+      "FPGA",
+      "testbench",
+      "VGA"
+    ]
+  },
+  {
+    "id": "circuit-labs",
+    "title": "Circuits, op-amps & transients",
+    "course": "EE202",
+    "category": "Hardware",
+    "kind": "Grouped laboratory series",
+    "summary": "Breadboard measurements connect circuit analysis to oscilloscope traces.",
+    "work": [
+      "Named lab reports cover circuits and op-amp work.",
+      "Lab05 investigates RC response and an LM555 oscillator. Lab06 builds an inductor and observes RL/LC behavior.",
+      "Frequency changes reveal how charging time affects the observed waveform."
+    ],
+    "limits": "A set of instructional experiments; source calculations are not independently certified here. Published excerpts exclude gradesheets and student identifiers.",
+    "credit": "Named lab reports by Kubilay Uluçay.",
+    "evidence": [
+      [
+        "RC / 555 report excerpt",
+        "/projects/coursework/rc-excerpt.pdf"
+      ]
+    ],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "RC",
+      "555",
+      "oscilloscope",
+      "op-amp"
+    ]
+  },
+  {
+    "id": "electronics-labs",
+    "title": "Diodes, transistors & LTspice",
+    "course": "EE301",
+    "category": "Hardware",
+    "kind": "Grouped laboratory series",
+    "summary": "Diode, BJT and MOSFET experiments alongside circuit simulation.",
+    "work": [
+      "Lab work compares device behavior with LTspice circuit models.",
+      "The archive includes simulation files and lab outcomes, including unsuccessful builds."
+    ],
+    "limits": "Not every build worked; no complete design validation or measured device specification is inferred.",
+    "credit": "Kubilay Uluçay coursework; provided instructions are not original project output.",
+    "evidence": [],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "diode",
+      "BJT",
+      "MOSFET",
+      "LTspice"
+    ]
+  },
+  {
+    "id": "mechatronics-labs",
+    "title": "Sensors, timing & motor feedback",
+    "course": "ME417 · 2024",
+    "category": "Control",
+    "kind": "Grouped laboratory series",
+    "summary": "Electronics and sensing lead into encoder-based motor feedback.",
+    "work": [
+      "Lab03: transistor/capacitor switching and a variable-frequency NE555 oscillator. Lab05: inverting/non-inverting op-amps and clipping.",
+      "Named later reports cover sensors/I²C, PWM, Hall encoder signals and motor position work.",
+      "Lab07 counts encoder interrupts and compares motor outputs under different supply settings."
+    ],
+    "limits": "Later PID work is not established as a validated controller. Encoder pulse frequency is not the same quantity as mechanical shaft speed.",
+    "credit": "Named reports by Seyit Kubilay Uluçay.",
+    "evidence": [
+      [
+        "Original encoder report code excerpt",
+        "/projects/coursework/encoder-excerpt.txt"
+      ]
+    ],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "sensor",
+      "I2C",
+      "PWM",
+      "encoder",
+      "Arduino"
+    ]
+  },
+  {
+    "id": "communications-labs",
+    "title": "Signals & LabVIEW communications",
+    "course": "EE341",
+    "category": "Software",
+    "kind": "Grouped team laboratory series",
+    "summary": "Signal-processing exercises and LabVIEW virtual instruments.",
+    "work": [
+      "Named Section C Team1 submissions and the Uluçay–İlkbahar bonus archive support a bounded selection of the course work.",
+      "Grouped signal generation, observation and processing exercises."
+    ],
+    "limits": "Peer-labelled Section B Team2 and other unverified submissions are excluded. This is not a claim of authorship over the full course archive.",
+    "credit": "Named student/team submissions; individual responsibility is not reconstructed from shared files.",
+    "evidence": [],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "LabVIEW",
+      "signal processing",
+      "MATLAB"
+    ]
+  },
+  {
+    "id": "java-labs",
+    "title": "Java programming & OOP exercises",
+    "course": "CS105",
+    "category": "Software",
+    "kind": "Grouped coursework",
+    "summary": "Named Java exercises alongside object-oriented programming practice.",
+    "work": [
+      "Student exercise files and authored-work folders support programming coursework.",
+      "Grouped as coursework rather than presenting each small exercise as a standalone product.",
+      "One inspected exercise reads N, generates a random x and accumulates a factorial-weighted series; this small exercise is not itself an OOP application."
+    ],
+    "limits": "Provided answers, exams and empty assignment folders do not establish completed student projects. No application deployment is claimed.",
+    "credit": "Kubilay Uluçay coursework; supplied solutions excluded.",
+    "evidence": [
+      [
+        "Original Java exercise",
+        "/projects/coursework/java-exercise.txt"
+      ]
+    ],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "Java",
+      "OOP",
+      "programming"
+    ]
+  },
+  {
+    "id": "deforestation",
+    "title": "Deforestation research presentation",
+    "course": "ENG102",
+    "category": "Communication",
+    "kind": "Classroom research",
+    "summary": "Research synthesis and visual communication about deforestation.",
+    "work": [
+      "A classroom presentation assembles environmental research into a structured argument."
+    ],
+    "limits": "Literature-based communication, not field research or an implemented conservation programme.",
+    "credit": "Student research presentation; cited research remains credited to its authors.",
+    "evidence": [
+      [
+        "Selected original figure",
+        "/projects/deforestation/deforestation.jpg"
+      ]
+    ],
+    "image": "/projects/deforestation/deforestation.jpg",
+    "exhibit": null,
+    "topics": [
+      "research",
+      "presentation",
+      "environment"
+    ]
+  },
+  {
+    "id": "ecorevive",
+    "title": "EcoRevive / ReLifeTech pitch",
+    "course": "ENG303",
+    "category": "Communication",
+    "kind": "Classroom proposal",
+    "summary": "A team pitch for extending the useful life of discarded electronics.",
+    "work": [
+      "The presentation proposes collecting and repairing devices for reuse, including alternative device roles.",
+      "Persuasive speaking and proposal structure were the learning goals."
+    ],
+    "limits": "Hypothetical classroom venture. No Samsung partnership, funding, operating company or achieved environmental metrics are claimed.",
+    "credit": "Seyit Kubilay Uluçay, Ahmet Emre İpek, Berke Çeçen, Efe Can Özhan and Genco Güven.",
+    "evidence": [],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "e-waste",
+      "reuse",
+      "pitch"
+    ]
+  },
+  {
+    "id": "beko-sensing",
+    "title": "Floor sensing in an R&D team",
+    "course": "Beko internship · 2024",
+    "category": "Experience",
+    "kind": "R&D experience",
+    "summary": "Public-safe context for sensor integration, data analysis and test documentation.",
+    "work": [
+      "Worked within an R&D team on sensing for robot-vacuum floor detection.",
+      "Contributed to sensor integration, test observations, data analysis and documentation."
+    ],
+    "limits": "Client/internal designs and metrics are omitted. Team involvement does not imply patent inventorship or sole ownership.",
+    "credit": "Internship contribution within Beko R&D Advanced Sensor Technologies.",
+    "evidence": [],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "ToF",
+      "sensors",
+      "testing"
+    ]
+  }
+]

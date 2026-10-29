@@ -1,0 +1,23 @@
+ME417 Laboratory 07 — original report code excerpt.
+This excerpt is evidence, not newly validated firmware or a hardware specification.
+Encoder pulse frequency and mechanical shaft speed must be distinguished.
+
+#define encoderPinA 2 // Pin connected to Hall effect sensor A output
+volatile long encoderCount = 0; // Variable to store encoder count
+void setup() {
+pinMode(encoderPinA, INPUT_PULLUP);
+attachInterrupt(digitalPinToInterrupt(encoderPinA), countPulse, RISING);
+Serial.begin(9600);
+}
+void loop() {
+long count = encoderCount; // Read the current count
+float rpm = (count / 1200.0) * 60; // Calculate RPM
+Serial.print("RPM: ");
+Serial.println(rpm);
+encoderCount = 0; // Reset count after each measurement
+delay(1000); // Update rate of 1 second
+}
+void countPulse() {
+encoderCount++; // Increment the pulse count
+}
+

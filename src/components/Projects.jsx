@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Cpu, Zap, Activity, Globe, Disc } from 'lucide-react';
 
 // Your Real Project Data

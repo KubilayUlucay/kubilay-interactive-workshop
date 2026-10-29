@@ -1,0 +1,29 @@
+        gamma3 = app.Gamma3EditField.Value;
+
+        Pd4 = app.DemandEditField.Value; % Demand at Bus 4
+
+        % System of equations from Lagrangian:
+        % ∂L/∂P_1: beta1 + 2*gamma1*P_g1 - λ = 0  ->  2*gamma1*P_g1 - λ = -beta1
+        % ∂L/∂P_2: beta2 + 2*gamma2*P_g2 - λ = 0  ->  2*gamma2*P_g2 - λ = -beta2
+        % ∂L/∂P_3: beta3 + 2*gamma3*P_g3 - λ = 0  ->  2*gamma3*P_g3 - λ = -beta3
+        % ∂L/∂λ  : Pd4 - P_g1 - P_g2 - P_g3 = 0   ->  P_g1 + P_g_2 + P_g_3 = Pd4
+
+        A = [2*gamma1,               0,             0,        -1;
+                    0,        2*gamma2,             0,        -1;
+                    0,               0,      2*gamma3,        -1;
+                   -1,              -1,            -1,        0];
+
+        B = [-beta1; -beta2; -beta3; -Pd4];
+
+        X = inv(A)*B; % Solve the linear system
+
+        P_g1 = X(1);
+        P_g2 = X(2);
+        P_g3 = X(3);
+        Lambda = X(4);
+
+        % Calculate total cost
+        C1 = alpha1 + beta1*P_g1 + gamma1*(P_g1^2);
+        C2 = alpha2 + beta2*P_g2 + gamma2*(P_g2^2);
+        C3 = alpha3 + beta3*P_g3 + gamma3*(P_g3^2);
+

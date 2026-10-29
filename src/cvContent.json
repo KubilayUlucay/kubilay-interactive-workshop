@@ -1,0 +1,274 @@
+[
+  {
+    "type": "heading",
+    "text": "Education"
+  },
+  {
+    "type": "entry",
+    "text": "Özyeğin University, B.Sc. in Electrical and Electronics Engineering, – Istanbul, TURKEY · 2021 – 2025"
+  },
+  {
+    "type": "bullet",
+    "text": "Cumulative GPA: 2.97 / 4.00"
+  },
+  {
+    "type": "bullet",
+    "text": "Honors: 50% Performance Scholarship"
+  },
+  {
+    "type": "entry",
+    "text": "Uğur College High School, High School Diploma – Kocaeli, TURKEY · 2017 – 2021"
+  },
+  {
+    "type": "bullet",
+    "text": "Grade: 94.10 / 100.00"
+  },
+  {
+    "type": "heading",
+    "text": "Experience"
+  },
+  {
+    "type": "entry",
+    "text": "Jr. Test Engineer, Accenture – Istanbul, TURKEY · Janurary 2026 – Present"
+  },
+  {
+    "type": "bullet",
+    "text": "Joined to Accenture as Jr. Test Engineer in Industry X team."
+  },
+  {
+    "type": "entry",
+    "text": "Intern, R&D Department, BEKO R&D Advanced Sensor Technologies – Istanbul, TURKEY · July 2024 – Aug 2024"
+  },
+  {
+    "type": "bullet",
+    "text": "Collaborated within a R&D team to develop and test a patented floor detection system, gaining experience in corporate R&D processes."
+  },
+  {
+    "type": "bullet",
+    "text": "Focused on implementing sensor-based power management to optimize cleaning performance, performing data analysis to validate results."
+  },
+  {
+    "type": "bullet",
+    "text": "Integrated and tested advanced sensors for a newly patented floor detection system, conducted data analysis, and created documentation."
+  },
+  {
+    "type": "entry",
+    "text": "Undergraduate Assistant, Özyeğin University, Faculty of Engineering – Istanbul, TURKEY · Mar 2023 – June 2023"
+  },
+  {
+    "type": "bullet",
+    "text": "Provided hands-on hardware support for an Autonomous Driving course, assisting students with NVIDIA Jetson Nano based vehicle conversions."
+  },
+  {
+    "type": "bullet",
+    "text": "Led teams in assembling and troubleshooting hardware systems, facilitating practical learning and complex problem-solving."
+  },
+  {
+    "type": "entry",
+    "text": "Part-timer, Student, Özyeğin University, Student Services – Istanbul, TURKEY · June 2023 – Sep 2023"
+  },
+  {
+    "type": "bullet",
+    "text": "Assisted students with inquiries regarding transfers, minor/major applications, and enrollment processes."
+  },
+  {
+    "type": "bullet",
+    "text": "Developed and implemented a Microsoft Power Automate workflow for course assignments, reducing manual processing time by approximately 50%."
+  },
+  {
+    "type": "heading",
+    "text": "Projects"
+  },
+  {
+    "type": "entry",
+    "text": "Battery Health & Performance Management: Senior Project · STM32, KiCad, MATLAB/Simulink"
+  },
+  {
+    "type": "bullet",
+    "text": "Co-designed, developed, and fabricated a complete instrumentation system for real-time monitoring of Li-ion batteries."
+  },
+  {
+    "type": "bullet",
+    "text": "Implemented a novel active cell balancing algorithm, utilizing an STM32F407 Discovery Board, with validation confirmed through extensive MATLAB/Simulink simulations."
+  },
+  {
+    "type": "bullet",
+    "text": "Interpreted electrical wiring diagrams using KiCad to create a custom PCB, and performed troubleshooting on the prototype."
+  },
+  {
+    "type": "bullet",
+    "text": "Integrated INA333 instrumentation amplifiers and TMP36GZ sensors, performing calibration and data analysis to ensure system accuracy."
+  },
+  {
+    "type": "entry",
+    "text": "Remote-Controlled Axial Flux Motor · Arduino, NRF24, ESC, 3D Printing, PCB"
+  },
+  {
+    "type": "bullet",
+    "text": "Co-designed, built, and tested a custom electric-powered axial flux motor (including hand-wiring coils) as part of a two-person project team."
+  },
+  {
+    "type": "bullet",
+    "text": "Implemented a custom remote controller using NRF24 wireless modules for system operation."
+  },
+  {
+    "type": "entry",
+    "text": "Wind Turbine Grid Integration Analysis · PowerWorld Simulator"
+  },
+  {
+    "type": "bullet",
+    "text": "Performed data analysis on the impact and cost-effectiveness of different wiring configurations for grid integration of wind turbines."
+  },
+  {
+    "type": "bullet",
+    "text": "Utilized PowerWorld for pre-defined detailed system modeling, analysis, optimization, and documentation."
+  },
+  {
+    "type": "entry",
+    "text": "PLC Automation Systems · Schneider EcoStruxure Control Expert"
+  },
+  {
+    "type": "bullet",
+    "text": "Co-developed and programmed automation logic for a simulated traffic light system to reduce waiting time optimally and created a functional toy claw machine."
+  },
+  {
+    "type": "bullet",
+    "text": "Gained practical experience in PLC programming, ladder logic, and industrial automation concepts."
+  },
+  {
+    "type": "entry",
+    "text": "Servo Actuated 3-Axis Gimbal · Arduino Nano, MPU6050 IMU, Servos, 3D Printing"
+  },
+  {
+    "type": "bullet",
+    "text": "Co-designed and built a 3-axis gimbal using modified 3D models and servo motors."
+  },
+  {
+    "type": "bullet",
+    "text": "Developed Arduino code to calibrate and process raw data from an MPU6050 IMU via I2C connection."
+  },
+  {
+    "type": "bullet",
+    "text": "Mapped processed IMU data to control servo positions for stabilization, overcoming challenges with a defective initial sensor."
+  },
+  {
+    "type": "entry",
+    "text": "Machine Learning in Finance: Bitcoin Market Analysis · Python, Pandas, Scikit-learn (BART), Matplotlib"
+  },
+  {
+    "type": "bullet",
+    "text": "Co-investigated the correlation between daily Twitter volume and Bitcoin market fluctuations using the BART model, finding a positive correlation."
+  },
+  {
+    "type": "bullet",
+    "text": "Performed time-series analysis and prediction."
+  },
+  {
+    "type": "entry",
+    "text": "Zumo Robot Object Detection & Counting · Arduino (C++), Zumo, IR Sensor, Reflectance Sensors"
+  },
+  {
+    "type": "bullet",
+    "text": "Co-developed an algorithm for a Zumo robot to navigate a defined area, detect obstacles using IR and reflectance sensors, and count them."
+  },
+  {
+    "type": "bullet",
+    "text": "Implemented system logic for multi-angle scanning to improve accuracy and user notification via LED and buzzer."
+  },
+  {
+    "type": "bullet",
+    "text": "Successfully demonstrated functionality in various scenarios, identifying limitations in edge case detection."
+  },
+  {
+    "type": "entry",
+    "text": "Deforestation Analysis & Solution Proposal · Research Methods, Statistical Analysis, Presentation"
+  },
+  {
+    "type": "bullet",
+    "text": "Researched causes, consequences (environmental/socio-economic), and existing solutions for deforestation in Turkey’s Black Sea region."
+  },
+  {
+    "type": "bullet",
+    "text": "Analyzed and presented statistical data related to deforestation trends and impacts."
+  },
+  {
+    "type": "bullet",
+    "text": "Collaborated on proposing an \"Industrial Forest Project\" as a sustainable, long-term solution."
+  },
+  {
+    "type": "heading",
+    "text": "Technical Skills"
+  },
+  {
+    "type": "paragraph",
+    "text": "Languages: Turkish (Native), English (Fluent), German (Beginner) Software Languages: Python, MATLAB, Arduino C/C++ Software & Tools: LTSpice, MATLAB, Simulink & Simscape, Schneider EcoStruxure (PLC), PowerWorld, KiCad, Microsoft Power Automate, MS Office Suite Hardware: STM Time-of-Flight (ToF) Sensors, STM32 Boards & Sensors, NVIDIA Jetson Nano, Arduino, Raspberry Pi, Electronics Lab Equipments Competencies: Data Acquisition, System Design & Fabrication, Data Analysis, Troubleshooting, Cross-Functional Collaboration, Problem Solving"
+  },
+  {
+    "type": "heading",
+    "text": "Extracurricular Activities"
+  },
+  {
+    "type": "entry",
+    "text": "IEEE Özyeğin University Student Branch, President of the Supervisory Board · 2021 – 2025 (2024-2025), Chairman (2023-24), RAS Board Member (2022-23), RAS Crew (2021-22) – Istanbul, TURKEY"
+  },
+  {
+    "type": "bullet",
+    "text": "Hosted major IEEE events: 2021 TR RAS Congress and 2023 ComSoc Summit at Özyeğin University."
+  },
+  {
+    "type": "bullet",
+    "text": "Significantly increased annual branch activity, growing event numbers from 4 to 23 within two years."
+  },
+  {
+    "type": "bullet",
+    "text": "Expanded club membership substantially from 103 to 652 members over two years."
+  },
+  {
+    "type": "entry",
+    "text": "Peer Advisor, Özyeğin University – Istanbul, TURKEY · 2024 – 2025"
+  },
+  {
+    "type": "bullet",
+    "text": "Guide newly enrolled students through their academic journey and university life, providing support and resources."
+  },
+  {
+    "type": "entry",
+    "text": "Volunteer, Özyeğin University Clubs Joint Volunteer Event – Istanbul, TURKEY · Apr 2023"
+  },
+  {
+    "type": "bullet",
+    "text": "Volunteered to welcome and engage with children affected by the 2023 earthquake as Ozyegin student clubs."
+  },
+  {
+    "type": "entry",
+    "text": "Competitor & Captain, Robotics Competitions – Kocaeli, Turkey · 2019 – 2020"
+  },
+  {
+    "type": "bullet",
+    "text": "KELEBEKRO 19 (Gebze Technical Univ.): 1st Place - Mini Sumo Robot Category"
+  },
+  {
+    "type": "bullet",
+    "text": "İTÜRO 2019 (Istanbul Technical Univ.): 2nd & 3rd Places - Micro Sumo Robot Category"
+  },
+  {
+    "type": "entry",
+    "text": "Member, Uğur College Model United Nations (MUN) Team – Kocaeli, TURKEY · Sep 2019 – June 2020"
+  },
+  {
+    "type": "bullet",
+    "text": "Represented Nigeria, researched international issues, and collaborated to propose solutions."
+  },
+  {
+    "type": "entry",
+    "text": "Automation and Logistics Simulation, Factorio"
+  },
+  {
+    "type": "bullet",
+    "text": "Practical skills were developed in complex system design, process optimization, and bottleneck analysis."
+  },
+  {
+    "type": "bullet",
+    "text": "Experience was gained in resource management and efficiency improvements by designing large-scale automation chains."
+  }
+]

@@ -1,0 +1,2 @@
+import {useCallback,useRef,useState} from 'react';
+export default function useExhibit(create){const sim=useRef(null);if(!sim.current)sim.current=create();const[revision,bump]=useState(0),[reading,setReading]=useState({});const wake=useCallback(()=>bump(n=>n+1),[]);const act=fn=>{if(sim.current.kind==='gimbal')sim.current.disturbance=null;fn(sim.current);sim.current.user=true;sim.current.revision++;wake();};const reset=()=>{sim.current=create();wake();};return{sim,revision,reading,onTelemetry:setReading,wake,act,reset};}
