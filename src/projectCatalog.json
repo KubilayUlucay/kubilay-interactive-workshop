@@ -371,15 +371,24 @@
     "course": "ME417 · 2024",
     "category": "Control",
     "kind": "Grouped laboratory series",
-    "summary": "Electronics and sensing lead into encoder-based motor feedback.",
+    "summary": "Nine ME417 reports connect analog sensing, timing, I²C and motor drive with encoder feedback.",
     "work": [
-      "Lab03: transistor/capacitor switching and a variable-frequency NE555 oscillator. Lab05: inverting/non-inverting op-amps and clipping.",
-      "Named later reports cover sensors/I²C, PWM, Hall encoder signals and motor position work.",
-      "Lab07 counts encoder interrupts and compares motor outputs under different supply settings."
+      "Bench and Arduino I/O, analog measurement, CNY70 sensing, switching, NE555 timing and button debouncing form the early reports.",
+      "Op-amp gain, a two-Arduino I²C link, Hall encoder signals and L298N/PWM drive lead into motor-position tests.",
+      "The encoder report includes an interrupt-counting excerpt. The later report records proportional-control tests but says the full PID modification could not be tested."
     ],
-    "limits": "Later PID work is not established as a validated controller. Encoder pulse frequency is not the same quantity as mechanical shaft speed.",
-    "credit": "Named reports by Seyit Kubilay Uluçay.",
+    "limits": "Full PID testing was prevented by a serial-plotter problem. Encoder timing and scale factors are not independent mechanical-speed calibration. Identifying cover pages are omitted from public reports.",
+    "credit": "Original ME417 reports by Seyit Kubilay Uluçay, March–May 2024.",
     "evidence": [
+      ["Bench circuits & Arduino I/O", "/projects/mechatronics/lab-01-bench-arduino.pdf"],
+      ["Analog measurements & reflectance sensing", "/projects/mechatronics/lab-02-analog-reflectance.pdf"],
+      ["Transistor switching & NE555 timing", "/projects/mechatronics/lab-03-switching-555.pdf"],
+      ["Button debouncing & a binary counter", "/projects/mechatronics/lab-04-debounce-counter.pdf"],
+      ["Op-amp gain & clipping", "/projects/mechatronics/lab-05-op-amp-gain.pdf"],
+      ["Arduino I²C link & LED control", "/projects/mechatronics/lab-06-i2c-link.pdf"],
+      ["Hall encoder signals & pulse counting", "/projects/mechatronics/lab-07-hall-encoder.pdf"],
+      ["H-bridge direction & PWM drive", "/projects/mechatronics/lab-08-h-bridge-pwm.pdf"],
+      ["Motor-position tests & PID limits", "/projects/mechatronics/lab-09-position-control.pdf"],
       [
         "Original encoder report code excerpt",
         "/projects/coursework/encoder-excerpt.txt"
