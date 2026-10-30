@@ -440,72 +440,27 @@
     ]
   },
   {
-    "id": "deforestation",
-    "title": "Deforestation research presentation",
-    "course": "ENG102",
-    "category": "Communication",
-    "kind": "Classroom research",
-    "summary": "Research synthesis and visual communication about deforestation.",
-    "work": [
-      "A classroom presentation assembles environmental research into a structured argument."
-    ],
-    "limits": "Literature-based communication, not field research or an implemented conservation programme.",
-    "credit": "Student research presentation; cited research remains credited to its authors.",
-    "evidence": [
-      [
-        "Selected original figure",
-        "/projects/deforestation/deforestation.jpg"
-      ]
-    ],
-    "image": "/projects/deforestation/deforestation.jpg",
-    "exhibit": null,
-    "topics": [
-      "research",
-      "presentation",
-      "environment"
-    ]
-  },
-  {
-    "id": "ecorevive",
-    "title": "EcoRevive / ReLifeTech pitch",
-    "course": "ENG303",
-    "category": "Communication",
-    "kind": "Classroom proposal",
-    "summary": "A team pitch for extending the useful life of discarded electronics.",
-    "work": [
-      "The presentation proposes collecting and repairing devices for reuse, including alternative device roles.",
-      "Persuasive speaking and proposal structure were the learning goals."
-    ],
-    "limits": "Hypothetical classroom venture. No Samsung partnership, funding, operating company or achieved environmental metrics are claimed.",
-    "credit": "Seyit Kubilay Uluçay, Ahmet Emre İpek, Berke Çeçen, Efe Can Özhan and Genco Güven.",
-    "evidence": [],
-    "image": null,
-    "exhibit": null,
-    "topics": [
-      "e-waste",
-      "reuse",
-      "pitch"
-    ]
-  },
-  {
     "id": "beko-sensing",
     "title": "Floor sensing in an R&D team",
     "course": "Beko internship · 2024",
     "category": "Experience",
     "kind": "R&D experience",
-    "summary": "Public-safe context for sensor integration, data analysis and test documentation.",
+    "summary": "R&D internship contributions spanning sensing tests, data acquisition, Minitab analysis and embedded integration.",
     "work": [
-      "Worked within an R&D team on sensing for robot-vacuum floor detection.",
-      "Contributed to sensor integration, test observations, data analysis and documentation."
+      "Supported test setup, sensing/data acquisition and preprocessing for robot-vacuum floor-detection work.",
+      "Contributed to Minitab analysis/modeling, embedded integration, testing, iteration and documentation within the R&D team."
     ],
-    "limits": "Client/internal designs and metrics are omitted. Team involvement does not imply patent inventorship or sole ownership.",
-    "credit": "Internship contribution within Beko R&D Advanced Sensor Technologies.",
+    "limits": "Internal reports, images, code, identifiers, model parameters and proprietary results are excluded. This is a team internship contribution, not a claim of sole ownership, inventorship or production deployment.",
+    "credit": "R&D internship contribution by Seyit Kubilay Uluçay within Beko Advanced Sensor Technologies, July–August 2024.",
     "evidence": [],
     "image": null,
     "exhibit": null,
     "topics": [
       "ToF",
       "sensors",
+      "data acquisition",
+      "Minitab",
+      "embedded integration",
       "testing"
     ]
   }
