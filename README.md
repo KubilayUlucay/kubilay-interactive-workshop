@@ -12,6 +12,12 @@ In the current local workspace, the original runs from `workshop-source` at http
 
 This pass updates the engineer's identity, project hierarchy, evidence order, reading sizes and catalog return state. The original reports, simulation logic, lockfile and hosting identity remain unchanged. The downloadable CV remains the original PDF; the web CV corrects project terminology and research scope.
 
+### Motion checkpoint
+
+Page content enters with a 220ms fade and 8px settle while the header stays still. Exhibit navigation uses a moving underline from the existing Framer Motion dependency; project arrows and buttons have short hover/press feedback. No extra scene is kept alive for an exit animation, and navigation, search and simulation inputs are not delayed.
+
+Both the site's Less motion setting and the operating-system reduced-motion preference disable this movement. Catalog filters and return scroll remain preserved. Shared-photo transitions are not part of this first pass. Design references: [purposeful UI motion](https://emilkowal.ski/ui/you-dont-need-animations) and [reduced-motion preferences](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
+
 ## Current source
 
 This branch imports the application and required public assets of published **Site version 23**, source commit `9dd4b8c31bea5e601a77d81fbc6f8e0fdb6b40c1`, verified on 30 October 2026. The Site source and GitHub have separate histories; that provenance commit need not exist in this GitHub repository.

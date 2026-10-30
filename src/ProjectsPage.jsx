@@ -1,4 +1,4 @@
-import {useEffect,useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {ArrowUpRight,Box,X} from 'lucide-react';
 import {Dialog} from './App';
 import projects from './projectCatalog.json';
@@ -289,16 +289,26 @@ function BekoSensingProjectDetail({onExhibit}){
   <section className="motor-explanation" aria-label="Floor-sensing internship contributions"><div><h2>Test setup &amp; data acquisition</h2><p>Supported the test-rig and sensing setup used to evaluate floor-detection behavior. The work brought sensor integration and data acquisition together so observations from the setup could feed the team's analysis and testing.</p></div><div><h2>Preprocessing the measurements</h2><p>Prepared sensor measurements for analysis and organized the collected data for comparison. This preprocessing connected the experimental readings with the modeling and evaluation work.</p></div><div><h2>Analysis and modeling in Minitab</h2><p>Used Minitab for data analysis and statistical modeling as part of the sensing investigation. The analysis supported interpretation of the measurements and discussion of the next development steps with the R&D team.</p></div><div><h2>Embedded sensor integration</h2><p>Contributed to integrating and testing the sensing path in an embedded setup. This connected the analysis work with implementation and provided feedback for subsequent testing and iteration.</p></div><div><h2>Testing and iteration</h2><p>Combined test observations with data analysis to support evaluation and refinement. The contribution was part of an R&D process, where measurement, implementation and testing informed one another.</p></div><div><h2>Documentation and team collaboration</h2><p>Recorded test observations, analysis work and integration findings for team review. The internship provided experience working within a wider sensor-development team rather than presenting the complete system as an individual project.</p></div></section>
   <p className="motor-attribution">R&D internship contribution: Seyit Kubilay Uluçay, Beko Advanced Sensor Technologies, July–August 2024. Internal reports, images, source code, device identifiers, model parameters and proprietary results are not shared here.</p></article>;
 }
-export default function ProjectsPage({detail,onExhibit,catalog,onCatalogChange}){
+export default function ProjectsPage({detail,onExhibit,catalog,onCatalogChange,sharedReduced}){
  const {query,category}=catalog;
  const [dialog,setDialog]=useState(null);
+ const pageRef=useRef(null);
  const setQuery=value=>onCatalogChange(state=>({...state,query:value,scrollY:0}));
  const setCategory=value=>onCatalogChange(state=>({...state,category:value,scrollY:0}));
  const project=projects.find(item=>item.id===detail);
  useEffect(()=>{const frame=requestAnimationFrame(()=>{document.querySelector('.catalog-title')?.focus({preventScroll:true});window.scrollTo(0,detail?0:catalog.scrollY);});return()=>cancelAnimationFrame(frame);},[detail]);
+ useEffect(()=>{
+  const content=pageRef.current?.querySelector(':scope > .catalog, :scope > .case-study');
+  if(!content?.animate||sharedReduced||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const animation=content.animate([
+   {opacity:0,transform:'translateY(8px)'},
+   {opacity:1,transform:'translateY(0)'}
+  ],{duration:220,easing:'cubic-bezier(0.22, 1, 0.36, 1)'});
+  return()=>animation.cancel();
+ },[detail,sharedReduced]);
  const filtered=projects.filter(item=>(category==='All'||item.category===category)&&[item.title,item.course,item.summary,...item.topics].join(' ').toLowerCase().includes(query.toLowerCase()));
 function link(href){if(href.startsWith('exhibit:')){onExhibit(href.slice(8));}}
-return <main className="projects-page"><header className="nav"><button className="brand" onClick={()=>onExhibit('motor')}><img src="/favicon.svg" alt=""/>Kubilay Uluçay<span className="brand-note">ENGINEER / MAKER</span></button><nav aria-label="Portfolio"><button onClick={()=>onExhibit('projects')}>Projects</button><button onClick={()=>setDialog('about')}>About &amp; Contact</button><button onClick={()=>setDialog('cv')}>CV</button></nav></header>{detail?project?project.id==='motor'?<MotorProjectDetail onExhibit={onExhibit}/>:project.id==='gimbal'?<GimbalProjectDetail onExhibit={onExhibit}/>:project.id==='bms'?<BMSProjectDetail onExhibit={onExhibit}/>:project.id==='zumo'?<ZumoProjectDetail onExhibit={onExhibit}/>:project.id==='power-tool'?<PowerToolProjectDetail onExhibit={onExhibit}/>:project.id==='pv-design'?<PVDesignProjectDetail onExhibit={onExhibit}/>:project.id==='wind-study'?<WindStudyProjectDetail onExhibit={onExhibit}/>:
+return <main ref={pageRef} className="projects-page"><header className="nav"><button className="brand" onClick={()=>onExhibit('motor')}><img src="/favicon.svg" alt=""/>Kubilay Uluçay<span className="brand-note">ENGINEER / MAKER</span></button><nav aria-label="Portfolio"><button onClick={()=>onExhibit('projects')}>Projects</button><button onClick={()=>setDialog('about')}>About &amp; Contact</button><button onClick={()=>setDialog('cv')}>CV</button></nav></header>{detail?project?project.id==='motor'?<MotorProjectDetail onExhibit={onExhibit}/>:project.id==='gimbal'?<GimbalProjectDetail onExhibit={onExhibit}/>:project.id==='bms'?<BMSProjectDetail onExhibit={onExhibit}/>:project.id==='zumo'?<ZumoProjectDetail onExhibit={onExhibit}/>:project.id==='power-tool'?<PowerToolProjectDetail onExhibit={onExhibit}/>:project.id==='pv-design'?<PVDesignProjectDetail onExhibit={onExhibit}/>:project.id==='wind-study'?<WindStudyProjectDetail onExhibit={onExhibit}/>:
 project.id==='tweet-classifier'?<TweetClassifierProjectDetail onExhibit={onExhibit}/>:
 project.id==='plc-sequences'?<PLCSequencesProjectDetail onExhibit={onExhibit}/>:
 project.id==='circuit-labs'?<CircuitLabsProjectDetail onExhibit={onExhibit}/>:

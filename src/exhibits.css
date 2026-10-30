@@ -155,3 +155,20 @@ body:has(dialog[open]){overflow:hidden}
  .case-evidence{grid-template-columns:minmax(0,1fr);margin:18px 0 28px}
  .case-evidence img{height:auto;max-height:360px}
 }
+
+.project-rail button{position:relative}
+.project-rail button[aria-current]{border-bottom-color:transparent}
+.project-rail .exhibit-marker{position:absolute;inset:auto 0 -2px;display:block;height:2px;background:#dbb38b;pointer-events:none}
+@keyframes workshop-arrival{
+ from{opacity:0;transform:translateY(8px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:no-preference){
+ .portfolio-root[data-motion="full"] :is(.home-identity,.scene-caption,.exhibit-heading,.exhibit-status){animation:workshop-arrival 220ms cubic-bezier(0.22,1,0.36,1)}
+ .portfolio-root[data-motion="full"] :is(.selected-project-copy h3 svg,.catalog-row>.row-arrow){transition:transform 160ms cubic-bezier(0.22,1,0.36,1)}
+ .portfolio-root[data-motion="full"] :is(.nav button:not(.brand),button.text-link,.icon-btn,.turn-button,.inspect-button){transition:transform 100ms ease-out,background-color 120ms ease-out,color 120ms ease-out}
+ .portfolio-root[data-motion="full"] :is(.nav button:not(.brand),button.text-link,.icon-btn,.turn-button,.inspect-button):active:not(:disabled){transform:translateY(1px)}
+}
+@media(prefers-reduced-motion:no-preference) and (hover:hover){
+ .portfolio-root[data-motion="full"] .selected-project-link:hover h3 svg,.portfolio-root[data-motion="full"] .catalog-row:hover>.row-arrow{transform:translate(2px,-2px)}
+}
