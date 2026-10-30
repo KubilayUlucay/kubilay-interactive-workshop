@@ -4,6 +4,14 @@ Editable React/Vite/Three.js source for the electronics portfolio.
 
 Live website: https://kubilay-interactive-workshop.kubiulucay.chatgpt.site/
 
+## Isolated redesign comparison
+
+Branch `design/portfolio-identity-2026-10-30` is a separate design copy, not a production deployment. The unchanged pre-redesign source is preserved at tag `backup/pre-redesign-2026-10-30` (commit `3abd0e10295693f3d5cfb8d7396648a7a60e794e`).
+
+In the current local workspace, the original runs from `workshop-source` at http://127.0.0.1:4173/ and this copy runs from `workshop-redesign` at http://127.0.0.1:4174/. The folders and installed dependencies are independent. Run this copy with `npm run dev -- --host 127.0.0.1 --port 4174 --strictPort`.
+
+This pass updates the engineer's identity, project hierarchy, evidence order, reading sizes and catalog return state. The original reports, simulation logic, lockfile and hosting identity remain unchanged. The downloadable CV remains the original PDF; the web CV corrects project terminology and research scope.
+
 ## Current source
 
 This branch imports the application and required public assets of published **Site version 23**, source commit `9dd4b8c31bea5e601a77d81fbc6f8e0fdb6b40c1`, verified on 30 October 2026. The Site source and GitHub have separate histories; that provenance commit need not exist in this GitHub repository.

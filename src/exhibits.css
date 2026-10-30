@@ -78,3 +78,80 @@ body:has(dialog[open]){overflow:hidden}
 .project-code-viewer{max-height:70vh;overflow:auto;margin:0;padding:20px;border:1px solid #ffffff24;border-radius:6px;background:#151a16;color:#d9cbb7;font:12px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre;tab-size:2}.power-code .bms-report-links button{min-height:44px;background:transparent;border:0;padding:0;color:#d7b68f;font-size:13px;cursor:pointer}.power-code .bms-report-links button:disabled{opacity:.45;cursor:default}.power-tool-case .motor-photo-grid{grid-template-columns:minmax(0,1fr);max-width:850px}.power-tool-case .motor-photo-grid img{height:auto;max-height:420px;object-fit:contain;background:#f5f5f2}@media(max-width:700px){.project-code-viewer{max-height:65vh;padding:14px;font-size:11px}.power-tool-case .motor-photo-grid{grid-template-columns:1fr}}
 .pv-design-case .motor-photo-grid{grid-template-columns:minmax(0,1fr);max-width:850px}.pv-design-case .motor-photo-grid img{height:auto;max-height:420px;object-fit:contain;background:#f5f5f2}@media(max-width:700px){.pv-design-case .motor-photo-grid{grid-template-columns:1fr}}
 .wind-study-case .motor-photo-grid,.tweet-classifier-case .motor-photo-grid,.plc-sequences-case .motor-photo-grid,.circuit-labs-case .motor-photo-grid,.communications-labs-case .motor-photo-grid{grid-template-columns:minmax(0,1fr);max-width:850px}.wind-study-case .motor-photo-grid img,.tweet-classifier-case .motor-photo-grid img,.plc-sequences-case .motor-photo-grid img,.circuit-labs-case .motor-photo-grid img,.communications-labs-case .motor-photo-grid img{height:auto;max-height:640px;object-fit:contain;background:#f5f5f2}
+
+.portfolio-root{--portfolio-muted:#afb9b5;--portfolio-line:#ffffff24;--portfolio-evidence:#e6ebe7}
+.portfolio-root *,.portfolio-root :is(h1,h2,h3){letter-spacing:0}
+.home-identity h1{font-size:72px}
+.home-identity p{max-width:300px;font-size:15px}
+.home-identity .intro-projects{pointer-events:auto;min-height:44px;margin-top:12px}
+.projects-page .catalog,.projects-page .case-study{margin-top:44px}
+.catalog-curated .catalog-title{font-size:60px;line-height:1.04;margin:18px 0 22px}
+.catalog-curated .lead{max-width:640px;font-size:17px;line-height:1.7}
+.catalog-curated .catalog-search{margin-top:30px}
+.catalog-curated .catalog-search label{font-size:13px}
+.catalog-curated .catalog-search input,.catalog-curated .catalog-search select{font-size:16px;background:#202522}
+.catalog-curated .catalog-search label:last-child{min-width:190px}
+.catalog-results{display:flex;align-items:center;justify-content:space-between;min-height:44px}
+.catalog-results .icon-btn{width:44px;height:44px;flex-shrink:0}
+.catalog-group{margin-top:38px}
+.catalog-group-heading{display:flex;justify-content:space-between;align-items:baseline;gap:20px;border-bottom:1px solid var(--portfolio-line);padding-bottom:14px}
+.catalog-group-heading h2{margin:0;font-size:23px;font-weight:450}
+.catalog-group-heading>span{font:12px 'IBM Plex Mono',monospace;color:var(--portfolio-muted)}
+.selected-project-link{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);align-items:center;gap:38px;padding:28px 0;border-bottom:1px solid var(--portfolio-line);color:inherit;text-decoration:none}
+.selected-project-image{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;background:var(--portfolio-evidence);border-radius:4px}
+.selected-project-copy{min-width:0}
+.selected-project-copy h3{display:flex;align-items:start;justify-content:space-between;gap:20px;margin:14px 0;font-size:30px;line-height:1.2;font-weight:450}
+.selected-project-copy h3 svg{flex-shrink:0;margin-top:5px;color:var(--copper)}
+.project-kind{font:11px/1.6 'IBM Plex Mono',monospace;color:var(--copper)}
+.selected-project-copy p{font-size:16px;line-height:1.75;color:var(--portfolio-muted);margin:18px 0}
+.project-topics{font:11px/1.7 'IBM Plex Mono',monospace;color:#8f9e96}
+.selected-project-link:hover h3,.catalog-curated .catalog-row:hover h3{color:#e7c39e}
+.selected-project-link:focus-visible{outline:2px solid var(--copper);outline-offset:6px}
+.catalog-curated .catalog-list{border-top:0}
+.catalog-curated .catalog-row{padding:24px 0}
+.catalog-curated .catalog-row h3{font-size:24px;line-height:1.3;font-weight:450;margin:9px 0}
+.catalog-curated .catalog-row p{font-size:16px;line-height:1.7;color:var(--portfolio-muted)}
+.catalog-curated .row-arrow{color:var(--copper);margin-top:4px}
+.catalog-empty{padding:42px 0;border-block:1px solid var(--portfolio-line);margin-top:30px}
+.catalog-empty p{font-size:17px;color:var(--portfolio-muted)}
+.catalog-curated .catalog-end{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--portfolio-line);margin-top:54px;padding-top:24px;font-size:13px}
+.catalog-end a{color:var(--copper)}
+.projects-page .case-study h1{font-size:60px;line-height:1.08}
+.projects-page .case-study p{font-size:16px;line-height:1.8}
+.projects-page .case-study>.lead{font-size:18px}
+.projects-page .case-study .motor-attribution{font-size:13px}
+.projects-page .bms-report-heading .selected-report-summary{max-width:760px;margin:12px 0;color:var(--portfolio-muted)}
+.case-exhibit-link{min-height:44px;margin-top:8px}
+.case-evidence{grid-template-columns:repeat(2,minmax(0,1fr));margin:24px 0 36px}
+.case-evidence:has(figure:only-child){grid-template-columns:minmax(0,1fr);max-width:850px}
+.case-evidence img{height:340px;object-fit:contain;background:var(--portfolio-evidence)}
+@media(min-width:701px) and (max-width:1080px){
+ .home-identity h1{font-size:54px}
+ .selected-project-link{gap:26px}
+ .selected-project-copy h3{font-size:26px}
+}
+@media(max-width:700px){
+ .portfolio-root>.workshop .home-identity{margin-top:62px}
+ .home-identity h1{font-size:40px;margin:12px 0}
+ .home-identity h1 br{display:none}
+ .home-identity h1 span::before{content:' '}
+ .home-identity p{font-size:14px;max-width:100%}
+ .home-identity .intro-projects{margin-top:3px}
+ .portfolio-root>.workshop>.scene{height:320px}
+ .projects-page .catalog,.projects-page .case-study{margin-top:32px}
+ .catalog-curated .catalog-title{font-size:42px}
+ .catalog-curated .lead{font-size:16px}
+ .catalog-curated .catalog-search{margin-top:26px}
+ .catalog-group{margin-top:28px}
+ .catalog-group-heading h2{font-size:21px}
+ .selected-project-link{grid-template-columns:minmax(0,1fr);gap:20px;padding:24px 0 30px}
+ .selected-project-copy h3{font-size:26px;margin:10px 0 13px}
+ .selected-project-copy p{margin:14px 0}
+ .selected-project-copy .eyebrow{font-size:10px}
+ .catalog-curated .catalog-row h3{font-size:22px}
+ .catalog-curated .catalog-row p{font-size:15px}
+ .projects-page .case-study h1{font-size:38px}
+ .projects-page .case-study>.lead{font-size:17px}
+ .case-evidence{grid-template-columns:minmax(0,1fr);margin:18px 0 28px}
+ .case-evidence img{height:auto;max-height:360px}
+}

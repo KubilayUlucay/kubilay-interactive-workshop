@@ -29,11 +29,11 @@
   },
   {
     "type": "entry",
-    "text": "Jr. Test Engineer, Accenture – Istanbul, TURKEY · Janurary 2026 – Present"
+    "text": "Jr. Test Engineer, Accenture – Istanbul, TURKEY · January 2026 – Present"
   },
   {
     "type": "bullet",
-    "text": "Joined to Accenture as Jr. Test Engineer in Industry X team."
+    "text": "Work on lab-equipment verification with Python and a PyTAF-based framework in Accenture's Industry X team."
   },
   {
     "type": "entry",
@@ -41,15 +41,15 @@
   },
   {
     "type": "bullet",
-    "text": "Collaborated within a R&D team to develop and test a patented floor detection system, gaining experience in corporate R&D processes."
+    "text": "Contributed to sensor-based floor-detection research within the Advanced Sensor Technologies R&D team."
   },
   {
     "type": "bullet",
-    "text": "Focused on implementing sensor-based power management to optimize cleaning performance, performing data analysis to validate results."
+    "text": "Prepared sensor measurements and used Minitab for statistical analysis and modeling."
   },
   {
     "type": "bullet",
-    "text": "Integrated and tested advanced sensors for a newly patented floor detection system, conducted data analysis, and created documentation."
+    "text": "Supported test-rig setup, embedded sensor integration, iterative testing and technical documentation."
   },
   {
     "type": "entry",
@@ -145,23 +145,23 @@
   },
   {
     "type": "bullet",
-    "text": "Developed Arduino code to calibrate and process raw data from an MPU6050 IMU via I2C connection."
+    "text": "Worked on Arduino servo actuation and an MPU6050 sensing path for a three-axis gimbal prototype."
   },
   {
     "type": "bullet",
-    "text": "Mapped processed IMU data to control servo positions for stabilization, overcoming challenges with a defective initial sensor."
+    "text": "Used a phone gyroscope as a sensing workaround when the IMU was unreliable; the available comparison was not time-synchronized."
   },
   {
     "type": "entry",
-    "text": "Machine Learning in Finance: Bitcoin Market Analysis · Python, Pandas, Scikit-learn (BART), Matplotlib"
+    "text": "Tweets & market-direction classification · Python, Pandas, BERT, Scikit-learn, Matplotlib"
   },
   {
     "type": "bullet",
-    "text": "Co-investigated the correlation between daily Twitter volume and Bitcoin market fluctuations using the BART model, finding a positive correlation."
+    "text": "Co-developed a pipeline using BERT text embeddings and an MLP to classify daily market direction from grouped tweets."
   },
   {
     "type": "bullet",
-    "text": "Performed time-series analysis and prediction."
+    "text": "Compared classification settings on a small academic dataset; results were exploratory, not a validated trading forecast."
   },
   {
     "type": "entry",
