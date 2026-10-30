@@ -18,6 +18,14 @@ Page content enters with a 220ms fade and 8px settle while the header stays stil
 
 Both the site's Less motion setting and the operating-system reduced-motion preference disable this movement. Catalog filters and return scroll remain preserved. Shared-photo transitions are not part of this first pass. Design references: [purposeful UI motion](https://emilkowal.ski/ui/you-dont-need-animations) and [reduced-motion preferences](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
 
+### About-first and single-view workshop
+
+The default route now opens an About home with the engineer's identity, current role, contact/CV and four real-image exhibit links. Direct links to `#/motor`, `#/gimbal`, `#/bms` and `#/zumo` remain available. The shared brand and About navigation return home.
+
+Gimbal, BMS and Zumo use a viewport-height desktop composition from 1000px wide and 620px high, keeping scene, readings and controls together. Smaller windows and zoomed/mobile layouts retain readable reflow instead of clipping controls. Motor's scene layout and all simulation algorithms are unchanged. Each exhibit's See the real build action navigates to its existing project page; Zumo's detailed evidence and original report/presentation links live there, while firmware remains available from its dock.
+
+Design references: [homepage identity and meaningful content](https://www.nngroup.com/articles/top-ten-guidelines-for-homepage-usability/), [height and text-size accessibility](https://developer.mozilla.org/en-US/docs/Web/CSS/height), and [W3C reflow guidance](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html).
+
 ## Current source
 
 This branch imports the application and required public assets of published **Site version 23**, source commit `9dd4b8c31bea5e601a77d81fbc6f8e0fdb6b40c1`, verified on 30 October 2026. The Site source and GitHub have separate histories; that provenance commit need not exist in this GitHub repository.
