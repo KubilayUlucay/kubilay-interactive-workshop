@@ -267,30 +267,6 @@
     ]
   },
   {
-    "id": "embedded-labs",
-    "title": "Registers, interrupts & displays",
-    "course": "EE321",
-    "category": "Embedded",
-    "kind": "Grouped laboratory series",
-    "summary": "Microcontroller exercises connect peripheral registers to observable timing and display behavior.",
-    "work": [
-      "Grouped register, interrupt, timer and display work from the course archive.",
-      "Reviewed Lab 2 material provides a PIC16F628A assembly starter for an array-counting and seven-segment display exercise.",
-      "These are foundational lab exercises, separate from the final Zumo robot."
-    ],
-    "limits": "Lab archives contain supplied libraries and instructions; those are not claimed as original student implementations. The reviewed Lab 2 starter still has placeholders, and no completed implementation or bench performance is newly verified.",
-    "credit": "Kubilay Uluçay coursework; provider libraries retain their own authorship.",
-    "evidence": [],
-    "image": null,
-    "exhibit": null,
-    "topics": [
-      "register",
-      "interrupt",
-      "timer",
-      "display"
-    ]
-  },
-  {
     "id": "hdl-labs",
     "title": "HDL digital-system laboratories",
     "course": "EE462",
@@ -299,13 +275,14 @@
     "summary": "Verilog state, arithmetic and display exercises with testbenches.",
     "work": [
       "Seven-segment display, FSM/debounce, calculator, vector–matrix, LED and VGA topics form one lab series.",
+      "The available Lab 04 excerpt pairs a 16-bit calculator FSM with square, multiply, increment and addition test cases.",
       "Separate student logic from supplied modules, test scaffolding and constraints."
     ],
     "limits": "HDL Based Digital Systems Design, not hardware-in-the-loop. Archive contents and supplied scaffolding do not by themselves establish authorship or a completed hardware test. No FPGA timing or hardware pass is newly claimed.",
     "credit": "Coursework by Kubilay Uluçay with supplied course scaffolding.",
     "evidence": [
       [
-        "Calculator / testbench excerpt",
+        "Lab 04 calculator and testbench excerpt",
         "/projects/coursework/calculator-excerpt.txt"
       ]
     ],
