@@ -1,0 +1,39 @@
+package Homework1;
+
+import java.util.Scanner;
+
+public class Q3 {
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        double sum = 0;
+	        double factorial = 1;
+	        
+	        // Rule 1: Read the positive integer N from the keyboard.
+	        System.out.print("Enter a positive integer N: ");
+	        int N = scanner.nextInt();
+	        
+	        if (N < 0) {
+	            // Rule 4: If the user enters a negative answer for N, print an error message and don't calculate the sum.
+	            System.out.println("N must be a positive integer. Exiting program.");
+	        }else {
+	        
+	        // Rule 2: Generate a random value for x between 1 and 10. Did not stated as int or double.
+	        double x = 1 + (Math.random() * 9);
+	        
+	        for (int k = 1; k <= N; k++) { //Normally I use i for loop but lets do not change the k in the formula
+	            // Calculate (-1)^k
+	            double answer = Math.pow(-1, k)*(3 * Math.pow(x, k + 1) + 2);	            
+	            // Rule 5: Update the factorial using a temporary variable
+	            // k=1 > 1*1=1, 1*2=2, 2*3=6... variable factorial is temp
+	            factorial *= k;
+	            // Calculate the term and add it to the sum
+	            answer /= factorial;
+	            sum += answer;
+	        }
+	        
+	        // Print the result
+	        System.out.println("Sum for N=" + N + " and x=" + x + ": " + sum);
+	    }
+	}
+}
+
