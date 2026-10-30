@@ -331,14 +331,31 @@
     "course": "EE301",
     "category": "Hardware",
     "kind": "Grouped laboratory series",
-    "summary": "Diode, BJT and MOSFET experiments alongside circuit simulation.",
+    "summary": "Four EE301 reports compare diode, BJT, MOSFET and amplifier behavior with LTspice and lab observations.",
     "work": [
-      "Lab work compares device behavior with LTspice circuit models.",
-      "The archive includes simulation files and lab outcomes, including unsuccessful builds."
+      "Lab01 covers DC analysis and diode I–V behavior; Lab03 examines BJT characteristics and current gain.",
+      "Lab04 records MOSFET bias and drain-current measurements; Lab05 documents amplifiers, an unsuccessful NMOS bench result and unfinished work."
     ],
-    "limits": "Not every build worked; no complete design validation or measured device specification is inferred.",
-    "credit": "Kubilay Uluçay coursework; provided instructions are not original project output.",
-    "evidence": [],
+    "limits": "Original observations are not independently recertified. Identifying covers are omitted. The Lab02 brief is not a student report, and native LTspice files are absent from this reviewed set.",
+    "credit": "Original EE301 reports by Seyit Kubilay Uluçay, Fall 2023.",
+    "evidence": [
+      [
+        "Lab 01 · DC analysis & diode characteristics",
+        "/projects/electronics/lab-01-diode-basics.pdf"
+      ],
+      [
+        "Lab 03 · BJT characteristics & current gain",
+        "/projects/electronics/lab-03-bjt-characteristics.pdf"
+      ],
+      [
+        "Lab 04 · MOSFET bias & drain-current response",
+        "/projects/electronics/lab-04-mosfet-bias.pdf"
+      ],
+      [
+        "Lab 05 · Transistor amplifiers & practical limits",
+        "/projects/electronics/lab-05-transistor-amplifiers.pdf"
+      ]
+    ],
     "image": null,
     "exhibit": null,
     "topics": [
