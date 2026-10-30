@@ -218,7 +218,11 @@
     "credit": "Seyit Kubilay Uluçay and Emir Arda Gün.",
     "evidence": [
       [
-        "Pipeline figure",
+        "Team project report",
+        "/projects/machinelearning/MLPROJECT.pdf"
+      ],
+      [
+        "Imputation comparison figure",
         "/projects/machinelearning/machinelearning.png"
       ]
     ],
@@ -245,6 +249,10 @@
     "limits": "Academic simulation; no industrial or roadside deployment is claimed.",
     "credit": "Berke Çeçen, Efe Can Özhan, Genco Güven and Kubilay Uluçay.",
     "evidence": [
+      [
+        "Team project report",
+        "/projects/plc/EE392.pdf"
+      ],
       [
         "Sanitized final report excerpt",
         "/projects/coursework/plc-excerpt.pdf"
