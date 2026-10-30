@@ -440,38 +440,6 @@
     ]
   },
   {
-    "id": "java-labs",
-    "title": "Java programming & OOP exercises",
-    "course": "CS105",
-    "category": "Software",
-    "kind": "Grouped coursework",
-    "summary": "Five coursework examples pair console control flow with vehicle and animal class hierarchies.",
-    "work": [
-      "Vehicle and animal examples demonstrate constructors, inheritance, overrides, overloading and an explicit downcast.",
-      "Three console exercises cover shipment-weight branching, mirrored numeric patterns and a randomized factorial-weighted series.",
-      "Thirteen original Java files are available individually and in a package-correct source-only bundle."
-    ],
-    "limits": "Source is statically reviewed, not newly compiled or executed. Known original behavior, including the shipment-branching issue, is preserved. Supplied answers, exams, IDE metadata and empty assignment folders are excluded.",
-    "credit": "Selected source from Kubilay Uluçay's authored-work folder; course exercise specifications retain their attribution.",
-    "evidence": [
-      ["Vehicle inheritance source", "/projects/java-coursework/vehicles/Vehicle.java"],
-      ["Animal hierarchy source", "/projects/java-coursework/animals/Animal.java"],
-      ["Conditional-branching exercise", "/projects/java-coursework/intro/Q1.java"],
-      ["Nested-loop exercise", "/projects/java-coursework/intro/Q2.java"],
-      ["Factorial-weighted series", "/projects/java-coursework/intro/Q3.java"],
-      ["Selected Java source bundle", "/projects/java-coursework/selected-java-exercises.zip"]
-    ],
-    "image": null,
-    "exhibit": null,
-    "topics": [
-      "Java",
-      "OOP",
-      "inheritance",
-      "method overriding",
-      "programming"
-    ]
-  },
-  {
     "id": "deforestation",
     "title": "Deforestation research presentation",
     "course": "ENG102",
