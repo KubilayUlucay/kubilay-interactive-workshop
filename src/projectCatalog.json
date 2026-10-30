@@ -275,9 +275,10 @@
     "summary": "Microcontroller exercises connect peripheral registers to observable timing and display behavior.",
     "work": [
       "Grouped register, interrupt, timer and display work from the course archive.",
+      "Reviewed Lab 2 material provides a PIC16F628A assembly starter for an array-counting and seven-segment display exercise.",
       "These are foundational lab exercises, separate from the final Zumo robot."
     ],
-    "limits": "Lab archives contain supplied libraries and instructions; those are not claimed as original student implementations. Bench performance is not newly verified.",
+    "limits": "Lab archives contain supplied libraries and instructions; those are not claimed as original student implementations. The reviewed Lab 2 starter still has placeholders, and no completed implementation or bench performance is newly verified.",
     "credit": "Kubilay Uluçay coursework; provider libraries retain their own authorship.",
     "evidence": [],
     "image": null,
