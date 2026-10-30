@@ -1,0 +1,9 @@
+import {useMemo,useEffect} from 'react';
+import {useFrame} from '@react-three/fiber';
+import * as THREE from 'three';
+export default function ServoHarness({base,yaw,pitch,sim}){
+ const cables=useMemo(()=>Array.from({length:9},(_,i)=>{const geometry=new THREE.TubeGeometry(new THREE.LineCurve3(new THREE.Vector3(),new THREE.Vector3(0,1,0)),28,.014,5,false);const material=new THREE.MeshStandardMaterial({color:['#ba6551','#333c35','#d3b46e'][i%3],roughness:.5,metalness:.15});return{geometry,material};}),[]);
+ useEffect(()=>()=>cables.forEach(c=>{c.geometry.dispose();c.material.dispose();}),[cables]);
+ useFrame(()=>{if(!base.current||!yaw.current||!pitch.current)return;base.current.updateWorldMatrix(true,true);const inverse=base.current.matrixWorld.clone().invert();cables.forEach((c,i)=>{const motor=Math.floor(i/3),offset=(i%3-1)*.04,start=new THREE.Vector3((motor-1)*.17+offset,.55,.16+sim.current.explode*.65);let end=new THREE.Vector3(...(motor===0?[.12,1.03,.2]:motor===1?[-.94,.68,.12]:[.59,-.04,-.49]));end.applyMatrix4((motor===0?base.current:motor===1?yaw.current:pitch.current).matrixWorld).applyMatrix4(inverse);const curve=new THREE.CatmullRomCurve3([start,new THREE.Vector3(-.54+offset,.72,.48+sim.current.explode*.4),new THREE.Vector3(-.64+offset,1.27,.5),end.clone().add(new THREE.Vector3(-.12,.1,.2)),end]);const frames=curve.computeFrenetFrames(28,false),pos=c.geometry.attributes.position;for(let n=0;n<=28;n++){const p=curve.getPointAt(n/28);for(let j=0;j<=5;j++){const a=j/5*Math.PI*2,v=p.clone().addScaledVector(frames.normals[n],Math.cos(a)*.014).addScaledVector(frames.binormals[n],Math.sin(a)*.014);pos.setXYZ(n*6+j,v.x,v.y,v.z);}}pos.needsUpdate=true;c.geometry.computeBoundingBox();c.geometry.computeVertexNormals();});},-0.5);
+ return <group name="servo-harness">{cables.map((c,i)=><mesh key={i} geometry={c.geometry} material={c.material} frustumCulled={false}/>)}</group>;
+}

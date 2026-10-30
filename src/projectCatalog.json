@@ -1,0 +1,467 @@
+[
+  {
+    "id": "motor",
+    "title": "Axial-flux motor",
+    "course": "University build",
+    "category": "Hardware",
+    "kind": "Built prototype",
+    "summary": "Hand-wound copper, printed mechanics and a real lab test.",
+    "work": [
+      "Designed, wound and assembled an axial-flux motor; the photographs show nine coils and a common-axis rotor assembly.",
+      "The workshop crank generator and LED heart explain energy transfer through an interactive illustration."
+    ],
+    "limits": "No motor rating or measured efficiency is inferred. The generator and LED heart are explanatory exhibit additions.",
+    "credit": "Kubilay Uluçay; original project media.",
+    "evidence": [
+      [
+        "Hardware & video",
+        "exhibit:motor"
+      ]
+    ],
+    "image": "/projects/motor/motor-inside-wiring.jpeg",
+    "exhibit": "motor",
+    "topics": [
+      "winding",
+      "motor",
+      "electronics"
+    ]
+  },
+  {
+    "id": "gimbal",
+    "title": "Three-axis camera gimbal",
+    "course": "ME417",
+    "category": "Control",
+    "kind": "Built prototype",
+    "summary": "Printed brackets, hobby servos and a phone-based sensing workaround.",
+    "work": [
+      "Three nested servo axes support a payload; the mechanical design was adapted from an internet design.",
+      "The project used a phone gyro workaround after an MPU sensor problem. The compared datasets were not synchronized.",
+      "The exhibit demonstrates ideal counter-rotation, rather than reproducing the original firmware or measured control performance."
+    ],
+    "limits": "No validated PID accuracy or unlimited physical servo travel. The full-turn sliders are exhibit orientations.",
+    "credit": "Student mechatronics project; adapted mechanical design, original creator not identified in available evidence.",
+    "evidence": [
+      [
+        "Photographs & CAD",
+        "exhibit:gimbal"
+      ]
+    ],
+    "image": "/projects/gimbal/stabilizer.jpeg",
+    "exhibit": "gimbal",
+    "topics": [
+      "servo",
+      "Arduino",
+      "stabilization"
+    ]
+  },
+  {
+    "id": "bms",
+    "title": "Battery management system",
+    "course": "EE401 / EE402",
+    "category": "Energy",
+    "kind": "Prototype + simulation",
+    "summary": "Physical instrumentation and PCB work alongside switched-capacitor balancing simulation.",
+    "work": [
+      "EE401 planned the system; EE402 documented the outcomes, instrumentation and prototype.",
+      "The balancing model moves charge using a switched capacitor. This simulation is distinct from the photographed physical hardware.",
+      "Visitors change individual cells, load and temperature to explore balancing and thermal load cutoff."
+    ],
+    "limits": "Long-term hardware balancing and protection validation was unfinished. Displayed values and accelerated time are illustrative.",
+    "credit": "Senior-year team project; shared hardware and simulation evidence.",
+    "evidence": [
+      [
+        "PCB & simulation evidence",
+        "exhibit:bms"
+      ]
+    ],
+    "image": "/projects/bms/front.png",
+    "exhibit": "bms",
+    "topics": [
+      "battery",
+      "capacitor",
+      "protection"
+    ]
+  },
+  {
+    "id": "zumo",
+    "title": "Boundary-scanning Zumo robot",
+    "course": "EE321 · Spring 2024",
+    "category": "Embedded",
+    "kind": "Built prototype",
+    "summary": "Reflectance sensing, IR scans and a maximum count across repeated trials.",
+    "work": [
+      "Calibrate reflectance sensors, move toward the white edge while avoiding IR detections, then scan and return.",
+      "Store counts from ten trials and signal the maximum through the LED and buzzer.",
+      "Five illustrated arrangements succeeded; one arrangement at the boundary failed."
+    ],
+    "limits": "No SLAM, object-identity map or statistical accuracy claim. Repeated IR detections can count the same object. This geometric exhibit simplifies traction, timing and sensor optics.",
+    "credit": "Yunus Emre Ozan and Seyit Kubilay Uluçay. Uses Pololu Zumo libraries.",
+    "evidence": [
+      [
+        "Sanitized report excerpt",
+        "/projects/zumo/report-excerpt.pdf"
+      ],
+      [
+        "Original team firmware",
+        "/projects/zumo/firmware.ino"
+      ]
+    ],
+    "image": "/projects/zumo/zumo-on-mission.png",
+    "exhibit": "zumo",
+    "topics": [
+      "robot",
+      "IR",
+      "reflectance",
+      "Arduino"
+    ]
+  },
+  {
+    "id": "power-tool",
+    "title": "Power flow & economic dispatch",
+    "course": "EE303",
+    "category": "Energy",
+    "kind": "Software / simulation",
+    "summary": "A MATLAB App Designer interface for an educational network and generator cost model.",
+    "work": [
+      "Two modes expose power flow and economic dispatch with three generators.",
+      "The dispatch callback solves equal marginal-cost equations with a demand constraint, then calculates quadratic costs.",
+      "The source includes fixed network coefficients and UI controls for generator settings."
+    ],
+    "limits": "Static source review only; the MATLAB runtime and solver were not validated here. Not an operational grid planning tool; feasibility limits need separate checking.",
+    "credit": "Named individual MATLAB submission by Kubilay Uluçay.",
+    "evidence": [
+      [
+        "App screenshot",
+        "/projects/coursework/power-tool.png"
+      ],
+      [
+        "Original callback excerpt",
+        "/projects/coursework/dispatch-excerpt.txt"
+      ]
+    ],
+    "image": "/projects/coursework/power-tool.png",
+    "exhibit": null,
+    "topics": [
+      "MATLAB",
+      "App Designer",
+      "dispatch"
+    ]
+  },
+  {
+    "id": "pv-design",
+    "title": "Off-grid residential PV design",
+    "course": "EE473–573 · 2025",
+    "category": "Energy",
+    "kind": "Simulation / design",
+    "summary": "A PVsyst sizing and feasibility study for a house in Kocaeli.",
+    "work": [
+      "The source report proposes eight 580 W modules (4.64 kW) and approximately 38.3 kWh stored energy.",
+      "Weather, load, storage and winter availability drive the simulation trade-offs.",
+      "The financial analysis uses May 2025 assumptions and finds poor simple payback, around 62 years."
+    ],
+    "limits": "Simulated proposal, not an installed system. Historical component prices and payback are not current recommendations.",
+    "credit": "Seyit Kubilay Uluçay and Mehmet Fatih Karaosman.",
+    "evidence": [
+      [
+        "Report figure excerpt",
+        "/projects/coursework/pv-excerpt.pdf"
+      ]
+    ],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "PVsyst",
+      "solar",
+      "battery"
+    ]
+  },
+  {
+    "id": "wind-study",
+    "title": "Wind-farm interconnection trade-offs",
+    "course": "EE101 · 2022",
+    "category": "Energy",
+    "kind": "Simulation / study",
+    "summary": "Compare conductor and substation choices across 27 educational model configurations.",
+    "work": [
+      "PowerWorld cases compare cost, loss and overload constraints for a hypothetical 200 MW wind-farm connection.",
+      "The analysis narrows feasible configurations instead of assuming the lowest-loss case is automatically best."
+    ],
+    "limits": "A classroom network study, not a built wind farm or a commercial engineering recommendation.",
+    "credit": "Kubilay Uluçay; educational problem scenario.",
+    "evidence": [
+      [
+        "Analysis excerpt",
+        "/projects/coursework/wind-excerpt.pdf"
+      ]
+    ],
+    "image": "/projects/powerworld/WindTurbineExp.png",
+    "exhibit": null,
+    "topics": [
+      "PowerWorld",
+      "network",
+      "losses"
+    ]
+  },
+  {
+    "id": "tweet-classifier",
+    "title": "Tweets & market-direction classification",
+    "course": "CS440",
+    "category": "Software",
+    "kind": "Team research / ML",
+    "summary": "BERT embeddings feed an MLP classifier for daily grouped tweets.",
+    "work": [
+      "After filtering and daily grouping, the report uses 219 examples.",
+      "The pipeline compares MLP hyperparameters using BERT-transformed text.",
+      "The report describes failed imputation attempts before changing the research question."
+    ],
+    "limits": "Random train/test splitting and test-set tuning limit the reported score. No causal influence, reliable trading return or deployable forecast is established. BERT, not BART.",
+    "credit": "Seyit Kubilay Uluçay and Emir Arda Gün.",
+    "evidence": [
+      [
+        "Team project report",
+        "/projects/machinelearning/MLPROJECT.pdf"
+      ],
+      [
+        "Imputation comparison figure",
+        "/projects/machinelearning/machinelearning.png"
+      ]
+    ],
+    "image": "/projects/machinelearning/machinelearning.png",
+    "exhibit": null,
+    "topics": [
+      "BERT",
+      "MLP",
+      "Python",
+      "classification"
+    ]
+  },
+  {
+    "id": "plc-sequences",
+    "title": "PLC sequences: traffic lights & toy claw",
+    "course": "EE392 · 2024",
+    "category": "Control",
+    "kind": "Team software / simulation",
+    "summary": "Two Control Expert PLC/HMI exercises: timed traffic-light modes and a staged claw game.",
+    "work": [
+      "Traffic-light logic models normal and after-hours modes with HMI controls.",
+      "The claw game uses a coin input, a 90-second positioning window and a staged gripper sequence.",
+      "The shared team report documents both scenarios and the issues encountered during testing."
+    ],
+    "limits": "Academic simulation; no roadside deployment or physical claw-machine build is confirmed. Peer-only Lab3 and provided solution files are excluded.",
+    "credit": "Berke Çeçen, Efe Can Özhan, Genco Güven and Kubilay Uluçay.",
+    "evidence": [
+      [
+        "Team project report",
+        "/projects/plc/EE392.pdf"
+      ]
+    ],
+    "image": "/projects/plc/plc.jpg",
+    "exhibit": null,
+    "topics": [
+      "PLC",
+      "ladder",
+      "SFC",
+      "HMI",
+      "Control Expert",
+      "state machine"
+    ]
+  },
+  {
+    "id": "circuit-labs",
+    "title": "Circuits, op-amps & transients",
+    "course": "EE202",
+    "category": "Hardware",
+    "kind": "Grouped laboratory series",
+    "summary": "Six EE202 reports connect network laws and op-amp behavior with RC/555 timing and RL/LC response.",
+    "work": [
+      "Lab01 covers KCL/KVL resistor networks; Lab02 compares network equivalents and superposition.",
+      "Lab03 examines op-amp input/output and gain; Lab04 studies integrators and differentiators.",
+      "Lab05 investigates RC response and LM555 timing; Lab06 documents inductor construction and RL/LC response."
+    ],
+    "limits": "Original course observations and calculations are not independently recertified. Identifying cover pages are omitted; Lab04 is split into two consecutive layout-preserving parts under the hosting file-size limit.",
+    "credit": "Original EE202 reports by Seyit Kubilay Uluçay, March–May 2023.",
+    "evidence": [
+      [
+        "Lab 01 · KCL/KVL resistor networks",
+        "/projects/circuits/lab-01-kcl-kvl.pdf"
+      ],
+      [
+        "Lab 02 · Network equivalents & superposition",
+        "/projects/circuits/lab-02-network-theorems.pdf"
+      ],
+      [
+        "Lab 03 · Op-amp input, output & gain",
+        "/projects/circuits/lab-03-op-amp-gain.pdf"
+      ],
+      [
+        "Lab 04 · Preparation & integrator tests",
+        "/projects/circuits/lab-04-integrators.pdf"
+      ],
+      [
+        "Lab 04 · Differentiator tests & conclusion",
+        "/projects/circuits/lab-04-differentiators.pdf"
+      ],
+      [
+        "Lab 05 · RC response & LM555 timing",
+        "/projects/circuits/lab-05-rc-555.pdf"
+      ],
+      [
+        "Lab 06 · Inductors & RL/LC response",
+        "/projects/circuits/lab-06-rl-lc.pdf"
+      ]
+    ],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "KCL",
+      "KVL",
+      "Thevenin",
+      "Norton",
+      "RC",
+      "LM555",
+      "RL",
+      "LC",
+      "oscilloscope",
+      "op-amp"
+    ]
+  },
+  {
+    "id": "electronics-labs",
+    "title": "Diodes, transistors & LTspice",
+    "course": "EE301",
+    "category": "Hardware",
+    "kind": "Grouped laboratory series",
+    "summary": "Four EE301 reports compare diode, BJT, MOSFET and amplifier behavior with LTspice and lab observations.",
+    "work": [
+      "Lab01 covers DC analysis and diode I–V behavior; Lab03 examines BJT characteristics and current gain.",
+      "Lab04 records MOSFET bias and drain-current measurements; Lab05 documents amplifiers, an unsuccessful NMOS bench result and unfinished work."
+    ],
+    "limits": "Original observations are not independently recertified. Identifying covers are omitted. The Lab02 brief is not a student report, and native LTspice files are absent from this reviewed set.",
+    "credit": "Original EE301 reports by Seyit Kubilay Uluçay, Fall 2023.",
+    "evidence": [
+      [
+        "Lab 01 · DC analysis & diode characteristics",
+        "/projects/electronics/lab-01-diode-basics.pdf"
+      ],
+      [
+        "Lab 03 · BJT characteristics & current gain",
+        "/projects/electronics/lab-03-bjt-characteristics.pdf"
+      ],
+      [
+        "Lab 04 · MOSFET bias & drain-current response",
+        "/projects/electronics/lab-04-mosfet-bias.pdf"
+      ],
+      [
+        "Lab 05 · Transistor amplifiers & practical limits",
+        "/projects/electronics/lab-05-transistor-amplifiers.pdf"
+      ]
+    ],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "diode",
+      "BJT",
+      "MOSFET",
+      "LTspice"
+    ]
+  },
+  {
+    "id": "mechatronics-labs",
+    "title": "Sensors, timing & motor feedback",
+    "course": "ME417 · 2024",
+    "category": "Control",
+    "kind": "Grouped laboratory series",
+    "summary": "Nine ME417 reports connect analog sensing, timing, I²C and motor drive with encoder feedback.",
+    "work": [
+      "Bench and Arduino I/O, analog measurement, CNY70 sensing, switching, NE555 timing and button debouncing form the early reports.",
+      "Op-amp gain, a two-Arduino I²C link, Hall encoder signals and L298N/PWM drive lead into motor-position tests.",
+      "The encoder report includes an interrupt-counting excerpt. The later report records proportional-control tests but says the full PID modification could not be tested."
+    ],
+    "limits": "Full PID testing was prevented by a serial-plotter problem. Encoder timing and scale factors are not independent mechanical-speed calibration. Identifying cover pages are omitted from public reports.",
+    "credit": "Original ME417 reports by Seyit Kubilay Uluçay, March–May 2024.",
+    "evidence": [
+      ["Bench circuits & Arduino I/O", "/projects/mechatronics/lab-01-bench-arduino.pdf"],
+      ["Analog measurements & reflectance sensing", "/projects/mechatronics/lab-02-analog-reflectance.pdf"],
+      ["Transistor switching & NE555 timing", "/projects/mechatronics/lab-03-switching-555.pdf"],
+      ["Button debouncing & a binary counter", "/projects/mechatronics/lab-04-debounce-counter.pdf"],
+      ["Op-amp gain & clipping", "/projects/mechatronics/lab-05-op-amp-gain.pdf"],
+      ["Arduino I²C link & LED control", "/projects/mechatronics/lab-06-i2c-link.pdf"],
+      ["Hall encoder signals & pulse counting", "/projects/mechatronics/lab-07-hall-encoder.pdf"],
+      ["H-bridge direction & PWM drive", "/projects/mechatronics/lab-08-h-bridge-pwm.pdf"],
+      ["Motor-position tests & PID limits", "/projects/mechatronics/lab-09-position-control.pdf"],
+      [
+        "Original encoder report code excerpt",
+        "/projects/coursework/encoder-excerpt.txt"
+      ]
+    ],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "sensor",
+      "I2C",
+      "PWM",
+      "encoder",
+      "Arduino"
+    ]
+  },
+  {
+    "id": "communications-labs",
+    "title": "Signals & LabVIEW communications",
+    "course": "EE341",
+    "category": "Software",
+    "kind": "Grouped team laboratory series",
+    "summary": "Five team submissions connect Fourier displays, sampled audio and DSB-SC work, with selected LabVIEW VIs.",
+    "work": [
+      "Named Section C Team 1 submissions cover Fourier/FFT displays, sampling, audio synchronization and DSB-SC preparation/transmission.",
+      "Eleven native VIs are preserved from the selected team archives. Identical Lab 3 pre-lab/in-lab archives are counted once.",
+      "A saved MATLAB modulation-comparison plot is credited separately to the Uluçay–İlkbahar bonus pair."
+    ],
+    "limits": "Peer-labelled and unverified work is excluded. No new VI/MATLAB/USRP execution or performance validation is claimed. Native files may need LabVIEW/course dependencies; reports include provided task text and shared scaffolding.",
+    "credit": "Section C Team 1: Seyit Kubilay Uluçay, Ali Umut İlkbahar, Kaan Şekerci and Ahmet Genco Güven; bonus output: Uluçay and İlkbahar.",
+    "evidence": [
+      ["Fourier/FFT team report", "/projects/communications/lab-01-fourier-fft.pdf"],
+      ["Sampling and audio spectra submission", "/projects/communications/lab-02-sampling-quantization.pdf"],
+      ["Queued audio submission", "/projects/communications/lab-03-audio-synchronization.pdf"],
+      ["DSB-SC and USRP noise preparation", "/projects/communications/lab-04-dsb-sc-noise.pdf"],
+      ["DSB-SC transmitter submission", "/projects/communications/lab-05-dsb-sc-transmitter.pdf"],
+      ["Selected team LabVIEW VIs", "/projects/communications/section-c-team1-selected-vis.zip"],
+      ["Original bonus modulation output", "/projects/communications/bonus-modulation-output.png"]
+    ],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "LabVIEW",
+      "signal processing",
+      "Fourier",
+      "sampling",
+      "DSB-SC",
+      "USRP",
+      "MATLAB"
+    ]
+  },
+  {
+    "id": "beko-sensing",
+    "title": "Floor sensing in an R&D team",
+    "course": "Beko internship · 2024",
+    "category": "Experience",
+    "kind": "R&D experience",
+    "summary": "R&D internship contributions spanning sensing tests, data acquisition, Minitab analysis and embedded integration.",
+    "work": [
+      "Supported test setup, sensing/data acquisition and preprocessing for robot-vacuum floor-detection work.",
+      "Contributed to Minitab analysis/modeling, embedded integration, testing, iteration and documentation within the R&D team."
+    ],
+    "limits": "Internal reports, images, code, identifiers, model parameters and proprietary results are excluded. This is a team internship contribution, not a claim of sole ownership, inventorship or production deployment.",
+    "credit": "R&D internship contribution by Seyit Kubilay Uluçay within Beko Advanced Sensor Technologies, July–August 2024.",
+    "evidence": [],
+    "image": null,
+    "exhibit": null,
+    "topics": [
+      "ToF",
+      "sensors",
+      "data acquisition",
+      "Minitab",
+      "embedded integration",
+      "testing"
+    ]
+  }
+]
