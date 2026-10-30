@@ -410,19 +410,32 @@
     "course": "EE341",
     "category": "Software",
     "kind": "Grouped team laboratory series",
-    "summary": "Signal-processing exercises and LabVIEW virtual instruments.",
+    "summary": "Five team submissions connect Fourier displays, sampled audio and DSB-SC work, with selected LabVIEW VIs.",
     "work": [
-      "Named Section C Team1 submissions and the Uluçay–İlkbahar bonus archive support a bounded selection of the course work.",
-      "Grouped signal generation, observation and processing exercises."
+      "Named Section C Team 1 submissions cover Fourier/FFT displays, sampling, audio synchronization and DSB-SC preparation/transmission.",
+      "Eleven native VIs are preserved from the selected team archives. Identical Lab 3 pre-lab/in-lab archives are counted once.",
+      "A saved MATLAB modulation-comparison plot is credited separately to the Uluçay–İlkbahar bonus pair."
     ],
-    "limits": "Peer-labelled Section B Team2 and other unverified submissions are excluded. This is not a claim of authorship over the full course archive.",
-    "credit": "Named student/team submissions; individual responsibility is not reconstructed from shared files.",
-    "evidence": [],
+    "limits": "Peer-labelled and unverified work is excluded. No new VI/MATLAB/USRP execution or performance validation is claimed. Native files may need LabVIEW/course dependencies; reports include provided task text and shared scaffolding.",
+    "credit": "Section C Team 1: Seyit Kubilay Uluçay, Ali Umut İlkbahar, Kaan Şekerci and Ahmet Genco Güven; bonus output: Uluçay and İlkbahar.",
+    "evidence": [
+      ["Fourier/FFT team report", "/projects/communications/lab-01-fourier-fft.pdf"],
+      ["Sampling and audio spectra submission", "/projects/communications/lab-02-sampling-quantization.pdf"],
+      ["Queued audio submission", "/projects/communications/lab-03-audio-synchronization.pdf"],
+      ["DSB-SC and USRP noise preparation", "/projects/communications/lab-04-dsb-sc-noise.pdf"],
+      ["DSB-SC transmitter submission", "/projects/communications/lab-05-dsb-sc-transmitter.pdf"],
+      ["Selected team LabVIEW VIs", "/projects/communications/section-c-team1-selected-vis.zip"],
+      ["Original bonus modulation output", "/projects/communications/bonus-modulation-output.png"]
+    ],
     "image": null,
     "exhibit": null,
     "topics": [
       "LabVIEW",
       "signal processing",
+      "Fourier",
+      "sampling",
+      "DSB-SC",
+      "USRP",
       "MATLAB"
     ]
   },
