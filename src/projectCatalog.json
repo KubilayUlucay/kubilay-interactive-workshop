@@ -236,17 +236,18 @@
     ]
   },
   {
-    "id": "plc-traffic",
-    "title": "Traffic-light sequence controller",
+    "id": "plc-sequences",
+    "title": "PLC sequences: traffic lights & toy claw",
     "course": "EE392 · 2024",
     "category": "Control",
     "kind": "Team software / simulation",
-    "summary": "PLC sequence logic and HMI for a classroom traffic-light scenario.",
+    "summary": "Two Control Expert PLC/HMI exercises: timed traffic-light modes and a staged claw game.",
     "work": [
-      "Control Expert logic coordinates defined inputs, light states and transitions.",
-      "The final report includes an HMI and discussion of issues encountered during testing."
+      "Traffic-light logic models normal and after-hours modes with HMI controls.",
+      "The claw game uses a coin input, a 90-second positioning window and a staged gripper sequence.",
+      "The shared team report documents both scenarios and the issues encountered during testing."
     ],
-    "limits": "Academic simulation; no industrial or roadside deployment is claimed.",
+    "limits": "Academic simulation; no roadside deployment or physical claw-machine build is confirmed. Peer-only Lab3 and provided solution files are excluded.",
     "credit": "Berke Çeçen, Efe Can Özhan, Genco Güven and Kubilay Uluçay.",
     "evidence": [
       [
@@ -263,34 +264,9 @@
     "topics": [
       "PLC",
       "ladder",
-      "HMI",
-      "Control Expert"
-    ]
-  },
-  {
-    "id": "plc-claw",
-    "title": "Toy-claw sequence & HMI",
-    "course": "EE392 · 2024",
-    "category": "Control",
-    "kind": "Team software / simulation",
-    "summary": "A timed game sequence with directional inputs and a staged claw cycle.",
-    "work": [
-      "The report specifies a player movement window, a start input and a sequential claw action.",
-      "Ladder/SFC logic and an HMI explain the state transitions."
-    ],
-    "limits": "A course control-system design; a physical claw-machine build is not confirmed. Peer-only Lab3 and provided solution files are excluded.",
-    "credit": "Berke Çeçen, Efe Can Özhan, Genco Güven and Kubilay Uluçay.",
-    "evidence": [
-      [
-        "Sequence report excerpt",
-        "/projects/coursework/plc-excerpt.pdf"
-      ]
-    ],
-    "image": null,
-    "exhibit": null,
-    "topics": [
-      "PLC",
       "SFC",
+      "HMI",
+      "Control Expert",
       "state machine"
     ]
   },
