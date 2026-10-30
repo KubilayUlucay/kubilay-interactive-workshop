@@ -272,25 +272,55 @@
     "course": "EE202",
     "category": "Hardware",
     "kind": "Grouped laboratory series",
-    "summary": "Breadboard measurements connect circuit analysis to oscilloscope traces.",
+    "summary": "Six EE202 reports connect network laws and op-amp behavior with RC/555 timing and RL/LC response.",
     "work": [
-      "Named lab reports cover circuits and op-amp work.",
-      "Lab05 investigates RC response and an LM555 oscillator. Lab06 builds an inductor and observes RL/LC behavior.",
-      "Frequency changes reveal how charging time affects the observed waveform."
+      "Lab01 covers KCL/KVL resistor networks; Lab02 compares network equivalents and superposition.",
+      "Lab03 examines op-amp input/output and gain; Lab04 studies integrators and differentiators.",
+      "Lab05 investigates RC response and LM555 timing; Lab06 documents inductor construction and RL/LC response."
     ],
-    "limits": "A set of instructional experiments; source calculations are not independently certified here. Published excerpts exclude gradesheets and student identifiers.",
-    "credit": "Named lab reports by Kubilay Uluçay.",
+    "limits": "Original course observations and calculations are not independently recertified. Identifying cover pages are omitted; Lab04 is split into two consecutive layout-preserving parts under the hosting file-size limit.",
+    "credit": "Original EE202 reports by Seyit Kubilay Uluçay, March–May 2023.",
     "evidence": [
       [
-        "RC / 555 report excerpt",
-        "/projects/coursework/rc-excerpt.pdf"
+        "Lab 01 · KCL/KVL resistor networks",
+        "/projects/circuits/lab-01-kcl-kvl.pdf"
+      ],
+      [
+        "Lab 02 · Network equivalents & superposition",
+        "/projects/circuits/lab-02-network-theorems.pdf"
+      ],
+      [
+        "Lab 03 · Op-amp input, output & gain",
+        "/projects/circuits/lab-03-op-amp-gain.pdf"
+      ],
+      [
+        "Lab 04 · Preparation & integrator tests",
+        "/projects/circuits/lab-04-integrators.pdf"
+      ],
+      [
+        "Lab 04 · Differentiator tests & conclusion",
+        "/projects/circuits/lab-04-differentiators.pdf"
+      ],
+      [
+        "Lab 05 · RC response & LM555 timing",
+        "/projects/circuits/lab-05-rc-555.pdf"
+      ],
+      [
+        "Lab 06 · Inductors & RL/LC response",
+        "/projects/circuits/lab-06-rl-lc.pdf"
       ]
     ],
     "image": null,
     "exhibit": null,
     "topics": [
+      "KCL",
+      "KVL",
+      "Thevenin",
+      "Norton",
       "RC",
-      "555",
+      "LM555",
+      "RL",
+      "LC",
       "oscilloscope",
       "op-amp"
     ]
