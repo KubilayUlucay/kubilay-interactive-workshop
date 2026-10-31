@@ -22,6 +22,8 @@ The approved motion studies are now integrated: the About name reveals through a
 
 The four photographed builds in the project catalog share their image into the matching case study and back using a 580ms browser View Transition. The header stays still, filters and return scroll are preserved, and no second 3D scene is kept running. Reduced motion and unsupported browsers use normal navigation. Background treatments remain proposals, not part of this checkpoint.
 
+The combined About view now includes the selected kinetic-word study: BUILD, ADAPT, BALANCE and SCAN respond to project hover, keyboard focus or the selection buttons, with a short factual explanation. The name reveal and reflection-free image response remain, the four shortcuts still open their exhibits, and reduced motion makes word changes immediate. The unselected story strip and rejected decorative backgrounds are not part of the website.
+
 ### About-first and single-view workshop
 
 The default route now opens an About home with the engineer's identity, current role, contact/CV and four real-image exhibit links. Direct links to `#/motor`, `#/gimbal`, `#/bms` and `#/zumo` remain available. The shared brand and About navigation return home.

@@ -312,3 +312,28 @@ body:has(dialog[open]){overflow:hidden}
 @keyframes portfolio-route-out{to{opacity:0}}
 @keyframes portfolio-route-in{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){::view-transition-group(*){animation-duration:0s}}
+
+.home-with-kinetics .home-kinetic-heading{margin-bottom:8px;gap:16px}
+.home-project-selection{display:flex;align-items:center;gap:18px;min-height:44px}
+.home-project-selection button{min-height:44px;font:11px 'IBM Plex Mono',monospace;color:#98aa9f}
+.home-project-selection button[aria-pressed=true]{color:#e2bf96}
+.home-with-kinetics .home-keyword{height:72px;overflow:hidden;font-size:58px;line-height:72px;font-weight:500;color:#c7d6ca;margin:8px 0 10px}
+.home-keyword>span{display:block}
+.home-keyword-context{font-size:13px;line-height:1.65;min-height:44px;margin:0 0 18px;color:var(--portfolio-muted);max-width:520px}
+.home-with-kinetics .home-build[data-selected=true] .home-build-copy{border-bottom-color:var(--copper)}
+@media(min-width:1000px) and (min-height:620px){
+ .home-with-kinetics .home-photo-stage{height:min(14svh,150px)}
+ .home-with-kinetics .home-build-copy{padding:10px 0}
+ .home-with-kinetics .home-build-copy h3{font-size:18px;margin:0}
+ .home-with-kinetics .home-build-copy span{display:none}
+}
+@media(min-width:1000px) and (min-height:620px) and (max-height:720px){
+ .home-with-kinetics .home-photo-stage{height:13svh}
+ .home-with-kinetics .home-keyword{height:58px;line-height:58px;font-size:46px;margin:4px 0 8px}
+ .home-with-kinetics .home-keyword-context{margin-bottom:12px}
+}
+@media(max-width:700px){
+ .home-with-kinetics .home-kinetic-heading{flex-wrap:wrap;gap:8px 16px}
+ .home-project-selection{gap:20px}
+ .home-with-kinetics .home-keyword{height:58px;line-height:58px;font-size:40px}
+}

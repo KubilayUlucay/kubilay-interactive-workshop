@@ -5,14 +5,14 @@ import {Dialog} from './App';
 import PortfolioHeader from './PortfolioHeader';
 
 const builds=[
- {id:'motor',title:'Motor',detail:'Hand-wound axial flux',image:'/projects/motor/overall-motor.jpeg',alt:'The original hand-built axial-flux motor on the lab bench.'},
- {id:'gimbal',title:'Gimbal',detail:'Three-axis servo mechanism',image:'/projects/gimbal/stabilizer.jpeg',alt:'The physical three-axis gimbal with printed brackets and servos.'},
- {id:'bms',title:'BMS',detail:'Cell sensing & balancing',image:'/projects/bms/back.png',alt:'The assembled battery-management circuit and balancing components.'},
- {id:'zumo',title:'Zumo',detail:'Boundary sensing & scans',image:'/projects/zumo/zumo-on-mission.png',alt:'The original Zumo robot on its object-counting course.'}
+ {id:'motor',title:'Motor',detail:'Hand-wound axial flux',word:'BUILD',context:'Hand-wound copper and a real bench prototype.',image:'/projects/motor/overall-motor.jpeg',alt:'The original hand-built axial-flux motor on the lab bench.'},
+ {id:'gimbal',title:'Gimbal',detail:'Three-axis servo mechanism',word:'ADAPT',context:'A phone gyroscope replaced an unreliable sensing path.',image:'/projects/gimbal/stabilizer.jpeg',alt:'The physical three-axis gimbal with printed brackets and servos.'},
+ {id:'bms',title:'BMS',detail:'Cell sensing & balancing',word:'BALANCE',context:'Cell sensing, a custom board and capacitor-transfer simulation.',image:'/projects/bms/back.png',alt:'The assembled battery-management circuit and balancing components.'},
+ {id:'zumo',title:'Zumo',detail:'Boundary sensing & scans',word:'SCAN',context:'Reflectance sensing, IR detections and ten repeated trials.',image:'/projects/zumo/zumo-on-mission.png',alt:'The original Zumo robot on its object-counting course.'}
 ];
 
 const motionEase=[0.22,1,0.36,1];
-function AboutBuild({build,onOpen,reduced,index}){
+function AboutBuild({build,onOpen,onSelect,selected,reduced,index}){
  const pitch=useMotionValue(0),yaw=useMotionValue(0);
  const smoothPitch=useSpring(pitch,{stiffness:260,damping:25,mass:0.8});
  const smoothYaw=useSpring(yaw,{stiffness:260,damping:25,mass:0.8});
@@ -26,7 +26,7 @@ function AboutBuild({build,onOpen,reduced,index}){
   const vertical=Math.max(0,Math.min(1,(event.clientY-rectangle.top)/rectangle.height));
   pitch.set((0.5-vertical)*8);yaw.set((horizontal-0.5)*10);setActive(true);
  }
- return <motion.a className="home-build" href={'#/'+build.id} onClick={event=>onOpen(event,build.id)} onPointerMove={move} onPointerLeave={reset} onFocus={()=>{if(!reduced)setActive(true);}} onBlur={reset} initial={reduced?false:{opacity:0,y:14}} animate={{opacity:1,y:0}} transition={{duration:reduced?0:0.45,delay:reduced?0:0.38+index*0.07,ease:motionEase}}>
+ return <motion.a className="home-build" data-selected={selected?'true':undefined} href={'#/'+build.id} onClick={event=>onOpen(event,build.id)} onPointerEnter={()=>onSelect(build.id)} onPointerMove={move} onPointerLeave={reset} onFocus={()=>{onSelect(build.id);if(!reduced)setActive(true);}} onBlur={reset} initial={reduced?false:{opacity:0,y:14}} animate={{opacity:1,y:0}} transition={{duration:reduced?0:0.45,delay:reduced?0:0.38+index*0.07,ease:motionEase}}>
   <div className="home-photo-stage"><motion.div className="home-photo-plane" style={{rotateX:smoothPitch,rotateY:smoothYaw}} animate={{y:active&&!reduced?-4:0,scale:active&&!reduced?1.025:1}} transition={reduced?{duration:0}:{type:'spring',stiffness:260,damping:25,mass:0.8}}><img className="home-build-image" src={build.image} alt={build.alt} width="540" height="320" decoding="async"/></motion.div></div>
   <div className="home-build-copy"><div><h3>{build.title}</h3><span>{build.detail}</span></div><ArrowUpRight size={20} aria-hidden="true"/></div>
  </motion.a>;
@@ -34,11 +34,13 @@ function AboutBuild({build,onOpen,reduced,index}){
 
 export default function AboutPage({onExhibit,sharedReduced=false}){
  const [dialog,setDialog]=useState(null);
+ const [selected,setSelected]=useState('motor');
+ const selectedBuild=builds.find(build=>build.id===selected);
  const headingRef=useRef(null);
  useEffect(()=>{window.scrollTo(0,0);headingRef.current?.focus({preventScroll:true});},[]);
  const enter=delay=>({initial:sharedReduced?false:{opacity:0,y:14},animate:{opacity:1,y:0},transition:{duration:sharedReduced?0:0.45,delay:sharedReduced?0:delay,ease:motionEase}});
  function openExhibit(event,id){if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();onExhibit(id);}
- return <main className="about-home">
+ return <main className="about-home home-with-kinetics">
   <PortfolioHeader onExhibit={onExhibit} onCV={()=>setDialog('cv')} current="about"/>
     <div className="home-content" key={sharedReduced?'reduced':'full'}>
    <section className="home-summary" aria-labelledby="home-title">
@@ -50,8 +52,10 @@ export default function AboutPage({onExhibit,sharedReduced=false}){
     <motion.div className="home-socials" {...enter(0.5)}><a href="https://github.com/KubilayUlucay" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14}/></a><a href="https://linkedin.com/in/kubilayulucay" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={14}/></a></motion.div>
    </section>
    <section className="home-work" aria-labelledby="home-work-title">
-    <div className="home-work-heading"><h2 id="home-work-title">The workshop</h2><button className="text-link" onClick={()=>onExhibit('projects')}>All projects <ArrowUpRight size={16}/></button></div>
-    <div className="home-builds">{builds.map((build,index)=><AboutBuild key={build.id} build={build} index={index} onOpen={openExhibit} reduced={sharedReduced}/>)}</div>
+    <div className="home-work-heading home-kinetic-heading"><nav className="home-project-selection" aria-label="Project word selection">{builds.map(build=><button key={build.id} aria-pressed={selected===build.id} onClick={()=>setSelected(build.id)}>{build.title}</button>)}</nav><button className="text-link" onClick={()=>onExhibit('projects')}>All projects <ArrowUpRight size={16}/></button></div>
+    <h2 className="home-keyword" id="home-work-title"><motion.span key={selectedBuild.word+'-'+sharedReduced} initial={sharedReduced?false:{y:'105%',opacity:0}} animate={{y:'0%',opacity:1}} transition={{duration:sharedReduced?0:0.32,ease:motionEase}}>{selectedBuild.word}</motion.span></h2>
+    <p className="home-keyword-context">{selectedBuild.context}</p>
+    <div className="home-builds">{builds.map((build,index)=><AboutBuild key={build.id} build={build} index={index} onOpen={openExhibit} onSelect={setSelected} selected={selected===build.id} reduced={sharedReduced}/>)}</div>
    </section>
   </div>
   {dialog&&<Dialog kind={dialog} onClose={()=>setDialog(null)} onExhibit={onExhibit}/>}
