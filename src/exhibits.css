@@ -289,3 +289,26 @@ body:has(dialog[open]){overflow:hidden}
  .home-actions{margin-top:16px}
  .home-socials{margin-top:10px}
 }
+
+.portfolio-root .home-content{animation:none}
+.home-name .home-name-mask{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em;color:inherit}
+.home-name .home-name-mask>span{display:block;color:inherit;white-space:nowrap}
+.home-name .home-name-line-1{color:#a7b8a7}
+.home-summary .home-name span::before{content:none}
+.home-photo-stage{position:relative;aspect-ratio:1.7;perspective:900px;border-radius:4px}
+.home-photo-plane{position:absolute;inset:0;transform-style:preserve-3d;border-radius:4px}
+.home-photo-plane .home-build-image{height:100%;aspect-ratio:auto}
+@media(min-width:1000px) and (min-height:620px){.home-photo-stage{height:min(19svh,200px);aspect-ratio:auto}}
+@media(max-width:999px){.home-name .home-name-mask{display:inline-block}.home-name .home-name-line-1{margin-left:.22em}}
+@media(max-width:700px){.home-photo-stage{aspect-ratio:2}}
+
+.portfolio-root .nav{view-transition-name:portfolio-navigation}
+::view-transition-group(project-photo){animation-duration:580ms;animation-timing-function:cubic-bezier(0.22,1,0.36,1);overflow:clip;border-radius:4px}
+::view-transition-old(project-photo),::view-transition-new(project-photo){width:100%;height:100%;object-fit:contain;mix-blend-mode:normal}
+::view-transition-group(portfolio-navigation){animation-duration:0s}
+::view-transition-old(portfolio-navigation),::view-transition-new(portfolio-navigation){animation:none}
+::view-transition-old(root){animation:portfolio-route-out 160ms ease-in both}
+::view-transition-new(root){animation:portfolio-route-in 240ms ease-out both}
+@keyframes portfolio-route-out{to{opacity:0}}
+@keyframes portfolio-route-in{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){::view-transition-group(*){animation-duration:0s}}

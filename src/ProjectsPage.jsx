@@ -301,7 +301,7 @@ export default function ProjectsPage({detail,onExhibit,catalog,onCatalogChange,s
  useEffect(()=>{const frame=requestAnimationFrame(()=>{document.querySelector('.catalog-title')?.focus({preventScroll:true});window.scrollTo(0,detail?0:catalog.scrollY);});return()=>cancelAnimationFrame(frame);},[detail]);
  useEffect(()=>{
   const content=pageRef.current?.querySelector(':scope > .catalog, :scope > .case-study');
-  if(!content?.animate||sharedReduced||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(!content?.animate||sharedReduced||matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.dataset.routeTransition==='shared')return;
   const animation=content.animate([
    {opacity:0,transform:'translateY(8px)'},
    {opacity:1,transform:'translateY(0)'}

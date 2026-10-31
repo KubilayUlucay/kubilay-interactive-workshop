@@ -16,7 +16,11 @@ This pass updates the engineer's identity, project hierarchy, evidence order, re
 
 Page content enters with a 220ms fade and 8px settle while the header stays still. Exhibit navigation uses a moving underline from the existing Framer Motion dependency; project arrows and buttons have short hover/press feedback. No extra scene is kept alive for an exit animation, and navigation, search and simulation inputs are not delayed.
 
-Both the site's Less motion setting and the operating-system reduced-motion preference disable this movement. Catalog filters and return scroll remain preserved. Shared-photo transitions are not part of this first pass. Design references: [purposeful UI motion](https://emilkowal.ski/ui/you-dont-need-animations) and [reduced-motion preferences](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
+Both the site's Less motion setting and the operating-system reduced-motion preference disable this movement. Catalog filters and return scroll remain preserved. Design references: [purposeful UI motion](https://emilkowal.ski/ui/you-dont-need-animations) and [reduced-motion preferences](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
+
+The approved motion studies are now integrated: the About name reveals through a mask with coordinated content entrances, and its work photographs respond to pointer/focus with a small spring-based tilt and lift. There is no reflection or moving shine layer. The existing About shortcuts still open their 3D exhibits.
+
+The four photographed builds in the project catalog share their image into the matching case study and back using a 580ms browser View Transition. The header stays still, filters and return scroll are preserved, and no second 3D scene is kept running. Reduced motion and unsupported browsers use normal navigation. Background treatments remain proposals, not part of this checkpoint.
 
 ### About-first and single-view workshop
 
