@@ -1,7 +1,8 @@
 import {lazy,Suspense,useEffect,useRef,useState} from 'react';
 import {Dialog} from './App';
 import PortfolioHeader from './PortfolioHeader';
-import {Move,Plus,RotateCcw} from 'lucide-react';
+import RealBuildButton from './RealBuildButton';
+import {Move,RotateCcw} from 'lucide-react';
 import InspectionPanel,{InspectionButton,ZUMO_PARTS} from './InspectionTemplate';
 import {advanceZumo,newZumo,presets,placementReason} from './zumoSimulation';
 const Scene=lazy(()=>import('./ZumoScene'));
@@ -21,7 +22,7 @@ export default function ZumoExhibit({onExhibit,sharedReduced:reduced,onReducedCh
    <span className="eyebrow">04 · EE321 / EMBEDDED SYSTEMS</span>
    <h1>Find the edge.<br/><span>Count what passes.</span></h1>
    <p>A tracked robot reads a white boundary and scans with an IR object sensor. Ten viewpoints, one maximum observed count.</p>
-   <button className="text-link" onClick={()=>onExhibit('projects/zumo')}>See the real build <Plus size={16}/></button>
+   <RealBuildButton kind="zumo" reduced={reduced} onNavigate={()=>onExhibit('projects/zumo')}/>
   </section>
   <section className="zumo-theater">
    <div className="zumo-stage" tabIndex={0} aria-label="Zumo arena; drag cylinders to arrange objects. In inspection, arrow keys orbit and plus/minus zoom." onKeyDown={event=>{if(inspect&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','Home'].includes(event.key)){event.preventDefault();window.dispatchEvent(new CustomEvent('inspection-key',{detail:event.key}));}}}>

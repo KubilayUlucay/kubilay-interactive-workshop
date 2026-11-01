@@ -3,8 +3,6 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, Lightformer, RoundedBox, OrbitControls, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
 import { advanceSimulation } from './simulation';
-import EnergyEffects from './EnergyEffects';
-import EnergyHeart from './EnergyHeart';
 import { plateGeometry, windingGeometry, statorGeometry } from './motorGeometry';
 
 const TAU = Math.PI * 2;
@@ -30,6 +28,7 @@ function useMaterials() {
       rubber:new THREE.MeshStandardMaterial({color:colors.rubber,roughness:.84,metalness:.03}),
       teal:new THREE.MeshStandardMaterial({color:colors.teal,roughness:.54,metalness:.1}),
       dark:new THREE.MeshStandardMaterial({color:'#29312d',metalness:.3,roughness:.62}),
+      redWire:new THREE.MeshStandardMaterial({color:'#ae5947',metalness:.02,roughness:.74}),
       platform:new THREE.MeshStandardMaterial({color:'#2c3230',metalness:.22,roughness:.68}),
       magnet:new THREE.MeshStandardMaterial({color:'#4c6081',metalness:.70,roughness:.32}),
     };
@@ -119,47 +118,107 @@ function Motor({sim,inspection,part,onPart,materials:m}){
   {[-.68,.68].map((x,i)=><RoundedBox key={i} args={[.14,.65,.60]} radius={.04} smoothness={3} position={[x,-1.24,-.08]} rotation={[0,0,x>0?-.27:.27]} material={m.graphite} castShadow/>)}
  </group>;
 }
-function Cable({points,material,radius=.025}){
+function Cable({points,material,radius=.025,name='surface-cable'}){
  const geometry=useMemo(()=>new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(...p))),60,radius,8,false),[points,radius]);
  useEffect(()=>()=>geometry.dispose(),[geometry]);
- return <mesh name="surface-cable" geometry={geometry} material={material} castShadow/>;
+ return <mesh name={name} geometry={geometry} material={material} castShadow/>;
 }
-// All interpolated tubes and their widest glow remain above the beveled slab.
-const cableA=[[-2.22,.72,.70],[-1.78,.42,1.02],[-1.17,.38,1.10],[-.48,.41,.92],[.12,.52,.55],[.58,.74,.20]];
-const displayCableA=[[.58,.74,.20],[1.12,.39,.82],[1.70,.36,1.14],[2.14,.36,1.20],[2.40,.38,1.02]];
-const displayCableB=displayCableA.map(([x,y,z])=>[x,y+.018,z+.055]);
-const cableB=cableA.map(([x,y,z])=>[x,y+.018,z+.075]);
-function Crank({sim,materials:m,onDrag,inspection,resetKey}){
- const handle=useRef(),root=useRef();const {camera,gl,invalidate}=useThree();const last=useRef(null),capture=useRef(null);
- const cancel=useCallback(()=>{last.current=null;sim.current.dragging=false;sim.current.lastDrag=-1000;onDrag(false);if(capture.current){const captured=capture.current;capture.current=null;try{captured.target.releasePointerCapture(captured.id);}catch{/* Capture may already have been released by the browser. */}}},[sim,onDrag]);
- useEffect(()=>{cancel();},[inspection,resetKey,cancel]);
- useEffect(()=>{const canvas=gl.domElement;const hidden=()=>{if(document.hidden)cancel();};document.addEventListener("visibilitychange",hidden);window.addEventListener("pointercancel",cancel);window.addEventListener("pointerup",cancel);window.addEventListener("blur",cancel);canvas.addEventListener("lostpointercapture",cancel);return()=>{cancel();document.removeEventListener("visibilitychange",hidden);window.removeEventListener("pointercancel",cancel);window.removeEventListener("pointerup",cancel);window.removeEventListener("blur",cancel);canvas.removeEventListener("lostpointercapture",cancel);};},[cancel,gl]);
- useFrame(()=>{handle.current.rotation.z=sim.current.crankAngle;});
- function angle(ev){
-  const p=new THREE.Vector3();root.current.getWorldPosition(p);p.project(camera);
-  const rect=gl.domElement.getBoundingClientRect();
-  return Math.atan2(-(ev.nativeEvent.clientY-rect.top)+(1-p.y)*rect.height/2,(ev.nativeEvent.clientX-rect.left)-(p.x+1)*rect.width/2);
- }
- function down(ev){ev.stopPropagation();if(inspection)return;last.current=angle(ev);sim.current.dragging=true;ev.target.setPointerCapture(ev.pointerId);capture.current={target:ev.target,id:ev.pointerId};onDrag(true);invalidate();}
- function move(ev){if(last.current===null||inspection||ev.pointerId!==capture.current?.id)return;ev.stopPropagation();const a=angle(ev);let d=a-last.current;if(d>Math.PI)d-=TAU;if(d< -Math.PI)d+=TAU;sim.current.crankAngle+=d;sim.current.dragImpulse=Math.min(9,Math.abs(d)*50);sim.current.lastDrag=performance.now();last.current=a;invalidate();}
- function up(ev){ev.stopPropagation();cancel();}
- return <group position={[-2.22,1.0,.50]} rotation={[0,.13,0]}>
-  <Ring outer={.53} inner={0} depth={.63} material={m.graphite}/>
-  <Ring outer={.55} inner={.44} depth={.09} material={m.steel} position={[0,0,.33]}/>
-  <Ring outer={.33} inner={0} depth={.08} material={m.dark} position={[0,0,.38]}/>
-  <RadialBolts z={.386} r={.46} n={6} material={m.steel}/>
-  <Ring outer={.10} inner={0} depth={.33} material={m.steel} position={[0,0,.43]}/>
-  <RoundedBox args={[.79,.12,.75]} radius={.055} smoothness={3} position={[0,-.67,0]} material={m.graphite} castShadow/>
-  <RoundedBox args={[.3,.28,.4]} radius={.045} smoothness={3} position={[0,-.48,0]} material={m.graphite} castShadow/>
-  <group name="crank-axis" position={[0,0,.61]} ref={root}>
-   <group name="crank-handle" ref={handle} rotation={[0,0,-.72]} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} onPointerOver={()=>{gl.domElement.style.cursor=inspection?'default':'grab';}} onPointerOut={()=>{gl.domElement.style.cursor='auto';}}>
-    <Ring outer={.16} inner={0} depth={.08} material={m.steel}/>
-    <RoundedBox args={[.14,.68,.10]} radius={.04} smoothness={4} position={[0,.32,0]} material={m.steel} castShadow/>
-    <Ring outer={.12} inner={0} depth={.37} position={[0,.62,.15]} material={m.rubber} bevel={.05}/>
-    <Ring outer={.105} inner={0} depth={.025} position={[0,.62,.37]} material={m.steel}/>
-    <mesh position={[0,.62,.2]} visible={false}><sphereGeometry args={[.28,12,12]}/><meshBasicMaterial/></mesh>
+const supplyPositive=[[-2.59,.63,.18],[-2.44,.47,.45],[-2.23,.38,.72],[-2.19,.42,.92]];
+const supplyNegative=[[-2.11,.63,.18],[-1.93,.48,.36],[-2.10,.38,.69],[-2.19,.42,1.08]];
+const phaseLead=[[-.81,.42,1.0],[-.25,.36,1.02],[.34,.38,.90],[.64,.60,.45],[.65,.82,.19]];
+const potentiometerTravel=Math.PI*1.5;
+function PowerSupply({sim,materials,onPower,disabled}){
+ const indicator=useRef(),rocker=useRef();const {gl,invalidate}=useThree();
+ useEffect(()=>()=>{gl.domElement.style.cursor='auto';},[gl]);
+ useFrame(()=>{indicator.current.material.emissiveIntensity=sim.current.powered?1.1:.05;rocker.current.rotation.x=sim.current.powered?-.16:.16;});
+ return <group name="dc-power-supply" position={[-2.35,.92,-.42]} onClick={event=>{if(disabled)return;event.stopPropagation();onPower();invalidate();}} onPointerOver={()=>{gl.domElement.style.cursor=disabled?'auto':'pointer';}} onPointerOut={()=>{gl.domElement.style.cursor='auto';}}>
+  <RoundedBox args={[1.4,1.18,1.1]} radius={.08} smoothness={3} material={materials.graphite} castShadow/>
+  <RoundedBox args={[1.27,1.04,.04]} radius={.025} position={[0,0,.568]} material={materials.dark}/>
+  <RoundedBox args={[.74,.26,.015]} radius={.025} position={[-.13,.22,.599]} material={materials.rubber}/>
+  <mesh ref={indicator} position={[-.35,.22,.61]}><planeGeometry args={[.24,.035]}/><meshStandardMaterial color="#afc5ac" emissive="#8eb49d" emissiveIntensity={.05}/></mesh>
+  <Ring outer={.14} inner={0} depth={.10} position={[.38,.19,.64]} material={materials.steel}/>
+  <Ring outer={.095} inner={0} depth={.12} position={[.38,.19,.71]} material={materials.rubber}/>
+  {[-.24,.24].map((horizontal,index)=><group key={horizontal} position={[horizontal,-.28,.61]}>
+   <Ring outer={.08} inner={0} depth={.10} material={materials.rubber}/>
+  <mesh position={[0,0,.064]} rotation={[Math.PI/2,0,0]}><cylinderGeometry args={[.043,.043,.04,20]}/><meshStandardMaterial color={index?'#383f3c':'#a45743'}/></mesh>
+  </group>)}
+  <group name="supply-power-switch" position={[.49,-.22,.61]}>
+   <RoundedBox args={[.18,.28,.055]} radius={.018} material={materials.rubber}/>
+   <group name="supply-power-rocker" ref={rocker} position={[0,0,.046]}>
+    <RoundedBox args={[.13,.22,.04]} radius={.012} material={materials.graphite}/>
+    <RoundedBox args={[.012,.055,.004]} radius={.002} position={[0,.055,.024]} material={materials.steel}/>
+    <mesh position={[0,-.051,.025]}><ringGeometry args={[.024,.031,24]}/><meshBasicMaterial color="#bdc7c3"/></mesh>
    </group>
+   <mesh position={[0,0,.05]}><sphereGeometry args={[.15,16,12]}/><meshBasicMaterial transparent opacity={0} depthWrite={false}/></mesh>
   </group>
+  {Array.from({length:5},(_,index)=><RoundedBox key={index} args={[.70,.025,.008]} radius={.005} position={[-.1,-.02-index*.06,-.558]} material={materials.rubber}/>)}
+ </group>;
+}
+function ESP32Board({name,position=[0,0,0],materials}){
+ return <group name={name} position={position}>
+  <RoundedBox args={[.47,.055,.84]} radius={.014} castShadow material={materials.dark}/>
+  <RoundedBox args={[.32,.095,.35]} radius={.016} position={[0,.073,-.10]} material={materials.steel}/>
+  <RoundedBox args={[.14,.035,.14]} radius={.01} position={[0,.05,.18]} material={materials.rubber}/>
+  <RoundedBox args={[.22,.10,.16]} radius={.013} position={[0,.06,.40]} material={materials.steel}/>
+  {[-.20,.20].map(horizontal=>Array.from({length:12},(_,index)=><mesh key={horizontal+':'+index} position={[horizontal,.05,-.35+index*.063]} material={materials.steel}><boxGeometry args={[.022,.10,.022]}/></mesh>))}
+  {Array.from({length:4},(_,index)=><RoundedBox key={index} args={[.26,.007,.018]} radius={.003} position={[0,.035,-.32-index*.022]} material={materials.copper}/>)}
+ </group>;
+}
+function WirelessController({sim,materials,onCommand,disabled,resetKey}){
+ const base=useRef(),knob=useRef(),last=useRef(null),capture=useRef(null);
+ const {gl,invalidate,size}=useThree();
+ const plane=useMemo(()=>new THREE.Plane(),[]),centre=useMemo(()=>new THREE.Vector3(),[]),point=useMemo(()=>new THREE.Vector3(),[]);
+ const normal=useMemo(()=>new THREE.Vector3(0,1,0),[]);
+ const release=useCallback(()=>{
+  last.current=null;gl.domElement.style.cursor='auto';
+  if(capture.current){const saved=capture.current;capture.current=null;try{saved.target.releasePointerCapture(saved.id);}catch{last.current=null;}}
+ },[gl]);
+ useEffect(()=>{if(disabled)release();},[disabled,release]);
+ useEffect(()=>{release();},[resetKey,release]);
+ useEffect(()=>{const canvas=gl.domElement;const hidden=()=>{if(document.hidden)release();};window.addEventListener('pointerup',release);window.addEventListener('pointercancel',release);window.addEventListener('blur',release);canvas.addEventListener('lostpointercapture',release);document.addEventListener('visibilitychange',hidden);return()=>{release();window.removeEventListener('pointerup',release);window.removeEventListener('pointercancel',release);window.removeEventListener('blur',release);canvas.removeEventListener('lostpointercapture',release);document.removeEventListener('visibilitychange',hidden);};},[gl,release]);
+ useFrame(()=>{knob.current.rotation.y=-potentiometerTravel/2+sim.current.command*potentiometerTravel;});
+ function angle(event){
+  base.current.updateWorldMatrix(true,false);
+  base.current.localToWorld(centre.set(0,.065,0));normal.set(0,1,0).transformDirection(base.current.matrixWorld);plane.setFromNormalAndCoplanarPoint(normal,centre);
+  if(!event.ray.intersectPlane(plane,point))return null;
+  base.current.worldToLocal(point);
+  return Math.atan2(point.x,-point.z);
+ }
+ function begin(event){if(disabled)return;const initial=angle(event);if(initial===null)return;event.stopPropagation();last.current=initial;capture.current={target:event.target,id:event.pointerId};event.target.setPointerCapture(event.pointerId);gl.domElement.style.cursor='grabbing';invalidate();}
+ function turn(event){if(disabled||last.current===null||capture.current?.id!==event.pointerId)return;const next=angle(event);if(next===null)return;event.stopPropagation();let delta=next-last.current;if(delta>Math.PI)delta-=TAU;if(delta< -Math.PI)delta+=TAU;onCommand(sim.current.command*100-delta*100/potentiometerTravel);last.current=next;invalidate();}
+ return <group name="wireless-controller" position={[size.width<=700?-.7:-1.7,size.width<=700?.55:.28,3.1]} rotation={[.72,0,-.43]} scale={.9}>
+  <RoundedBox args={[1.6,.08,1.1]} radius={.025} smoothness={2} castShadow><meshStandardMaterial color="#b9783d" roughness={.7} metalness={.15}/></RoundedBox>
+  {Array.from({length:9},(_,row)=>Array.from({length:12},(_,column)=><mesh key={row+':'+column} position={[-.69+column*.123,.042,-.45+row*.11]} rotation={[-Math.PI/2,0,0]}><circleGeometry args={[.019,8]}/><meshBasicMaterial color="#503d29"/></mesh>))}
+  <ESP32Board name="transmitter-esp32" position={[.38,.10,0]} materials={materials}/>
+  <group name="controller-potentiometer" ref={base} position={[-.39,.15,.06]} onPointerDown={begin} onPointerMove={turn} onPointerUp={event=>{event.stopPropagation();release();}} onPointerCancel={release} onPointerOver={()=>{gl.domElement.style.cursor=disabled?'auto':'grab';}} onPointerOut={()=>{if(!capture.current)gl.domElement.style.cursor='auto';}}>
+   <mesh position={[0,-.075,0]} material={materials.steel}><cylinderGeometry args={[.14,.14,.10,24]}/></mesh>
+  <group name="potentiometer-knob" ref={knob}><mesh material={materials.rubber}><cylinderGeometry args={[.24,.24,.12,40]}/></mesh><RoundedBox args={[.035,.008,.18]} radius={.005} position={[0,.065,-.085]} material={materials.copper}/></group>
+  <mesh position={[0,.02,0]}><sphereGeometry args={[.7,20,16]}/><meshBasicMaterial transparent opacity={0} depthWrite={false}/></mesh>
+  </group>
+  <Cable name="controller-potentiometer-signal" points={[[-.39,.08,.17],[-.19,.09,.28],[.06,.09,.20],[.18,.12,.19]]} material={materials.teal} radius={.01}/>
+ </group>;
+}
+function MotorReceiver({materials}){
+ return <group name="motor-receiver" position={[-.67,.34,.16]}>
+  <RoundedBox args={[.69,.07,1.0]} radius={.025} material={materials.teal} castShadow/>
+  <ESP32Board name="receiver-esp32" position={[0,.10,0]} materials={materials}/>
+ </group>;
+}
+function ESC({materials}){
+ const sticker=useMemo(()=>{
+  const canvas=document.createElement('canvas');canvas.width=256;canvas.height=128;const context=canvas.getContext('2d');
+  context.fillStyle='#222b27';context.fillRect(0,0,256,128);context.fillStyle='#dbb48a';context.fillRect(12,10,232,4);
+  context.font='600 20px "DM Sans",sans-serif';context.fillText('BRUSHLESS',16,42);context.font='700 64px "DM Sans",sans-serif';context.fillText('ESC',14,104);
+  const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;return texture;
+ },[]);
+ useEffect(()=>()=>sticker.dispose(),[sticker]);
+ return <group name="motor-esc" position={[-1.50,.42,1.0]}>
+  <RoundedBox name="esc-heatshrink-sleeve" args={[1.18,.15,.52]} radius={.055} smoothness={3} material={materials.rubber} castShadow/>
+  <RoundedBox args={[.32,.035,.40]} radius={.017} position={[-.37,.07,0]} material={materials.rubber}/>
+  <RoundedBox name="esc-battery-strain-relief" args={[.18,.075,.32]} radius={.03} position={[-.62,-.012,0]} material={materials.rubber}/>
+  <RoundedBox name="esc-phase-strain-relief" args={[.18,.075,.34]} radius={.03} position={[.62,-.012,0]} material={materials.rubber}/>
+  <mesh name="esc-label" position={[.045,.078,0]} rotation={[-Math.PI/2,0,0]}><planeGeometry args={[.61,.33]}/><meshStandardMaterial map={sticker} roughness={.88} metalness={0}/></mesh>
+  {[-1,0,1].map(offset=><mesh key={offset} position={[.72,0,offset*.08]} rotation={[0,0,Math.PI/2]} material={materials.steel}><cylinderGeometry args={[.024,.024,.08,16]}/></mesh>)}
  </group>;
 }
 const studioEnvironment=<Environment resolution={256}>
@@ -169,26 +228,25 @@ const studioEnvironment=<Environment resolution={256}>
    <Lightformer form="rect" intensity={2.5} position={[1,2,7]} scale={[7,5,1]}/>
    <Lightformer form="rect" intensity={1.2} position={[0,-3,4]} scale={[6,2,1]}/>
   </Environment>;
-function Scene({sim,inspection,part,onPart,orbit,reduced,onTelemetry,onDrag,resetKey,held,suspended}){
- const m=useMaterials(),rig=useRef(),led=useRef(),controls=useRef();const {camera,size,invalidate,gl}=useThree();
+function Scene({sim,inspection,part,onPart,orbit,reduced,onTelemetry,onCommand,onPower,resetKey,powered,command,suspended}){
+ const m=useMaterials(),rig=useRef(),controls=useRef();const {camera,size,invalidate,gl}=useThree();
  const counter=useRef(0),shadowPose=useRef([]);const mobile=size.width<=700;
  const desired=useMemo(()=>new THREE.Vector3(),[]);
  useEffect(()=>{if(controls.current){controls.current.target.set(-.35,1.45,.1);controls.current.update();}invalidate();},[resetKey,invalidate]);
- useEffect(()=>{invalidate();},[inspection,part,orbit,reduced,resetKey,held,suspended,size.width,size.height,invalidate]);
+ useEffect(()=>{invalidate();},[inspection,part,orbit,reduced,resetKey,powered,command,suspended,size.width,size.height,invalidate]);
  useFrame((state,delta)=>{
   const s=sim.current,dt=Math.min(delta,.05);
   if(suspended)return;
   const moving=advanceSimulation(s,delta,{inspection,reduced,now:performance.now()});
-  // Also catches direct pointer-driven crank changes between demand frames.
-  const pose=[s.explode,s.crankAngle,s.motorAngle];
+  rig.current.position.x=!mobile&&size.width<1100?.95:0;
+  const pose=[s.explode,s.motorAngle,rig.current.position.x];
   if(pose.some((value,i)=>value!==shadowPose.current[i]))gl.shadowMap.needsUpdate=true;
   shadowPose.current=pose;
   if(moving)invalidate();
-  led.current.material.emissiveIntensity=.1+s.power*3;
   if(!orbit){
    const e=s.explode;
    // Fit the full platform and separated covers inside the actual canvas aspect.
-   const fit=mobile?Math.max(1,1.2/(size.width/size.height)):1.04;
+  const fit=mobile?Math.max(1,1.2/(size.width/size.height)):size.width<1100?1.11:1.04;
    desired.set(mobile?5.5:6.6,mobile?3.65:4.7,mobile?10.0:10.3);
    desired.multiplyScalar(fit*(1+e*(mobile?.13:.20)));
    if(reduced)camera.position.copy(desired);else camera.position.lerp(desired,1-Math.exp(-3*dt));
@@ -201,7 +259,7 @@ function Scene({sim,inspection,part,onPart,orbit,reduced,onTelemetry,onDrag,rese
  }, -2);
  return <>
   {/* Transparent sky and a bottom fade let the floor meet the page continuously. */}
-  <fog attach="fog" args={['#171918',16,36]}/>
+  <fog attach="fog" args={['#202321',16,36]}/>
   <ambientLight intensity={.4}/>
   <hemisphereLight args={['#e4e9e6','#4c514e',.8]}/>
   <spotLight position={[-4,7,5]} intensity={100} angle={.72} penumbra={1} color="#fff2df" castShadow shadow-mapSize={[1024,1024]} shadow-radius={4} shadow-bias={-.0002}/>
@@ -211,24 +269,19 @@ function Scene({sim,inspection,part,onPart,orbit,reduced,onTelemetry,onDrag,rese
    <RoundedBox args={[7.1,.22,3.30]} radius={.11} smoothness={4} position={[-.35,.12,0]} material={m.dark} castShadow receiveShadow/>
    <RoundedBox args={[7.02,.055,3.23]} radius={.02} smoothness={3} position={[-.35,.25,0]} material={m.platform} receiveShadow/>
    <Motor sim={sim} inspection={inspection} part={part} onPart={onPart} materials={m}/>
-    <Crank sim={sim} materials={m} onDrag={onDrag} inspection={inspection||orbit||suspended} resetKey={resetKey}/>
-   <Cable points={cableA} material={m.rubber}/><Cable points={cableB} material={m.copper} radius={.015}/>
-   <Cable points={displayCableA} material={m.rubber} radius={.020}/><Cable points={displayCableB} material={m.copper} radius={.015}/>
-   <EnergyHeart sim={sim} inspection={inspection} reduced={reduced} suspended={suspended} materials={m}/>
-   <EnergyEffects sim={sim} points={cableA} outputPoints={displayCableA} inspection={inspection} reduced={reduced} suspended={suspended}/>
-   <mesh ref={led} position={[-1.11,.293,1.27]} rotation={[-Math.PI/2,0,0]}><circleGeometry args={[.04,24]}/><meshStandardMaterial color="#afdbb0" emissive="#adcc96" emissiveIntensity={.1}/></mesh>
-   <RoundedBox args={[1.08,.018,.16]} radius={.012} smoothness={2} position={[-.34,.296,1.30]} material={m.dark}/>
-   {Array.from({length:12},(_,i)=><EnergyBar key={i} index={i} sim={sim}/>)}
+    <PowerSupply sim={sim} materials={m} onPower={onPower} disabled={inspection||orbit||suspended}/>
+    <WirelessController sim={sim} materials={m} onCommand={onCommand} disabled={inspection||orbit||suspended} resetKey={resetKey}/>
+    <MotorReceiver materials={m}/>
+    <ESC materials={m}/>
+    <Cable name="supply-to-esc-positive" points={supplyPositive} material={m.redWire} radius={.024}/>
+    <Cable name="supply-to-esc-negative" points={supplyNegative} material={m.rubber} radius={.025}/>
+    <Cable name="receiver-to-esc-signal" points={[[-.45,.45,.41],[-.90,.36,.40],[-1.65,.35,.52],[-2.17,.42,.85]]} material={m.teal} radius={.012}/>
+    {[-1,0,1].map((offset,index)=><Cable name={'esc-to-motor-phase-'+index} key={offset} points={phaseLead.map(([horizontal,vertical,depth])=>[horizontal,vertical+.008*index,depth+offset*.08])} material={m.rubber} radius={.021}/>)}
   </group>
-  <mesh rotation={[-Math.PI/2,0,0]} position={[0,-.025,0]} receiveShadow><planeGeometry args={[100,100]}/><meshStandardMaterial color="#1b1e1c" roughness={.6} metalness={.18}/></mesh>
   <ContactShadows position={[0,-.014,0]} opacity={.64} scale={13} blur={2.3} far={5} resolution={mobile?256:512} frames={Infinity}/>
   <OrbitControls ref={controls} enabled={orbit&&!suspended} target={[-.35,1.45,.1]} enablePan={false} minDistance={mobile?11:7} maxDistance={22} minPolarAngle={.35} maxPolarAngle={Math.PI/2-.04} enableDamping={!reduced} dampingFactor={.08}/>
  </>;
 }
-function EnergyBar({index,sim}){
- const ref=useRef();useFrame(()=>{const active=sim.current.power>(index+1)/13;ref.current.material.emissiveIntensity=active?2:.02;ref.current.material.color.set(active?'#dca471':'#34403a');});
- return <mesh ref={ref} position={[-.80+index*.08,.307,1.30]} rotation={[-Math.PI/2,0,0]}><planeGeometry args={[.045,.085]}/><meshStandardMaterial color="#34403a" emissive="#da985d" emissiveIntensity={.02}/></mesh>;
-}
 export default function MotorScene(props){
- return <Canvas frameloop="demand" shadows dpr={[1,1.6]} camera={{position:[6.6,4.7,10.3],fov:35,near:.1,far:80}} gl={{alpha:true,antialias:true,powerPreference:'high-performance',toneMapping:THREE.ACESFilmicToneMapping,toneMappingExposure:1.1}} onCreated={({gl,camera})=>{camera.layers.enable(1);gl.setClearColor('#171918',0);gl.shadowMap.type=THREE.PCFShadowMap;gl.shadowMap.autoUpdate=false;gl.shadowMap.needsUpdate=true;}}><Scene {...props}/></Canvas>;
+ return <Canvas frameloop="demand" shadows dpr={[1,1.6]} camera={{position:[6.6,4.7,10.3],fov:35,near:.1,far:80}} gl={{alpha:true,antialias:true,powerPreference:'high-performance',toneMapping:THREE.ACESFilmicToneMapping,toneMappingExposure:1.1}} onCreated={({gl,camera})=>{camera.layers.enable(1);gl.setClearColor('#202321',0);gl.shadowMap.type=THREE.PCFShadowMap;gl.shadowMap.autoUpdate=false;gl.shadowMap.needsUpdate=true;}}><Scene {...props}/></Canvas>;
 }

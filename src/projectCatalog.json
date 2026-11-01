@@ -8,9 +8,9 @@
     "summary": "Hand-wound copper, printed mechanics and a real lab test.",
     "work": [
       "Designed, wound and assembled an axial-flux motor; the photographs show nine coils and a common-axis rotor assembly.",
-      "The workshop crank generator and LED heart explain energy transfer through an interactive illustration."
+      "A potentiometer and ESP32 on the handheld copper-board controller send the speed command wirelessly to a motor-side ESP32, which controls the ESC between the supply and motor."
     ],
-    "limits": "No motor rating or measured efficiency is inferred. The generator and LED heart are explanatory exhibit additions.",
+    "limits": "The ESP32/ESC topology follows the project owner's description. The generic supply, firmware timing and drive percentage are illustrative; no measured speed, rating or efficiency is inferred.",
     "credit": "Kubilay Uluçay; original project media.",
     "evidence": [
       [

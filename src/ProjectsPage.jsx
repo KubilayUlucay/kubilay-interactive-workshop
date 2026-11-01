@@ -1,9 +1,10 @@
 import {useEffect,useRef,useState} from 'react';
-import {ArrowUpRight,Box,X} from 'lucide-react';
+import {ArrowUpRight,X} from 'lucide-react';
 import {Dialog} from './App';
 import projects from './projectCatalog.json';
 import ZoomImage from './ZoomImage';
 import PortfolioHeader from './PortfolioHeader';
+import RealBuildButton from './RealBuildButton';
 const categories=['All',...new Set(projects.map(project=>project.category))];
 const featuredMedia={
  bms:{src:'/projects/bms/back.png',alt:'The assembled BMS board and its capacitor-balancing components.'},
@@ -43,34 +44,34 @@ function ProjectIndex({filtered,query,category,setQuery,setCategory,onExhibit}){
  </section>;
 }
 function Illustration({project}){const [value,setValue]=useState(45);const rc=project.id==='circuit-labs'||project.id==='mechatronics-labs',software=project.category==='Software'||project.category==='Embedded';return <section className="project-diagram"><span className="eyebrow">{rc?'TRY A CONCEPT':'THE WORKFLOW'} · EXPLANATORY</span><svg viewBox="0 0 600 170" role="img" aria-label={rc?'Illustrative RC charge curve':software?'Input, processing and output workflow':'Design, observation and evaluation workflow'}>{rc?<><path d="M35 15 V140 H580" fill="none" stroke="#5f7467"/><path d={Array.from({length:80},(_,i)=>`${i?'L':'M'}${35+i*6.8},${140-110*(1-Math.exp(-i/(5+value/4)))}`).join(' ')} fill="none" stroke="#d9b289" strokeWidth="3"/><text x="48" y="30" fill="#b4c2b5">capacitor voltage</text></>:<>{(software?['INPUT','PROCESS','OBSERVE']:['DESIGN','TEST','EVALUATE']).map((s,i)=><g key={s}><rect x={15+i*200} y="45" width="170" height="75" rx="8" fill="#27372e" stroke="#6a8471"/><text x={100+i*200} y="89" fill="#d9c5ab" fontSize="15" textAnchor="middle">{s}</text>{i<2&&<path d={`M${185+i*200} 82 h30 m-9 -5 l9 5 -9 5`} fill="none" stroke="#c3a07b"/>}</g>)}</>}</svg>{rc&&<><label>Relative time constant <input aria-label="Relative time constant" type="range" min="1" max="100" value={value} onChange={e=>setValue(+e.target.value)}/></label><p>A larger RC time constant slows the rise. This dimensionless teaching curve is not a recorded oscilloscope trace.</p></>}</section>;}
-function ProjectPhotos({photos,label,primary=false,exhibit,onExhibit}){
+function ProjectPhotos({photos,label,primary=false,exhibit,onExhibit,reduced}){
  return <>
-  {exhibit&&<button className="text-link case-exhibit-link" onClick={()=>onExhibit(exhibit)}>Open {exhibit==='bms'?'BMS':exhibit[0].toUpperCase()+exhibit.slice(1)} exhibit <Box size={17}/></button>}
+  {exhibit&&<RealBuildButton kind={exhibit} reduced={reduced} label={'Open '+(exhibit==='bms'?'BMS':exhibit[0].toUpperCase()+exhibit.slice(1))+' exhibit'} onNavigate={()=>onExhibit(exhibit)}/>}
   <section className={'motor-photo-grid'+(primary?' case-evidence':'')} aria-label={label}>{photos.map(([src,alt,caption])=><figure key={src}><ZoomImage src={src} alt={alt}/><figcaption><strong>{caption}</strong><span>{alt}</span></figcaption></figure>)}</section>
  </>;
 }
-function MotorProjectDetail({onExhibit}){
+function MotorProjectDetail({onExhibit,reduced}){
  const photos=[
   ['/projects/motor/motor-inside-wiring.jpeg','Nine hand-wound copper coils seated on the stator supports.','Stator windings'],
   ['/projects/motor/overall-motor.jpeg','The motor assembly and test setup on the lab bench.','Prototype at the bench'],
-  ['/projects/motor/controller-nano.jpeg','Arduino Nano beside the perfboard controller assembly.','Controller electronics']
+  ['/projects/motor/controller-nano.jpeg','Archived Nano/perfboard photograph; this does not document the ESP32 wireless controller described here.','Archived controller photograph']
  ];
  return <article className="case-study motor-case">
   <button className="text-link" onClick={()=>onExhibit('projects')}>← All projects</button>
   <span className="eyebrow">UNIVERSITY BUILD / AXIAL-FLUX MOTOR</span>
   <h1 className="catalog-title" tabIndex={-1}>An axial-flux motor,<br/><span>built by hand.</span></h1>
   <p className="lead">A hand-wound stator, printed supports and a shared-axis rotor assembly, documented through the original build photographs and lab footage.</p>
-  <ProjectPhotos photos={photos.slice(0,2)} label="Original motor hardware" primary exhibit="motor" onExhibit={onExhibit}/>
+  <ProjectPhotos photos={photos.slice(0,2)} label="Original motor hardware" primary exhibit="motor" onExhibit={onExhibit} reduced={reduced}/>
   <section className="motor-explanation" aria-label="Motor project details">
    <div><h2>How it is arranged</h2><p>The stationary stator carries nine hand-wound coils. Two rotor plates turn together on a common shaft, with their magnets facing the stator across an axial air gap. Printed supports hold the assembly in alignment.</p></div>
-   <div><h2>What the exhibit adds</h2><p>The workshop’s crank generator and heart-shaped LEDs are explanatory additions showing an energy path. They are not part of the photographed motor build or measurement equipment. No motor rating or measured efficiency is claimed here.</p></div>
+  <div><h2>Wireless ESP32 control</h2><p>A potentiometer on the handheld copper-board controller provides the speed command to its ESP32. That command travels wirelessly to a second ESP32 on the motor side, which controls the ESC. The DC source powers the motor through the ESC; the handheld controller has no wired connection to that source or motor. The exhibit represents this owner-described arrangement, not the original firmware timing or measured RPM. No motor rating or measured efficiency is claimed here.</p></div>
   </section>
-  <ProjectPhotos photos={photos.slice(2)} label="Original motor controller electronics"/>
+  <ProjectPhotos photos={photos.slice(2)} label="Archived controller material"/>
   <section className="motor-video-section" aria-labelledby="motor-video-title"><div><span className="eyebrow">ORIGINAL PROJECT FOOTAGE</span><h2 id="motor-video-title">A look at the lab test.</h2><p>Recorded footage from the original project repository. It documents the physical motor in the lab; it does not establish a performance rating or measured efficiency.</p></div><video controls playsInline preload="metadata" poster="/projects/motor/overall-motor.jpeg"><source src="/projects/motor/motor-preview.webm" type="video/webm"/><source src="/projects/motor/motor-video.mp4" type="video/mp4"/><p>Your browser does not support embedded video. Use the browser’s media controls or try another format.</p></video></section>
   <p className="motor-attribution">Project and original media: Kubilay Uluçay. Interactive motor scene is an illustrative explanation built around the real project.</p>
  </article>;
 }
-function GimbalProjectDetail({onExhibit}){
+function GimbalProjectDetail({onExhibit,reduced}){
  const photos=[
   ['/projects/gimbal/cad-design.png','CAD layout of nested gimbal brackets and the payload tray.','Mechanical layout · CAD'],
   ['/projects/gimbal/stabilizer.jpeg','Built three-axis gimbal prototype with printed brackets, servo motors and exposed electronics.','Three-axis prototype'],
@@ -82,7 +83,7 @@ function GimbalProjectDetail({onExhibit}){
   <span className="eyebrow">MECHATRONICS / THREE-AXIS CAMERA GIMBAL</span>
   <h1 className="catalog-title" tabIndex={-1}>A three-axis gimbal,<br/><span>built around a workaround.</span></h1>
   <p className="lead">A servo-driven camera support built from modified sourced mechanics. When the inertial sensor proved unreliable, the team used a phone gyroscope to continue observing the rig’s motion.</p>
-  <ProjectPhotos photos={photos.slice(1,2)} label="Original gimbal prototype" primary exhibit="gimbal" onExhibit={onExhibit}/>
+  <ProjectPhotos photos={photos.slice(1,2)} label="Original gimbal prototype" primary exhibit="gimbal" onExhibit={onExhibit} reduced={reduced}/>
   <section className="motor-explanation" aria-label="Gimbal project details">
    <div><h2>How the mechanism is arranged</h2><p>Three nested servo axes carry the phone or camera payload. Each bracket supports the next moving stage, so the motors can tilt the payload around separate axes while the outer frame is held or moved. The mechanical design began from an existing model and was modified for the project build.</p></div>
    <div><h2>Sensing and the build challenge</h2><p>The planned inertial measurement unit did not provide dependable readings. The team instead used a phone’s gyroscope and recorded its data while working with the physical prototype. The available comparison was not time-synchronized, so it documents the sensing workaround rather than a measured stabilization result.</p></div>
@@ -95,7 +96,7 @@ const BMS_REPORTS={
  ee401:{label:'Senior Project 1 · Research (EE401)',description:'Fall 2024 · Research and proposal report.',parts:['/projects/bms/SeniorYearProject1.pdf.part-00','/projects/bms/SeniorYearProject1.pdf.part-01','/projects/bms/SeniorYearProject1.pdf.part-02','/projects/bms/SeniorYearProject1.pdf.part-03'],size:35194729,download:'Senior-Project-1-Research-EE401.pdf'},
  ee402:{label:'Senior Project 2 · Implementation (EE402)',description:'Spring 2025 · Build and implementation report.',src:'/projects/bms/SeniorYearProject2.pdf',download:'Senior-Project-2-Implementation-EE402.pdf'}
 };
-function BMSProjectDetail({onExhibit}){
+function BMSProjectDetail({onExhibit,reduced}){
  const [selectedReport,setSelectedReport]=useState('ee402');
  const [reportRevision,setReportRevision]=useState(0);
  const [ee401Viewer,setEe401Viewer]=useState({url:null,loading:false,error:null});
@@ -132,7 +133,7 @@ function BMSProjectDetail({onExhibit}){
   <span className="eyebrow">EE401 / EE402 · BATTERY MANAGEMENT</span>
   <h1 className="catalog-title" tabIndex={-1}>A battery manager,<br/><span>built around cell balance.</span></h1>
   <p className="lead">A four-cell lithium-ion BMS prototype pairs a custom circuit board with an STM32F407 Discovery controller, sensing paths, a protection switch and capacitor-based active balancing.</p>
-  <ProjectPhotos photos={photos.slice(0,2)} label="Original BMS circuit and controller" primary exhibit="bms" onExhibit={onExhibit}/>
+  <ProjectPhotos photos={photos.slice(0,2)} label="Original BMS circuit and controller" primary exhibit="bms" onExhibit={onExhibit} reduced={reduced}/>
   <section className="motor-explanation" aria-label="BMS project details">
    <div><h2>From cell readings to control</h2><p>The series cell taps feed voltage-divider measurement paths to the controller. An INA333 amplifier conditions the shunt signal for current measurement; temperature sensors add a thermal input. The STM32F407 reads these signals and runs the balancing logic, which selects one adjacent cell pair at a time and commands the switching network.</p></div>
    <div><h2>Moving charge and protecting the pack</h2><p>Three transfer capacitors work with the switches: a selected capacitor charges from the higher-voltage cell, then connects to its lower-voltage neighbor. Repeating those steps moves charge across the pack. A BD135 low-side switch provides the documented safety disconnect path. The physical board photos show the STM32 controller mounted underneath the main circuit.</p></div>
@@ -151,13 +152,13 @@ function BMSProjectDetail({onExhibit}){
   <p className="motor-attribution">BMS board, schematic and simulation material from the EE402 report. Simulation traces describe modeled behavior; they are not physical test measurements.</p>
  </article>;
 }
-function ZumoProjectDetail({onExhibit}){
+function ZumoProjectDetail({onExhibit,reduced}){
  const photos=[['/projects/zumo/zumo-on-mission.png','The Zumo robot on the competition course during an object-counting run.','On-course run · original project photo'],['/projects/zumo/zumo-on-black-surface.png','Zumo chassis positioned on the dark course surface near the white boundary.','Robot and course surface · original project photo']];
  const [code,setCode]=useState(''),[copied,setCopied]=useState(false);
  useEffect(()=>{let active=true;fetch('/projects/zumo/firmware.ino').then(r=>{if(!r.ok)throw new Error();return r.text();}).then(t=>{if(active)setCode(t);}).catch(()=>{if(active)setCode('Firmware text is unavailable.');});return()=>{active=false;};},[]);
  async function copyCode(){try{await navigator.clipboard.writeText(code);setCopied(true);setTimeout(()=>setCopied(false),1800);}catch{setCopied(false);}}
  return <article className="case-study motor-case zumo-case"><button className="text-link" onClick={()=>onExhibit('projects')}>← All projects</button><span className="eyebrow">EE321 · ZUMO OBJECT-COUNTING ROBOT</span><h1 className="catalog-title" tabIndex={-1}>A line-following robot,<br/><span>working the boundary.</span></h1><p className="lead">A Zumo robot combined reflectance sensing with an infrared object sensor to traverse a dark course, respond to its white boundary and record object detections across repeated scans.</p>
-  <ProjectPhotos photos={photos} label="Original Zumo project photographs" primary exhibit="zumo" onExhibit={onExhibit}/>
+  <ProjectPhotos photos={photos} label="Original Zumo project photographs" primary exhibit="zumo" onExhibit={onExhibit} reduced={reduced}/>
   <div className="bms-report-links"><a className="text-link" href="/projects/zumo/report-excerpt.pdf" target="_blank" rel="noreferrer">Report excerpt ↗</a><a className="text-link" href="https://www.youtube.com/watch?v=27th-UQyDgE" target="_blank" rel="noreferrer">Original presentation ↗</a></div>
   <section className="motor-explanation" aria-label="Zumo project details"><div><h2>Sensing and boundary response</h2><p>The six-channel reflectance array was calibrated before each run and used to distinguish the dark course surface from the white perimeter. While the infrared sensor detected an object, the firmware turned left until the sensor cleared; otherwise it advanced while the surface remained dark. At the boundary, the left or right sensor group determined the turn direction for a scan.</p></div><div><h2>Scanning and the reported count</h2><p>During each boundary scan, the infrared sensor incremented a count with a short debounce delay. The program stored one count per trial, repeated this process ten times, and reported the largest observed count. That maximum is not a map of distinct object positions. The report illustrates five successful detections and one boundary-related failure; these examples are not a statistical accuracy estimate.</p></div></section>
   <section className="motor-explanation" aria-label="Original build and interactive exhibit"><div><h2>Original hardware</h2><p>The project used a Zumo chassis, reflectance sensor array, infrared sensing, motor control, an indicator LED and buzzer. The original firmware includes calibration, boundary-group checks, object-count debounce and a final LED/buzzer indication.</p></div><div><h2>Interactive scene</h2><p>The workshop scene is a current explanatory simulation of boundary following and collision avoidance. It is separate from the original EE321 hardware run and does not change or replace the report’s trial observations.</p></div></section>
@@ -310,7 +311,7 @@ export default function ProjectsPage({detail,onExhibit,catalog,onCatalogChange,s
  },[detail,sharedReduced]);
  const filtered=projects.filter(item=>(category==='All'||item.category===category)&&[item.title,item.course,item.summary,...item.topics].join(' ').toLowerCase().includes(query.toLowerCase()));
 function link(href){if(href.startsWith('exhibit:')){onExhibit(href.slice(8));}}
-return <main ref={pageRef} className="projects-page"><PortfolioHeader onExhibit={onExhibit} onCV={()=>setDialog('cv')} current={detail?'projects/'+detail:'projects'}/>{detail?project?project.id==='motor'?<MotorProjectDetail onExhibit={onExhibit}/>:project.id==='gimbal'?<GimbalProjectDetail onExhibit={onExhibit}/>:project.id==='bms'?<BMSProjectDetail onExhibit={onExhibit}/>:project.id==='zumo'?<ZumoProjectDetail onExhibit={onExhibit}/>:project.id==='power-tool'?<PowerToolProjectDetail onExhibit={onExhibit}/>:project.id==='pv-design'?<PVDesignProjectDetail onExhibit={onExhibit}/>:project.id==='wind-study'?<WindStudyProjectDetail onExhibit={onExhibit}/>:
+return <main ref={pageRef} className="projects-page"><PortfolioHeader onExhibit={onExhibit} onCV={()=>setDialog('cv')} current={detail?'projects/'+detail:'projects'}/>{detail?project?project.id==='motor'?<MotorProjectDetail onExhibit={onExhibit} reduced={sharedReduced}/>:project.id==='gimbal'?<GimbalProjectDetail onExhibit={onExhibit} reduced={sharedReduced}/>:project.id==='bms'?<BMSProjectDetail onExhibit={onExhibit} reduced={sharedReduced}/>:project.id==='zumo'?<ZumoProjectDetail onExhibit={onExhibit} reduced={sharedReduced}/>:project.id==='power-tool'?<PowerToolProjectDetail onExhibit={onExhibit}/>:project.id==='pv-design'?<PVDesignProjectDetail onExhibit={onExhibit}/>:project.id==='wind-study'?<WindStudyProjectDetail onExhibit={onExhibit}/>:
 project.id==='tweet-classifier'?<TweetClassifierProjectDetail onExhibit={onExhibit}/>:
 project.id==='plc-sequences'?<PLCSequencesProjectDetail onExhibit={onExhibit}/>:
 project.id==='circuit-labs'?<CircuitLabsProjectDetail onExhibit={onExhibit}/>:

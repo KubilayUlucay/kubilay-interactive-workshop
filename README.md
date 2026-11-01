@@ -10,7 +10,7 @@ Branch `design/portfolio-identity-2026-10-30` is a separate design copy, not a p
 
 In the current local workspace, the original runs from `workshop-source` at http://127.0.0.1:4173/ and this copy runs from `workshop-redesign` at http://127.0.0.1:4174/. The folders and installed dependencies are independent. Run this copy with `npm run dev -- --host 127.0.0.1 --port 4174 --strictPort`.
 
-This pass updates the engineer's identity, project hierarchy, evidence order, reading sizes and catalog return state. The original reports, simulation logic, lockfile and hosting identity remain unchanged. The downloadable CV remains the original PDF; the web CV corrects project terminology and research scope.
+This pass updates the engineer's identity, project hierarchy, evidence order, reading sizes and catalog return state. The original reports, lockfile and hosting identity remain unchanged. The downloadable CV remains the original PDF; the web CV corrects project terminology and research scope.
 
 ### Motion checkpoint
 
@@ -24,11 +24,29 @@ The four photographed builds in the project catalog share their image into the m
 
 The combined About view now includes the selected kinetic-word study: BUILD, ADAPT, BALANCE and SCAN respond to project hover, keyboard focus or the selection buttons, with a short factual explanation. The name reveal and reflection-free image response remain, the four shortcuts still open their exhibits, and reduced motion makes word changes immediate. The unselected story strip and rejected decorative backgrounds are not part of the website.
 
+The four See the real build buttons now carry the approved custom motor, gimbal, cell and Zumo icons to the right of the unchanged label. Hover and keyboard focus preview their mechanisms in fixed-size slots. Clicking plays a one-second sequence before opening the existing technical case study; the cell charges before jumping, and Zumo departs outward from the label. Reduced motion navigates immediately, and leaving an exhibit cancels its pending navigation. Original evidence remains unchanged; the later Motor controller feedback is described below.
+
+The matching Open Motor/Gimbal/BMS/Zumo exhibit buttons on the technical case studies now reuse those icons and the same one-second gesture, with immediate navigation for reduced motion. BMS uses a closer camera for a larger hardware view; its geometry and simulation remain unchanged. Shared charcoal page and panel colours are one shade lighter, with Motor's fog and lower fade matched to the page. Copper/sage accents and the original photographs retain their colours.
+
+Small section labels and project names across the site use the existing DM Sans at semibold weight. The About project selector, photograph captions and exhibit navigation share this treatment. Code blocks, technical readouts and navigation numbers retain their original fonts; label wording, colours and responsive sizes are unchanged.
+
+Image mats in About, Projects and case-study galleries are transparent. Photographs, diagrams and white paper backgrounds inside the original files are not modified; the layouts retain their uncropped contain or existing cover behaviour.
+
+The About photographs have larger viewports on desktop and taller phone tiles while keeping the full builds visible. The shared image inspector opens in a native modal outside the gallery layout, so thumbnail sizing cannot constrain it. Images initially fit the available space; Zoom in/out, Fit and native scrolling expose detail. Escape and Close restore focus to the originating image, and the page is not scrollable behind the modal. The existing About image links still open their exhibits.
+
+### Controller-powered Motor
+
+The Motor scene follows the owner's clarified topology: a potentiometer and ESP32 on a separate copper-board controller send the command wirelessly to a second ESP32 on the motor side. The receiver controls the ESC between the generic DC supply and motor; the handheld controller has no external power or motor cables. The 3D potentiometer can be turned directly and shares its value with the accessible command slider. Inspection, orbit mode and dialogs disable knob manipulation, and pointer release or loss of focus cancels its drag. Clicking the 3D supply or its front rocker toggles the same power state as the retained dock Power button. Inspection, orbit mode and dialogs disable the 3D switch; inspection, reset, losing window focus or opening a dialog disconnects the drive. Reduced motion preserves command feedback without continuous rotor movement. No RF protocol, supply voltage, measured RPM, torque or efficiency is inferred.
+
+The wireless controller occupies its own lower-left foreground area, separate from the motor silhouette and the bio text. A more compact visible board keeps the motor primary while a generous invisible potentiometer target preserves usability. The board faces the viewer with responsive placement and no floating caption; its drag plane follows the board's tilt and scale. The ESC uses a slim heat-shrink sleeve, neutral brushless label, red/black battery pair, three black phase leads and a separate receiver signal cable. Its visual form references the manufacturer's [Skywalker ESC photographs](https://www.hobbywingdirect.com/products/skywalker-esc); no branding, current rating or exact project ESC model is inferred.
+
+The transparent canvas spans the full Motor page, with only local contact shadows below the hardware. The opaque floor and dock shadow were removed so the scene meets the shared page background without rectangular boundaries. Original motor geometry, photographs, video and reports are retained; the existing Nano photograph is labelled as archived material, not documentation of the ESP32 controller. The other exhibits' simulation logic is unchanged.
+
 ### About-first and single-view workshop
 
 The default route now opens an About home with the engineer's identity, current role, contact/CV and four real-image exhibit links. Direct links to `#/motor`, `#/gimbal`, `#/bms` and `#/zumo` remain available. The shared brand and About navigation return home.
 
-Gimbal, BMS and Zumo use a viewport-height desktop composition from 1000px wide and 620px high, keeping scene, readings and controls together. Smaller windows and zoomed/mobile layouts retain readable reflow instead of clipping controls. Motor's scene layout and all simulation algorithms are unchanged. Each exhibit's See the real build action navigates to its existing project page; Zumo's detailed evidence and original report/presentation links live there, while firmware remains available from its dock.
+Gimbal, BMS and Zumo use a viewport-height desktop composition from 1000px wide and 620px high, keeping scene, readings and controls together. Smaller windows and zoomed/mobile layouts retain readable reflow instead of clipping controls. Motor retains its accepted rotor, winding and inspection geometry with the controller-powered arrangement described above. Each exhibit's See the real build action navigates to its existing project page; Zumo's detailed evidence and original report/presentation links live there, while firmware remains available from its dock.
 
 Design references: [homepage identity and meaningful content](https://www.nngroup.com/articles/top-ten-guidelines-for-homepage-usability/), [height and text-size accessibility](https://developer.mozilla.org/en-US/docs/Web/CSS/height), and [W3C reflow guidance](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html).
 
