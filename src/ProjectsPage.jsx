@@ -2,6 +2,7 @@ import {useEffect,useRef,useState} from 'react';
 import {ArrowUpRight,X} from 'lucide-react';
 import {Dialog} from './App';
 import projects from './projectCatalog.json';
+import projectEvidence from './projectEvidence.json';
 import ZoomImage from './ZoomImage';
 import PortfolioHeader from './PortfolioHeader';
 import RealBuildButton from './RealBuildButton';
@@ -93,7 +94,7 @@ function GimbalProjectDetail({onExhibit,reduced}){
  </article>;
 }
 const BMS_REPORTS={
- ee401:{label:'Senior Project 1 · Research (EE401)',description:'Fall 2024 · Research and proposal report.',parts:['/projects/bms/SeniorYearProject1.pdf.part-00','/projects/bms/SeniorYearProject1.pdf.part-01','/projects/bms/SeniorYearProject1.pdf.part-02','/projects/bms/SeniorYearProject1.pdf.part-03'],size:35194729,download:'Senior-Project-1-Research-EE401.pdf'},
+ ee401:{...projectEvidence['bms-research'],label:'Senior Project 1 · Research (EE401)',description:'Fall 2024 · Research and proposal report.',download:'Senior-Project-1-Research-EE401.pdf'},
  ee402:{label:'Senior Project 2 · Implementation (EE402)',description:'Spring 2025 · Build and implementation report.',src:'/projects/bms/SeniorYearProject2.pdf',download:'Senior-Project-2-Implementation-EE402.pdf'}
 };
 function BMSProjectDetail({onExhibit,reduced}){
@@ -112,6 +113,8 @@ function BMSProjectDetail({onExhibit,reduced}){
     const prefix=new Uint8Array(buffers[0]).subarray(0,4);
     if(size!==BMS_REPORTS.ee401.size||String.fromCharCode(...prefix)!=='%PDF')throw new Error('PDF segments failed size/header verification');
     const file=new Blob(buffers,{type:'application/pdf'});
+    const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',await file.arrayBuffer())),value=>value.toString(16).padStart(2,'0')).join('');
+    if(hash!==BMS_REPORTS.ee401.sha256)throw new Error('PDF segments failed SHA-256 verification');
     objectUrl=URL.createObjectURL(file);
     if(!active){URL.revokeObjectURL(objectUrl);return;}
     setEe401Viewer({url:objectUrl,loading:false,error:null});

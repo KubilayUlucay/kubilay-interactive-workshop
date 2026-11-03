@@ -1,0 +1,499 @@
+{
+  "pv-design": {
+    "pages": 11,
+    "size": 3028004,
+    "sha256": "86e3fc192e43f06dd7b792a3430556629bbc1bf73d148c0cb40a8e41e38e4f8d",
+    "src": "/projects/coursework/pv-complete.pdf",
+    "figures": [
+      {
+        "src": "/projects/figures/pv-design-report.png",
+        "page": 8,
+        "width": 732,
+        "height": 359
+      }
+    ],
+    "redacted": false
+  },
+  "circuit-labs": {
+    "lab02": {
+      "pages": 11,
+      "size": 1248927,
+      "sha256": "b37d24bdcdd1df8289cd8c345a86f2c845cd4b7ffe82d294ab8574e5a47152a2",
+      "src": "/projects/circuits/complete/lab02.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/circuit-labs-lab02.png",
+          "page": 10,
+          "width": 520,
+          "height": 325,
+          "caption": "Two-source network",
+          "description": "The resistor network used to compare source contributions and equivalent circuits."
+        }
+      ],
+      "redacted": true
+    },
+    "lab03": {
+      "pages": 14,
+      "size": 1405646,
+      "sha256": "ef14c7adb33751153181ac10b6e3d2d18ffe48b81512227ccbefa93f0dbdec8c",
+      "src": "/projects/circuits/complete/lab03.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/circuit-labs-lab03.png",
+          "page": 12,
+          "width": 701,
+          "height": 313,
+          "caption": "LM741 amplifier model",
+          "description": "CircuitLab schematic and operating-point readouts for the op-amp circuit."
+        }
+      ],
+      "redacted": true
+    },
+    "lab04": {
+      "pages": 13,
+      "size": 38777766,
+      "sha256": "671ad89c6838ed9b6b968c9bc8c035e03c5e634fd99e5a039e998d23649b4626",
+      "parts": [
+        "/projects/circuits/complete/lab04.pdf.part-00",
+        "/projects/circuits/complete/lab04.pdf.part-01",
+        "/projects/circuits/complete/lab04.pdf.part-02",
+        "/projects/circuits/complete/lab04.pdf.part-03",
+        "/projects/circuits/complete/lab04.pdf.part-04"
+      ],
+      "figures": [
+        {
+          "src": "/projects/figures/circuit-labs-lab04.png",
+          "page": 5,
+          "width": 597,
+          "height": 494,
+          "caption": "Simulated circuit traces",
+          "description": "Input and output plots from the integrator/differentiator investigation."
+        }
+      ],
+      "redacted": true
+    },
+    "lab05": {
+      "pages": 8,
+      "size": 5103276,
+      "sha256": "1ded16f19cd8192ad732f5f6c098fc7bf6deb87045e1d8b6bf4c5ab6ac57bbff",
+      "src": "/projects/circuits/complete/lab05.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/circuit-labs-lab05.png",
+          "page": 3,
+          "width": 424,
+          "height": 331,
+          "caption": "555 timer connections",
+          "description": "The hand-drawn timing circuit links its resistor-capacitor network to the LED output."
+        }
+      ],
+      "redacted": true
+    },
+    "lab06": {
+      "pages": 6,
+      "size": 2429445,
+      "sha256": "b6cfab0bf8db43ebcfd1c4862b027916b2b2cddf789ec6df5de028547cd1a6d5",
+      "src": "/projects/circuits/complete/lab06.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/circuit-labs-lab06.png",
+          "page": 5,
+          "width": 277,
+          "height": 207,
+          "caption": "Generator and circuit response",
+          "description": "Two oscilloscope channels recording the drive waveform and circuit response."
+        }
+      ],
+      "redacted": true
+    },
+    "lab01": {
+      "pages": 12,
+      "size": 614539,
+      "sha256": "2379f050a351ccd5de4068765611f479574120b5772b0d865b17ce24ad73fdf3",
+      "src": "/projects/circuits/complete/lab01.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/circuit-labs-lab01.png",
+          "page": 3,
+          "width": 529,
+          "height": 320,
+          "caption": "Currents in the resistor network",
+          "description": "Annotated branch-current directions used to set up Kirchhoff equations."
+        }
+      ],
+      "redacted": true
+    }
+  },
+  "electronics-labs": {
+    "lab01": {
+      "pages": 8,
+      "size": 1003188,
+      "sha256": "04a0d2f863725ac479913ca61871fe151823a4fa66bc1d759d216566f4a338c8",
+      "src": "/projects/electronics/complete/lab01.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/electronics-labs-lab01.png",
+          "page": 4,
+          "width": 778,
+          "height": 319,
+          "caption": "Diode measurements at the bench",
+          "description": "Breadboard connections and component measurements from the diode exercise."
+        }
+      ],
+      "redacted": true
+    },
+    "lab03": {
+      "pages": 7,
+      "size": 547595,
+      "sha256": "45cd3ebdd9cca58d289460290c651e50bd5d03c2fd938dd1ddf4dd5b0af6f4a7",
+      "src": "/projects/electronics/complete/lab03.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/electronics-labs-lab03.png",
+          "page": 4,
+          "width": 300,
+          "height": 343,
+          "caption": "Transistor-bias measurement",
+          "description": "Bench instrument readout recorded during the BJT bias investigation."
+        }
+      ],
+      "redacted": true
+    },
+    "lab04": {
+      "pages": 6,
+      "size": 635554,
+      "sha256": "e2446cc13a8b776b119c283b80cc03bae15d599d045f4947f77d53edfeb0c4c2",
+      "src": "/projects/electronics/complete/lab04.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/electronics-labs-lab04.png",
+          "page": 3,
+          "width": 799,
+          "height": 292,
+          "caption": "MOSFET circuit and bench setup",
+          "description": "Circuit wiring and a recorded bench view from the MOSFET exercise."
+        }
+      ],
+      "redacted": true
+    },
+    "lab05": {
+      "pages": 5,
+      "size": 836000,
+      "sha256": "2af3a8ceadce7384c6f6231f26a2c2b134368f923cef8459ef102cb4175d83bf",
+      "src": "/projects/electronics/complete/lab05.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/electronics-labs-lab05.png",
+          "page": 4,
+          "width": 561,
+          "height": 422,
+          "caption": "Signal-generator display",
+          "description": "Signal-generator screen showing sine-wave frequency, amplitude, phase and DC-offset settings."
+        }
+      ],
+      "redacted": false
+    }
+  },
+  "mechatronics-labs": {
+    "lab01": {
+      "pages": 6,
+      "size": 1440956,
+      "sha256": "e1eb35b1a0b1d092287aea78d4a052553e0202322ca23ad956c49347611c52bf",
+      "src": "/projects/mechatronics/complete/lab01.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/mechatronics-labs-lab01.png",
+          "page": 4,
+          "width": 373,
+          "height": 282,
+          "caption": "Breadboard voltage measurement",
+          "description": "A multimeter measures the resistor-network setup used in the introductory bench exercise."
+        }
+      ],
+      "redacted": true
+    },
+    "lab02": {
+      "pages": 10,
+      "size": 7913407,
+      "sha256": "ec7abff13f36f00eadf171f90e3366fd6b4701a9903ee08710ed67cea38a3d69",
+      "src": "/projects/mechatronics/complete/lab02.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/mechatronics-labs-lab02.png",
+          "page": 8,
+          "width": 524,
+          "height": 393,
+          "caption": "Reflectance-sensor breadboard",
+          "description": "The sensor and Arduino wiring used to observe changes in reflected infrared light."
+        }
+      ],
+      "redacted": true
+    },
+    "lab03": {
+      "pages": 6,
+      "size": 2220113,
+      "sha256": "41b1e5336a9d129155b1c35f18eecd29f9a74392dc62f197af8759487ad5cd88",
+      "src": "/projects/mechatronics/complete/lab03.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/mechatronics-labs-lab03.png",
+          "page": 6,
+          "width": 542,
+          "height": 413,
+          "caption": "Timing-circuit waveform",
+          "description": "An oscilloscope capture from the transistor-switching and oscillator exercises."
+        }
+      ],
+      "redacted": true
+    },
+    "lab04": {
+      "pages": 7,
+      "size": 1054701,
+      "sha256": "03bc0e0d3a36364f938adf209110feff314def5126f21ced693c763731fab687",
+      "src": "/projects/mechatronics/complete/lab04.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/mechatronics-labs-lab04.png",
+          "page": 3,
+          "width": 483,
+          "height": 364,
+          "caption": "Button input on the breadboard",
+          "description": "Arduino, LED and pushbutton wiring used to observe contact bounce."
+        }
+      ],
+      "redacted": true
+    },
+    "lab05": {
+      "pages": 8,
+      "size": 2316910,
+      "sha256": "64273b7473d4e6679aadb9acc0ba62ad140c1ed74fea819446fde1602418ac69",
+      "src": "/projects/mechatronics/complete/lab05.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/mechatronics-labs-lab05.png",
+          "page": 6,
+          "width": 429,
+          "height": 322,
+          "caption": "Input and amplified output",
+          "description": "Oscilloscope channels compare the driven op-amp input with its output waveform."
+        }
+      ],
+      "redacted": true
+    },
+    "lab06": {
+      "pages": 6,
+      "size": 1526132,
+      "sha256": "ab41d78daa803b2645f01ac56018db8e47dcaa62d4fffa515f50c9f0a5d624d1",
+      "src": "/projects/mechatronics/complete/lab06.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/mechatronics-labs-lab06.png",
+          "page": 5,
+          "width": 373,
+          "height": 373,
+          "caption": "Two-board I2C connection",
+          "description": "The two Arduino boards and breadboard used for the button-to-LED communication task."
+        }
+      ],
+      "redacted": true
+    },
+    "lab07": {
+      "pages": 5,
+      "size": 11263647,
+      "sha256": "35891e4fd9030c2c15312d051f6fff4338e0164f542f836603ea6250f668c45b",
+      "src": "/projects/mechatronics/complete/lab07.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/mechatronics-labs-lab07.png",
+          "page": 3,
+          "width": 261,
+          "height": 262,
+          "caption": "Motor and encoder connections",
+          "description": "The Arduino reads encoder pulses from the wired motor setup."
+        }
+      ],
+      "redacted": true
+    },
+    "lab08": {
+      "pages": 5,
+      "size": 1053782,
+      "sha256": "d71cad868da94dde6d92271851ea118c7bb85f30258f275609b6847b04a03039",
+      "src": "/projects/mechatronics/complete/lab08.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/mechatronics-labs-lab08.png",
+          "page": 3,
+          "width": 393,
+          "height": 296,
+          "caption": "L298N motor-drive setup",
+          "description": "The driver board connects the Arduino control signals to the DC motor."
+        }
+      ],
+      "redacted": true
+    },
+    "lab09": {
+      "pages": 7,
+      "size": 1227308,
+      "sha256": "e8ff30ff4de0423f79eed171b5d24e8b50d82e0c0be35d5e5b699ac08fa6a8c3",
+      "src": "/projects/mechatronics/complete/lab09.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/mechatronics-labs-lab09.png",
+          "page": 3,
+          "width": 393,
+          "height": 293,
+          "caption": "Motor-feedback waveforms",
+          "description": "Two recorded oscilloscope channels from the motor-control experiment."
+        }
+      ],
+      "redacted": true
+    }
+  },
+  "communications-labs": {
+    "fourier": {
+      "pages": 2,
+      "size": 352950,
+      "sha256": "52d723532cf8576d3b71df84b7a33f9bc94ac58f2d6b882162e14f1897cad59d",
+      "src": "/projects/communications/complete/fourier.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/communications-labs-fourier.png",
+          "page": 2,
+          "width": 566,
+          "height": 204,
+          "caption": "Fourier displays and LabVIEW wiring",
+          "description": "The front panel shows signal plots beside the block-diagram processing chain."
+        }
+      ],
+      "redacted": false
+    },
+    "sampling": {
+      "pages": 7,
+      "size": 1449999,
+      "sha256": "6bf07d47709d433668b1c92792247d1fd6437d424cf3665f002c1378e5406217",
+      "src": "/projects/communications/complete/sampling.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/communications-labs-sampling.png",
+          "page": 7,
+          "width": 910,
+          "height": 700,
+          "caption": "Audio sampling and spectrum display",
+          "description": "Sample settings, an audio waveform and its power spectrum in the LabVIEW front panel."
+        }
+      ],
+      "redacted": true
+    },
+    "audio": {
+      "pages": 6,
+      "size": 1065492,
+      "sha256": "2983b5355225a8e38a9412df82c5ce22d76c9f522c37c04a3cb4c8c6520a78e0",
+      "src": "/projects/communications/complete/audio.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/communications-labs-audio.png",
+          "page": 6,
+          "width": 866,
+          "height": 380,
+          "caption": "Queued audio acquisition and playback",
+          "description": "The audio traces sit beside the LabVIEW block diagram for the queued workflow."
+        }
+      ],
+      "redacted": true
+    },
+    "dsb-preparation": {
+      "pages": 9,
+      "size": 842184,
+      "sha256": "2d165854e7dc3cd892e983852c289413db87c85c6b70607624739f6c17f21eca",
+      "src": "/projects/communications/complete/dsb-preparation.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/communications-labs-dsb-preparation.png",
+          "page": 5,
+          "width": 813,
+          "height": 652,
+          "caption": "Modulation and coherent demodulation",
+          "description": "Handwritten signal-flow sketches connect carrier multiplication with the recovered signal."
+        }
+      ],
+      "redacted": true
+    },
+    "dsb-transmitter": {
+      "pages": 7,
+      "size": 652390,
+      "sha256": "b70ee29e33c512e83db678d6e18ba6a72e17967afd7f0698dc3f390c85f53da7",
+      "src": "/projects/communications/complete/dsb-transmitter.pdf",
+      "figures": [
+        {
+          "src": "/projects/figures/communications-labs-dsb-transmitter.png",
+          "page": 7,
+          "width": 889,
+          "height": 900,
+          "caption": "Transmission and audio readouts",
+          "description": "The LabVIEW front panel combines transmitter settings with waveform and spectrum displays."
+        }
+      ],
+      "redacted": true
+    }
+  },
+  "plc-sequences": {
+    "figures": {
+      "traffic-hmi": {
+        "src": "/projects/figures/plc-traffic-hmi.png",
+        "page": 4,
+        "width": 941,
+        "height": 369
+      },
+      "claw-sequence": {
+        "src": "/projects/figures/plc-claw-sequence.png",
+        "page": 7,
+        "width": 920,
+        "height": 553
+      },
+      "claw-hmi": {
+        "src": "/projects/figures/plc-claw-hmi.png",
+        "page": 9,
+        "width": 494,
+        "height": 782
+      },
+      "state-table": {
+        "src": "/projects/figures/plc-state-table.png",
+        "page": 11,
+        "width": 571,
+        "height": 225
+      }
+    }
+  },
+  "wind-study": {
+    "figures": [
+      {
+        "src": "/projects/figures/wind-study-report.png",
+        "page": 27,
+        "width": 818,
+        "height": 598
+      }
+    ]
+  },
+  "tweet-classifier": {
+    "figures": [
+      {
+        "src": "/projects/figures/tweet-classifier-report.png",
+        "page": 2,
+        "width": 339,
+        "height": 310
+      }
+    ]
+  },
+  "bms-research": {
+    "pages": 80,
+    "size": 35290347,
+    "sha256": "6843e7864fee88eac7909fa43fe29621702602e9704011a518de80a4f465292d",
+    "redacted": true,
+    "parts": [
+      "/projects/bms/SeniorYearProject1.pdf.part-00",
+      "/projects/bms/SeniorYearProject1.pdf.part-01",
+      "/projects/bms/SeniorYearProject1.pdf.part-02",
+      "/projects/bms/SeniorYearProject1.pdf.part-03"
+    ]
+  }
+}

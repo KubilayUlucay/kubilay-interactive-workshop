@@ -10,7 +10,7 @@ Branch `design/portfolio-identity-2026-10-30` is a separate design copy, not a p
 
 In the current local workspace, the original runs from `workshop-source` at http://127.0.0.1:4173/ and this copy runs from `workshop-redesign` at http://127.0.0.1:4174/. The folders and installed dependencies are independent. Run this copy with `npm run dev -- --host 127.0.0.1 --port 4174 --strictPort`.
 
-This pass updates the engineer's identity, project hierarchy, evidence order, reading sizes and catalog return state. The original reports, lockfile and hosting identity remain unchanged. The downloadable CV remains the original PDF; the web CV corrects project terminology and research scope.
+This pass updates the engineer's identity, project hierarchy, evidence order, reading sizes and catalog return state. Original report sources are preserved privately; public report copies are privacy-reviewed. The lockfile and hosting identity remain unchanged. The downloadable CV remains the original PDF; the web CV corrects project terminology and research scope.
 
 ### Motion checkpoint
 
@@ -58,6 +58,14 @@ Four interactive exhibits: Motor, Gimbal, BMS and Zumo. Updated detail pages inc
 
 The procedural exhibits are explanatory geometry, not measured CAD or validated physical simulations. Keep original media, team credits and the distinction between plans, simulation and physical results.
 
+## Report privacy
+
+The 3 November 2026 privacy pass checked all 63 public project PDFs, including unlinked report copies and reconstructed segmented documents. Twenty-eight reports required redaction of student identifiers or email addresses. Redaction removes the underlying PDF content, identifying links and metadata, not just its visible appearance. Author/team names, technical text, page counts and page sizes are retained. Every changed report was compared with its original for text equality outside identifiers and rendered-pixel equality outside redaction regions.
+
+Untouched original bytes and SHA-256 receipts are stored outside the application repository and build output, in the workspace's private `.backups/report-privacy-2026-11-03/` folder. Do not copy this folder into `public`, `dist` or a source upload. The original EE401 Git blob hash remains private provenance; public integrity checks deliberately use the reviewed redacted hash instead.
+
+`src/publicReportPrivacy.json` pins the reviewed report inventory and file/reconstructed SHA-256 hashes. The existing predev/prebuild script rejects changed or unreviewed PDFs and stale viewer metadata. Report editing uses the local PyMuPDF preparation utility; ordinary website builds still require only Node/npm. Regenerating lab reports now redacts identifying content before writing public files. Re-review changed PDFs and refresh the approved fingerprints before publishing. The CV's intended public contact details are outside this report-only pass.
+
 ## Run locally
 
 Use Node.js 20.19+ or 22.12+ (or newer supported versions) and npm:
@@ -69,7 +77,7 @@ npm run build
 npm run preview
 ```
 
-`bash scripts/codex-setup.sh` performs the locked installation and build. Output is `dist/`. No environment secrets are required. The prebuild checks the four EE401 PDF segments against the original Git blob; preserve all four segments and the lazy PDF loading implementation. The report was repartitioned for the GitHub connector's 16 MiB request limit; its reconstructed bytes and original hash are unchanged.
+`bash scripts/codex-setup.sh` performs the locked installation and build. Output is `dist/`. No environment secrets are required. Predev and prebuild verify the reviewed public PDF inventory and SHA-256 fingerprints, including all four EE401 segments. Preserve segmented delivery, integrity verification and lazy loading; do not restore identifying original bytes to public assets.
 
 ## Continue with Copilot
 
@@ -79,4 +87,4 @@ Open this branch in VS Code and paste:
 
 No next project page has been selected after PV. Historical `docs/` and review tooling inherited from the old GitHub baseline describe older versions and are not a current task list. New private review logs, browser state and unfinished drafts were excluded from this migration.
 
-The application and required assets retain the version 23 source, with one transfer adaptation: the EE401 report uses four segments rather than two, with matching loader paths and the original integrity hash. GitHub may retain older unused assets and historical documentation. This source upload does not deploy the Site or enable GitHub Pages. `.openai/hosting.json` identifies the existing Site; keep it intact.
+The application and required assets derive from the version 23 source. EE401 uses four segments rather than two, with matching loader paths; the later privacy pass updates public report bytes and their integrity fingerprints while preserving originals privately. GitHub may retain older unused assets and historical documentation. Local redaction does not remove existing copies from Git history or older hosting deployments. This source upload does not deploy the Site or enable GitHub Pages. `.openai/hosting.json` identifies the existing Site; keep it intact.
