@@ -17,292 +17,6 @@
     {
       "files": [
         {
-          "path": "projects/circuits/complete/lab01.pdf",
-          "size": 614539,
-          "sha256": "2379f050a351ccd5de4068765611f479574120b5772b0d865b17ce24ad73fdf3"
-        }
-      ],
-      "pages": 12,
-      "size": 614539,
-      "sha256": "2379f050a351ccd5de4068765611f479574120b5772b0d865b17ce24ad73fdf3",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/circuits/complete/lab02.pdf",
-          "size": 1248927,
-          "sha256": "b37d24bdcdd1df8289cd8c345a86f2c845cd4b7ffe82d294ab8574e5a47152a2"
-        }
-      ],
-      "pages": 11,
-      "size": 1248927,
-      "sha256": "b37d24bdcdd1df8289cd8c345a86f2c845cd4b7ffe82d294ab8574e5a47152a2",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/circuits/complete/lab03.pdf",
-          "size": 1405646,
-          "sha256": "ef14c7adb33751153181ac10b6e3d2d18ffe48b81512227ccbefa93f0dbdec8c"
-        }
-      ],
-      "pages": 14,
-      "size": 1405646,
-      "sha256": "ef14c7adb33751153181ac10b6e3d2d18ffe48b81512227ccbefa93f0dbdec8c",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/circuits/complete/lab05.pdf",
-          "size": 5103276,
-          "sha256": "1ded16f19cd8192ad732f5f6c098fc7bf6deb87045e1d8b6bf4c5ab6ac57bbff"
-        }
-      ],
-      "pages": 8,
-      "size": 5103276,
-      "sha256": "1ded16f19cd8192ad732f5f6c098fc7bf6deb87045e1d8b6bf4c5ab6ac57bbff",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/circuits/complete/lab06.pdf",
-          "size": 2429445,
-          "sha256": "b6cfab0bf8db43ebcfd1c4862b027916b2b2cddf789ec6df5de028547cd1a6d5"
-        }
-      ],
-      "pages": 6,
-      "size": 2429445,
-      "sha256": "b6cfab0bf8db43ebcfd1c4862b027916b2b2cddf789ec6df5de028547cd1a6d5",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/circuits/lab-01-kcl-kvl.pdf",
-          "size": 557292,
-          "sha256": "cfe4277f91637e76a2dbdbba7eb6f5416884d56c325701768b2693e71c703730"
-        }
-      ],
-      "pages": 11,
-      "size": 557292,
-      "sha256": "cfe4277f91637e76a2dbdbba7eb6f5416884d56c325701768b2693e71c703730",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/circuits/lab-02-network-theorems.pdf",
-          "size": 1180937,
-          "sha256": "e1152b192bb64143c782a73bbd9c64f33dd0b6f0c3b919c2fe35ea07b908ad01"
-        }
-      ],
-      "pages": 10,
-      "size": 1180937,
-      "sha256": "e1152b192bb64143c782a73bbd9c64f33dd0b6f0c3b919c2fe35ea07b908ad01",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/circuits/lab-03-op-amp-gain.pdf",
-          "size": 1334269,
-          "sha256": "bd99828ef9e0e08bd8d643465a36a5ee2a2fe2e5fb85ae0c139805bbda58f293"
-        }
-      ],
-      "pages": 13,
-      "size": 1334269,
-      "sha256": "bd99828ef9e0e08bd8d643465a36a5ee2a2fe2e5fb85ae0c139805bbda58f293",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/circuits/lab-04-differentiators.pdf",
-          "size": 19551034,
-          "sha256": "be310cb67b3254514096b410bb50c755a6a7f1dcae7fc2f49f87d0b9a96aa54c"
-        }
-      ],
-      "pages": 4,
-      "size": 19551034,
-      "sha256": "be310cb67b3254514096b410bb50c755a6a7f1dcae7fc2f49f87d0b9a96aa54c",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/circuits/lab-04-integrators.pdf",
-          "size": 19210325,
-          "sha256": "467bd0e4cd723ed7e8e7358f0e4920ab982f1f7d112e88ad97e387d86fdf10e3"
-        }
-      ],
-      "pages": 8,
-      "size": 19210325,
-      "sha256": "467bd0e4cd723ed7e8e7358f0e4920ab982f1f7d112e88ad97e387d86fdf10e3",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/circuits/lab-05-rc-555.pdf",
-          "size": 5039201,
-          "sha256": "f4660bc90f45efd9b3863adfb4d8cf6cdd64aaf4362364187f4d5b2ed640f1d2"
-        }
-      ],
-      "pages": 7,
-      "size": 5039201,
-      "sha256": "f4660bc90f45efd9b3863adfb4d8cf6cdd64aaf4362364187f4d5b2ed640f1d2",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/circuits/lab-06-rl-lc.pdf",
-          "size": 2365392,
-          "sha256": "792c79578898890945219d7a887588f19ae9fcc26f5f17608749c0dfb8712de6"
-        }
-      ],
-      "pages": 5,
-      "size": 2365392,
-      "sha256": "792c79578898890945219d7a887588f19ae9fcc26f5f17608749c0dfb8712de6",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/communications/complete/audio.pdf",
-          "size": 1065492,
-          "sha256": "2983b5355225a8e38a9412df82c5ce22d76c9f522c37c04a3cb4c8c6520a78e0"
-        }
-      ],
-      "pages": 6,
-      "size": 1065492,
-      "sha256": "2983b5355225a8e38a9412df82c5ce22d76c9f522c37c04a3cb4c8c6520a78e0",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/communications/complete/dsb-preparation.pdf",
-          "size": 842184,
-          "sha256": "2d165854e7dc3cd892e983852c289413db87c85c6b70607624739f6c17f21eca"
-        }
-      ],
-      "pages": 9,
-      "size": 842184,
-      "sha256": "2d165854e7dc3cd892e983852c289413db87c85c6b70607624739f6c17f21eca",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/communications/complete/dsb-transmitter.pdf",
-          "size": 652390,
-          "sha256": "b70ee29e33c512e83db678d6e18ba6a72e17967afd7f0698dc3f390c85f53da7"
-        }
-      ],
-      "pages": 7,
-      "size": 652390,
-      "sha256": "b70ee29e33c512e83db678d6e18ba6a72e17967afd7f0698dc3f390c85f53da7",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/communications/complete/fourier.pdf",
-          "size": 352950,
-          "sha256": "52d723532cf8576d3b71df84b7a33f9bc94ac58f2d6b882162e14f1897cad59d"
-        }
-      ],
-      "pages": 2,
-      "size": 352950,
-      "sha256": "52d723532cf8576d3b71df84b7a33f9bc94ac58f2d6b882162e14f1897cad59d",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/communications/complete/sampling.pdf",
-          "size": 1449999,
-          "sha256": "6bf07d47709d433668b1c92792247d1fd6437d424cf3665f002c1378e5406217"
-        }
-      ],
-      "pages": 7,
-      "size": 1449999,
-      "sha256": "6bf07d47709d433668b1c92792247d1fd6437d424cf3665f002c1378e5406217",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/communications/lab-01-fourier-fft.pdf",
-          "size": 352950,
-          "sha256": "52d723532cf8576d3b71df84b7a33f9bc94ac58f2d6b882162e14f1897cad59d"
-        }
-      ],
-      "pages": 2,
-      "size": 352950,
-      "sha256": "52d723532cf8576d3b71df84b7a33f9bc94ac58f2d6b882162e14f1897cad59d",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/communications/lab-02-sampling-quantization.pdf",
-          "size": 1241755,
-          "sha256": "bc32f1c0320c7e2622f49de671677a805d08595e9791266b699b66e40787d013"
-        }
-      ],
-      "pages": 6,
-      "size": 1241755,
-      "sha256": "bc32f1c0320c7e2622f49de671677a805d08595e9791266b699b66e40787d013",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/communications/lab-03-audio-synchronization.pdf",
-          "size": 942313,
-          "sha256": "6dba6c9d7856a58572e0cbbe6b447a68e12898c9c496fa4c1cbbf7064c892743"
-        }
-      ],
-      "pages": 5,
-      "size": 942313,
-      "sha256": "6dba6c9d7856a58572e0cbbe6b447a68e12898c9c496fa4c1cbbf7064c892743",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/communications/lab-04-dsb-sc-noise.pdf",
-          "size": 732473,
-          "sha256": "02de8d2ab9b53e1ab0e9eb9e4f2eb19c23240b8c73ea74e9bfb0ef728e067b2b"
-        }
-      ],
-      "pages": 8,
-      "size": 732473,
-      "sha256": "02de8d2ab9b53e1ab0e9eb9e4f2eb19c23240b8c73ea74e9bfb0ef728e067b2b",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/communications/lab-05-dsb-sc-transmitter.pdf",
-          "size": 527671,
-          "sha256": "13e062c207c37b245a9a50d045fca67305f93ccc20dd2193716f981cabd03114"
-        }
-      ],
-      "pages": 6,
-      "size": 527671,
-      "sha256": "13e062c207c37b245a9a50d045fca67305f93ccc20dd2193716f981cabd03114",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
           "path": "projects/coursework/plc-excerpt.pdf",
           "size": 625346,
           "sha256": "0c13804786dadb945875abfb5515589c37b073328ab28c3de2ab6460c42bada3"
@@ -342,19 +56,6 @@
     {
       "files": [
         {
-          "path": "projects/coursework/rc-excerpt.pdf",
-          "size": 4716279,
-          "sha256": "ad7fa373886bd890ee0cd654c28524eb29382d6f2b0ef592e7c3dca42d95f8c4"
-        }
-      ],
-      "pages": 5,
-      "size": 4716279,
-      "sha256": "ad7fa373886bd890ee0cd654c28524eb29382d6f2b0ef592e7c3dca42d95f8c4",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
           "path": "projects/coursework/wind-excerpt.pdf",
           "size": 1352420,
           "sha256": "11e28f58511c117026130691ef89c8c980a66eed352c5908126619c9e8d59611"
@@ -376,318 +77,6 @@
       "pages": 31,
       "size": 592432,
       "sha256": "b86483054cb9773753971aef5538e69c48a36923d4cf96e4606d62cfa80dc1b0",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/electronics/complete/lab01.pdf",
-          "size": 1003188,
-          "sha256": "04a0d2f863725ac479913ca61871fe151823a4fa66bc1d759d216566f4a338c8"
-        }
-      ],
-      "pages": 8,
-      "size": 1003188,
-      "sha256": "04a0d2f863725ac479913ca61871fe151823a4fa66bc1d759d216566f4a338c8",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/electronics/complete/lab04.pdf",
-          "size": 635554,
-          "sha256": "e2446cc13a8b776b119c283b80cc03bae15d599d045f4947f77d53edfeb0c4c2"
-        }
-      ],
-      "pages": 6,
-      "size": 635554,
-      "sha256": "e2446cc13a8b776b119c283b80cc03bae15d599d045f4947f77d53edfeb0c4c2",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/electronics/complete/lab05.pdf",
-          "size": 836000,
-          "sha256": "2af3a8ceadce7384c6f6231f26a2c2b134368f923cef8459ef102cb4175d83bf"
-        }
-      ],
-      "pages": 5,
-      "size": 836000,
-      "sha256": "2af3a8ceadce7384c6f6231f26a2c2b134368f923cef8459ef102cb4175d83bf",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/electronics/lab-01-diode-basics.pdf",
-          "size": 853132,
-          "sha256": "20d5d7700633f006249ab9b45f04d950b764287f5e7b0404ad52ba18cbcbf1e6"
-        }
-      ],
-      "pages": 7,
-      "size": 853132,
-      "sha256": "20d5d7700633f006249ab9b45f04d950b764287f5e7b0404ad52ba18cbcbf1e6",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/electronics/lab-04-mosfet-bias.pdf",
-          "size": 457625,
-          "sha256": "b78267078e56ac1c93a956bda8a192eaf3186f02895efe0204a9bc636989af48"
-        }
-      ],
-      "pages": 5,
-      "size": 457625,
-      "sha256": "b78267078e56ac1c93a956bda8a192eaf3186f02895efe0204a9bc636989af48",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/electronics/lab-05-transistor-amplifiers.pdf",
-          "size": 782675,
-          "sha256": "29784cb1b33c6fc2271a8c749337d8bc7ca7a78bf7cb7b037bfa5a93f3fe9768"
-        }
-      ],
-      "pages": 4,
-      "size": 782675,
-      "sha256": "29784cb1b33c6fc2271a8c749337d8bc7ca7a78bf7cb7b037bfa5a93f3fe9768",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/complete/lab01.pdf",
-          "size": 1440956,
-          "sha256": "e1eb35b1a0b1d092287aea78d4a052553e0202322ca23ad956c49347611c52bf"
-        }
-      ],
-      "pages": 6,
-      "size": 1440956,
-      "sha256": "e1eb35b1a0b1d092287aea78d4a052553e0202322ca23ad956c49347611c52bf",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/complete/lab02.pdf",
-          "size": 7913407,
-          "sha256": "ec7abff13f36f00eadf171f90e3366fd6b4701a9903ee08710ed67cea38a3d69"
-        }
-      ],
-      "pages": 10,
-      "size": 7913407,
-      "sha256": "ec7abff13f36f00eadf171f90e3366fd6b4701a9903ee08710ed67cea38a3d69",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/complete/lab03.pdf",
-          "size": 2220113,
-          "sha256": "41b1e5336a9d129155b1c35f18eecd29f9a74392dc62f197af8759487ad5cd88"
-        }
-      ],
-      "pages": 6,
-      "size": 2220113,
-      "sha256": "41b1e5336a9d129155b1c35f18eecd29f9a74392dc62f197af8759487ad5cd88",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/complete/lab04.pdf",
-          "size": 1054701,
-          "sha256": "03bc0e0d3a36364f938adf209110feff314def5126f21ced693c763731fab687"
-        }
-      ],
-      "pages": 7,
-      "size": 1054701,
-      "sha256": "03bc0e0d3a36364f938adf209110feff314def5126f21ced693c763731fab687",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/complete/lab05.pdf",
-          "size": 2316910,
-          "sha256": "64273b7473d4e6679aadb9acc0ba62ad140c1ed74fea819446fde1602418ac69"
-        }
-      ],
-      "pages": 8,
-      "size": 2316910,
-      "sha256": "64273b7473d4e6679aadb9acc0ba62ad140c1ed74fea819446fde1602418ac69",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/complete/lab06.pdf",
-          "size": 1526132,
-          "sha256": "ab41d78daa803b2645f01ac56018db8e47dcaa62d4fffa515f50c9f0a5d624d1"
-        }
-      ],
-      "pages": 6,
-      "size": 1526132,
-      "sha256": "ab41d78daa803b2645f01ac56018db8e47dcaa62d4fffa515f50c9f0a5d624d1",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/complete/lab07.pdf",
-          "size": 11263647,
-          "sha256": "35891e4fd9030c2c15312d051f6fff4338e0164f542f836603ea6250f668c45b"
-        }
-      ],
-      "pages": 5,
-      "size": 11263647,
-      "sha256": "35891e4fd9030c2c15312d051f6fff4338e0164f542f836603ea6250f668c45b",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/complete/lab08.pdf",
-          "size": 1053782,
-          "sha256": "d71cad868da94dde6d92271851ea118c7bb85f30258f275609b6847b04a03039"
-        }
-      ],
-      "pages": 5,
-      "size": 1053782,
-      "sha256": "d71cad868da94dde6d92271851ea118c7bb85f30258f275609b6847b04a03039",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/complete/lab09.pdf",
-          "size": 1227308,
-          "sha256": "e8ff30ff4de0423f79eed171b5d24e8b50d82e0c0be35d5e5b699ac08fa6a8c3"
-        }
-      ],
-      "pages": 7,
-      "size": 1227308,
-      "sha256": "e8ff30ff4de0423f79eed171b5d24e8b50d82e0c0be35d5e5b699ac08fa6a8c3",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/lab-01-bench-arduino.pdf",
-          "size": 1383327,
-          "sha256": "0c1bf4d8ec243dbecdfcf19d3f540fed6aa04676c3403ab1933cb59b53ea85cf"
-        }
-      ],
-      "pages": 5,
-      "size": 1383327,
-      "sha256": "0c1bf4d8ec243dbecdfcf19d3f540fed6aa04676c3403ab1933cb59b53ea85cf",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/lab-02-analog-reflectance.pdf",
-          "size": 7855370,
-          "sha256": "fc61515c54bd95bde663f31b59ca344ab651cfafa394dc1b635e189f14d789a9"
-        }
-      ],
-      "pages": 9,
-      "size": 7855370,
-      "sha256": "fc61515c54bd95bde663f31b59ca344ab651cfafa394dc1b635e189f14d789a9",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/lab-03-switching-555.pdf",
-          "size": 2161752,
-          "sha256": "5c08cd7e0ed18a07efc577d7ceef56378309daa0bf5d4ce89f53e9d3bb3cdcdc"
-        }
-      ],
-      "pages": 5,
-      "size": 2161752,
-      "sha256": "5c08cd7e0ed18a07efc577d7ceef56378309daa0bf5d4ce89f53e9d3bb3cdcdc",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/lab-04-debounce-counter.pdf",
-          "size": 996450,
-          "sha256": "f102ede4ac4249abb129aa78aada3135354faa14bc80ce0870e65d53d3230242"
-        }
-      ],
-      "pages": 6,
-      "size": 996450,
-      "sha256": "f102ede4ac4249abb129aa78aada3135354faa14bc80ce0870e65d53d3230242",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/lab-05-op-amp-gain.pdf",
-          "size": 2252603,
-          "sha256": "ff887df836930682868bb8f734a72103d6bfbce7fb45ee326f75e39806fe7a84"
-        }
-      ],
-      "pages": 7,
-      "size": 2252603,
-      "sha256": "ff887df836930682868bb8f734a72103d6bfbce7fb45ee326f75e39806fe7a84",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/lab-06-i2c-link.pdf",
-          "size": 1463896,
-          "sha256": "7bbc584631ac134c4823d2c2e28208b68140f3387031357ea5572f9c1cf04f08"
-        }
-      ],
-      "pages": 5,
-      "size": 1463896,
-      "sha256": "7bbc584631ac134c4823d2c2e28208b68140f3387031357ea5572f9c1cf04f08",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/lab-07-hall-encoder.pdf",
-          "size": 11201960,
-          "sha256": "5ee387cc12e6c104aad715497414768a92fa37ecc01f6d3b8f536968ae79ba34"
-        }
-      ],
-      "pages": 4,
-      "size": 11201960,
-      "sha256": "5ee387cc12e6c104aad715497414768a92fa37ecc01f6d3b8f536968ae79ba34",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/lab-08-h-bridge-pwm.pdf",
-          "size": 990002,
-          "sha256": "c711aa81efe83c7130ecfdf25d7b0c065057cd61aff8d0294723f3b535e4e084"
-        }
-      ],
-      "pages": 4,
-      "size": 990002,
-      "sha256": "c711aa81efe83c7130ecfdf25d7b0c065057cd61aff8d0294723f3b535e4e084",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/mechatronics/lab-09-position-control.pdf",
-          "size": 1166283,
-          "sha256": "01214271a372d980fc5e6621a96338c347bafebc7f9dfcab8df234decf9ff7a8"
-        }
-      ],
-      "pages": 6,
-      "size": 1166283,
-      "sha256": "01214271a372d980fc5e6621a96338c347bafebc7f9dfcab8df234decf9ff7a8",
       "redacted": false
     },
     {
@@ -786,34 +175,66 @@
     {
       "files": [
         {
-          "path": "projects/circuits/complete/lab04.pdf.part-00",
-          "size": 7755554,
-          "sha256": "8d637fc819a885ce5ae877b2dfe61fe8da41509453385fb5844e3d2221f1b151"
-        },
-        {
-          "path": "projects/circuits/complete/lab04.pdf.part-01",
-          "size": 7755554,
-          "sha256": "a7ce16412538760c765152ed0b02c1ff455aaf23110b9a27410f039ccc0c2c27"
-        },
-        {
-          "path": "projects/circuits/complete/lab04.pdf.part-02",
-          "size": 7755554,
-          "sha256": "c14e4edeac04d7f1cb625c163f4dce7627ced896fe4b11531f657a86be39add7"
-        },
-        {
-          "path": "projects/circuits/complete/lab04.pdf.part-03",
-          "size": 7755554,
-          "sha256": "7ab403e2ae8fa7f993535e08bea6a472ffe7feaf011ee8cf74e7d59f4c16f950"
-        },
-        {
-          "path": "projects/circuits/complete/lab04.pdf.part-04",
-          "size": 7755550,
-          "sha256": "e3f92cb98bd2023178ddc858d4d0cfeeeefec8ddd7bc76a7dd8b186efa39834b"
+          "path": "projects/electronics/selected/lab01.pdf",
+          "size": 1001369,
+          "sha256": "3a5d8e38ec68d0e671fc6ec9a6a1825e5aafffd88560aad1193935bcfccec4be"
         }
       ],
-      "pages": 13,
-      "size": 38777766,
-      "sha256": "671ad89c6838ed9b6b968c9bc8c035e03c5e634fd99e5a039e998d23649b4626",
+      "pages": 4,
+      "size": 1001369,
+      "sha256": "3a5d8e38ec68d0e671fc6ec9a6a1825e5aafffd88560aad1193935bcfccec4be",
+      "redacted": true
+    },
+    {
+      "files": [
+        {
+          "path": "projects/mechatronics/selected/lab02.pdf",
+          "size": 5700153,
+          "sha256": "e92cf37bcf944f3d66deb8689e5efbb32e83a1b6f0d9f2e41e850d6f34c83674"
+        }
+      ],
+      "pages": 4,
+      "size": 5700153,
+      "sha256": "e92cf37bcf944f3d66deb8689e5efbb32e83a1b6f0d9f2e41e850d6f34c83674",
+      "redacted": true
+    },
+    {
+      "files": [
+        {
+          "path": "projects/mechatronics/selected/lab03.pdf",
+          "size": 971903,
+          "sha256": "94380c4d1c25a986706775705dcd6f1ef4debc43a616702f253d6ca55d359129"
+        }
+      ],
+      "pages": 2,
+      "size": 971903,
+      "sha256": "94380c4d1c25a986706775705dcd6f1ef4debc43a616702f253d6ca55d359129",
+      "redacted": true
+    },
+    {
+      "files": [
+        {
+          "path": "projects/mechatronics/selected/lab06.pdf",
+          "size": 1466387,
+          "sha256": "0665878be411d36efdb5d0846514afde861e5c5c46591e60d38d2ad7bc63bdb0"
+        }
+      ],
+      "pages": 5,
+      "size": 1466387,
+      "sha256": "0665878be411d36efdb5d0846514afde861e5c5c46591e60d38d2ad7bc63bdb0",
+      "redacted": true
+    },
+    {
+      "files": [
+        {
+          "path": "projects/mechatronics/selected/lab09.pdf",
+          "size": 360511,
+          "sha256": "37fa9207c7fc3f17221b8de3c9c0f53ce2590150ef63ef5818fe09f7fe4b20af"
+        }
+      ],
+      "pages": 2,
+      "size": 360511,
+      "sha256": "37fa9207c7fc3f17221b8de3c9c0f53ce2590150ef63ef5818fe09f7fe4b20af",
       "redacted": true
     }
   ]

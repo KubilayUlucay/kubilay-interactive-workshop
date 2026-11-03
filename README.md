@@ -72,11 +72,30 @@ Untouched original bytes and SHA-256 receipts are stored outside the application
 
 ## Approved project retirement
 
-After the approved BJT and ML retirement, the reviewed public inventory contains 60 PDFs delivered through 67 report assets. Removed public copies remain in a private, fingerprinted archive outside the application.
+After the approved coursework selection, the reviewed public inventory contains 17 PDFs delivered through 20 report assets. Removed public copies remain in a private, fingerprinted archive outside the application.
 
-The BJT characteristics report and tweet-classifier project were retired at the owner's request. The current catalog has 13 projects and three electronics reports. Their public PDFs, alternate BJT report, project images, catalog/CV entries and ML page implementation have been removed. The public CV and portfolio PDFs retain their other text and pages but omit their ML sections; untouched originals and removal fingerprints are stored in the workspace's private `.backups/project-curation-2026-11-03/` archive. The report generator no longer republishes these retired entries. Other project-removal recommendations remain review-only until selected by the owner.
+The BJT characteristics report and tweet-classifier project were retired at the owner's request. The earlier retirement left 13 projects; the later selected-lab curation leaves 11 projects and five retained studies. Their public PDFs, alternate BJT report, project images, catalog/CV entries and ML page implementation have been removed. The public CV and portfolio PDFs retain their other text and pages but omit their ML sections; untouched originals and removal fingerprints are stored in the workspace's private `.backups/project-curation-2026-11-03/` archive. The report generator no longer republishes these retired entries. Other project-removal recommendations remain review-only until selected by the owner.
 
 These changes affect the current source and build only. They do not rewrite Git history or remove copies from previous hosting deployments.
+
+## Selected lab evidence
+
+PV embeds the complete 11-page source report. EE401 retains four lazy-loaded segments and all 80 pages, with its redacted public bytes verified by SHA-256 during the build and before creating the browser PDF Blob. These core-project reports are unchanged by coursework curation.
+
+The catalog has 11 projects after the owner's removal of circuit analysis and LabVIEW. Electronics retains one selected bench study: multimeter/DC measurements and diode curves. Mechatronics retains four studies: analog/reflectance sensing, an oscillator timing capture, two-board I2C and observed proportional motor-position responses. The public pages label these downloads as selected original report pages, not complete submissions or new tests.
+
+| Study | Original PDF pages retained |
+| --- | --- |
+| Electronics bench measurements and diodes | 4, 5, 6, 7 |
+| Analog inputs and reflectance sensing | 3, 4, 8, 9 |
+| Timing circuit and oscilloscope waveform | 4, 5 |
+| Arduino I2C link and LED control | 2, 3, 4, 5, 6 |
+| Proportional motor-position response | 6, 7 |
+
+Every selected page retains its original text, dimensions and rendered pixels. Figure references use the original PDF page numbers, and each figure is present in its selected-page download. The motor-response image is correctly described as serial-monitor readings, not a waveform plot. The later full-PID extension remains explicitly untested in the source and is not presented as validated control.
+
+Full lab submissions, superseded public variants, excluded figures and the latest pre-curation evidence metadata are preserved outside the application in the workspace's private `.backups/lab-selection-2026-11-03/` archive. The legacy full-report publisher is disabled so it cannot silently restore retired coursework.
+
 
 ## Run locally
 
