@@ -394,19 +394,6 @@
     {
       "files": [
         {
-          "path": "projects/electronics/complete/lab03.pdf",
-          "size": 547595,
-          "sha256": "45cd3ebdd9cca58d289460290c651e50bd5d03c2fd938dd1ddf4dd5b0af6f4a7"
-        }
-      ],
-      "pages": 7,
-      "size": 547595,
-      "sha256": "45cd3ebdd9cca58d289460290c651e50bd5d03c2fd938dd1ddf4dd5b0af6f4a7",
-      "redacted": true
-    },
-    {
-      "files": [
-        {
           "path": "projects/electronics/complete/lab04.pdf",
           "size": 635554,
           "sha256": "e2446cc13a8b776b119c283b80cc03bae15d599d045f4947f77d53edfeb0c4c2"
@@ -446,19 +433,6 @@
     {
       "files": [
         {
-          "path": "projects/electronics/lab-03-bjt-characteristics.pdf",
-          "size": 384187,
-          "sha256": "1f4559a2dcbd1d693249667042ac61e6b3528fdea0c3c462741a4cbd02389ae8"
-        }
-      ],
-      "pages": 6,
-      "size": 384187,
-      "sha256": "1f4559a2dcbd1d693249667042ac61e6b3528fdea0c3c462741a4cbd02389ae8",
-      "redacted": false
-    },
-    {
-      "files": [
-        {
           "path": "projects/electronics/lab-04-mosfet-bias.pdf",
           "size": 457625,
           "sha256": "b78267078e56ac1c93a956bda8a192eaf3186f02895efe0204a9bc636989af48"
@@ -481,19 +455,6 @@
       "size": 782675,
       "sha256": "29784cb1b33c6fc2271a8c749337d8bc7ca7a78bf7cb7b037bfa5a93f3fe9768",
       "redacted": false
-    },
-    {
-      "files": [
-        {
-          "path": "projects/machinelearning/MLPROJECT.pdf",
-          "size": 284154,
-          "sha256": "f5df0e1e922ad52e19c689d75f7f54f88c1f71cf2d415f96c6e126574d08bd9a"
-        }
-      ],
-      "pages": 3,
-      "size": 284154,
-      "sha256": "f5df0e1e922ad52e19c689d75f7f54f88c1f71cf2d415f96c6e126574d08bd9a",
-      "redacted": true
     },
     {
       "files": [

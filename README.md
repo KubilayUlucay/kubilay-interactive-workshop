@@ -10,7 +10,7 @@ Branch `design/portfolio-identity-2026-10-30` is a separate design copy, not a p
 
 In the current local workspace, the original runs from `workshop-source` at http://127.0.0.1:4173/ and this copy runs from `workshop-redesign` at http://127.0.0.1:4174/. The folders and installed dependencies are independent. Run this copy with `npm run dev -- --host 127.0.0.1 --port 4174 --strictPort`.
 
-This pass updates the engineer's identity, project hierarchy, evidence order, reading sizes and catalog return state. Original report sources are preserved privately; public report copies are privacy-reviewed. The lockfile and hosting identity remain unchanged. The downloadable CV remains the original PDF; the web CV corrects project terminology and research scope.
+This pass updates the engineer's identity, project hierarchy, evidence order, reading sizes and catalog return state. Original report sources are preserved privately; public report copies are privacy-reviewed. The lockfile and hosting identity remain unchanged. The public CV and portfolio PDFs omit the retired ML project; untouched source documents remain private. The web CV reflects the current project selection.
 
 ### Motion checkpoint
 
@@ -52,10 +52,6 @@ Design references: [homepage identity and meaningful content](https://www.nngrou
 
 ## Evidence and usability notes
 
-The selected BJT report includes a source-context note: its archived conclusion discusses diode circuits and is not evidence for BJT behavior. The website summary is based on the transistor measurements and plots. The archived PDF remains unchanged.
-
-The tweet-classifier page distinguishes its best-reported 72.7% accuracy from validated forecasting. Its 219 daily examples yield roughly 44 test examples with an 80/20 split; multiple configurations were scored on that split. The report does not document a chronological holdout, walk-forward evaluation, an untouched final test or a baseline comparison. No new experiment or causal claim is implied.
-
 Zumo's firmware dialog returns focus to its opener after Close, Escape or cancel, without changing scroll position. On desktop windows between 620px and 748px high, Motor, Gimbal and BMS preserve a 260px minimum scene area. At 1000x620, the interactive section grows to 748px and its lower controls remain reachable by scrolling; it no longer compresses the scene to 132px. Normal-height desktop, mobile, inspection layouts and the Ink / ice palette retain their existing behavior.
 
 ## Current source
@@ -73,6 +69,14 @@ The 3 November 2026 privacy pass checked all 63 public project PDFs, including u
 Untouched original bytes and SHA-256 receipts are stored outside the application repository and build output, in the workspace's private `.backups/report-privacy-2026-11-03/` folder. Do not copy this folder into `public`, `dist` or a source upload. The original EE401 Git blob hash remains private provenance; public integrity checks deliberately use the reviewed redacted hash instead.
 
 `src/publicReportPrivacy.json` pins the reviewed report inventory and file/reconstructed SHA-256 hashes. The existing predev/prebuild script rejects changed or unreviewed PDFs and stale viewer metadata. Report editing uses the local PyMuPDF preparation utility; ordinary website builds still require only Node/npm. Regenerating lab reports now redacts identifying content before writing public files. Re-review changed PDFs and refresh the approved fingerprints before publishing. The CV's intended public contact details are outside this report-only pass.
+
+## Approved project retirement
+
+After the approved BJT and ML retirement, the reviewed public inventory contains 60 PDFs delivered through 67 report assets. Removed public copies remain in a private, fingerprinted archive outside the application.
+
+The BJT characteristics report and tweet-classifier project were retired at the owner's request. The current catalog has 13 projects and three electronics reports. Their public PDFs, alternate BJT report, project images, catalog/CV entries and ML page implementation have been removed. The public CV and portfolio PDFs retain their other text and pages but omit their ML sections; untouched originals and removal fingerprints are stored in the workspace's private `.backups/project-curation-2026-11-03/` archive. The report generator no longer republishes these retired entries. Other project-removal recommendations remain review-only until selected by the owner.
+
+These changes affect the current source and build only. They do not rewrite Git history or remove copies from previous hosting deployments.
 
 ## Run locally
 

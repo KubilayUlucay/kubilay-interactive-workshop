@@ -203,39 +203,6 @@
     ]
   },
   {
-    "id": "tweet-classifier",
-    "title": "Tweets & market-direction classification",
-    "course": "CS440",
-    "category": "Software",
-    "kind": "Team research / ML",
-    "summary": "BERT embeddings feed an MLP classifier for daily grouped tweets.",
-    "work": [
-      "After filtering and daily grouping, the report uses 219 examples.",
-      "The pipeline compares MLP hyperparameters using BERT-transformed text.",
-      "The report describes failed imputation attempts before changing the research question."
-    ],
-    "limits": "Random train/test splitting and test-set tuning limit the reported score. No causal influence, reliable trading return or deployable forecast is established. BERT, not BART.",
-    "credit": "Seyit Kubilay Uluçay and Emir Arda Gün.",
-    "evidence": [
-      [
-        "Team project report",
-        "/projects/machinelearning/MLPROJECT.pdf"
-      ],
-      [
-        "Imputation comparison figure",
-        "/projects/machinelearning/machinelearning.png"
-      ]
-    ],
-    "image": "/projects/machinelearning/machinelearning.png",
-    "exhibit": null,
-    "topics": [
-      "BERT",
-      "MLP",
-      "Python",
-      "classification"
-    ]
-  },
-  {
     "id": "plc-sequences",
     "title": "PLC sequences: traffic lights & toy claw",
     "course": "EE392 · 2024",
@@ -331,9 +298,9 @@
     "course": "EE301",
     "category": "Hardware",
     "kind": "Grouped laboratory series",
-    "summary": "Four EE301 reports compare diode, BJT, MOSFET and amplifier behavior with LTspice and lab observations.",
+    "summary": "Three EE301 reports compare diode, MOSFET and amplifier behavior with LTspice and lab observations.",
     "work": [
-      "Lab01 covers DC analysis and diode I–V behavior; Lab03 examines BJT characteristics and current gain.",
+      "Lab01 covers DC analysis and diode I–V behavior.",
       "Lab04 records MOSFET bias and drain-current measurements; Lab05 documents amplifiers, an unsuccessful NMOS bench result and unfinished work."
     ],
     "limits": "Original observations are not independently recertified. Identifying covers are omitted. The Lab02 brief is not a student report, and native LTspice files are absent from this reviewed set.",
@@ -342,10 +309,6 @@
       [
         "Lab 01 · DC analysis & diode characteristics",
         "/projects/electronics/lab-01-diode-basics.pdf"
-      ],
-      [
-        "Lab 03 · BJT characteristics & current gain",
-        "/projects/electronics/lab-03-bjt-characteristics.pdf"
       ],
       [
         "Lab 04 · MOSFET bias & drain-current response",
@@ -360,7 +323,6 @@
     "exhibit": null,
     "topics": [
       "diode",
-      "BJT",
       "MOSFET",
       "LTspice"
     ]
@@ -380,15 +342,42 @@
     "limits": "Full PID testing was prevented by a serial-plotter problem. Encoder timing and scale factors are not independent mechanical-speed calibration. Identifying cover pages are omitted from public reports.",
     "credit": "Original ME417 reports by Seyit Kubilay Uluçay, March–May 2024.",
     "evidence": [
-      ["Bench circuits & Arduino I/O", "/projects/mechatronics/lab-01-bench-arduino.pdf"],
-      ["Analog measurements & reflectance sensing", "/projects/mechatronics/lab-02-analog-reflectance.pdf"],
-      ["Transistor switching & NE555 timing", "/projects/mechatronics/lab-03-switching-555.pdf"],
-      ["Button debouncing & a binary counter", "/projects/mechatronics/lab-04-debounce-counter.pdf"],
-      ["Op-amp gain & clipping", "/projects/mechatronics/lab-05-op-amp-gain.pdf"],
-      ["Arduino I²C link & LED control", "/projects/mechatronics/lab-06-i2c-link.pdf"],
-      ["Hall encoder signals & pulse counting", "/projects/mechatronics/lab-07-hall-encoder.pdf"],
-      ["H-bridge direction & PWM drive", "/projects/mechatronics/lab-08-h-bridge-pwm.pdf"],
-      ["Motor-position tests & PID limits", "/projects/mechatronics/lab-09-position-control.pdf"],
+      [
+        "Bench circuits & Arduino I/O",
+        "/projects/mechatronics/lab-01-bench-arduino.pdf"
+      ],
+      [
+        "Analog measurements & reflectance sensing",
+        "/projects/mechatronics/lab-02-analog-reflectance.pdf"
+      ],
+      [
+        "Transistor switching & NE555 timing",
+        "/projects/mechatronics/lab-03-switching-555.pdf"
+      ],
+      [
+        "Button debouncing & a binary counter",
+        "/projects/mechatronics/lab-04-debounce-counter.pdf"
+      ],
+      [
+        "Op-amp gain & clipping",
+        "/projects/mechatronics/lab-05-op-amp-gain.pdf"
+      ],
+      [
+        "Arduino I²C link & LED control",
+        "/projects/mechatronics/lab-06-i2c-link.pdf"
+      ],
+      [
+        "Hall encoder signals & pulse counting",
+        "/projects/mechatronics/lab-07-hall-encoder.pdf"
+      ],
+      [
+        "H-bridge direction & PWM drive",
+        "/projects/mechatronics/lab-08-h-bridge-pwm.pdf"
+      ],
+      [
+        "Motor-position tests & PID limits",
+        "/projects/mechatronics/lab-09-position-control.pdf"
+      ],
       [
         "Original encoder report code excerpt",
         "/projects/coursework/encoder-excerpt.txt"
@@ -419,13 +408,34 @@
     "limits": "Peer-labelled and unverified work is excluded. No new VI/MATLAB/USRP execution or performance validation is claimed. Native files may need LabVIEW/course dependencies; reports include provided task text and shared scaffolding.",
     "credit": "Section C Team 1: Seyit Kubilay Uluçay, Ali Umut İlkbahar, Kaan Şekerci and Ahmet Genco Güven; bonus output: Uluçay and İlkbahar.",
     "evidence": [
-      ["Fourier/FFT team report", "/projects/communications/lab-01-fourier-fft.pdf"],
-      ["Sampling and audio spectra submission", "/projects/communications/lab-02-sampling-quantization.pdf"],
-      ["Queued audio submission", "/projects/communications/lab-03-audio-synchronization.pdf"],
-      ["DSB-SC and USRP noise preparation", "/projects/communications/lab-04-dsb-sc-noise.pdf"],
-      ["DSB-SC transmitter submission", "/projects/communications/lab-05-dsb-sc-transmitter.pdf"],
-      ["Selected team LabVIEW VIs", "/projects/communications/section-c-team1-selected-vis.zip"],
-      ["Original bonus modulation output", "/projects/communications/bonus-modulation-output.png"]
+      [
+        "Fourier/FFT team report",
+        "/projects/communications/lab-01-fourier-fft.pdf"
+      ],
+      [
+        "Sampling and audio spectra submission",
+        "/projects/communications/lab-02-sampling-quantization.pdf"
+      ],
+      [
+        "Queued audio submission",
+        "/projects/communications/lab-03-audio-synchronization.pdf"
+      ],
+      [
+        "DSB-SC and USRP noise preparation",
+        "/projects/communications/lab-04-dsb-sc-noise.pdf"
+      ],
+      [
+        "DSB-SC transmitter submission",
+        "/projects/communications/lab-05-dsb-sc-transmitter.pdf"
+      ],
+      [
+        "Selected team LabVIEW VIs",
+        "/projects/communications/section-c-team1-selected-vis.zip"
+      ],
+      [
+        "Original bonus modulation output",
+        "/projects/communications/bonus-modulation-output.png"
+      ]
     ],
     "image": null,
     "exhibit": null,

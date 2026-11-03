@@ -153,18 +153,6 @@
   },
   {
     "type": "entry",
-    "text": "Tweets & market-direction classification · Python, Pandas, BERT, Scikit-learn, Matplotlib"
-  },
-  {
-    "type": "bullet",
-    "text": "Co-developed a pipeline using BERT text embeddings and an MLP to classify daily market direction from grouped tweets."
-  },
-  {
-    "type": "bullet",
-    "text": "Compared classification settings on a small academic dataset; results were exploratory, not a validated trading forecast."
-  },
-  {
-    "type": "entry",
     "text": "Zumo Robot Object Detection & Counting · Arduino (C++), Zumo, IR Sensor, Reflectance Sensors"
   },
   {

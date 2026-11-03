@@ -142,23 +142,6 @@
       ],
       "redacted": true
     },
-    "lab03": {
-      "pages": 7,
-      "size": 547595,
-      "sha256": "45cd3ebdd9cca58d289460290c651e50bd5d03c2fd938dd1ddf4dd5b0af6f4a7",
-      "src": "/projects/electronics/complete/lab03.pdf",
-      "figures": [
-        {
-          "src": "/projects/figures/electronics-labs-lab03.png",
-          "page": 4,
-          "width": 300,
-          "height": 343,
-          "caption": "Transistor-bias measurement",
-          "description": "Bench instrument readout recorded during the BJT bias investigation."
-        }
-      ],
-      "redacted": true
-    },
     "lab04": {
       "pages": 6,
       "size": 635554,
@@ -471,16 +454,6 @@
         "page": 27,
         "width": 818,
         "height": 598
-      }
-    ]
-  },
-  "tweet-classifier": {
-    "figures": [
-      {
-        "src": "/projects/figures/tweet-classifier-report.png",
-        "page": 2,
-        "width": 339,
-        "height": 310
       }
     ]
   },
