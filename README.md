@@ -50,6 +50,14 @@ Gimbal, BMS and Zumo use a viewport-height desktop composition from 1000px wide 
 
 Design references: [homepage identity and meaningful content](https://www.nngroup.com/articles/top-ten-guidelines-for-homepage-usability/), [height and text-size accessibility](https://developer.mozilla.org/en-US/docs/Web/CSS/height), and [W3C reflow guidance](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html).
 
+## Evidence and usability notes
+
+The selected BJT report includes a source-context note: its archived conclusion discusses diode circuits and is not evidence for BJT behavior. The website summary is based on the transistor measurements and plots. The archived PDF remains unchanged.
+
+The tweet-classifier page distinguishes its best-reported 72.7% accuracy from validated forecasting. Its 219 daily examples yield roughly 44 test examples with an 80/20 split; multiple configurations were scored on that split. The report does not document a chronological holdout, walk-forward evaluation, an untouched final test or a baseline comparison. No new experiment or causal claim is implied.
+
+Zumo's firmware dialog returns focus to its opener after Close, Escape or cancel, without changing scroll position. On desktop windows between 620px and 748px high, Motor, Gimbal and BMS preserve a 260px minimum scene area. At 1000x620, the interactive section grows to 748px and its lower controls remain reachable by scrolling; it no longer compresses the scene to 132px. Normal-height desktop, mobile, inspection layouts and the Ink / ice palette retain their existing behavior.
+
 ## Current source
 
 This branch imports the application and required public assets of published **Site version 23**, source commit `9dd4b8c31bea5e601a77d81fbc6f8e0fdb6b40c1`, verified on 30 October 2026. The Site source and GitHub have separate histories; that provenance commit need not exist in this GitHub repository.
