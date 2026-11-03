@@ -5,7 +5,7 @@
     "course": "University build",
     "category": "Hardware",
     "kind": "Built prototype",
-    "summary": "Hand-wound copper, printed mechanics and a real lab test.",
+    "summary": "Implemented the transmitter, receiver and Arduino code for the shared motor build, documented in bench footage.",
     "work": [
       "Designed, wound and assembled an axial-flux motor; the photographs show nine coils and a common-axis rotor assembly.",
       "A potentiometer and ESP32 on the handheld copper-board controller send the speed command wirelessly to a motor-side ESP32, which controls the ESC between the supply and motor."
@@ -32,7 +32,7 @@
     "course": "ME417",
     "category": "Control",
     "kind": "Built prototype",
-    "summary": "Printed brackets, hobby servos and a phone-based sensing workaround.",
+    "summary": "Developed most of the Arduino code and shared the build and gyroscope cross-checks; CAD adaptation by Tuna.",
     "work": [
       "Three nested servo axes support a payload; the mechanical design was adapted from an internet design.",
       "The project used a phone gyro workaround after an MPU sensor problem. The compared datasets were not synchronized.",
@@ -60,7 +60,7 @@
     "course": "EE401 / EE402",
     "category": "Energy",
     "kind": "Prototype + simulation",
-    "summary": "Physical instrumentation and PCB work alongside switched-capacitor balancing simulation.",
+    "summary": "Completed most development and all Simulink simulations for the four-cell BMS; PCB drawings by Atahan.",
     "work": [
       "EE401 planned the system; EE402 documented the outcomes, instrumentation and prototype.",
       "The balancing model moves charge using a switched capacitor. This simulation is distinct from the photographed physical hardware.",
@@ -88,7 +88,7 @@
     "course": "EE321 · Spring 2024",
     "category": "Embedded",
     "kind": "Built prototype",
-    "summary": "Reflectance sensing, IR scans and a maximum count across repeated trials.",
+    "summary": "Developed most of the robot project, combining boundary navigation with IR detection counts and LED/buzzer reporting.",
     "work": [
       "Calibrate reflectance sensors, move toward the white edge while avoiding IR detections, then scan and return.",
       "Store counts from ten trials and signal the maximum through the LED and buzzer.",
@@ -181,7 +181,7 @@
     "course": "EE101 · 2022",
     "category": "Energy",
     "kind": "Simulation / study",
-    "summary": "Compare conductor and substation choices across 27 educational model configurations.",
+    "summary": "Compared 27 configurations and recommended Experiment 9: CONDOR connections to PETE and PAI.",
     "work": [
       "PowerWorld cases compare cost, loss and overload constraints for a hypothetical 200 MW wind-farm connection.",
       "The analysis narrows feasible configurations instead of assuming the lowest-loss case is automatically best."
@@ -208,7 +208,7 @@
     "course": "EE392 · 2024",
     "category": "Control",
     "kind": "Team software / simulation",
-    "summary": "Two Control Expert PLC/HMI exercises: timed traffic-light modes and a staged claw game.",
+    "summary": "Developed sequence logic and checked simulated traffic-light modes and claw-game control.",
     "work": [
       "Traffic-light logic models normal and after-hours modes with HMI controls.",
       "The claw game uses a coin input, a 90-second positioning window and a staged gripper sequence.",
