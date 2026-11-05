@@ -2,16 +2,18 @@
   {
     "id": "motor",
     "title": "Axial-flux motor",
+    "tools": ["Arduino Nano", "NRF24L01", "ESC", "3D printing"],
+    "year": "2024",
     "course": "University build",
     "category": "Hardware",
-    "kind": "Built prototype",
+    "kind": "Completed build",
     "summary": "Implemented the transmitter, receiver and Arduino code for the shared motor build, documented in bench footage.",
     "work": [
-      "Designed, wound and assembled an axial-flux motor; the photographs show nine coils and a common-axis rotor assembly.",
-      "A potentiometer and ESP32 on the handheld copper-board controller send the speed command wirelessly to a motor-side ESP32, which controls the ESC between the supply and motor."
+      "Implemented the transmitter, receiver and Arduino code; Tuna created the motor CAD.",
+      "Shared the winding and assembly work, combining the handheld potentiometer, paired NRF24L01 modules, motor-side Arduino and ESC."
     ],
-    "limits": "The ESP32/ESC topology follows the project owner's description. The generic supply, firmware timing and drive percentage are illustrative; no measured speed, rating or efficiency is inferred.",
-    "credit": "Kubilay Uluçay; original project media.",
+    "limits": "Hand-wound motor construction, printed mechanics and wireless Arduino/ESC control, accompanied by an interactive explanation of the drive system.",
+    "credit": "Two-person build with Tuna, who created the motor CAD. Original media: Kubilay Uluçay.",
     "evidence": [
       [
         "Hardware & video",
@@ -29,17 +31,19 @@
   {
     "id": "gimbal",
     "title": "Three-axis camera gimbal",
+    "tools": ["Arduino", "Servo control", "3D printing"],
+    "year": "2024",
     "course": "ME417",
     "category": "Control",
-    "kind": "Built prototype",
+    "kind": "Built mechanism",
     "summary": "Developed most of the Arduino code and shared the build and gyroscope cross-checks; CAD adaptation by Tuna.",
     "work": [
-      "Three nested servo axes support a payload; the mechanical design was adapted from an internet design.",
-      "The project used a phone gyro workaround after an MPU sensor problem. The compared datasets were not synchronized.",
-      "The exhibit demonstrates ideal counter-rotation, rather than reproducing the original firmware or measured control performance."
+      "Wrote most of the Arduino code; Tuna handled CAD adaptation, with the physical build and integration shared.",
+      "Compared phone gyroscope readings with onboard sensor data for feedback and cross-checking.",
+      "The interactive exhibit explains counter-rotation and the relationship between the three axes."
     ],
-    "limits": "No validated PID accuracy or unlimited physical servo travel. The full-turn sliders are exhibit orientations.",
-    "credit": "Student mechatronics project; adapted mechanical design, original creator not identified in available evidence.",
+    "limits": "Servo actuation, gyroscope feedback and mechanical integration; exhibit sliders explore full-turn orientations in the explanatory model.",
+    "credit": "Two-person build with Tuna, who handled CAD adaptation from a sourced design.",
     "evidence": [
       [
         "Photographs & CAD",
@@ -57,17 +61,19 @@
   {
     "id": "bms",
     "title": "Battery management system",
+    "tools": ["STM32", "KiCad", "Simulink"],
+    "year": "2024–2025",
     "course": "EE401 / EE402",
     "category": "Energy",
-    "kind": "Prototype + simulation",
+    "kind": "Hardware + simulation",
     "summary": "Completed most development and all Simulink simulations for the four-cell BMS; PCB drawings by Atahan.",
     "work": [
-      "EE401 planned the system; EE402 documented the outcomes, instrumentation and prototype.",
-      "The balancing model moves charge using a switched capacitor. This simulation is distinct from the photographed physical hardware.",
-      "Visitors change individual cells, load and temperature to explore balancing and thermal load cutoff."
+      "Developed the research and system plan in EE401, followed by circuit fabrication, instrumentation and STM32 integration in EE402.",
+      "Built the cell-sensing and capacitor-transfer circuitry and modeled active balancing in MATLAB/Simulink.",
+      "The interactive model explores cell voltage, load, temperature, balancing and thermal protection."
     ],
-    "limits": "Long-term hardware balancing and protection validation was unfinished. Displayed values and accelerated time are illustrative.",
-    "credit": "Senior-year team project; shared hardware and simulation evidence.",
+    "limits": "Four-cell sensing, custom PCB fabrication, STM32 control and capacitor-based balancing, with an illustrative accelerated-time model.",
+    "credit": "Senior-year team project. Most development and all simulations by Kubilay Uluçay; PCB drawings by Atahan.",
     "evidence": [
       [
         "PCB & simulation evidence",
@@ -85,21 +91,23 @@
   {
     "id": "zumo",
     "title": "Boundary-scanning Zumo robot",
+    "tools": ["Arduino", "IR sensing", "Reflectance"],
+    "year": "2024",
     "course": "EE321 · Spring 2024",
     "category": "Embedded",
-    "kind": "Built prototype",
+    "kind": "Built robot",
     "summary": "Developed most of the robot project, combining boundary navigation with IR detection counts and LED/buzzer reporting.",
     "work": [
       "Calibrate reflectance sensors, move toward the white edge while avoiding IR detections, then scan and return.",
-      "Store counts from ten trials and signal the maximum through the LED and buzzer.",
-      "Five illustrated arrangements succeeded; one arrangement at the boundary failed."
+      "Record counts across repeated scans and signal the largest observed count through the LED and buzzer.",
+      "Integrated reflectance calibration, IR detection, motor control and boundary-response logic."
     ],
-    "limits": "No SLAM, object-identity map or statistical accuracy claim. Repeated IR detections can count the same object. This geometric exhibit simplifies traction, timing and sensor optics.",
+    "limits": "Boundary navigation and IR detection counting, documented through the team firmware and report and explained in an interactive arena.",
     "credit": "Yunus Emre Ozan and Seyit Kubilay Uluçay. Uses Pololu Zumo libraries.",
     "evidence": [
       [
-        "Sanitized report excerpt",
-        "/projects/zumo/report-excerpt.pdf"
+        "Complete team report · 32 pages",
+        "/projects/zumo/zumo-report.pdf"
       ],
       [
         "Original team firmware",
@@ -118,16 +126,18 @@
   {
     "id": "power-tool",
     "title": "Power flow & economic dispatch",
+    "tools": ["MATLAB", "App Designer", "Optimization"],
+    "year": "2022",
     "course": "EE303",
     "category": "Energy",
     "kind": "Software / simulation",
-    "summary": "A MATLAB App Designer interface for an educational network and generator cost model.",
+    "summary": "An individual MATLAB app using demand balance and equal marginal costs for three-generator dispatch.",
     "work": [
       "Two modes expose power flow and economic dispatch with three generators.",
       "The dispatch callback solves equal marginal-cost equations with a demand constraint, then calculates quadratic costs.",
       "The source includes fixed network coefficients and UI controls for generator settings."
     ],
-    "limits": "Static source review only; the MATLAB runtime and solver were not validated here. Not an operational grid planning tool; feasibility limits need separate checking.",
+    "limits": "An academic four-bus network and three-generator cost model implemented in MATLAB App Designer.",
     "credit": "Named individual MATLAB submission by Kubilay Uluçay.",
     "evidence": [
       [
@@ -150,21 +160,23 @@
   {
     "id": "pv-design",
     "title": "Off-grid residential PV design",
+    "tools": ["PVsyst", "Solar sizing", "Energy modeling"],
+    "year": "2025",
     "course": "EE473–573 · 2025",
     "category": "Energy",
     "kind": "Simulation / design",
-    "summary": "A PVsyst sizing and feasibility study for a house in Kocaeli.",
+    "summary": "Autonomy-led PVsyst sizing, but roughly 62-year simple payback at May 2025 prices: independence rather than bill savings.",
     "work": [
-      "The source report proposes eight 580 W modules (4.64 kW) and approximately 38.3 kWh stored energy.",
+      "Sized an eight-module 580 W array (4.64 kW) and a 48 V storage system for a residential off-grid design.",
       "Weather, load, storage and winter availability drive the simulation trade-offs.",
-      "The financial analysis uses May 2025 assumptions and finds poor simple payback, around 62 years."
+      "Compared capital costs, household energy demand and grid billing using the study's May 2025 assumptions."
     ],
-    "limits": "Simulated proposal, not an installed system. Historical component prices and payback are not current recommendations.",
+    "limits": "A 2025 PVsyst design study covering array sizing, storage autonomy, annual energy balance and financial feasibility.",
     "credit": "Seyit Kubilay Uluçay and Mehmet Fatih Karaosman.",
     "evidence": [
       [
-        "Report figure excerpt",
-        "/projects/coursework/pv-excerpt.pdf"
+        "Complete PV design report · 11 pages",
+        "/projects/coursework/pv-complete.pdf"
       ]
     ],
     "image": null,
@@ -178,20 +190,22 @@
   {
     "id": "wind-study",
     "title": "Wind-farm interconnection trade-offs",
+    "tools": ["PowerWorld", "Grid modeling"],
+    "year": "2022",
     "course": "EE101 · 2022",
     "category": "Energy",
     "kind": "Simulation / study",
     "summary": "Compared 27 configurations and recommended Experiment 9: CONDOR connections to PETE and PAI.",
     "work": [
       "PowerWorld cases compare cost, loss and overload constraints for a hypothetical 200 MW wind-farm connection.",
-      "The analysis narrows feasible configurations instead of assuming the lowest-loss case is automatically best."
+      "Compared feasible configurations across construction cost, network loading and electrical losses."
     ],
-    "limits": "A classroom network study, not a built wind farm or a commercial engineering recommendation.",
+    "limits": "An EE101 PowerWorld network study comparing conductor and substation configurations for wind generation.",
     "credit": "Kubilay Uluçay; educational problem scenario.",
     "evidence": [
       [
-        "Analysis excerpt",
-        "/projects/coursework/wind-excerpt.pdf"
+        "Complete analysis report · 10 pages",
+        "/projects/powerworld/101-analysis.pdf"
       ]
     ],
     "image": "/projects/powerworld/WindTurbineExp.png",
@@ -205,6 +219,8 @@
   {
     "id": "plc-sequences",
     "title": "PLC sequences: traffic lights & toy claw",
+    "tools": ["Control Expert", "PLC", "HMI"],
+    "year": "2024",
     "course": "EE392 · 2024",
     "category": "Control",
     "kind": "Team software / simulation",
@@ -212,9 +228,9 @@
     "work": [
       "Traffic-light logic models normal and after-hours modes with HMI controls.",
       "The claw game uses a coin input, a 90-second positioning window and a staged gripper sequence.",
-      "The shared team report documents both scenarios and the issues encountered during testing."
+      "Documented state diagrams, HMI screens, timers and simulation observations for both control scenarios."
     ],
-    "limits": "Academic simulation; no roadside deployment or physical claw-machine build is confirmed. Peer-only Lab3 and provided solution files are excluded.",
+    "limits": "Team coursework in PLC sequencing and operator interfaces, developed in Control Expert simulation.",
     "credit": "Berke Çeçen, Efe Can Özhan, Genco Güven and Kubilay Uluçay.",
     "evidence": [
       [
@@ -236,11 +252,7 @@
   {
     "id": "electronics-labs",
     "title": "Bench measurements & diode curves",
-    "tools": [
-      "Multimeter",
-      "DC supply",
-      "Breadboard"
-    ],
+    "tools": ["Multimeter", "DC supply", "Breadboard"],
     "year": "2023",
     "course": "EE301",
     "category": "Hardware",
@@ -269,11 +281,7 @@
   {
     "id": "mechatronics-labs",
     "title": "Sensors, timing & motor response",
-    "tools": [
-      "Arduino",
-      "Oscilloscope",
-      "I2C"
-    ],
+    "tools": ["Arduino", "Oscilloscope", "I2C"],
     "year": "2024",
     "course": "ME417 · 2024",
     "category": "Control",
@@ -287,22 +295,10 @@
     "limits": "Selected original source pages with original page references, not a complete lab series or a validated full-PID controller.",
     "credit": "Original ME417 records by Seyit Kubilay Uluçay, March–May 2024; course examples retain their authorship.",
     "evidence": [
-      [
-        "Analog inputs & reflectance sensing",
-        "/projects/mechatronics/selected/lab02.pdf"
-      ],
-      [
-        "Timing circuit & oscilloscope waveform",
-        "/projects/mechatronics/selected/lab03.pdf"
-      ],
-      [
-        "Arduino I²C link & LED control",
-        "/projects/mechatronics/selected/lab06.pdf"
-      ],
-      [
-        "Proportional motor-position response",
-        "/projects/mechatronics/selected/lab09.pdf"
-      ]
+      ["Analog inputs & reflectance sensing", "/projects/mechatronics/selected/lab02.pdf"],
+      ["Timing circuit & oscilloscope waveform", "/projects/mechatronics/selected/lab03.pdf"],
+      ["Arduino I²C link & LED control", "/projects/mechatronics/selected/lab06.pdf"],
+      ["Proportional motor-position response", "/projects/mechatronics/selected/lab09.pdf"]
     ],
     "image": null,
     "exhibit": null,
@@ -317,6 +313,8 @@
   {
     "id": "beko-sensing",
     "title": "Floor sensing in an R&D team",
+    "tools": ["ToF sensing", "Minitab", "Embedded integration"],
+    "year": "2024",
     "course": "Beko internship · 2024",
     "category": "Experience",
     "kind": "R&D experience",
@@ -325,7 +323,7 @@
       "Supported test setup, sensing/data acquisition and preprocessing for robot-vacuum floor-detection work.",
       "Contributed to Minitab analysis/modeling, embedded integration, testing, iteration and documentation within the R&D team."
     ],
-    "limits": "Internal reports, images, code, identifiers, model parameters and proprietary results are excluded. This is a team internship contribution, not a claim of sole ownership, inventorship or production deployment.",
+    "limits": "A public overview of sensing, data-analysis and embedded-integration contributions within Beko's Advanced Sensor Technologies R&D team.",
     "credit": "R&D internship contribution by Seyit Kubilay Uluçay within Beko Advanced Sensor Technologies, July–August 2024.",
     "evidence": [],
     "image": null,

@@ -1,8 +1,7 @@
 import {lazy,Suspense,useEffect,useRef,useState} from 'react';
 import {Dialog} from './App';
 import PortfolioHeader from './PortfolioHeader';
-import RealBuildButton from './RealBuildButton';
-import {Move,RotateCcw} from 'lucide-react';
+import {Focus,Orbit} from 'lucide-react';
 import InspectionPanel,{InspectionButton,ZUMO_PARTS} from './InspectionTemplate';
 import {advanceZumo,newZumo,presets,placementReason} from './zumoSimulation';
 const Scene=lazy(()=>import('./ZumoScene'));
@@ -16,20 +15,19 @@ export default function ZumoExhibit({onExhibit,sharedReduced:reduced,onReducedCh
  function move(i,x,z){const r=Math.hypot(x,z),k=Math.min(1,2.72/r);x=+(x*k).toFixed(2);z=+(z*k).toFixed(2);sim.current.running=false;const reason=placementReason(objects,i,x,z,sim.current);setFeedback(reason||'Arrangement updated · scan reset.');if(reason){setState({...sim.current});return;}sim.current=newZumo();setState({...sim.current});setObjects(old=>old.map((p,j)=>j===i?[x,z]:p));}
  function start(){if(sim.current.phase==='obstructed'){sim.current.phase='avoid';sim.current.avoidStart=sim.current.angle;sim.current.t=0;}sim.current.running=!sim.current.running;setState({...sim.current});}
  function step(){if(sim.current.phase==='obstructed'){sim.current.phase='avoid';sim.current.avoidStart=sim.current.angle;sim.current.t=0;}sim.current.running=true;advanceZumo(sim.current,.5,objects);sim.current.running=false;setState({...sim.current});}
- return <main className={'exhibit-workshop zumo'+(inspect?' inspection-open':'')}>
+ return <section className={'exhibit-workshop zumo'+(inspect?' inspection-open':'')} aria-label="Interactive Zumo robot">
   <PortfolioHeader onExhibit={onExhibit} onCV={()=>setDialog('cv')} current="zumo"/>
   <section className="exhibit-heading">
    <span className="eyebrow">04 · EE321 / EMBEDDED SYSTEMS</span>
    <h1>Find the edge.<br/><span>Count what passes.</span></h1>
    <p>A tracked robot reads a white boundary and scans with an IR object sensor. Ten viewpoints, one maximum observed count.</p>
-   <RealBuildButton kind="zumo" reduced={reduced} onNavigate={()=>onExhibit('projects/zumo')}/>
   </section>
   <section className="zumo-theater">
    <div className="zumo-stage" tabIndex={0} aria-label="Zumo arena; drag cylinders to arrange objects. In inspection, arrow keys orbit and plus/minus zoom." onKeyDown={event=>{if(inspect&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','Home'].includes(event.key)){event.preventDefault();window.dispatchEvent(new CustomEvent('inspection-key',{detail:event.key}));}}}>
 	{webgl?<Suspense fallback={<p>Preparing the arena…</p>}><Scene revision={state.total+':'+state.running} selectedPart={selectedPart} sim={sim} objects={objects} onMove={move} selected={selected} onSelect={setSelected} inspect={inspect}/></Suspense>:<img src="/projects/zumo/zumo-on-mission.png" alt="Original Zumo robot in its arena"/>}
    </div>
    {inspect&&<>
-	<div className="scene-tools inspection-tools"><button className={'icon-btn '+(cameraOrbit?'active':'')} aria-label={cameraOrbit?'Disable camera orbit':'Enable camera orbit'} aria-pressed={cameraOrbit} onClick={()=>{const next=!cameraOrbit;setCameraOrbit(next);sim.current.cameraOrbit=next;setState({...sim.current});}}><Move size={18}/></button><button className="icon-btn" aria-label="Reset inspection view" onClick={()=>window.dispatchEvent(new CustomEvent('inspection-key',{detail:'Home'}))}><RotateCcw size={18}/></button></div>
+   <div className="scene-tools inspection-tools"><button className={'icon-btn '+(cameraOrbit?'active':'')} aria-label={cameraOrbit?'Disable camera orbit':'Enable camera orbit'} title="Camera orbit" aria-pressed={cameraOrbit} onClick={()=>{const next=!cameraOrbit;setCameraOrbit(next);sim.current.cameraOrbit=next;setState({...sim.current});}}><Orbit size={18}/></button><button className="icon-btn" aria-label="Reset inspection view" title="Reset inspection view" onClick={()=>window.dispatchEvent(new CustomEvent('inspection-key',{detail:'Home'}))}><Focus size={18}/></button></div>
 	<InspectionPanel parts={ZUMO_PARTS} selected={selectedPart} onSelect={id=>setSelectedPart(id)} label="Zumo"/>
    </>}
    <aside className="zumo-status" aria-live="polite">
@@ -47,8 +45,8 @@ export default function ZumoExhibit({onExhibit,sharedReduced:reduced,onReducedCh
    <div className="object-controls"><label>Move object<select aria-label="Selected object" value={selected} onChange={event=>setSelected(+event.target.value)}>{objects.map((object,index)=><option key={index} value={index}>Cylinder {index+1}</option>)}</select></label>{[0,1].map(axis=><label key={axis}>{axis?'Depth':'Left / right'}<input aria-label={'Object '+(axis?'depth':'horizontal position')} type="range" min="-2.72" max="2.72" step=".01" value={objects[selected]?.[axis]||0} onChange={event=>{const position=[...objects[selected]];position[axis]=+event.target.value;move(selected,...position);}}/></label>)}</div>
    <p className="placement-feedback" role="status">{feedback}</p>
   </section>
-  <footer className="exhibit-footer"><span>Illustrative geometry · IR pulses are not unique-object identities</span><span>EE321 · Yunus Emre Ozan &amp; Seyit Kubilay Uluçay</span></footer>
+   <footer className="exhibit-footer"><span>Interactive boundary scans · simulated IR detection counts</span><span>EE321 · Yunus Emre Ozan &amp; Seyit Kubilay Uluçay</span></footer>
   {dialog&&(dialog==='code'?<Code code={code} onClose={()=>setDialog(null)}/>:<Dialog kind={dialog} onClose={()=>setDialog(null)} onExhibit={onExhibit}/>)}
- </main>;
+ </section>;
 }
-function Code({code,onClose}){const ref=useRef(),opener=useRef(document.activeElement);useEffect(()=>{const el=ref.current,target=opener.current;el.showModal();return()=>{el.close();queueMicrotask(()=>{if(target?.isConnected)target.focus({preventScroll:true});});};},[]);return <dialog className="dialog" ref={ref} onCancel={event=>{event.preventDefault();event.stopPropagation();onClose();}} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();event.stopPropagation();onClose();}}}><div className="dialog-head"><span className="eyebrow">ORIGINAL TEAM FIRMWARE · EE321</span><button autoFocus className="icon-btn" aria-label="Close firmware" onClick={onClose}>×</button></div><h2>Boundary, scan, repeat.</h2><p>Original .ino from the final-project archive. Library implementations are not included.</p><div className="firmware-actions"><button className="text-link" onClick={()=>navigator.clipboard?.writeText(code)}>Copy firmware</button><a className="text-link" href="/projects/zumo/firmware.ino" download>Download original .ino ↓</a></div><pre className="source-code"><code>{code||'Loading firmware…'}</code></pre></dialog>;}
+function Code({code,onClose}){const ref=useRef(),opener=useRef(document.activeElement);useEffect(()=>{const el=ref.current,target=opener.current;el.showModal();return()=>{el.close();queueMicrotask(()=>{if(target?.isConnected)target.focus({preventScroll:true});});};},[]);return <dialog className="dialog" ref={ref} onCancel={event=>{event.preventDefault();event.stopPropagation();onClose();}} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();event.stopPropagation();onClose();}}}><div className="dialog-head"><span className="eyebrow">ORIGINAL TEAM FIRMWARE · EE321</span><button autoFocus className="icon-btn" aria-label="Close firmware" onClick={onClose}>×</button></div><h2>Boundary, scan, repeat.</h2><p>Original Arduino .ino source for reflectance calibration, boundary scans and IR detection counting.</p><div className="firmware-actions"><button className="text-link" onClick={()=>navigator.clipboard?.writeText(code)}>Copy firmware</button><a className="text-link" href="/projects/zumo/firmware.ino" download>Download original .ino</a></div><pre className="source-code"><code>{code||'Loading firmware…'}</code></pre></dialog>;}

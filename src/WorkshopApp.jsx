@@ -4,6 +4,7 @@ import {motion} from 'framer-motion';
 import './exhibits.css';
 const About=lazy(()=>import('./AboutPage')),Motor=lazy(()=>import('./App')),Gimbal=lazy(()=>import('./GimbalExhibit')),BMS=lazy(()=>import('./BMSExhibit')),Zumo=lazy(()=>import('./ZumoExhibit')),Projects=lazy(()=>import('./ProjectsPage'));
 const exhibits=['motor','gimbal','bms','zumo'];
+const exhibitFor=id=>exhibits.includes(id)?id:id.startsWith('projects/')&&exhibits.includes(id.slice(9))?id.slice(9):null;
 const valid=id=>exhibits.includes(id)||id==='about'||id==='projects'||/^projects\/[a-z0-9-]+$/.test(id);
 const normalizeRoute=id=>id==='projects/plc-traffic'||id==='projects/plc-claw'?'projects/plc-sequences':id;
 const route=()=>{const id=normalizeRoute(location.hash.slice(1).replace(/^\//,''));return valid(id)?id:'about';};
@@ -11,7 +12,7 @@ export default function WorkshopApp(){
  const currentRoute=useRef(route());
  const transitionRef=useRef(null),navigationVersion=useRef(0),photoRef=useRef(null),reducedRef=useRef(false),catalogScroll=useRef(0);
  const [selected,setSelected]=useState(route),[serial,setSerial]=useState(0),[reduced,setReduced]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);
- const [catalog,setCatalog]=useState({query:'',category:'All',scrollY:0});
+ const [catalog,setCatalog]=useState({scrollY:0});
  useEffect(()=>{reducedRef.current=reduced;if(reduced)transitionRef.current?.skipTransition();},[reduced]);
  useEffect(()=>{const previousScrollRestoration=history.scrollRestoration;history.scrollRestoration='manual';const m=matchMedia('(prefers-reduced-motion: reduce)'),change=event=>setReduced(event.matches);m.addEventListener('change',change);const back=()=>navigate(route(),false);window.addEventListener('popstate',back);window.addEventListener('hashchange',back);return()=>{history.scrollRestoration=previousScrollRestoration;m.removeEventListener('change',change);window.removeEventListener('popstate',back);window.removeEventListener('hashchange',back);navigationVersion.current++;transitionRef.current?.skipTransition();};},[]);
  function clearSharedPhoto(){document.querySelectorAll('[data-route-photo]').forEach(image=>{image.style.viewTransitionName='';delete image.dataset.routePhoto;});}
@@ -37,7 +38,8 @@ export default function WorkshopApp(){
    if(savedScroll!==null)catalogScroll.current=savedScroll;
    flushSync(()=>{if(savedScroll!==null)setCatalog(state=>({...state,scrollY:savedScroll}));setSelected(id);setSerial(value=>value+1);});
    if(id.startsWith('projects'))document.querySelector('.catalog-title')?.focus({preventScroll:true});
-   window.scrollTo(0,id==='projects'?catalogScroll.current:0);
+   const story=exhibitFor(id)&&id.startsWith('projects/')?document.querySelector('.exhibit-case-study'):null;
+   if(story)story.scrollIntoView({block:'start'});else window.scrollTo(0,id==='projects'?catalogScroll.current:0);
   };
   if(oldPhoto&&!reducedRef.current&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&document.startViewTransition){
    oldPhoto.style.viewTransitionName='project-photo';oldPhoto.dataset.routePhoto='true';
@@ -54,6 +56,8 @@ export default function WorkshopApp(){
   }else{delete document.documentElement.dataset.routeTransition;update();}
  }
  function choose(requestedId){navigate(normalizeRoute(requestedId),true);}
- const Exhibit=selected==='about'?About:selected==='motor'?Motor:selected==='gimbal'?Gimbal:selected==='bms'?BMS:selected==='zumo'?Zumo:Projects;
- return <div className="portfolio-root" data-exhibit={selected} data-motion={reduced?'reduced':'full'}>{exhibits.includes(selected)&&<nav className="project-rail" aria-label="Workshop exhibits">{exhibits.map((id,i)=><button key={id} aria-current={id===selected?'page':undefined} onClick={()=>choose(id)}><span>{'0'+(i+1)}</span>{id==='bms'?'BMS':id[0].toUpperCase()+id.slice(1)}{id===selected&&<motion.span className="exhibit-marker" layoutId="exhibit-marker" initial={false} aria-hidden="true" transition={{duration:reduced?0:0.22,ease:[0.22,1,0.36,1]}}/>}</button>)}</nav>}<Suspense fallback={<div className="exhibit-loading" role="status">Preparing the {selected} exhibit…</div>}><Exhibit detail={selected.startsWith('projects/')?selected.slice(9):undefined} key={selected.startsWith('projects')?'projects':serial} onExhibit={choose} catalog={catalog} onCatalogChange={setCatalog} sharedReduced={reduced} onReducedChange={setReduced}/></Suspense></div>;
+ const activeExhibit=exhibitFor(selected);
+ const Exhibit=selected==='about'?About:activeExhibit==='motor'?Motor:activeExhibit==='gimbal'?Gimbal:activeExhibit==='bms'?BMS:activeExhibit==='zumo'?Zumo:Projects;
+ const content=<Suspense fallback={<div className="exhibit-loading" role="status">Preparing the {selected} exhibit…</div>}><Exhibit detail={selected.startsWith('projects/')?selected.slice(9):undefined} key={activeExhibit||(selected.startsWith('projects')?'projects':serial)} onExhibit={choose} catalog={catalog} onCatalogChange={setCatalog} sharedReduced={reduced} onReducedChange={setReduced}/></Suspense>;
+ return <div className="portfolio-root" data-exhibit={activeExhibit||selected} data-motion={reduced?'reduced':'full'}>{activeExhibit&&<nav className="project-rail" aria-label="Workshop exhibits">{exhibits.map((id,index)=><button key={id} aria-current={id===activeExhibit?'page':undefined} onClick={()=>choose(id)}><span>{'0'+(index+1)}</span>{id==='bms'?'BMS':id[0].toUpperCase()+id.slice(1)}{id===activeExhibit&&<motion.span className="exhibit-marker" layoutId="exhibit-marker" initial={false} aria-hidden="true" transition={{duration:reduced?0:0.22,ease:[0.22,1,0.36,1]}}/>}</button>)}</nav>}{activeExhibit?<main className="exhibit-page" data-project={activeExhibit}>{content}<Suspense fallback={<div className="exhibit-case-loading" role="status">Loading project evidence…</div>}><Projects key={activeExhibit} embedded focusCase={selected.startsWith('projects/')} detail={activeExhibit} onExhibit={choose} catalog={catalog} onCatalogChange={setCatalog} sharedReduced={reduced}/></Suspense></main>:content}</div>;
 }

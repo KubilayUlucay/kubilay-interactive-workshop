@@ -154,14 +154,33 @@ function PowerSupply({sim,materials,onPower,disabled}){
   {Array.from({length:5},(_,index)=><RoundedBox key={index} args={[.70,.025,.008]} radius={.005} position={[-.1,-.02-index*.06,-.558]} material={materials.rubber}/>)}
  </group>;
 }
-function ESP32Board({name,position=[0,0,0],materials}){
+function ArduinoNanoBoard({name,position=[0,0,0],materials}){
  return <group name={name} position={position}>
-  <RoundedBox args={[.47,.055,.84]} radius={.014} castShadow material={materials.dark}/>
-  <RoundedBox args={[.32,.095,.35]} radius={.016} position={[0,.073,-.10]} material={materials.steel}/>
-  <RoundedBox args={[.14,.035,.14]} radius={.01} position={[0,.05,.18]} material={materials.rubber}/>
-  <RoundedBox args={[.22,.10,.16]} radius={.013} position={[0,.06,.40]} material={materials.steel}/>
-  {[-.20,.20].map(horizontal=>Array.from({length:12},(_,index)=><mesh key={horizontal+':'+index} position={[horizontal,.05,-.35+index*.063]} material={materials.steel}><boxGeometry args={[.022,.10,.022]}/></mesh>))}
-  {Array.from({length:4},(_,index)=><RoundedBox key={index} args={[.26,.007,.018]} radius={.003} position={[0,.035,-.32-index*.022]} material={materials.copper}/>)}
+  <RoundedBox args={[.31,.045,.84]} radius={.012} castShadow><meshStandardMaterial color="#35598a" roughness={.7} metalness={.12}/></RoundedBox>
+  <RoundedBox name="nano-microcontroller" args={[.145,.035,.145]} radius={.005} position={[0,.039,-.09]} rotation={[0,Math.PI/4,0]} material={materials.rubber}/>
+  <RoundedBox args={[.105,.026,.105]} radius={.004} position={[0,.034,.19]} rotation={[0,Math.PI/4,0]} material={materials.rubber}/>
+  <RoundedBox name="nano-reset-button" args={[.10,.035,.075]} radius={.006} position={[0,.043,.06]} material={materials.steel}/>
+  <RoundedBox args={[.06,.009,.035]} radius={.003} position={[0,.064,.06]} material={materials.teal}/>
+  <RoundedBox name="nano-mini-usb" args={[.18,.10,.16]} radius={.01} position={[0,.056,-.41]} material={materials.steel}/>
+  <RoundedBox args={[.12,.046,.007]} radius={.004} position={[0,.056,-.493]} material={materials.rubber}/>
+  {[-.135,.135].map(horizontal=>Array.from({length:15},(_,index)=><mesh key={horizontal+':'+index} position={[horizontal,.035,-.35+index*.05]} material={materials.steel}><boxGeometry args={[.018,.10,.018]}/></mesh>))}
+  <RoundedBox args={[.055,.015,.035]} radius={.004} position={[-.06,.031,.29]} material={materials.copper}/>
+  <RoundedBox args={[.055,.015,.035]} radius={.004} position={[.06,.031,.29]} material={materials.teal}/>
+ </group>;
+}
+function WirelessModule({name,position,materials}){
+ const antenna=[[-.105,-.23],[.105,-.23],[.105,-.195],[-.075,-.195],[-.075,-.16],[.075,-.16],[.075,-.125],[-.075,-.125],[-.075,-.09],[.025,-.09],[.025,-.045]];
+ return <group name={name} position={position} userData={{component:'NRF24L01'}}>
+  <RoundedBox name="nrf24l01-pcb" args={[.27,.035,.52]} radius={.007} castShadow><meshStandardMaterial color="#18211d" roughness={.72} metalness={.1}/></RoundedBox>
+  <RoundedBox name="nrf24l01-transceiver" args={[.10,.026,.10]} radius={.003} position={[.025,.032,.04]} material={materials.rubber}/>
+  <RoundedBox name="nrf24l01-crystal" args={[.055,.024,.075]} radius={.006} position={[-.075,.032,.025]} material={materials.steel}/>
+  <group name="nrf24l01-pcb-antenna">{antenna.slice(0,-1).map((point,index)=>{
+   const next=antenna[index+1];
+   return <mesh key={index} position={[(point[0]+next[0])/2,.022,(point[1]+next[1])/2]} material={materials.copper}><boxGeometry args={[Math.max(.009,Math.abs(next[0]-point[0])),.006,Math.max(.009,Math.abs(next[1]-point[1]))]}/></mesh>;
+  })}</group>
+  <RoundedBox name="nrf24l01-header" args={[.245,.055,.105]} radius={.003} position={[0,.043,.19]} material={materials.rubber}/>
+  <group name="nrf24l01-pins">{[-.03,.03].flatMap(depth=>Array.from({length:4},(_,index)=><mesh key={depth+':'+index} position={[-.09+index*.06,.088,.19+depth]} material={materials.steel}><boxGeometry args={[.014,.06,.014]}/></mesh>))}</group>
+  {[-.055,.075].map(horizontal=><RoundedBox key={horizontal} args={[.025,.012,.035]} radius={.002} position={[horizontal,.025,.115]} material={materials.steel}/>)}
  </group>;
 }
 function WirelessController({sim,materials,onCommand,disabled,resetKey}){
@@ -189,7 +208,8 @@ function WirelessController({sim,materials,onCommand,disabled,resetKey}){
  return <group name="wireless-controller" position={[size.width<=700?-.7:-1.7,size.width<=700?.55:.28,3.1]} rotation={[.72,0,-.43]} scale={.9}>
   <RoundedBox args={[1.6,.08,1.1]} radius={.025} smoothness={2} castShadow><meshStandardMaterial color="#b9783d" roughness={.7} metalness={.15}/></RoundedBox>
   {Array.from({length:9},(_,row)=>Array.from({length:12},(_,column)=><mesh key={row+':'+column} position={[-.69+column*.123,.042,-.45+row*.11]} rotation={[-Math.PI/2,0,0]}><circleGeometry args={[.019,8]}/><meshBasicMaterial color="#503d29"/></mesh>))}
-  <ESP32Board name="transmitter-esp32" position={[.38,.10,0]} materials={materials}/>
+  <ArduinoNanoBoard name="transmitter-arduino-nano" position={[.38,.10,0]} materials={materials}/>
+  <WirelessModule name="transmitter-radio" position={[-.03,.13,-.30]} materials={materials}/>
   <group name="controller-potentiometer" ref={base} position={[-.39,.15,.06]} onPointerDown={begin} onPointerMove={turn} onPointerUp={event=>{event.stopPropagation();release();}} onPointerCancel={release} onPointerOver={()=>{gl.domElement.style.cursor=disabled?'auto':'grab';}} onPointerOut={()=>{if(!capture.current)gl.domElement.style.cursor='auto';}}>
    <mesh position={[0,-.075,0]} material={materials.steel}><cylinderGeometry args={[.14,.14,.10,24]}/></mesh>
   <group name="potentiometer-knob" ref={knob}><mesh material={materials.rubber}><cylinderGeometry args={[.24,.24,.12,40]}/></mesh><RoundedBox args={[.035,.008,.18]} radius={.005} position={[0,.065,-.085]} material={materials.copper}/></group>
@@ -200,8 +220,9 @@ function WirelessController({sim,materials,onCommand,disabled,resetKey}){
 }
 function MotorReceiver({materials}){
  return <group name="motor-receiver" position={[-.67,.34,.16]}>
-  <RoundedBox args={[.69,.07,1.0]} radius={.025} material={materials.teal} castShadow/>
-  <ESP32Board name="receiver-esp32" position={[0,.10,0]} materials={materials}/>
+  <RoundedBox args={[.99,.07,1.0]} radius={.025} position={[-.10,0,0]} material={materials.teal} castShadow/>
+  <ArduinoNanoBoard name="receiver-arduino-nano" position={[0,.10,0]} materials={materials}/>
+  <WirelessModule name="receiver-radio" position={[-.36,.15,.20]} materials={materials}/>
  </group>;
 }
 function ESC({materials}){
@@ -247,11 +268,12 @@ function Scene({sim,inspection,part,onPart,orbit,reduced,onTelemetry,onCommand,o
    const e=s.explode;
    // Fit the full platform and separated covers inside the actual canvas aspect.
   const fit=mobile?Math.max(1,1.2/(size.width/size.height)):size.width<1100?1.11:1.04;
+    const framing=!mobile&&!inspection?.66:1;
    desired.set(mobile?5.5:6.6,mobile?3.65:4.7,mobile?10.0:10.3);
-   desired.multiplyScalar(fit*(1+e*(mobile?.13:.20)));
+    desired.multiplyScalar(fit*framing*(1+e*(mobile?.13:.20)));
    if(reduced)camera.position.copy(desired);else camera.position.lerp(desired,1-Math.exp(-3*dt));
    if(camera.position.distanceTo(desired)>.001)invalidate();
-   const aimY=mobile?1.45:Math.max(.25,1.1-Math.max(0,(895-size.height)/895)*3.0);
+  const aimY=mobile?1.45:!inspection?(size.width<1100?.78:.9):Math.max(.25,1.1-Math.max(0,(895-size.height)/895)*3.0);
    camera.lookAt(-.35,aimY,.1);
   }
   counter.current+=dt;
@@ -259,7 +281,7 @@ function Scene({sim,inspection,part,onPart,orbit,reduced,onTelemetry,onCommand,o
  }, -2);
  return <>
   {/* Transparent sky and a bottom fade let the floor meet the page continuously. */}
-  <fog attach="fog" args={['#202321',16,36]}/>
+  <fog attach="fog" args={['#141518',16,36]}/>
   <ambientLight intensity={.4}/>
   <hemisphereLight args={['#e4e9e6','#4c514e',.8]}/>
   <spotLight position={[-4,7,5]} intensity={100} angle={.72} penumbra={1} color="#fff2df" castShadow shadow-mapSize={[1024,1024]} shadow-radius={4} shadow-bias={-.0002}/>
@@ -283,5 +305,5 @@ function Scene({sim,inspection,part,onPart,orbit,reduced,onTelemetry,onCommand,o
  </>;
 }
 export default function MotorScene(props){
- return <Canvas frameloop="demand" shadows dpr={[1,1.6]} camera={{position:[6.6,4.7,10.3],fov:35,near:.1,far:80}} gl={{alpha:true,antialias:true,powerPreference:'high-performance',toneMapping:THREE.ACESFilmicToneMapping,toneMappingExposure:1.1}} onCreated={({gl,camera})=>{camera.layers.enable(1);gl.setClearColor('#202321',0);gl.shadowMap.type=THREE.PCFShadowMap;gl.shadowMap.autoUpdate=false;gl.shadowMap.needsUpdate=true;}}><Scene {...props}/></Canvas>;
+ return <Canvas frameloop="demand" shadows dpr={[1,1.6]} camera={{position:[6.6,4.7,10.3],fov:35,near:.1,far:80}} gl={{alpha:true,antialias:true,powerPreference:'high-performance',toneMapping:THREE.ACESFilmicToneMapping,toneMappingExposure:1.1}} onCreated={({gl,camera})=>{camera.layers.enable(1);gl.setClearColor('#141518',0);gl.shadowMap.type=THREE.PCFShadowMap;gl.shadowMap.autoUpdate=false;gl.shadowMap.needsUpdate=true;}}><Scene {...props}/></Canvas>;
 }

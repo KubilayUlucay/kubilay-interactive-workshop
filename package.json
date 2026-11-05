@@ -8,8 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predev": "node scripts/verify-bms-report-chunks.mjs",
-    "prebuild": "node scripts/verify-bms-report-chunks.mjs"
+    "verify:ui": "node scripts/verify-portfolio-ui.mjs",
+    "predev": "npm run verify:ui && node scripts/verify-bms-report-chunks.mjs",
+    "prebuild": "npm run verify:ui && node scripts/verify-bms-report-chunks.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
