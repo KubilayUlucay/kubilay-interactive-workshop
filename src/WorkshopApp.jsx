@@ -1,6 +1,7 @@
 import {lazy,Suspense,useEffect,useRef,useState} from 'react';
 import {flushSync} from 'react-dom';
 import {motion} from 'framer-motion';
+import {ArrowDown} from 'lucide-react';
 import './exhibits.css';
 const About=lazy(()=>import('./AboutPage')),Motor=lazy(()=>import('./App')),Gimbal=lazy(()=>import('./GimbalExhibit')),BMS=lazy(()=>import('./BMSExhibit')),Zumo=lazy(()=>import('./ZumoExhibit')),Projects=lazy(()=>import('./ProjectsPage'));
 const exhibits=['motor','gimbal','bms','zumo'];
@@ -8,6 +9,37 @@ const exhibitFor=id=>exhibits.includes(id)?id:id.startsWith('projects/')&&exhibi
 const valid=id=>exhibits.includes(id)||id==='about'||id==='projects'||/^projects\/[a-z0-9-]+$/.test(id);
 const normalizeRoute=id=>id==='projects/plc-traffic'||id==='projects/plc-claw'?'projects/plc-sequences':id;
 const route=()=>{const id=normalizeRoute(location.hash.slice(1).replace(/^\//,''));return valid(id)?id:'about';};
+function ProjectDetailsCue({project,reduced}){
+ const [visible,setVisible]=useState(false);
+ useEffect(()=>{
+  const page=document.querySelector('.exhibit-page');
+  if(!page)return;
+   const update=()=>{
+    const details=page.querySelector('.exhibit-case-study');
+    const top=details?.getBoundingClientRect().top??0;
+    setVisible(Boolean(details)&&top>1);
+   };
+  const observer=new MutationObserver(update);
+  observer.observe(page,{childList:true});
+  window.addEventListener('scroll',update,{passive:true});
+   window.addEventListener('resize',update);
+  update();
+   return()=>{observer.disconnect();window.removeEventListener('scroll',update);window.removeEventListener('resize',update);};
+ },[project]);
+ function showDetails(){
+  const details=document.querySelector('.exhibit-case-study');
+  if(!details)return;
+  details.querySelector('.catalog-title')?.focus({preventScroll:true});
+  details.scrollIntoView({block:'start',behavior:reduced||matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+ }
+ const name=project==='bms'?'BMS':project[0].toUpperCase()+project.slice(1);
+ return <button type="button" className="project-details-cue" data-visible={visible} tabIndex={visible?0:-1} aria-hidden={!visible} aria-label={'View '+name+' project details'} title="View project details" onClick={showDetails}>
+  <span className="project-details-cue-track" aria-hidden="true">
+   <span className="project-details-cue-flight"><span className="project-details-cue-line"/><ArrowDown className="project-details-cue-arrow" size={28} strokeWidth={1.8}/></span>
+  </span>
+  <span className="project-details-cue-label" aria-hidden="true">Project details</span>
+ </button>;
+}
 export default function WorkshopApp(){
  const currentRoute=useRef(route());
  const transitionRef=useRef(null),navigationVersion=useRef(0),photoRef=useRef(null),reducedRef=useRef(false),catalogScroll=useRef(0);
@@ -59,5 +91,5 @@ export default function WorkshopApp(){
  const activeExhibit=exhibitFor(selected);
  const Exhibit=selected==='about'?About:activeExhibit==='motor'?Motor:activeExhibit==='gimbal'?Gimbal:activeExhibit==='bms'?BMS:activeExhibit==='zumo'?Zumo:Projects;
  const content=<Suspense fallback={<div className="exhibit-loading" role="status">Preparing the {selected} exhibit…</div>}><Exhibit detail={selected.startsWith('projects/')?selected.slice(9):undefined} key={activeExhibit||(selected.startsWith('projects')?'projects':serial)} onExhibit={choose} catalog={catalog} onCatalogChange={setCatalog} sharedReduced={reduced} onReducedChange={setReduced}/></Suspense>;
- return <div className="portfolio-root" data-exhibit={activeExhibit||selected} data-motion={reduced?'reduced':'full'}>{activeExhibit&&<nav className="project-rail" aria-label="Workshop exhibits">{exhibits.map((id,index)=><button key={id} aria-current={id===activeExhibit?'page':undefined} onClick={()=>choose(id)}><span>{'0'+(index+1)}</span>{id==='bms'?'BMS':id[0].toUpperCase()+id.slice(1)}{id===activeExhibit&&<motion.span className="exhibit-marker" layoutId="exhibit-marker" initial={false} aria-hidden="true" transition={{duration:reduced?0:0.22,ease:[0.22,1,0.36,1]}}/>}</button>)}</nav>}{activeExhibit?<main className="exhibit-page" data-project={activeExhibit}>{content}<Suspense fallback={<div className="exhibit-case-loading" role="status">Loading project evidence…</div>}><Projects key={activeExhibit} embedded focusCase={selected.startsWith('projects/')} detail={activeExhibit} onExhibit={choose} catalog={catalog} onCatalogChange={setCatalog} sharedReduced={reduced}/></Suspense></main>:content}</div>;
+ return <div className="portfolio-root" data-exhibit={activeExhibit||selected} data-motion={reduced?'reduced':'full'}>{activeExhibit&&<nav className="project-rail" aria-label="Workshop exhibits">{exhibits.map((id,index)=><button key={id} aria-current={id===activeExhibit?'page':undefined} onClick={()=>choose(id)}><span>{'0'+(index+1)}</span>{id==='bms'?'BMS':id[0].toUpperCase()+id.slice(1)}{id===activeExhibit&&<motion.span className="exhibit-marker" layoutId="exhibit-marker" initial={false} aria-hidden="true" transition={{duration:reduced?0:0.22,ease:[0.22,1,0.36,1]}}/>}</button>)}</nav>}{activeExhibit?<main className="exhibit-page" data-project={activeExhibit}>{content}<ProjectDetailsCue key={activeExhibit} project={activeExhibit} reduced={reduced}/><Suspense fallback={<div className="exhibit-case-loading" role="status">Loading project evidence…</div>}><Projects key={activeExhibit} embedded focusCase={selected.startsWith('projects/')} detail={activeExhibit} onExhibit={choose} catalog={catalog} onCatalogChange={setCatalog} sharedReduced={reduced}/></Suspense></main>:content}</div>;
 }
