@@ -5,8 +5,8 @@ import projectEvidence from './projectEvidence.json';
 import ZoomImage from './ZoomImage';
 import PortfolioHeader from './PortfolioHeader';
 import RealBuildButton from './RealBuildButton';
-import GimbalCode from './GimbalCode';
 import TeammateText from './TeammateText';
+import {ArrowLeft,ArrowUp} from 'lucide-react';
 const featuredMedia={
  bms:{src:'/projects/bms/back.png',alt:'The assembled BMS board and its capacitor-balancing components.'},
  motor:{src:'/projects/motor/overall-motor.jpeg',alt:'The hand-built axial-flux motor and its test setup on the lab bench.'},
@@ -15,10 +15,10 @@ const featuredMedia={
 };
 function ProjectIndex({onExhibit}){
  const groups=[
+  {id:'experience',title:'Professional experience',items:projects.filter(project=>project.category==='Experience')},
   {id:'builds',title:'Selected builds',items:Object.keys(featuredMedia).map(id=>projects.find(project=>project.id===id)).filter(Boolean)},
   {id:'labs',title:'Laboratory work',items:projects.filter(project=>project.id.endsWith('-labs'))},
-  {id:'studies',title:'Studies & software',items:projects.filter(project=>!project.exhibit&&!project.id.endsWith('-labs')&&project.category!=='Experience')},
-  {id:'experience',title:'R&D experience',items:projects.filter(project=>project.category==='Experience')}
+  {id:'studies',title:'Studies & software',items:projects.filter(project=>!project.exhibit&&!project.id.endsWith('-labs')&&project.category!=='Experience')}
  ];
  function openProject(event,id){if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();onExhibit('projects/'+id);}
  return <section className="catalog catalog-curated">
@@ -49,6 +49,12 @@ function ProjectSection({title,children,photos,...photoProps}){
   <div className="case-section-copy">{children}</div>
   {photos&&<ProjectPhotos {...photoProps} photos={photos} label={title+' figures'}/>}
  </section>;
+}
+function CaseNavigation({onProjects,onInteractive}){
+ return <nav className="case-navigation" aria-label="Project navigation">
+  <button type="button" className="text-link" onClick={onProjects}><ArrowLeft size={16} aria-hidden="true"/>Projects</button>
+  {onInteractive&&<button type="button" className="text-link case-return" onClick={onInteractive}><ArrowUp size={16} aria-hidden="true"/>Back to interactive</button>}
+ </nav>;
 }
 function CompleteReport({report,title,summary,id}){
  const [loaded,setLoaded]=useState({report:null,url:null,error:null});
@@ -107,7 +113,7 @@ function MotorProjectDetail({onExhibit,reduced,embedded=false}){
   ['/projects/motor/receiver-wiring.jpeg','Solder side of the receiver perfboard, showing the connecting wires and header joints.','Receiver board · solder side']
  ];
  return <article className="case-study motor-case">
-  {!embedded&&<button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button>}
+  {!embedded&&<CaseNavigation onProjects={()=>onExhibit('projects')}/>}
   <span className="eyebrow">UNIVERSITY BUILD / AXIAL-FLUX MOTOR</span>
   <Title className="catalog-title" tabIndex={-1}>An axial-flux motor,<br/><span>built by hand.</span></Title>
   <p className="lead">A hand-wound stator, printed supports and a shared-axis rotor assembly, completed in two months and presented in class. Original photographs and lab footage document the build.</p>
@@ -138,14 +144,15 @@ function GimbalProjectDetail({onExhibit,reduced,embedded=false}){
   ['/projects/gimbal/controller-solder-side.jpeg','Rear of the gimbal control perfboard, showing solder joints and the bundled connecting wires.','Gimbal control board · solder side']
  ];
  return <article className="case-study motor-case gimbal-case">
-  {!embedded&&<button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button>}
+  {!embedded&&<CaseNavigation onProjects={()=>onExhibit('projects')}/>}
   <span className="eyebrow">MECHATRONICS / THREE-AXIS CAMERA GIMBAL</span>
   <Title className="catalog-title" tabIndex={-1}>A three-axis gimbal,<br/><span>bringing mechanics and sensing together.</span></Title>
   <p className="lead">A servo-driven camera support combines adapted printed mechanics with onboard gyroscope sensing. Phone and sensor readings were compared for feedback and cross-checking during the build.</p>
   <p><TeammateText>Developed the Arduino code and assembled and integrated the three-axis mechanism with my classmate Tuna. CAD adaptation by him as well.</TeammateText></p>
-  <p>Compared phone gyroscope readings with the onboard sensor while observing the servo response. The photographs and mounted-phone traces record that setup.</p>
+  <p>Observed the servo response while cross-checking phone and onboard gyroscope readings. The photographs and traces document the assembled rig and sensing checks; the interactive counter-rotation is an idealized explanation, not a measured stabilization-accuracy result.</p>
   <ProjectSection title="Nested brackets and servo axes" photos={[photos[0],photos[2]]}>
    <p>The mechanics were adapted from a sourced design into three nested axes. The CAD view shows the bracket arrangement; the side photograph shows the printed joints, servo positions and connecting leads on the built mechanism.</p>
+    <p>Adapted the originally battery-powered design for bench use with a 5 V adapter supplying the Arduino and servo-control setup.</p>
   </ProjectSection>
   <ProjectSection title="Assembling the camera support" photos={photos.slice(1,2)} primary exhibit="gimbal" onExhibit={onExhibit} reduced={reduced} embedded={embedded}>
    <p>Each servo moves one stage while supporting the next bracket and payload. The completed assembly brings the printed frame, motors and electronics together around the central phone or camera mount.</p>
@@ -153,10 +160,22 @@ function GimbalProjectDetail({onExhibit,reduced,embedded=false}){
   <ProjectSection title="Arduino sensing and servo control" photos={[photos[4],photos[5]]}>
    <p>The wired perfboard assembly carries the Arduino Nano used in the gimbal build. The front and rear views show the controller, connecting leads and soldered joints for the sensing and servo-control electronics.</p>
   </ProjectSection>
+  <ProjectSection title="MPU6050 setup and servo outputs" photos={[
+   ['/projects/gimbal/imu-servo-setup.png','Original Arduino IDE capture showing MPU6050 calibration offsets, DMP initialization, interrupt handling and servo attachments to pins 10, 9 and 8.','Original Arduino IMU and servo setup']
+  ]}>
+   <p>The original Arduino configuration applies the gyroscope offsets, initializes the MPU6050 DMP and enables interrupt-driven data handling. The captured setup also attaches the three servo outputs to digital pins 10, 9 and 8.</p>
+  </ProjectSection>
   <ProjectSection title="Cross-checking gyroscope feedback" photos={[photos[3]]}>
    <p>The phone supplied an additional motion-data source for comparison with the onboard gyroscope. The mounted-phone capture shows the traces used to cross-check sensing while observing the rig's response.</p>
   </ProjectSection>
-  <GimbalCode/>
+  <ProjectSection title="Recorded phone gyroscope measurements" photos={[
+   ['/projects/gimbal/phone-gyro-x.png','Original phone gyroscope X-axis recording from the gimbal project.','Phone gyroscope · X'],
+   ['/projects/gimbal/phone-gyro-y.png','Original phone gyroscope Y-axis recording from the gimbal project.','Phone gyroscope · Y'],
+   ['/projects/gimbal/phone-gyro-z.png','Original phone gyroscope Z-axis recording from the gimbal project.','Phone gyroscope · Z']
+  ]}>
+   <p>Recorded the phone gyroscope along X, Y and Z during the build. These original plots show the captured signals without deriving a new stabilization-accuracy figure.</p>
+   <p>The phone and Arduino data streams were started manually and had a timing offset. The figures are presented as separate recordings rather than a synchronized tracking-error comparison.</p>
+  </ProjectSection>
   <p className="motor-attribution"><TeammateText>Two-person build with Tuna, who handled the CAD adaptation. Original project CAD and photographs accompany an explanatory model of the nested-axis mechanism.</TeammateText></p>
  </article>;
 }
@@ -200,10 +219,11 @@ function BMSProjectDetail({onExhibit,reduced,embedded=false}){
   ['/projects/bms/balancing.png','Cell-voltage traces from the charging simulation as the control algorithm cycles the transfer network.','Balancing response · simulation']
  ];
  return <article className="case-study motor-case bms-case">
-  {!embedded&&<button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button>}
+  {!embedded&&<CaseNavigation onProjects={()=>onExhibit('projects')}/>}
   <span className="eyebrow">EE401 / EE402 · BATTERY MANAGEMENT</span>
   <Title className="catalog-title" tabIndex={-1}>A battery manager,<br/><span>built around cell balance.</span></Title>
   <p className="lead">A built four-cell lithium-ion BMS pairs a custom circuit board with an STM32F407 Discovery controller, sensing paths, a protection switch and capacitor-based active balancing.</p>
+  <p>In the reported charging simulation, summed cell-voltage differences fell from <strong>302.94 mV to 2.93 mV</strong>: a <strong>99.0% reduction</strong> at approximately <strong>27,040 s of simulated time</strong>. <a className="text-link" href="/projects/bms/SeniorYearProject2.pdf#page=33" target="_blank" rel="noreferrer">Charging result · report p. 33</a></p>
   <p><TeammateText>Developed the BMS and ran all MATLAB/Simulink simulations. Built the sensing and switched-capacitor hardware around an STM32 controller, with PCB drawings by Atahan.</TeammateText></p>
   <p>Simulated charge transfer between neighboring cells and recorded the cell-voltage response. The board photographs and EE402 report document fabrication and controller integration; the balancing traces are simulation results.</p>
   <ProjectSection title="Cell sensing and STM32 control" photos={photos.slice(0,2)} primary exhibit="bms" onExhibit={onExhibit} reduced={reduced} embedded={embedded}>
@@ -234,8 +254,8 @@ function ZumoProjectDetail({onExhibit,reduced,embedded=false}){
  const [code,setCode]=useState(''),[copied,setCopied]=useState(false);
  useEffect(()=>{let active=true;fetch('/projects/zumo/firmware.ino').then(r=>{if(!r.ok)throw new Error();return r.text();}).then(t=>{if(active)setCode(t);}).catch(()=>{if(active)setCode('Firmware text is unavailable.');});return()=>{active=false;};},[]);
  async function copyCode(){try{await navigator.clipboard.writeText(code);setCopied(true);setTimeout(()=>setCopied(false),1800);}catch{setCopied(false);}}
- return <article className="case-study motor-case zumo-case">{!embedded&&<button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button>}<span className="eyebrow">EE321 · ZUMO OBJECT-COUNTING ROBOT</span><Title className="catalog-title" tabIndex={-1}>A line-following robot,<br/><span>working the boundary.</span></Title><p className="lead">A Zumo robot combined reflectance sensing with an infrared object sensor to traverse a dark course, respond to its white boundary and record object detections across repeated scans.</p>
-  <p>Implemented the navigation, counting logic and integration in the team project with Yunus Emre Ozan. Calibrated the reflectance array for the white boundary and used the IR sensor for detections.</p>
+ return <article className="case-study motor-case zumo-case">{!embedded&&<CaseNavigation onProjects={()=>onExhibit('projects')}/>}<span className="eyebrow">EE321 · ZUMO OBJECT-COUNTING ROBOT</span><Title className="catalog-title" tabIndex={-1}>A line-following robot,<br/><span>working the boundary.</span></Title><p className="lead">A Zumo robot combined reflectance sensing with an infrared object sensor to traverse a dark course, respond to its white boundary and record object detections across repeated scans.</p>
+  <p><TeammateText>Implemented the navigation, counting logic and integration in the team project with Yunus Emre Ozan. Calibrated the reflectance array for the white boundary and used the IR sensor for detections.</TeammateText></p>
   <p>Recorded detections across repeated scans and reported the largest observed count through the LED and buzzer. The course photographs, report and firmware document the runs and counting logic.</p>
   <ProjectSection title="Sensing the course boundary" photos={[photos[1]]} primary exhibit="zumo" onExhibit={onExhibit} reduced={reduced} embedded={embedded}>
    <p>The six-channel reflectance array distinguishes the dark course from its white perimeter after calibration. The robot's position near the boundary shows where left/right sensor groups trigger a turn; the IR sensor handles object detections during movement.</p>
@@ -243,14 +263,14 @@ function ZumoProjectDetail({onExhibit,reduced,embedded=false}){
   <ProjectSection title="Scanning and recording detections" photos={[photos[0]]}>
    <p>During a boundary scan, IR detections increment a count with a short debounce delay. The firmware stores counts across repeated scans and reports the largest observed count through the LED and buzzer. The course photograph documents the robot during an object-counting run.</p>
   </ProjectSection>
-  <section className="bms-report-section" aria-labelledby="zumo-report-title"><span className="eyebrow">ORIGINAL PROJECT REPORT</span><div className="bms-report-heading"><div><span className="eyebrow">EE321 · FINAL REPORT</span><h2 id="zumo-report-title">Zumo robot project report</h2><p>Original team report · Kubilay Ulucay and Yunus Emre Ozan</p></div><div className="bms-report-links"><a className="text-link" href="/projects/zumo/zumo-report.pdf" target="_blank" rel="noreferrer">Open report</a><a className="text-link" href="/projects/zumo/zumo-report.pdf" download="EE321-Zumo-Project-Report.pdf">Download report</a></div></div><div className="bms-pdf-frame"><iframe src="/projects/zumo/zumo-report.pdf#view=FitH" title="EE321 Zumo project report PDF" loading="lazy"/></div></section>
-  <section className="bms-report-section zumo-firmware" aria-labelledby="zumo-code-title"><span className="eyebrow">ORIGINAL TEAM FIRMWARE</span><div className="bms-report-heading"><div><h2 id="zumo-code-title">Zumo counting firmware</h2><p>Team source file · code shown in-page for inspection.</p></div><div className="bms-report-links"><button className="text-link" type="button" onClick={copyCode} disabled={!code||code.startsWith('Firmware text is unavailable')}>{copied?'Copied':'Copy code'}</button><a className="text-link" href="/projects/zumo/firmware.ino" download="EE321-Zumo-Team-Firmware.ino">Download firmware</a></div></div><pre className="zumo-code-viewer"><code>{code||'Loading original firmware…'}</code></pre></section><p className="motor-attribution">Original Zumo photographs, report and firmware document the EE321 team project. Team credit: Kubilay Ulucay and Yunus Emre Ozan.</p></article>;
+  <section className="bms-report-section" aria-labelledby="zumo-report-title"><span className="eyebrow">ORIGINAL PROJECT REPORT</span><div className="bms-report-heading"><div><span className="eyebrow">EE321 · FINAL REPORT</span><h2 id="zumo-report-title">Zumo robot project report</h2><p><TeammateText>Original team report · Kubilay Ulucay and Yunus Emre Ozan</TeammateText></p></div><div className="bms-report-links"><a className="text-link" href="/projects/zumo/zumo-report.pdf" target="_blank" rel="noreferrer">Open report</a><a className="text-link" href="/projects/zumo/zumo-report.pdf" download="EE321-Zumo-Project-Report.pdf">Download report</a></div></div><div className="bms-pdf-frame"><iframe src="/projects/zumo/zumo-report.pdf#view=FitH" title="EE321 Zumo project report PDF" loading="lazy"/></div></section>
+  <section className="bms-report-section zumo-firmware" aria-labelledby="zumo-code-title"><span className="eyebrow">ORIGINAL TEAM FIRMWARE</span><div className="bms-report-heading"><div><h2 id="zumo-code-title">Zumo counting firmware</h2><p>Team source file · code shown in-page for inspection.</p></div><div className="bms-report-links"><button className="text-link" type="button" onClick={copyCode} disabled={!code||code.startsWith('Firmware text is unavailable')}>{copied?'Copied':'Copy code'}</button><a className="text-link" href="/projects/zumo/firmware.ino" download="EE321-Zumo-Team-Firmware.ino">Download firmware</a></div></div><pre className="zumo-code-viewer"><code>{code||'Loading original firmware…'}</code></pre></section><p className="motor-attribution"><TeammateText>Original Zumo photographs, report and firmware document the EE321 team project. Team credit: Kubilay Ulucay and Yunus Emre Ozan.</TeammateText></p></article>;
 }
 function PowerToolProjectDetail({onExhibit}){
  const [code,setCode]=useState(''),[copied,setCopied]=useState(false);
  useEffect(()=>{let active=true;fetch('/projects/coursework/dispatch-excerpt.txt').then(r=>{if(!r.ok)throw new Error();return r.text();}).then(t=>{if(active)setCode(t);}).catch(()=>{if(active)setCode('Dispatch excerpt is unavailable.');});return()=>{active=false;};},[]);
  async function copyCode(){try{await navigator.clipboard.writeText(code);setCopied(true);setTimeout(()=>setCopied(false),1800);}catch{setCopied(false);}}
- return <article className="case-study motor-case power-tool-case"><button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button><span className="eyebrow">EE303 · MATLAB APP DESIGNER</span><h1 className="catalog-title" tabIndex={-1}>Power flow &amp;<br/><span>economic dispatch.</span></h1><p className="lead">A MATLAB App Designer submission that presents a four-bus network view and a three-generator economic-dispatch model in one interface.</p>
+ return <article className="case-study motor-case power-tool-case"><CaseNavigation onProjects={()=>onExhibit('projects')}/><span className="eyebrow">EE303 · MATLAB APP DESIGNER</span><h1 className="catalog-title" tabIndex={-1}>Power flow &amp;<br/><span>economic dispatch.</span></h1><p className="lead">A MATLAB App Designer submission that presents a four-bus network view and a three-generator economic-dispatch model in one interface.</p>
   <p>Built the App Designer interface and implemented the three-generator dispatch calculation. The callback solves equal-marginal-cost equations with demand balance, then calculates each generator's output and quadratic cost.</p>
   <p>Connected the network inputs, demand and branch-flow fields in the same interface. The original screenshot and callback excerpt show the application and calculation.</p>
   <ProjectSection title="Four-bus network in App Designer" photos={[
@@ -264,7 +284,7 @@ function PowerToolProjectDetail({onExhibit}){
 }
 function PVDesignProjectDetail({onExhibit}){
  const report='/projects/coursework/pv-complete.pdf';
- return <article className="case-study motor-case pv-design-case"><button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button><span className="eyebrow">EE473–573 · 2025 · PVsyst DESIGN STUDY</span><h1 className="catalog-title" tabIndex={-1}>Off-grid residential<br/><span>PV design.</span></h1><p className="lead">A 2025 academic sizing and feasibility study for a standalone home system in Kocaeli, modeled in PVsyst with battery storage.</p>
+ return <article className="case-study motor-case pv-design-case"><CaseNavigation onProjects={()=>onExhibit('projects')}/><span className="eyebrow">EE473–573 · 2025 · PVsyst DESIGN STUDY</span><h1 className="catalog-title" tabIndex={-1}>Off-grid residential<br/><span>PV design.</span></h1><p className="lead">A 2025 academic sizing and feasibility study for a standalone home system in Kocaeli, modeled in PVsyst with battery storage.</p>
   <ProjectSection title="Autonomy and system cost">
     <p><TeammateText>Completed most of the sizing and PVsyst work in the study with Mehmet Fatih Karaosman. Sized the system around winter demand and three days of autonomy.</TeammateText></p>
     <p>Calculated approximately 389,000 TL upfront against 6,240 TL in annual grid spending using May 2025 estimates: about 62 years of simple payback before maintenance, battery replacement and financing. At those prices, grid electricity was the cheaper option where available.</p>
@@ -290,7 +310,7 @@ function WindStudyProjectDetail({onExhibit}){
  ];
  const [selectedReport,setSelectedReport]=useState('analysis');
  const report=reports.find(item=>item.id===selectedReport);
- return <article className="case-study motor-case wind-study-case"><button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button><span className="eyebrow">EE101 · 2022 · POWERWORLD STUDY</span><h1 className="catalog-title" tabIndex={-1}>Wind-farm interconnection<br/><span>trade-offs.</span></h1><p className="lead">A PowerWorld study comparing ways to connect a hypothetical 200 MW wind farm to an existing network, with 27 configurations assessed for cost, losses and loading limits.</p>
+ return <article className="case-study motor-case wind-study-case"><CaseNavigation onProjects={()=>onExhibit('projects')}/><span className="eyebrow">EE101 · 2022 · POWERWORLD STUDY</span><h1 className="catalog-title" tabIndex={-1}>Wind-farm interconnection<br/><span>trade-offs.</span></h1><p className="lead">A PowerWorld study comparing ways to connect a hypothetical 200 MW wind farm to an existing network, with 27 configurations assessed for cost, losses and loading limits.</p>
   <ProjectSection title="Selected configuration: Experiment 9">
     <p>Compared 27 PowerWorld configurations and recommended CONDOR links to PETE and PAI. Only two configurations were feasible in the study; Experiment 9 gave the preferred loading, loss and estimated five-year cost trade-off.</p>
     <p>The model showed both CONDOR links at about 91% loading and 20.11 MW total system losses. Considered loading feasibility and estimated cost alongside losses when making the recommendation.</p>
@@ -310,7 +330,7 @@ function WindStudyProjectDetail({onExhibit}){
 function PLCSequencesProjectDetail({onExhibit}){
  const report={title:'EE392 team project report',description:'Original 11-page report covering both control scenarios, their HMIs and the team\'s test observations.',src:'/projects/plc/EE392.pdf',download:'EE392-Team-Project-Report.pdf'};
  const figures=projectEvidence['plc-sequences'].figures;
- return <article className="case-study motor-case plc-sequences-case"><button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button><span className="eyebrow">EE392 · INDUSTRIAL AUTOMATION · TEAM PROJECT</span><h1 className="catalog-title" tabIndex={-1}>PLC sequences<br/><span>&amp; operator HMIs.</span></h1><p className="lead"><TeammateText>A shared EE392 team project with class mates Berke Çeçen, Genco Güven and Efe Can Özhan. Exploring two classroom control scenarios in Control Expert: a traffic-light sequencer with after-hours operation and a timed claw game with an operator HMI.</TeammateText></p>
+ return <article className="case-study motor-case plc-sequences-case"><CaseNavigation onProjects={()=>onExhibit('projects')}/><span className="eyebrow">EE392 · INDUSTRIAL AUTOMATION · TEAM PROJECT</span><h1 className="catalog-title" tabIndex={-1}>PLC sequences<br/><span>&amp; operator HMIs.</span></h1><p className="lead"><TeammateText>A shared EE392 team project with class mates Berke Çeçen, Genco Güven and Efe Can Özhan. Exploring two classroom control scenarios in Control Expert: a traffic-light sequencer with after-hours operation and a timed claw game with an operator HMI.</TeammateText></p>
   <p>Developed and checked the control logic within the team. Used explicit states and timers to connect operator inputs to the traffic-light modes and claw sequence.</p>
   <p>Inspected mode changes, HMI states and internal counters in Control Expert simulation. The report records those operating states and observations.</p>
   <ProjectSection title="Traffic-light sequencing in Control Expert" photos={[[
@@ -353,7 +373,7 @@ function ElectronicsLabsProjectDetail({onExhibit}){
  const [selectedLabId,setSelectedLabId]=useState('lab01');
  const report=ELECTRONICS_LABS.find(item=>item.id===selectedLabId);
  const fullReport=projectEvidence['electronics-labs'][selectedLabId];
- return <article className="case-study motor-case electronics-labs-case"><button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button><span className="eyebrow">EE301 · SELECTED BENCH WORK · FALL 2023</span><h1 className="catalog-title" tabIndex={-1}>Bench measurements<br/><span>&amp; diode curves.</span></h1><p className="lead">Selected bench records show breadboard connections, DC measurements with a multimeter and diode current–voltage observations.</p>
+ return <article className="case-study motor-case electronics-labs-case"><CaseNavigation onProjects={()=>onExhibit('projects')}/><span className="eyebrow">EE301 · SELECTED BENCH WORK · FALL 2023</span><h1 className="catalog-title" tabIndex={-1}>Bench measurements<br/><span>&amp; diode curves.</span></h1><p className="lead">Selected bench records show breadboard connections, DC measurements with a multimeter and diode current–voltage observations.</p>
   <p>Wired the circuits and used the DC supply and multimeter to record node and resistor voltages. Calculated current from the voltage across a known resistor and compared the recorded curves for different diode types.</p>
   <LabWalkthrough group="electronics-labs" items={ELECTRONICS_LABS} onSelect={setSelectedLabId} target="electronics-reports"/>
   <section id="electronics-reports" className="bms-report-section electronics-reports" aria-labelledby="electronics-report-title"><CompleteReport report={fullReport} title={report.title} summary={report.summary} id="electronics-report-title"/></section>
@@ -370,7 +390,7 @@ function MechatronicsLabsProjectDetail({onExhibit}){
  const [selectedLabId,setSelectedLabId]=useState('lab02');
  const report=MECHATRONICS_LABS.find(item=>item.id===selectedLabId);
  const fullReport=projectEvidence['mechatronics-labs'][selectedLabId];
- return <article className="case-study motor-case mechatronics-labs-case"><button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button><span className="eyebrow">ME417 · SELECTED LAB WORK · 2024</span><h1 className="catalog-title" tabIndex={-1}>Sensors, timing<br/><span>&amp; motor response.</span></h1><p className="lead">Four selected studies connect analog sensing, timing waveforms, two-board communication and observed motor-position response.</p>
+ return <article className="case-study motor-case mechatronics-labs-case"><CaseNavigation onProjects={()=>onExhibit('projects')}/><span className="eyebrow">ME417 · SELECTED LAB WORK · 2024</span><h1 className="catalog-title" tabIndex={-1}>Sensors, timing<br/><span>&amp; motor response.</span></h1><p className="lead">Four selected studies connect analog sensing, timing waveforms, two-board communication and observed motor-position response.</p>
   <p>Wired and documented the sensing and timing setups, then adapted the course examples for communication between two Arduino boards. Recorded the sensor response, oscillator waveform and I²C behavior, and compared the motor-position readings at different proportional gains.</p>
   <LabWalkthrough group="mechatronics-labs" items={MECHATRONICS_LABS} onSelect={setSelectedLabId} target="mechatronics-reports"/>
   <section id="mechatronics-reports" className="bms-report-section mechatronics-reports" aria-labelledby="mechatronics-report-title"><span className="eyebrow">SELECTED ORIGINAL LAB PAGES</span><div className="catalog-search"><label htmlFor="mechatronics-lab-select">Experiment<select id="mechatronics-lab-select" aria-label="Choose mechatronics experiment" value={selectedLabId} onChange={event=>setSelectedLabId(event.target.value)}>{MECHATRONICS_GROUPS.map((group,index)=><optgroup key={group} label={group}>{MECHATRONICS_LABS.filter(item=>item.group===index).map(item=><option key={item.id} value={item.id}>{item.title}</option>)}</optgroup>)}</select></label></div><CompleteReport report={fullReport} title={report.title} summary={report.summary} id="mechatronics-report-title"/></section>
@@ -378,10 +398,35 @@ function MechatronicsLabsProjectDetail({onExhibit}){
 }
 
 
+function AccentureExperienceDetail({onExhibit}){
+ return <article className="case-study motor-case accenture-experience-case"><CaseNavigation onProjects={()=>onExhibit('projects')}/><span className="eyebrow">ACCENTURE · INDUSTRY X · JANUARY 2026–PRESENT</span><h1 className="catalog-title" tabIndex={-1}>Engineering verification<br/><span>at Accenture.</span></h1><p className="lead">Quality Assurance Engineer working on requirements-based verification for clinical-laboratory automation at a global pharmaceutical company.</p>
+  <ProjectSection title="Requirements, tests and implementation">
+   <p>Develop Python/Gherkin black-box tests from technical requirements and expected system behavior. Refactor test functions and state-change checks, with implementation changes reviewed through GitLab merge requests.</p>
+  </ProjectSection>
+  <ProjectSection title="Execution and failure investigation">
+   <p>Run automated test suites locally and in existing GitLab/AWS pipelines. Read execution reports, investigate failures and distinguish test defects from suspected product issues.</p>
+  </ProjectSection>
+  <ProjectSection title="Traceability and issue reporting">
+  <p>Maintain links between requirements, test records and defects in Codebeamer. Submitted 40 log-backed issue reports over five months, supporting triage of test defects and suspected product issues.</p>
+  </ProjectSection>
+  <p className="motor-attribution">Professional experience: Accenture Industry X, January 2026–present. Client-specific requirements, source code and internal test results remain confidential.</p>
+ </article>;
+}
 function BekoSensingProjectDetail({onExhibit}){
- return <article className="case-study motor-case beko-sensing-case"><button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button><span className="eyebrow">BEKO · R&D ADVANCED SENSOR TECHNOLOGIES · INTERNSHIP</span><h1 className="catalog-title" tabIndex={-1}>Floor sensing<br/><span>in an R&amp;D team.</span></h1><p className="lead">An R&D internship contributing to sensor-based floor detection for robot-vacuum applications. The work connected test setup, measurement data, analysis and embedded integration within Beko's Advanced Sensor Technologies team.</p>
-  <p>Worked on the sensing rig, collected and preprocessed measurement data, analyzed it in Minitab and supported embedded integration within the Advanced Sensor Technologies team.</p>
-  <p>Used the rig measurements and embedded tests to guide iterations. Documented the test observations and integration findings for internal review.</p>
+ return <article className="case-study motor-case beko-sensing-case"><CaseNavigation onProjects={()=>onExhibit('projects')}/><span className="eyebrow">BEKO · R&D ADVANCED SENSOR TECHNOLOGIES · INTERNSHIP</span><h1 className="catalog-title" tabIndex={-1}>Floor sensing<br/><span>in an R&amp;D team.</span></h1><p className="lead">An R&D internship in Beko's Advanced Sensor Technologies team, developing sensor-based floor detection for robot-vacuum applications. The work connected a motorized test rig, measurement processing, statistical modelling and embedded trials.</p>
+  <ProjectSection title="Motorized test rig and data acquisition">
+   <p>Built a motorized test rig to exercise the sensing setup across various environments and configurations. Adapted acquisition code to collect sensor measurements, connecting the physical test setup with the data used for analysis.</p>
+  </ProjectSection>
+  <ProjectSection title="Measurement processing in Python and Excel">
+   <p>Preprocessed approximately <strong>650,000 logged data points</strong> using Python and Excel. Applied filtering and summary statistics, then organized the measurements for comparison and modelling.</p>
+  </ProjectSection>
+  <ProjectSection title="Regression modelling in Minitab">
+   <p>Developed regression models in Minitab from the prepared measurements to support floor-type prediction. Connected the statistical analysis with the sensing investigation and the subsequent embedded implementation.</p>
+  </ProjectSection>
+  <ProjectSection title="Embedded integration and project trials">
+   <p>Integrated the model into embedded firmware and evaluated floor-type prediction in project trials, achieving <strong>83.5% prediction success in those trials</strong>.</p>
+   <p>Used test observations to guide iterations and documented analysis and integration findings for internal team review. The reported outcome describes the project trials.</p>
+  </ProjectSection>
   <p className="motor-attribution">R&D internship contribution: Seyit Kubilay Uluçay, Beko Advanced Sensor Technologies, July–August 2024. Internal reports, images, source code, device identifiers, model parameters and proprietary results are not shared here.</p></article>;
 }
 export default function ProjectsPage({detail,onExhibit,catalog,onCatalogChange,sharedReduced,embedded=false,focusCase=false}){
@@ -402,7 +447,7 @@ function link(href){if(href.startsWith('exhibit:')){onExhibit(href.slice(8));}}
 if(embedded){
  const Detail={motor:MotorProjectDetail,gimbal:GimbalProjectDetail,bms:BMSProjectDetail,zumo:ZumoProjectDetail}[detail];
  function returnToExhibit(){onExhibit(detail);const page=document.querySelector('.exhibit-page');page?.scrollIntoView({block:'start'});page?.querySelector('#scene-controls button,#exhibit-controls button,.zumo-controls button')?.focus({preventScroll:true});}
- return <section ref={pageRef} className="projects-page exhibit-case-study" aria-label={project?.title+' technical case study'}><button className="text-link case-return" onClick={returnToExhibit}>Back to interactive</button>{Detail&&<Detail onExhibit={onExhibit} reduced={sharedReduced} embedded/>}</section>;
+ return <section ref={pageRef} className="projects-page exhibit-case-study" aria-label={project?.title+' technical case study'}><CaseNavigation onProjects={()=>onExhibit('projects')} onInteractive={returnToExhibit}/>{Detail&&<Detail onExhibit={onExhibit} reduced={sharedReduced} embedded/>}</section>;
 }
 return <main ref={pageRef} className="projects-page"><PortfolioHeader onExhibit={onExhibit} onCV={()=>setDialog('cv')} current={detail?'projects/'+detail:'projects'}/>{detail?project?project.id==='motor'?<MotorProjectDetail onExhibit={onExhibit} reduced={sharedReduced}/>:project.id==='gimbal'?<GimbalProjectDetail onExhibit={onExhibit} reduced={sharedReduced}/>:project.id==='bms'?<BMSProjectDetail onExhibit={onExhibit} reduced={sharedReduced}/>:project.id==='zumo'?<ZumoProjectDetail onExhibit={onExhibit} reduced={sharedReduced}/>:project.id==='power-tool'?<PowerToolProjectDetail onExhibit={onExhibit}/>:project.id==='pv-design'?<PVDesignProjectDetail onExhibit={onExhibit}/>:project.id==='wind-study'?<WindStudyProjectDetail onExhibit={onExhibit}/>:
 project.id==='plc-sequences'?<PLCSequencesProjectDetail onExhibit={onExhibit}/>:
@@ -410,5 +455,6 @@ project.id==='plc-sequences'?<PLCSequencesProjectDetail onExhibit={onExhibit}/>:
 project.id==='electronics-labs'?<ElectronicsLabsProjectDetail onExhibit={onExhibit}/>:
 project.id==='mechatronics-labs'?<MechatronicsLabsProjectDetail onExhibit={onExhibit}/>:
 
+project.id==='accenture-experience'?<AccentureExperienceDetail onExhibit={onExhibit}/>:
 project.id==='beko-sensing'?<BekoSensingProjectDetail onExhibit={onExhibit}/>:
 <article className="case-study"><button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button><span className="eyebrow">{project.course} / {project.kind}</span><h1 className="catalog-title" tabIndex={-1}>{project.title}</h1><p className="lead">{project.summary}</p>{project.exhibit&&<button className="enter-exhibit" onClick={()=>onExhibit(project.exhibit)}>Enter the interactive exhibit</button>}{project.image&&<figure className="case-image"><img src={project.image} alt={'Original '+project.title+' project material'}/><figcaption>Original project material</figcaption></figure>}<div className="case-body"><section><h2>The work</h2>{project.work.map(p=><p key={p}>{p}</p>)}<h2>Design context</h2><p>{project.limits}</p><h2>Attribution</h2><p>{project.credit}</p></section><aside><span className="eyebrow">EVIDENCE &amp; MATERIAL</span>{project.evidence.length?project.evidence.map(([label,href])=>href.startsWith('exhibit:')?<button className="text-link" key={href} onClick={()=>link(href)}>{label}</button>:<a className="text-link" key={href} href={href} target="_blank" rel="noreferrer">{label}</a>):<p>Project overview and engineering contributions.</p>}<p className="case-tags">{project.topics.join(' / ')}</p></aside></div><Illustration key={project.id} project={project}/></article>:<section className="catalog"><h1 className="catalog-title" tabIndex={-1}>Project not found.</h1><button className="text-link" onClick={()=>onExhibit('projects')}>All projects</button></section>:<ProjectIndex onExhibit={onExhibit}/ >}{dialog&&<Dialog kind={dialog} onClose={()=>setDialog(null)} onExhibit={onExhibit}/>}</main>;}

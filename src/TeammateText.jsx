@@ -3,7 +3,8 @@ const teammates=[
  {name:'Tuna Çelebi',labels:['Tuna Çelebi','Tuna'],href:'https://www.linkedin.com/in/tuna-celebi/'},
  {name:'Atahan Dikeç',labels:['Atahan Dikeç','Atahan'],href:'https://www.linkedin.com/in/atahandikec/'},
  {name:'Berke Çeçen',labels:['Berke Çeçen'],href:'https://www.linkedin.com/in/berke-%C3%A7e%C3%A7en-146633301/'},
- {name:'Ahmet Genco Güven',labels:['Ahmet Genco Güven','Genco Güven'],href:'https://www.linkedin.com/in/ahmet-genco-g%C3%BCven-a1a842232/'}
+ {name:'Ahmet Genco Güven',labels:['Ahmet Genco Güven','Genco Güven'],href:'https://www.linkedin.com/in/ahmet-genco-g%C3%BCven-a1a842232/'},
+ {name:'Yunus Emre Ozan',labels:['Yunus Emre Ozan'],href:'https://www.linkedin.com/in/yunusemreozan/'}
 ];
 const profiles=new Map(teammates.flatMap(teammate=>teammate.labels.map(label=>[label,teammate])));
 const names=[...profiles.keys()].sort((first,second)=>second.length-first.length).join('|');

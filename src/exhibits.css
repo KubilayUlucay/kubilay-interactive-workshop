@@ -114,6 +114,9 @@ dialog.image-zoom .image-zoom-media{display:block;width:100%;height:100%;max-wid
 .projects-page.exhibit-case-study>.case-study{margin-top:0}
 .exhibit-case-study .catalog-title{font-size:48px;line-height:1.08;font-weight:450;margin:18px 0 22px}
 .exhibit-case-study .case-return{min-height:44px;margin-bottom:12px}
+.case-navigation{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:20px;padding:6px 0;background:var(--page-background);border-bottom:1px solid var(--portfolio-line);margin-bottom:16px}
+.case-navigation .text-link{min-height:44px}
+.case-navigation .case-return{margin:0}
 .exhibit-page .exhibit-status{grid-template-columns:minmax(0,1fr)}
 .exhibit-case-loading{padding:40px;color:var(--portfolio-muted)}
 .project-details-cue{--cue-drawn:154px;--cue-window:190px;position:fixed;z-index:12;top:max(210px,37svh);right:max(0px,calc((100vw - 1550px)/4));transform:translateY(-50%);display:flex;align-items:center;justify-content:center;gap:0;width:40px;height:238px;padding:12px 2px;border:0;background:transparent;color:var(--copper);cursor:pointer}
@@ -430,6 +433,7 @@ dialog.image-zoom .image-zoom-media{display:block;width:100%;height:100%;max-wid
 }
 @keyframes employer-sparkle{0%,75%,100%{opacity:0;transform:scale(.65) rotate(-8deg)}20%{opacity:.4;transform:scale(.85) rotate(0)}35%{opacity:.95;transform:scale(1) rotate(8deg)}55%{opacity:.35;transform:scale(.85) rotate(12deg)}}
 .home-bio{font-size:15px;line-height:1.75;color:var(--portfolio-muted);margin:0;max-width:460px}
+.home-verification{margin-bottom:14px}
 .home-actions{display:flex;align-items:center;gap:26px;margin-top:24px}
 .home-actions .text-link{min-height:44px}
 .home-socials{display:flex;gap:22px;margin-top:18px}

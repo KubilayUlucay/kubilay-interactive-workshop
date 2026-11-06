@@ -48,13 +48,13 @@ The wireless controller occupies its own lower-left foreground area, separate fr
 
 The transparent Motor canvas occupies the shared desktop scene column, with local contact shadows and no decorative frame. Original motor geometry, photographs, video and reports are retained, and the Nano photograph is shown as original controller evidence. The Motor introduction explains its stator, twin rotors and Arduino drive rather than repeating the About identity; its Selected work action is removed. All four exhibits use common desktop grid rows for the 84px header, 58px navigation area, scene, 176px control area, 56px action area and 30px footer. Heading, control and footer anchors remain fixed when changing projects. The selector uses the same responsive content gutter as the headings, including wide-screen centering. Phone headers remain 74px, and tablet/phone headings retain aligned responsive reflow. Inspection still uses its dedicated composition; interaction handlers and simulation logic are unchanged.
 
-Opening Gimbal's educational-code panel lets its control row and page expand in flow, keeping the footer and case study below the code. Closing the panel restores the normal shared-grid anchors.
+Gimbal's case study uses a selected original Arduino IMU/servo setup capture and three phone gyroscope recordings from the project presentation. The full deck stays outside the public site. The recordings retain their separate timing context and are not presented as a stabilization-accuracy benchmark; the fabricated educational snippet is removed.
 
 ### Selected lab evidence
 
 PV embeds the complete 11-page source report. EE401 retains four lazy-loaded segments and all 80 pages, with its redacted public bytes verified by SHA-256 during the build and before creating the browser PDF Blob. These core-project reports are unchanged by coursework curation.
 
-The catalog has 11 projects after the owner's removal of circuit analysis and LabVIEW. Electronics retains one selected bench study: multimeter/DC measurements and diode curves. Mechatronics retains four studies: analog/reflectance sensing, an oscillator timing capture, two-board I2C and observed proportional motor-position responses. The public pages label these downloads as selected original report pages, not complete submissions or new tests.
+The catalog has 12 entries, including Accenture and Beko professional experience, after the owner's removal of circuit analysis and LabVIEW. Electronics retains one selected bench study: multimeter/DC measurements and diode curves. Mechatronics retains four studies: analog/reflectance sensing, an oscillator timing capture, two-board I2C and observed proportional motor-position responses. The public pages label these downloads as selected original report pages, not complete submissions or new tests.
 
 | Study | Original PDF pages retained |
 | --- | --- |
@@ -84,7 +84,7 @@ The five retained lab studies have concise text-first walkthroughs with descript
 
 ### Combined exhibits and technical case studies
 
-Motor, Gimbal, BMS and Zumo each open with their interactive scene and controls, followed by the existing technical case study, photographs, reports, limitations and credits. The interactive desktop composition keeps its current height; scrolling continues into the evidence below. There is one main landmark, one portfolio header and one live canvas per project. Back to interactive returns to the controls without remounting the scene or resetting its settings.
+Motor, Gimbal, BMS and Zumo each open with their interactive scene and controls, followed by the existing technical case study, photographs, reports, limitations and credits. The interactive desktop composition keeps its current height; scrolling continues into the evidence below. There is one main landmark, one portfolio header and one live canvas per project. A sticky case-navigation bar keeps Projects reachable during deep reading; embedded cases also retain Back to interactive without remounting the scene or resetting its settings.
 
 The shared Project details cue uses one constant-size connected line and arrow. It enters a transparent clipping area from above, travels downward and fades while leaving below, then resets invisibly for the next 4.2-second cycle. It does not stretch, retract or reverse visibly. The vertical label stays still, with no repeated text, ticks or second arrow. Its desktop position remains fixed in the clear outer gutter throughout scrolling; there is no docking jump. The cue remains visible while approaching the details, then eases out over 420ms after arrival. On smaller screens, it sits between the interactive area and the case study without covering controls.
 
@@ -96,7 +96,7 @@ Direct routes `#/motor`, `#/gimbal`, `#/bms` and `#/zumo` open at the scene. Exi
 
 The default route now opens an About home with the engineer's identity, current role, contact/CV and four real-image exhibit links. Direct links to `#/motor`, `#/gimbal`, `#/bms` and `#/zumo` remain available. The shared brand and About navigation return home.
 
-Gimbal, BMS and Zumo use a viewport-height desktop composition from 1000px wide and 620px high, keeping scene, readings and controls together above their case studies. Smaller windows and zoomed/mobile layouts retain readable reflow instead of clipping controls. Motor retains its accepted rotor, winding and inspection geometry with the controller-powered arrangement described above. Zumo's detailed evidence and original report/presentation links follow its arena, while firmware remains available from its dock.
+Gimbal, BMS and Zumo use a viewport-height desktop composition from 1000px wide and 620px high, keeping scene, readings and controls together above their case studies. Smaller windows and zoomed/mobile layouts retain readable reflow instead of clipping controls. Motor retains its accepted rotor, winding and inspection geometry with the controller-powered arrangement described above. Zumo's detailed evidence and original report follow its arena, while firmware remains available from its dock.
 
 Design references: [homepage identity and meaningful content](https://www.nngroup.com/articles/top-ten-guidelines-for-homepage-usability/), [height and text-size accessibility](https://developer.mozilla.org/en-US/docs/Web/CSS/height), and [W3C reflow guidance](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html).
 
@@ -128,6 +128,22 @@ npm run preview
 ```
 
 `bash scripts/codex-setup.sh` performs the locked installation and build. Output is `dist/`. No environment secrets are required. Predev and prebuild run the approved-UI regression check and verify the reviewed public PDF inventory and SHA-256 fingerprints, including all four EE401 segments. Preserve segmented delivery, integrity verification and lazy loading; do not restore identifying original bytes to public assets.
+
+## Development verification
+
+The following checks maintain the website's explanatory models. They are development tooling, not hardware-project evidence, and are not displayed as source/test sections on the portfolio pages.
+
+After installing the locked dependencies:
+
+```sh
+node scripts/simulation-checks.mjs
+node scripts/exhibit-checks.mjs
+node scripts/zumo-collision-checks.mjs
+```
+
+These checks cover the current controller-powered Motor model, Gimbal/BMS model behavior and Zumo arena logic. They are not hardware-performance measurements. The corrected Motor check no longer assumes the retired crank input. The BMS report's charging-simulation result is separate from these JavaScript checks.
+
+About summarizes the confirmed Python/Gherkin verification work. Professional experience leads the catalog, with dedicated Accenture and Beko entries; the existing project entries remain. The BMS case brings its reported charging result forward with a direct source-page link. Original team credit and confidential-material boundaries remain unchanged.
 
 ## Parallel agent workflow
 

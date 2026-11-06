@@ -1,6 +1,7 @@
 import {lazy,Suspense,useEffect,useRef,useState} from 'react';
 import {Dialog} from './App';
 import PortfolioHeader from './PortfolioHeader';
+import TeammateText from './TeammateText';
 import {Focus,Orbit} from 'lucide-react';
 import InspectionPanel,{InspectionButton,ZUMO_PARTS} from './InspectionTemplate';
 import {advanceZumo,newZumo,presets,placementReason} from './zumoSimulation';
@@ -45,7 +46,7 @@ export default function ZumoExhibit({onExhibit,sharedReduced:reduced,onReducedCh
    <div className="object-controls"><label>Move object<select aria-label="Selected object" value={selected} onChange={event=>setSelected(+event.target.value)}>{objects.map((object,index)=><option key={index} value={index}>Cylinder {index+1}</option>)}</select></label>{[0,1].map(axis=><label key={axis}>{axis?'Depth':'Left / right'}<input aria-label={'Object '+(axis?'depth':'horizontal position')} type="range" min="-2.72" max="2.72" step=".01" value={objects[selected]?.[axis]||0} onChange={event=>{const position=[...objects[selected]];position[axis]=+event.target.value;move(selected,...position);}}/></label>)}</div>
    <p className="placement-feedback" role="status">{feedback}</p>
   </section>
-   <footer className="exhibit-footer"><span>Interactive boundary scans · simulated IR detection counts</span><span>EE321 · Yunus Emre Ozan &amp; Seyit Kubilay Uluçay</span></footer>
+   <footer className="exhibit-footer"><span>Interactive boundary scans · simulated IR detection counts</span><span><TeammateText>EE321 · Yunus Emre Ozan &amp; Seyit Kubilay Uluçay</TeammateText></span></footer>
   {dialog&&(dialog==='code'?<Code code={code} onClose={()=>setDialog(null)}/>:<Dialog kind={dialog} onClose={()=>setDialog(null)} onExhibit={onExhibit}/>)}
  </section>;
 }

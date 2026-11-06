@@ -1,22 +1,37 @@
 import assert from 'node:assert/strict';
 import { createSimulation, advanceSimulation } from '../src/simulation.js';
-const step=(s,inspection,reduced=false,count=240)=>{for(let i=0;i<count;i++)advanceSimulation(s,.05,{inspection,reduced,now:10000+i*50});};
-const s=createSimulation();s.held=true;step(s,false);
-assert(s.power>.99 && s.motorAngle>0 && s.crankAngle>0);
-assert(s.effectPhase>0 && s.effectPhase<1);
-const phase=s.effectPhase;step(s,true);assert.equal(s.effectPhase,phase);step(s,false);
-s.held=false;step(s,false);assert.equal(s.power,0);assert.equal(s.speed,0);
-const motor=s.motorAngle;step(s,true);assert.equal(s.explode,1);assert.equal(s.motorAngle,motor);
-step(s,false);assert.equal(s.explode,0);
-const reduced=createSimulation();reduced.held=true;step(reduced,false,true);
-assert(reduced.power>.99);assert.equal(reduced.effectPhase,0);assert.equal(reduced.motorAngle,0);assert.equal(reduced.crankAngle,-.72);
+
+function step(state,inspection=false,reduced=false,count=400){
+ for(let frame=0;frame<count;frame++)advanceSimulation(state,.05,{inspection,reduced});
+ return state;
+}
+
+const off=step(createSimulation());
+assert.equal(off.power,0);assert.equal(off.speed,0);assert.equal(off.motorAngle,0);
+
+const active=step({...createSimulation(),powered:true});
+assert.equal(active.power,.55);assert.ok(active.motorAngle>0);
+assert.ok(active.effectPhase>=0&&active.effectPhase<1);
+active.command=.25;step(active);assert.equal(active.power,.25);
+active.powered=false;step(active);assert.equal(active.power,0);assert.equal(active.speed,0);
+
+const inspected={...createSimulation(),powered:true,motorAngle:1,effectPhase:.4};
+step(inspected,true);assert.equal(inspected.explode,1);assert.equal(inspected.power,0);
+assert.equal(inspected.motorAngle,1);assert.equal(inspected.effectPhase,.4);
+step(inspected,false);assert.equal(inspected.explode,0);assert.ok(inspected.motorAngle>1);
+
+const reduced=step({...createSimulation(),powered:true,command:.75},false,true);
+assert.equal(reduced.power,.75);assert.equal(reduced.motorAngle,0);assert.equal(reduced.effectPhase,0);
+assert.equal(advanceSimulation(reduced,.05,{inspection:false,reduced:true}),false);
 step(reduced,true,true,1);assert.equal(reduced.explode,1);
 step(reduced,false,true,1);assert.equal(reduced.explode,0);
-const delayed=createSimulation(),regular=createSimulation();delayed.held=regular.held=true;
-advanceSimulation(delayed,100,{inspection:false,reduced:false,now:10000});
-advanceSimulation(regular,.05,{inspection:false,reduced:false,now:10000});
+
+for(const [command,power]of [[2,1],[-1,0],[NaN,0]]){
+ assert.equal(step({...createSimulation(),powered:true,command}).power,power);
+}
+const delayed={...createSimulation(),powered:true},regular={...delayed};
+advanceSimulation(delayed,100,{inspection:false,reduced:false});
+advanceSimulation(regular,.05,{inspection:false,reduced:false});
 assert.deepEqual(delayed,regular);
-const direct=createSimulation();direct.dragging=true;direct.lastDrag=10000;direct.dragImpulse=4;
-advanceSimulation(direct,.05,{inspection:false,reduced:false,now:10001});assert(direct.power>0);assert.equal(direct.crankAngle,-.72);
-assert.equal(createSimulation().effectPhase,0);
-console.log('PASS: energy phase bounded, inspection/reduced-motion freeze, reset phase,  ramp, coast, inspection/reassembly, reduced-motion feedback without spin, delayed-frame clamp, direct drag input.');
+assert.deepEqual(createSimulation(),{powered:false,command:.55,power:0,speed:0,motorAngle:0,effectPhase:0,explode:0,inspect:false});
+console.log('PASS: power off, command tracking, shutdown, bounded phase, inspection/reassembly, static reduced-motion feedback, command limits, delayed-frame clamp and reset defaults.');

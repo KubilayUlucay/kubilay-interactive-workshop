@@ -311,17 +311,39 @@
     ]
   },
   {
+    "id": "accenture-experience",
+    "title": "Engineering verification at Accenture",
+    "tools": ["Python", "Gherkin", "GitLab", "Codebeamer"],
+    "year": "2026–present",
+    "course": "Accenture · Industry X",
+    "category": "Experience",
+    "kind": "Professional experience",
+    "summary": "Requirements-based verification for clinical-laboratory automation: Python/Gherkin tests, failure investigation and requirement-to-test traceability.",
+    "work": [
+      "Develop requirements-based black-box tests and refactor test functions and state-change checks through reviewed GitLab merge requests.",
+      "Run existing local and GitLab/AWS test pipelines, investigate test and suspected product issues, and maintain traceability in Codebeamer."
+    ],
+    "limits": "A public account of engineering verification work; client-specific requirements, source code and internal results remain confidential.",
+    "credit": "Quality Assurance Engineer, Accenture Industry X, January 2026–present.",
+    "evidence": [],
+    "image": null,
+    "exhibit": null,
+    "topics": ["verification", "black-box testing", "Python", "Gherkin", "traceability"]
+  },
+  {
     "id": "beko-sensing",
     "title": "Floor sensing in an R&D team",
-    "tools": ["ToF sensing", "Minitab", "Embedded integration"],
+    "tools": ["ToF sensing", "Python / Excel", "Minitab", "Embedded firmware"],
     "year": "2024",
     "course": "Beko internship · 2024",
     "category": "Experience",
     "kind": "R&D experience",
-    "summary": "R&D internship contributions spanning sensing tests, data acquisition, Minitab analysis and embedded integration.",
+    "summary": "Built a motorized sensing rig, processed measurement data in Python/Excel and carried regression models through embedded integration and floor-type project trials.",
     "work": [
-      "Supported test setup, sensing/data acquisition and preprocessing for robot-vacuum floor-detection work.",
-      "Contributed to Minitab analysis/modeling, embedded integration, testing, iteration and documentation within the R&D team."
+      "Built a motorized test rig and adapted acquisition code for sensing measurements across environments and configurations.",
+      "Preprocessed approximately 650,000 logged data points in Python/Excel using filtering and summary statistics.",
+      "Developed regression models in Minitab and integrated the model into embedded firmware.",
+      "Evaluated floor-type prediction in project trials with 83.5% prediction success and documented test and integration findings."
     ],
     "limits": "A public overview of sensing, data-analysis and embedded-integration contributions within Beko's Advanced Sensor Technologies R&D team.",
     "credit": "R&D internship contribution by Seyit Kubilay Uluçay within Beko Advanced Sensor Technologies, July–August 2024.",
